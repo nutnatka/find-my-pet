@@ -25,4 +25,7 @@ class User < ApplicationRecord
 
     errors.add :password, 'must include at least one lowercase letter, one uppercase letter, and one digit.'
   end
+
+  extend FriendlyId
+  friendly_id :name, use: :slugged
 end
