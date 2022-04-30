@@ -13,8 +13,8 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_one_attached :avatar
 
-  # validates :avatar, file_size: { less_than_or_equal_to: 5.megabytes },
-  #           file_content_type: { allow: %w[image/jpeg image/png image/gif] }
+  validates :avatar, file_size: { less_than_or_equal_to: 150.kilobytes, message: 'should be less than %{count}' },
+            file_content_type: { allow: %w[image/jpeg image/png image/gif], message: 'only allows jpeg, png and gif' }
 
   validates :name, :email, presence: true
   validates :password, presence: true, allow_nil: true
