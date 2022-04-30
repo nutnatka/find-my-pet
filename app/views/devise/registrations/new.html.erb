@@ -1,29 +1,37 @@
-<h2>Sign up</h2>
+<h2 class="text-center mt-5 mb-5">SETUP YOUR FIND MY PET PROFILE</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="container text-center">
+    <%= render "devise/shared/error_messages", resource: resource %>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+  <div class="container m-0 p-0 d-flex flex-column align-items-center">
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <h6>How may we address you?</h6>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
+    <div class="field">
+      <%= f.text_field :name, autofocus: true, class: 'form-control', placeholder: 'Name' %>
+      <p class="text-muted">* This field is required.</p>
+    </div>
+
+    <div class="field">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder: 'Email' %>
+      <p class="text-muted">* This field is required.<br>Please enter a valid email address.</p>
+    </div>
+
+    <div class="field">
+      <%= f.password_field :password, autocomplete: "new-password", class: 'form-control', placeholder: 'Password' %>
+      <p class="text-muted">* This field is required.<br>Please enter the password containing<br>at least 6 characters.
+        It
+        should contain<br>at least one lowercase letter,<br>one uppercase letter, and one digit.</p>
+    </div>
+
+<!--    <div class="new-pet-container">-->
+<!--      <a href="#" class="text-decoration-none"><p class="text-dark"><i class="fa-solid fa-square-plus me-2"></i>Add your pet</p></a>-->
+<!--    </div>-->
+
+    <div class="actions">
+      <%= f.submit "Create a Profile", class: 'btn btn-dark' %>
+    </div>
 <% end %>
-
-<%= render "devise/shared/links" %>
+</div>

@@ -10,7 +10,7 @@ module FindMyPet
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
-    config.assets.precompile += ["*.ttf", "*.woff", "*.svg", "*.eot"]
+    config.assets.precompile += %w[*.ttf *.woff *.svg *.eot]
 
     # Configuration for the application, engines, and railties goes here.
     #

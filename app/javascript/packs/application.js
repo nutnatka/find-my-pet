@@ -15,5 +15,3 @@ ActiveStorage.start()
 import "bootstrap"
 import { Tooltip, Popover } from "bootstrap"
 require("../stylesheets/application.scss")
-
-import "@fortawesome/fontawesome-free/css/all"
