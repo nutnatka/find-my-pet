@@ -1,5 +1,5 @@
 <div class="text-muted">
-  <%= form_with model: [@user, @user.pets.new] do |form| %>
+  <%= form_with model: [@user, @user.pets.create] do |form| %>
 
     <div class="field">
       <%== form.text_field :name, autofocus: true, required: true, class: 'form-control', placeholder: 'Name' %>
@@ -22,14 +22,6 @@
       <p class="mb-0"><%= form.radio_button :sex, 'female', class: 'form-check-input me-2' %> Female</p>
       <p class="mb-2"><%= form.radio_button :sex, 'undefined', class: 'form-check-input me-2' %> Prefer not to
         Say</p>
-    </div>
-
-    <div class="field">
-      <p class="p-0 m-0"><b>Click here to Upload Pet`s Avatar</b></p>
-      <div class="input-group-text text-muted">
-        <%== form.file_field :avatar %>
-      </div>
-      <p class="tp-0 mb-2">Please use jpeg, png or gif files less than 150kb.</p>
     </div>
 
     <div class="field">
