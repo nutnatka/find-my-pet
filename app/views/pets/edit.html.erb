@@ -1,0 +1,98 @@
+<% provide(:page_title, 'Edit Pet Profile') %>
+<% provide(:profile_active, 'active') %>
+
+<div class="row mt-5">
+  <div class="col-2">
+    <%= link_to 'Back', user_path(current_user), class: 'btn btn-outline-dark' %>
+  </div>
+  <div class="col-10 text-center">
+    <% if @pet.name? %>
+      <h2 class="m-0">EDIT <%= (@pet.name).upcase %>`S PROFILE</h2>
+    <% else %>
+      <h2 class="m-0">EDIT PET`S PROFILE</h2>
+    <% end %>
+  </div>
+</div>
+
+<%= form_with(model: [@user, @pet]) do |form| %>
+
+  <% if @pet.errors.any? %>
+    <div class="text-center text-danger mt-2" id="error_explanation">
+      <h4>
+        <%= pluralize(@pet.errors.count, "error") %>
+        prohibited this pet from being updated:
+      </h4>
+
+      <% @pet.errors.full_messages.each do |msg| %>
+        <%= msg %><br>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="row mt-2">
+    <div class="col-12 text-muted text-center col-md-4">
+      <% if @pet.avatar.attached? %>
+        <%= image_tag @pet.avatar, width: '200px', height: '200px', class: 'rounded-circle border-dark' %>
+      <% else %>
+        <%= image_tag("avatar.png", height: '200', width: '200', class: 'rounded-circle border-dark') %>
+      <% end %>
+      <% if @pet.name? %>
+        <p class="p-0 m-0 fw-bold">Upload <%= @pet.name %>`s new profile picture below!</p>
+      <% else %>
+        <p class="p-0 m-0 fw-bold">Upload pet`s new profile picture below!</p>
+      <% end %>
+      <%= form.file_field :avatar, class: 'form-control' %>
+    </div>
+
+    <div class="col-0 col-md-3">
+    </div>
+
+    <div class="col-12 text-muted text-center mt-4 col-md-5 col-lg-4">
+      <div class="field">
+        <%== form.text_field :name, class: 'form-control', placeholder: 'Name' %>
+      </div>
+
+      <div class="field">
+        <p class="p-0 m-0"><b>My pet is a:</b></p>
+        <%= form.select(:species, options_for_select([['cat', 1], ['dog', 2]]), {}, { class: 'form-select mb-2' }) %>
+      </div>
+
+      <div class="field">
+        <%== form.text_field :breed, class: 'form-control mb-2', placeholder: 'Breed' %>
+      </div>
+
+      <div class="field">
+        <p class="mb-0"><b>Select Pet`s Gender:</b></p>
+        <p class="mb-0"><%= form.radio_button :sex, 'male', checked: true, class: 'form-check-input me-2' %>
+          Male</p>
+        <p class="mb-0"><%= form.radio_button :sex, 'female', class: 'form-check-input me-2' %> Female</p>
+        <p class="mb-2"><%= form.radio_button :sex, 'undefined', class: 'form-check-input me-2' %> Prefer not to
+          Say</p>
+      </div>
+
+      <div class="field">
+        <p class="mb-2">
+          <%= form.check_box :sterilized, class: 'form-check-input' %>
+          <b><%= form.label :sterilized, 'My Pet is Sterilized', class: 'ms-2 font-bold' %></b>
+        </p>
+      </div>
+
+      <div class="field input-group-text mb-2 text-muted">
+    <span><b>Select Pet`s Birthday:</b><br>
+      <%= form.date_select(:date_of_birth, order: [:day, :month, :year], start_year: Date.current.year, end_year: Date.current.year - 15) %></span>
+      </div>
+
+      <div class="field">
+        <%== form.text_field :color, class: 'form-control mb-2', placeholder: 'Color' %>
+      </div>
+
+      <div class="field">
+        <%== form.text_area :additional_info, class: 'form-control mb-4', placeholder: 'Additional Info' %>
+      </div>
+    </div>
+
+    <div class="container d-flex justify-content-center">
+      <%= form.submit 'Update Pet Info', class: 'btn btn-dark mb-4 mt-4' %>
+    </div>
+<% end %>
+</div>

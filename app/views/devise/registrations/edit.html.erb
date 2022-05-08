@@ -1,50 +1,60 @@
+<% provide(:page_title, 'Edit Profile') %>
+<% provide(:profile_active, 'active') %>
+
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <div class="container text-center mt-4">
     <%= render "devise/shared/error_messages", resource: resource %>
   </div>
 
-  <div class="container d-flex flex-row justify-content-between p-0">
-    <div class="container p-0 mt-5">
-      <%= link_to 'Back', :back, class: 'btn btn-outline-dark' %>
-      <div class="container avatar-container p-0 mt-4 d-flex flex-column align-items-center">
-        <% if current_user.avatar.attached? %>
-          <%= image_tag current_user.avatar, width: '200px', height: '200px', class: 'rounded-circle' %>
-        <% else %>
-          <%= image_tag("avatar.png", height: '200', width: '200', class: 'rounded-circle') %>
-        <% end %>
-        <div class=”field">
-          <p class="text-muted mt-2 mb-2 pb-0">Upload your new profile picture below!</p>
-          <%= f.file_field :avatar, class: 'form-control' %>
-        </div>
-      </div>
+  <div class="row mt-5 d-flex align-items-center">
+    <div class="col-2">
+      <%= link_to 'Back', user_path(current_user), class: 'btn btn-outline-dark' %>
+    </div>
+    <div class="col-10 text-center">
+      <h2 class="m-0">EDIT YOUR PROFILE</h2>
+    </div>
+  </div>
+
+  <div class="row mt-2">
+    <div class="col-12 text-muted text-center mb-2 col-md-5 mt-md-4 col-lg-3">
+      <% if current_user.avatar.attached? %>
+        <%= image_tag current_user.avatar, width: '200px', height: '200px', class: 'rounded-circle border-dark' %>
+      <% else %>
+        <%= image_tag("avatar.png", height: '200', width: '200', class: 'rounded-circle border-dark') %>
+      <% end %>
+      <p class="p-0 m-0 fw-bold">Upload your new profile picture below!</p>
+      <%= f.file_field :avatar, class: 'form-control' %>
     </div>
 
-    <div class="container personal-data-container p-0 d-flex flex-column align-items-center">
-      <h2 class="mt-5 mb-0 p-0">EDIT YOUR PROFILE</h2>
+    <div class="col-0 col-md-2 mt-md-4">
+    </div>
+
+    <div class="col-12 text-muted text-center mb-3 col-md-5 mt-md-4 text-md-start col-lg-4">
 
       <div class="field">
-        <%= f.text_field :name, autofocus: true, class: 'form-control mt-4', placeholder: 'Name' %>
-      </div>
-
-      <div class="field d-none">
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control mt-4', placeholder: 'Email' %>
+        <%= f.text_field :name, autofocus: true, class: 'form-control mb-2', placeholder: 'Name' %>
       </div>
 
       <div class="field">
-        <%= f.password_field :password, autocomplete: "new-password", class: 'form-control mt-4', placeholder: 'New Password' %>
-        <p class="text-muted m-0">Please enter the password containing<br>at least 6 characters. It should contain<br>at
-          least one lowercase letter, one<br>uppercase letter, and one digit.<br>Leave the field blank if you don't want<br>to
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control d-none', placeholder: 'Email' %>
+      </div>
+
+      <div class="field">
+        <%= f.password_field :password, autocomplete: "new-password", class: 'form-control mb-2', placeholder: 'New Password' %>
+        <p class="p-0 m-0">Please enter the password containing<br>at least 6 characters. It should contain<br>at
+          least one lowercase letter, one<br>uppercase letter, and one digit.<br>Leave the field blank if you don't
+          want<br>to
           change your password.</p>
       </div>
 
       <div class="field">
-        <%= f.password_field :current_password, autocomplete: "current-password", class: 'form-control mt-4', placeholder: 'Current Password' %>
-        <p class="text-muted m-0">Please enter your current password<br>to confirm your changes.</p>
+        <%= f.password_field :current_password, autocomplete: "current-password", class: 'form-control mt-2', placeholder: 'Current Password' %>
+        <p>Please enter your current password<br>to confirm your changes.</p>
       </div>
-    </div>
 
-    <div class="container d-flex justify-content-end align-items-baseline p-0">
-      <%= f.submit "Update", class: 'btn btn-dark mt-5' %>
-    </div>
+      <div class="d-flex justify-content-center">
+        <%= f.submit "Update", class: 'btn btn-dark' %>
+      </div>
 <% end %>
+</div>
 </div>

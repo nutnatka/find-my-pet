@@ -1,37 +1,39 @@
-<h2 class="text-center mt-5 mb-5">SETUP YOUR FIND MY PET PROFILE</h2>
+<% provide(:page_title, 'Get Started') %>
+<% provide(:get_started_active, 'active') %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <div class="container text-center">
-    <%= render "devise/shared/error_messages", resource: resource %>
+<div class="col-12 text-xs-center">
+  <h2 class="text-center mt-5 mb-5">SETUP YOUR FIND MY PET PROFILE</h2>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <div class="container text-center">
+      <%= render "devise/shared/error_messages", resource: resource %>
+    </div>
+
+    <div class="container m-0 p-0 d-flex flex-column align-items-center">
+
+      <h6>How may we address you?</h6>
+
+      <div class="field">
+        <%= f.text_field :name, autofocus: true, class: 'form-control', placeholder: 'Name' %>
+        <p class="text-muted">* This field is required.</p>
+      </div>
+
+      <div class="field">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder: 'Email' %>
+        <p class="text-muted">* This field is required.<br>Please enter a valid email address.</p>
+      </div>
+
+      <div class="field">
+        <%= f.password_field :password, autocomplete: "new-password", class: 'form-control', placeholder: 'Password' %>
+        <p class="text-muted">* This field is required.<br>Please enter the password containing<br>at least 6
+          characters.
+          It
+          should contain<br>at least one lowercase letter,<br>one uppercase letter, and one digit.</p>
+      </div>
+
+      <div class="actions mt-4">
+        <%= f.submit "Create a Profile", class: 'btn btn-dark' %>
+      </div>
+  <% end %>
   </div>
-
-  <div class="container m-0 p-0 d-flex flex-column align-items-center">
-
-    <h6>How may we address you?</h6>
-
-    <div class="field">
-      <%= f.text_field :name, autofocus: true, class: 'form-control', placeholder: 'Name' %>
-      <p class="text-muted">* This field is required.</p>
-    </div>
-
-    <div class="field">
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder: 'Email' %>
-      <p class="text-muted">* This field is required.<br>Please enter a valid email address.</p>
-    </div>
-
-    <div class="field">
-      <%= f.password_field :password, autocomplete: "new-password", class: 'form-control', placeholder: 'Password' %>
-      <p class="text-muted">* This field is required.<br>Please enter the password containing<br>at least 6 characters.
-        It
-        should contain<br>at least one lowercase letter,<br>one uppercase letter, and one digit.</p>
-    </div>
-
-    <!--    <div class="new-pet-container">-->
-    <!--      <a href="#" class="text-decoration-none"><p class="text-dark"><i class="fa-solid fa-square-plus me-2"></i>Add your pet</p></a>-->
-    <!--    </div>-->
-
-    <div class="actions mt-4">
-      <%= f.submit "Create a Profile", class: 'btn btn-dark' %>
-    </div>
-<% end %>
 </div>
