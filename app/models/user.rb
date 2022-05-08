@@ -11,8 +11,13 @@ class User < ApplicationRecord
   has_many :recipient_conversations, class_name: 'Conversation', foreign_key: 'recipient_id', dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_one_attached :avatar
 
-  validates :name, :email, :password, presence: true
+  validates :avatar, file_size: { less_than_or_equal_to: 150.kilobytes, message: 'should be less than %{count}' },
+            file_content_type: { allow: %w[image/jpeg image/png image/gif], message: 'only allows jpeg, png and gif' }
+
+  validates :name, :email, presence: true
+  validates :password, presence: true, allow_nil: true
   validate :password_complexity
 
   def password_complexity
@@ -20,4 +25,7 @@ class User < ApplicationRecord
 
     errors.add :password, 'must include at least one lowercase letter, one uppercase letter, and one digit.'
   end
+
+  extend FriendlyId
+  friendly_id :name, use: :slugged
 end

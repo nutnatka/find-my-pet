@@ -36,7 +36,7 @@
         </ul>
         <form class="d-flex">
           <% if current_user %>
-            <%= link_to "Profile", root_path, class: 'btn btn-outline-dark me-1' %>
+            <%= link_to "Profile", user_path(current_user), class: 'btn btn-outline-dark me-1' %>
             <%= link_to "Logout ", destroy_user_session_path, method: :delete, class: 'btn btn-dark ms-1' %>
           <% else %>
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
