@@ -108,7 +108,7 @@ ActiveRecord::Schema.define(version: 2022_04_30_180624) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
-  create_table "pets", force: :cascade do |t|
+  create_table "my pets", force: :cascade do |t|
     t.string "name"
     t.string "species"
     t.string "breed"
@@ -172,7 +172,7 @@ ActiveRecord::Schema.define(version: 2022_04_30_180624) do
   add_foreign_key "likes", "users"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
-  add_foreign_key "pets", "users"
-  add_foreign_key "places", "pets"
+  add_foreign_key "my pets", "users"
+  add_foreign_key "places", "my pets"
   add_foreign_key "posts", "users"
 end
