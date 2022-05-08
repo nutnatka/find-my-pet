@@ -36,13 +36,13 @@
         </ul>
         <form class="d-flex">
           <% if current_user %>
-            <%= link_to "Profile", user_path(current_user), class: 'btn btn-outline-dark me-1' %>
-            <%= link_to "Logout ", destroy_user_session_path, method: :delete, class: 'btn btn-dark ms-1' %>
+            <%= link_to "Profile", user_path(current_user), class: "btn btn-outline-dark me-1 nav-Link #{yield(:profile_active)}" %>
+            <%= link_to "Logout ", destroy_user_session_path, method: :delete, class: 'btn btn-outline-dark ms-1' %>
           <% else %>
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
               Log In
             </button>
-            <%= link_to "Get Started ", new_user_registration_path, class: 'btn btn-dark ms-1' %>
+            <%= link_to "Get Started ", new_user_registration_path, class: "btn btn-outline-dark ms-1 nav-Link #{yield(:get_started_active)}" %>
           <% end %>
         </form>
       </div>

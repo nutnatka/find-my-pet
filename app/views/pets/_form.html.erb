@@ -1,0 +1,60 @@
+<div class="text-muted">
+  <%= form_with model: [@user, @user.pets.new] do |form| %>
+
+    <div class="field">
+      <%== form.text_field :name, autofocus: true, required: true, class: 'form-control', placeholder: 'Name' %>
+      <p class="p-0 mb-2">* This field is required.</p>
+    </div>
+
+    <div class="field">
+      <p class="p-0 m-0"><b>My pet is a:</b></p>
+      <%= form.select(:species, options_for_select([['cat', 1], ['dog', 2]]), {}, { class: 'form-select mb-2' }) %>
+    </div>
+
+    <div class="field">
+      <%== form.text_field :breed, autofocus: true, class: 'form-control mb-2', placeholder: 'Breed' %>
+    </div>
+
+    <div class="field">
+      <p class="mb-0"><b>Select Pet`s Gender:</b></p>
+      <p class="mb-0"><%= form.radio_button :sex, 'male', checked: true, class: 'form-check-input me-2' %>
+        Male</p>
+      <p class="mb-0"><%= form.radio_button :sex, 'female', class: 'form-check-input me-2' %> Female</p>
+      <p class="mb-2"><%= form.radio_button :sex, 'undefined', class: 'form-check-input me-2' %> Prefer not to
+        Say</p>
+    </div>
+
+    <div class="field">
+      <p class="p-0 m-0"><b>Click here to Upload Pet`s Avatar</b></p>
+      <div class="input-group-text text-muted">
+        <%== form.file_field :avatar %>
+      </div>
+      <p class="tp-0 mb-2">Please use jpeg, png or gif files less than 150kb.</p>
+    </div>
+
+    <div class="field">
+      <p class="mb-2">
+        <%= form.check_box :sterilized, class: 'form-check-input' %>
+        <b><%= form.label :sterilized, 'My Pet is Sterilized', class: 'ms-2 font-bold' %></b>
+      </p>
+    </div>
+
+    <div class="field input-group-text mb-2 text-muted">
+    <span><b>Select Pet`s Birthday:</b><br>
+      <%= form.date_select(:date_of_birth, autofocus: true, order: [:day, :month, :year], start_year: Date.current.year, end_year: Date.current.year - 15) %></span>
+    </div>
+
+    <div class="field">
+      <%== form.text_field :color, autofocus: true, class: 'form-control mb-2', placeholder: 'Color' %>
+    </div>
+
+    <div class="field">
+      <%== form.text_area :additional_info, autofocus: true, class: 'form-control mb-2', placeholder: 'Additional Info' %>
+    </div>
+    </div>
+
+    <div class="container d-flex justify-content-center">
+      <%= form.submit 'Save Pet', class: 'btn btn-dark' %>
+      <%= link_to 'Cancel', user_path, class: 'btn btn-outlined-dark' %>
+    </div>
+  <% end %>

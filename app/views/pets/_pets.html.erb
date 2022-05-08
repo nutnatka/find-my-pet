@@ -1,0 +1,24 @@
+<h2><%= @user.name %></h2>
+<h5 class="mt-4">Your pets:</h5>
+<p id='your-pets'></p>
+<% if current_user.pets.count == 0 %>
+  <p>At the moment you`ve got no pets added.<br/>
+    To add your pet, click on the button below.</p>
+<% else %>
+  <% @user.pets.each do |pet| %>
+    <div id="pet-<%= pet.id %>">
+      <span>
+        <% if pet.avatar.attached? %>
+          <%= image_tag pet.avatar, width: '50px', height: '50px', class: 'rounded-circle border border-dark mt-2 mb-2' %>
+        <% else %>
+          <%= image_tag("avatar.png", height: '50', width: '50', class: 'rounded-circle border border-dark mt-2 mb-2') %>
+        <% end %>
+
+        <%= pet.name %>
+
+        <%= link_to '', edit_user_pet_path(@user, pet), class: 'fa-solid fa-pen-to-square text-dark text-decoration-none' %>
+        <%= link_to '', user_pet_path(@user, pet), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: 'fa-solid fa-trash text-dark text-decoration-none', id: 'pet-item' %>
+      </span>
+    </div>
+  <% end %>
+<% end %>
