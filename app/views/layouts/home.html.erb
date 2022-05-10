@@ -12,7 +12,7 @@
 
 <body>
 <%= render 'layouts/navbar' %>
-<%#= render 'layouts/modal' %>
+<%= render 'layouts/modal' %>
 
 <% if notice %>
   <p class="alert alert-warning text-center"><%= notice %></p>
@@ -20,9 +20,7 @@
 <% if alert %>
   <p class="alert alert-danger text-center"><%= alert %></p>
 <% end %>
-<div class="container <%= controller_name %> <%= action_name %>" , id="main-container">
-  <%= yield %>
-</div>
+<%= yield %>
 <%= render 'layouts/footer' %>
 </body>
 </html>

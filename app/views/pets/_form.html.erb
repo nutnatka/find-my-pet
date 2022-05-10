@@ -25,14 +25,6 @@
     </div>
 
     <div class="field">
-      <p class="p-0 m-0"><b>Click here to Upload Pet`s Avatar</b></p>
-      <div class="input-group-text text-muted">
-        <%== form.file_field :avatar %>
-      </div>
-      <p class="tp-0 mb-2">Please use jpeg, png or gif files less than 150kb.</p>
-    </div>
-
-    <div class="field">
       <p class="mb-2">
         <%= form.check_box :sterilized, class: 'form-check-input' %>
         <b><%= form.label :sterilized, 'My Pet is Sterilized', class: 'ms-2 font-bold' %></b>
@@ -45,7 +37,7 @@
     </div>
 
     <div class="field">
-      <%== form.text_field :color, autofocus: true, class: 'form-control mb-2', placeholder: 'Color' %>
+      <%== form.text_field :color, autofocus: true, required: true, class: 'form-control mb-2', placeholder: 'Color' %>
     </div>
 
     <div class="field">
