@@ -4,9 +4,8 @@ class CreateConversations < ActiveRecord::Migration[6.1]
       t.integer :recipient_id
       t.integer :sender_id
 
-
       t.timestamps
     end
-    add_index :conversations, [:recipient_id, :sender_id], unique: true
+    add_index :conversations, %i[recipient_id sender_id], unique: true
   end
 end

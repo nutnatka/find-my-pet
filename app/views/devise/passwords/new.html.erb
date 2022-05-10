@@ -18,17 +18,7 @@
       </div>
     <% end %>
 
-    <div class="login-link mt-4">
-      <% if controller_name != 'sessions' %>
-        <%= link_to "Click here to Log In", new_session_path(resource_name), class:'text-dark' %>
-      <% end %>
-    </div>
-
-    <div>
-      <% if devise_mapping.registerable? && controller_name != 'registrations' %>
-        <%= link_to "Click here to Create Profile", new_registration_path(resource_name), class:'text-dark' %>
-      <% end %>
-    </div>
+    <%= render "devise/shared/links" %>
 
   </div>
 </div>

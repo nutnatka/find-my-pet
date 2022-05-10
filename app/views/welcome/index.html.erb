@@ -20,7 +20,7 @@
         <% end %>
       </div>
       <div class="pet-actions d-flex flex-column flex-sm-row justify-content-evenly">
-        <%= link_to 'Find More Friends', root_path, class: 'btn btn-dark m-2' %>
+        <%= link_to 'Find More Friends', user_pets_path(@pets), class: 'btn btn-dark m-2' %>
         <%= link_to 'Adopt a Pet', root_path, class: 'btn btn-outline-dark m-2' %>
       </div>
     </div>
