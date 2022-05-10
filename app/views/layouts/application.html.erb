@@ -12,14 +12,18 @@
 
 <body>
 <%= render 'layouts/navbar' %>
-<%= render 'layouts/modal' %>
+<% if current_user.nil? %>
+<%= render 'devise/sessions/new' %>
+<% end %>
 
 <% if notice %>
+
+
   <p class="alert alert-warning text-center"><%= notice %></p>
 <% end %>
 <% if alert %>
   <p class="alert alert-danger text-center"><%= alert %></p>
-<% end %>
+  <% end %>
 <div class="container <%= controller_name %> <%= action_name %>" , id="main-container">
   <%= yield %>
 </div>
