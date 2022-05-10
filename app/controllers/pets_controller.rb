@@ -1,6 +1,9 @@
 class PetsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_user
-  before_action :set_pet, only: [:edit, :update]
+  before_action :set_pet, only: [:edit, :update, :show]
+
+  def show; end
 
   def create
     @pet = @user.pets.create(pet_params.merge(user_id: current_user.id))
