@@ -4,7 +4,7 @@ class PetsController < ApplicationController
   before_action :set_pet, only: %i[edit update show]
 
   def index
-    @pets = Pet.all
+    @pets = Pet.order(:name)
   end
 
   def show; end
