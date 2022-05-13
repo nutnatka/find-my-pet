@@ -98,6 +98,8 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise-i18n (1.10.2)
+      devise (>= 4.8.0)
     erubi (1.10.0)
     ffi (1.15.5)
     ffi (1.15.5-x64-mingw32)
@@ -284,6 +286,7 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   devise
+  devise-i18n
   file_validators
   friendly_id (~> 5.2)
   image_processing (~> 1.2)

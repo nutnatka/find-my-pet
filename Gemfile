@@ -69,3 +69,4 @@ gem "letter_opener", :group => :development
 gem 'file_validators'
 gem 'friendly_id', '~> 5.2'
 gem 'rails-i18n'
+gem 'devise-i18n'
