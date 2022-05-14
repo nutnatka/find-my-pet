@@ -11,14 +11,11 @@
         <%= link_to "Profile", user_path(current_user), class: "btn btn-outline-dark me-1 nav-Link #{yield(:profile_active)}" %>
         <%= link_to "Logout ", destroy_user_session_path, method: :delete, class: 'btn btn-outline-dark ms-1' %>
       <% else %>
-        <%= link_to 'Log In', new_user_session_path, class: "btn btn-outline-dark me-1 nav-Link #{yield(:log_in_active)}" %>
-        <!--            <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#loginModal">-->
-        <!--              Log In-->
-        <!--            </button>-->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
+          Log In
+        </button>
         <%= link_to "Get Started ", new_user_registration_path, class: "btn btn-outline-dark ms-1 nav-Link #{yield(:get_started_active)}" %>
       <% end %>
     </form>
-  </div>
-  </div>
   </div>
 </nav>
