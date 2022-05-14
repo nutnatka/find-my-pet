@@ -1,5 +1,5 @@
 <div class="text-muted">
-  <%= form_with model: [@user, @user.pets.new] do |form| %>
+  <%= form_with model: [@user, @user.pets.build] do |form| %>
 
     <div class="field">
       <%== form.text_field :name, autofocus: true, required: true, class: 'form-control', placeholder: 'Name' %>
@@ -8,7 +8,7 @@
 
     <div class="field">
       <p class="p-0 m-0"><b>My pet is a:</b></p>
-      <%= form.select(:species, options_for_select([['cat', 1], ['dog', 2]]), {}, { class: 'form-select mb-2' }) %>
+      <%= form.select(:species, options_for_select([['cat'], ['dog']]), { prompt: 'please choose species' }, { class: 'form-select mb-2 text-muted' }) %>
     </div>
 
     <div class="field">

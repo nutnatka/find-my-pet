@@ -4,7 +4,8 @@ class PetsController < ApplicationController
   before_action :set_pet, only: %i[edit update show]
 
   def index
-    @pets = Pet.order('created_at DESC').page params[:page]
+    @q = Pet.ransack(params[:q])
+    @pets = @q.result.page params[:page]
   end
 
   def show; end
@@ -46,5 +47,14 @@ class PetsController < ApplicationController
 
   def set_pet
     @pet = Pet.friendly.find(params[:id])
+  end
+
+  def search_query
+    params[:query]
+  end
+
+  def pets
+    query = Pet.ransack(name_or_additional_info_cont_any: search_query)
+    query.result(distinct: true)
   end
 end
