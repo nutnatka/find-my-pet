@@ -25,8 +25,6 @@ class Pet < ApplicationRecord
 
   validates :name, :species, :sex, :color, presence: true
 
-  # paginates_per 20
-
   enum species: { cat: 1, dog: 2 }
   enum sex: { male: 1, female: 2, undefined: 3 }
 

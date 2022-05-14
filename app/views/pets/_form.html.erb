@@ -8,7 +8,7 @@
 
     <div class="field">
       <p class="p-0 m-0"><b>My pet is a:</b></p>
-      <%= form.select(:species, options_for_select([['cat'], ['dog']]), { prompt: 'please choose species' }, { class: 'form-select mb-2 text-muted' }) %>
+      <%= form.select(:species, Pet.species.map { |k, v| [k.humanize, k] }, {}, { class: 'form-select mb-2' }) %>
     </div>
 
     <div class="field">
