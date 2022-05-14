@@ -1,3 +1,27 @@
 uk:
-  en: "Англійська"
+  en: "English"
   uk: "Українська"
+  users:
+    show:
+      createPost: Створити пост
+      addPet: Додати тваринку
+      editProfile: Змінити профіль
+      destroyProfile: Видалити профіль
+  pets:
+    pets:
+      descr_html: >
+        На даний момент у вас немає зареєстрованих тварин. <br>
+        Щоб додати свого вихованця, натисніть кнопку нижче.
+      yourpets_html: >
+        Ваші домашні тварини:
+    form:
+      mypet_html: >
+        Мій домашній улюбленець:
+      cat_html: >
+        котик
+      dog_html: >
+        собачка
+      select_html: >
+        Виберіть стать вихованця:
+      male_html: >
+       Самець
