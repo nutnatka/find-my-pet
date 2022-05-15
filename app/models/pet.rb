@@ -29,7 +29,11 @@ class Pet < ApplicationRecord
   enum sex: { male: 1, female: 2, undefined: 3 }
 
   extend FriendlyId
-  friendly_id :name, use: :slugged
+  friendly_id :slug_candidates, use: :slugged
+
+  def slug_candidates
+    [:name] + Array.new(6) { |index| [:name, index + 2] }
+  end
 
   def should_generate_new_friendly_id?
     name_changed?
