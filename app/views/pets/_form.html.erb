@@ -25,22 +25,22 @@
     </div>
 
     <div class="field">
-      <p class="p-0 m-0"><b>Click here to Upload Pet`s Avatar</b></p>
+      <p class="p-0 m-0"><b><%= t('.click_html') %></b></p>
       <div class="input-group-text text-muted">
         <%== form.file_field :avatar %>
       </div>
-      <p class="tp-0 mb-2">Please use jpeg, png or gif files less than 150kb.</p>
+      <p class="tp-0 mb-2"><%= t('.please_html') %></p>
     </div>
 
     <div class="field">
       <p class="mb-2">
         <%= form.check_box :sterilized, class: 'form-check-input' %>
-        <b><%= form.label :sterilized, 'My Pet is Sterilized', class: 'ms-2 font-bold' %></b>
+        <b><%= form.label :sterilized, t('.pet'), class: 'ms-2 font-bold' %></b>
       </p>
     </div>
 
     <div class="field input-group-text mb-2 text-muted">
-    <span><b>Select Pet`s Birthday:</b><br>
+    <span><b><%= t('.birthday_html') %></b><br>
       <%= form.date_select(:date_of_birth, autofocus: true, order: [:day, :month, :year], start_year: Date.current.year, end_year: Date.current.year - 15) %></span>
     </div>
 
@@ -54,7 +54,7 @@
     </div>
 
     <div class="container d-flex justify-content-center">
-      <%= form.submit 'Save Pet', class: 'btn btn-dark' %>
-      <%= link_to 'Cancel', user_path, class: 'btn btn-outlined-dark' %>
+      <%= form.submit t('.save'), class: 'btn btn-dark' %>
+      <%= link_to t('.cancel'), user_path, class: 'btn btn-outlined-dark' %>
     </div>
   <% end %>

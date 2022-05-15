@@ -54,5 +54,21 @@ en:
         dog
       select_html: >
         Select Pet`s Gender:
-      male_html: >
-        Male
+      click_html: >
+        Click here to Upload Pet`s Avatar
+      please_html: >
+        Please use jpeg, png or gif files less than 150kb.
+      pet:
+        My Pet is Sterilized
+      birthday_html:
+        Select Pet`s Birthday
+      save:
+        Save Pet
+      cancel:
+        Cancel
+    destroy:
+      del.html: >
+        The pet has been deleted
+      moment.html: >
+        At the moment you`ve got no pets added. To add your pet, click on the button below.
+
