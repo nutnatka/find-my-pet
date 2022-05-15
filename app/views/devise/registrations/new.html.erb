@@ -15,17 +15,17 @@
 
       <div class="field">
         <%= f.text_field :name, autofocus: true, class: 'form-control', placeholder: 'Name' %>
-        <p class="text-muted">* This field is required.</p>
+        <p>* This field is required.</p>
       </div>
 
       <div class="field">
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder: 'Email' %>
-        <p class="text-muted">* This field is required.<br>Please enter a valid email address.</p>
+        <p>* This field is required.<br>Please enter a valid email address.</p>
       </div>
 
       <div class="field">
         <%= f.password_field :password, autocomplete: "new-password", class: 'form-control', placeholder: 'Password' %>
-        <p class="text-muted">* This field is required.<br>Please enter the password containing<br>at least 6
+        <p>* This field is required.<br>Please enter the password containing<br>at least 6
           characters.
           It
           should contain<br>at least one lowercase letter,<br>one uppercase letter, and one digit.</p>
