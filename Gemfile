@@ -72,3 +72,4 @@ gem 'kaminari'
 gem 'ransack'
 gem 'rails-i18n'
 gem 'devise-i18n'
+gem "figaro"
