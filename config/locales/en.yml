@@ -30,4 +30,29 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  en: "English"
+  uk: "Українська"
+  users:
+    show:
+      createPost: Create a Post
+      addPet: Add a Pet
+      editProfile: Edit Profile
+      destroyProfile: Destroy Profile
+  pets:
+    pets:
+      descr_html: >
+        At the moment you`ve got no pets added. <br>
+        To add your pet, click on the button below.
+      yourpets_html: >
+        Your pets:
+    form:
+      mypet_html: >
+        My pet is a:
+      cat_html: >
+        cat
+      dog_html: >
+        dog
+      select_html: >
+        Select Pet`s Gender:
+      male_html: >
+        Male

@@ -4,8 +4,7 @@
 <% end %>
 <p id='your-pets'></p>
 <% if current_user.pets.count == 0 %>
-  <p>At the moment you`ve got no pets added.<br/>
-    To add your pet, click on the button below.</p>
+  <p><%= t('.descr_html') %></p>
 <% else %>
   <% @user.pets.each do |pet| %>
     <div id="pet-<%= pet.id %>">

@@ -48,13 +48,4 @@ class PetsController < ApplicationController
   def set_pet
     @pet = Pet.friendly.find(params[:id])
   end
-
-  def search_query
-    params[:query]
-  end
-
-  def pets
-    query = Pet.ransack(name_or_additional_info_cont_any: search_query)
-    query.result(distinct: true)
-  end
 end
