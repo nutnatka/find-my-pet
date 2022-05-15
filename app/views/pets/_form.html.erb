@@ -1,5 +1,5 @@
 <div class="text-muted">
-  <%= form_with model: [@user, @user.pets.new] do |form| %>
+  <%= form_with model: [@user, @user.pets.build] do |form| %>
 
     <div class="field">
       <%== form.text_field :name, autofocus: true, required: true, class: 'form-control', placeholder: 'Name' %>
@@ -8,7 +8,7 @@
 
     <div class="field">
       <p class="p-0 m-0"><b><%= t('.mypet_html') %></b></p>
-      <%= form.select(:species, options_for_select([[t('.cat_html'), 1], [t('.dog_html'), 2]]), {}, { class: 'form-select mb-2' }) %>
+      <%= form.select(:species, Pet.species.map { |k, v| [k.humanize, k] }, {}, { class: 'form-select mb-2' }) %>
     </div>
 
     <div class="field">
@@ -25,14 +25,6 @@
     </div>
 
     <div class="field">
-      <p class="p-0 m-0"><b><%= t('.click_html') %></b></p>
-      <div class="input-group-text text-muted">
-        <%== form.file_field :avatar %>
-      </div>
-      <p class="tp-0 mb-2"><%= t('.please_html') %></p>
-    </div>
-
-    <div class="field">
       <p class="mb-2">
         <%= form.check_box :sterilized, class: 'form-check-input' %>
         <b><%= form.label :sterilized, t('.pet'), class: 'ms-2 font-bold' %></b>
@@ -45,7 +37,7 @@
     </div>
 
     <div class="field">
-      <%== form.text_field :color, autofocus: true, class: 'form-control mb-2', placeholder: 'Color' %>
+      <%== form.text_field :color, autofocus: true, required: true, class: 'form-control mb-2', placeholder: 'Color' %>
     </div>
 
     <div class="field">

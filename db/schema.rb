@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
+ActiveRecord::Schema.define(version: 2022_05_14_162238) do
+=======
 ActiveRecord::Schema.define(version: 2022_05_08_121212) do
+>>>>>>> main
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,7 +26,7 @@ ActiveRecord::Schema.define(version: 2022_05_08_121212) do
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
-    t.index %w[record_type record_id name blob_id], name: "index_active_storage_attachments_uniqueness", unique: true
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
   create_table "active_storage_blobs", force: :cascade do |t|
@@ -108,11 +112,17 @@ ActiveRecord::Schema.define(version: 2022_05_08_121212) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
-  create_table "my pets", force: :cascade do |t|
+  create_table "pets", force: :cascade do |t|
     t.string "name"
+<<<<<<< HEAD
+    t.integer "species"
+    t.string "breed"
+    t.integer "sex"
+=======
     t.string "species"
     t.string "breed"
     t.string "sex"
+>>>>>>> main
     t.boolean "sterilized"
     t.date "date_of_birth"
     t.string "color"
@@ -154,8 +164,8 @@ ActiveRecord::Schema.define(version: 2022_05_08_121212) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "name"
     t.boolean "admin", default: false
+    t.string "name"
     t.string "slug"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -174,7 +184,7 @@ ActiveRecord::Schema.define(version: 2022_05_08_121212) do
   add_foreign_key "likes", "users"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
-  add_foreign_key "my pets", "users"
-  add_foreign_key "places", "my pets"
+  add_foreign_key "pets", "users"
+  add_foreign_key "places", "pets"
   add_foreign_key "posts", "users"
 end

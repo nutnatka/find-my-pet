@@ -1,10 +1,10 @@
-<% provide(:page_title, 'Profile') %>
+<% provide(:page_title, 'Pet Profile') %>
 <% provide(:profile_active, 'active') %>
 
 <div class="row mt-5">
   <div class="col-12 text-center col-md-3 col-lg-5">
-    <% if current_user.avatar.attached? %>
-      <%= image_tag current_user.avatar, width: '200px', height: '200px', class: 'rounded-circle border border-dark' %>
+    <% if @user.avatar.attached? %>
+      <%= image_tag @user.avatar, width: '200px', height: '200px', class: 'rounded-circle border border-dark' %>
     <% else %>
       <%= image_tag("avatar.png", height: '200', width: '200', class: 'rounded-circle border border-dark') %>
     <% end %>
@@ -12,23 +12,41 @@
 
   <div class="col-12 text-center col-md-5 col-lg-4 text-lg-start">
     <%= render 'pets/pets' %>
-    <%= link_to t('.addPet'), user_path, class: 'fa-solid fa-circle-plus text-dark text-decoration-none pet-form-display mb-2 mt-2' %>
-    <div class="mt-4 mb-4" , id="pet-container">
-      <%= render 'pets/form' %>
+    <% if current_user.id == @user.id %>
+      <%= link_to t('.addPet'), user_path, class: 'fa-solid fa-circle-plus text-dark text-decoration-none pet-form-display mb-2 mt-2' %>
+      <div class="mt-4 mb-4" , id="pet-container">
+        <%= render 'pets/form' %>
+      </div>
+    <% end %>
+  </div>
+
+  <% if current_user.id == @user.id %>
+    <div class="col-12 text-center col-md-4 col-lg-2">
+      <%= link_to t('.createPost'), root_path, class: 'btn btn-outline-dark m-2 d-block w-100' %>
+      <%= link_to t('.editProfile'), edit_user_registration_path, class: 'btn btn-outline-dark m-2 d-block w-100' %>
+      <%= link_to t('.destroyProfile'), registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-outline-dark m-2 d-block w-100' %>
     </div>
-  </div>
+    </div>
+  <% end %>
 
-  <div class="col-12 text-center col-md-4 col-lg-2">
-    <%= link_to t('.createPost'), root_path, class: 'btn btn-outline-dark m-2 d-block w-100' %>
-    <%= link_to t('.editProfile'), edit_user_registration_path, class: 'btn btn-outline-dark m-2 d-block w-100' %>
-    <%= link_to t('.destroyProfile'), registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-outline-dark m-2 d-block w-100' %>
-  </div>
-</div>
+  <script>
+      function reloadPage() {
+          var currentDocumentTimestamp = new Date(performance.timing.domLoading).getTime();
+          var now = Date.now();
+          var tenSec = 10 * 1000;
+          var plusTenSec = currentDocumentTimestamp + tenSec;
+          if (now > plusTenSec) {
+              location.reload();
+          }
+      }
 
-<script>document.querySelectorAll('.pet-form-display').forEach((el) => {
-    el.addEventListener('click', (ev) => {
-        ev.preventDefault();
-        el.nextElementSibling.style = 'display: block'
-    })
-})
-</script>
+      reloadPage();
+  </script>
+
+  <script>document.querySelectorAll('.pet-form-display').forEach((el) => {
+      el.addEventListener('click', (ev) => {
+          ev.preventDefault();
+          el.nextElementSibling.style = 'display: block'
+      })
+  })
+  </script>

@@ -1,20 +1,26 @@
 class PetsController < ApplicationController
-  before_action :set_user
-  before_action :set_pet, only: [:edit, :update]
+  before_action :authenticate_user!, except: [:index]
+  before_action :set_user, except: [:index]
+  before_action :set_pet, only: %i[edit update show]
+
+  def index
+    @q = Pet.ransack(params[:q])
+    @pets = @q.result.page params[:page]
+  end
+
+  def show; end
 
   def create
     @pet = @user.pets.create(pet_params.merge(user_id: current_user.id))
 
-    if @pet.save
-      redirect_to user_path(current_user), notice: "The pet has been added."
-    end
+    redirect_to user_path(current_user), notice: 'The pet has been added.' if @pet.save
   end
 
   def edit; end
 
   def update
     if @pet.update(pet_params)
-      redirect_to user_path(current_user), notice: "The pet has been updated."
+      redirect_to user_path(current_user), notice: 'The pet has been updated.'
     else
       render :edit
     end
