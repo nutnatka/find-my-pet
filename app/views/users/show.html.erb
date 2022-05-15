@@ -2,77 +2,51 @@
 <% provide(:profile_active, 'active') %>
 
 <div class="row mt-5">
-  <div class="col-2">
-    <%= link_to 'Back', :back, class: 'btn btn-outline-dark' %>
-  </div>
-  <div class="col-10 text-center">
-    <h2 class="m-0"><%= (@pet.name).upcase %>`S PROFILE</h2>
-  </div>
-</div>
-
-<div class="col-12 text-center col-md-5 col-lg-4 text-lg-start">
-  <%= render 'pets/pets' %>
-  <%= link_to t('.addPet'), user_path, class: 'fa-solid fa-circle-plus text-dark text-decoration-none pet-form-display mb-2 mt-2' %>
-  <div class="mt-4 mb-4" , id="pet-container">
-    <%= render 'pets/form' %>
-  </div>
-</div>
-
-<div class="col-12 text-center col-md-4 col-lg-2">
-  <%= link_to t('.createPost'), root_path, class: 'btn btn-outline-dark m-2 d-block w-100' %>
-  <%= link_to t('.createPost'), edit_user_registration_path, class: 'btn btn-outline-dark m-2 d-block w-100' %>
-  <%= link_to t('.destroyProfile'), registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-outline-dark m-2 d-block w-100' %>
-</div>
-</div>
-
-<div class="row mb-5 mt-5">
-  <div class="col-12 text-center mt-3 mb-2 col-sm-6">
-    <% if @pet.avatar.attached? %>
-      <%= image_tag @pet.avatar, width: '200px', height: '200px', class: 'rounded-circle border-dark' %>
+  <div class="col-12 text-center col-md-3 col-lg-5">
+    <% if @user.avatar.attached? %>
+      <%= image_tag @user.avatar, width: '200px', height: '200px', class: 'rounded-circle border border-dark' %>
     <% else %>
-      <%= image_tag("paw-print.png", height: '200', width: '200', class: 'rounded-circle border-dark') %>
+      <%= image_tag("avatar.png", height: '200', width: '200', class: 'rounded-circle border border-dark') %>
     <% end %>
   </div>
 
-  <div class="col-12 text-center mt-3 mb-2 col-sm-6 text-sm-start">
-    <h5>PERSONAL INFO:</h5>
-
-    <p class="mb-2">
-      <% if @pet.breed? %>
-        <b>Breed:</b>
-        <%= @pet.breed %>
-      <% end %>
-    </p>
-
-    <p class="mb-2">
-      <b>Gender:</b>
-      <%= @pet.sex %>
-    </p>
-
-    <p class="mb-2">
-      <b>Is sterilized:</b>
-      <% if @pet.sterilized? %>
-        yes
-      <% else %>
-        no
-      <% end %>
-    </p>
-
-    <p class="mb-2">
-      <b>DOB:</b>
-      <%= @pet.date_of_birth.to_time.strftime('%B %e, %Y') %>
-    </p>
-
-    <p class="mb-2">
-      <b>Color:</b>
-      <%= @pet.color %>
-    </p>
-
-    <p class="mb-2">
-      <% if @pet.additional_info? %>
-        <b>Additional Info:</b>
-        <%= @pet.additional_info %>
-      <% end %>
-    </p>
+  <div class="col-12 text-center col-md-5 col-lg-4 text-lg-start">
+    <%= render 'pets/pets' %>
+    <% if current_user.id == @user.id %>
+      <%= link_to ' Add a Pet', user_path, class: 'fa-solid fa-circle-plus text-dark text-decoration-none pet-form-display mb-2 mt-2' %>
+      <div class="mt-4 mb-4" , id="pet-container">
+        <%= render 'pets/form' %>
+      </div>
+    <% end %>
   </div>
-</div>
+
+  <% if current_user.id == @user.id %>
+    <div class="col-12 text-center col-md-4 col-lg-2">
+      <%= link_to "Create a Post", root_path, class: 'btn btn-outline-dark m-2 d-block w-100' %>
+      <%= link_to "Edit Profile", edit_user_registration_path, class: 'btn btn-outline-dark m-2 d-block w-100' %>
+      <%= link_to "Destroy Profile", registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-outline-dark m-2 d-block w-100' %>
+    </div>
+    </div>
+  <% end %>
+
+  <script>
+      function reloadPage() {
+          var currentDocumentTimestamp = new Date(performance.timing.domLoading).getTime();
+          var now = Date.now();
+          var tenSec = 10 * 1000;
+          var plusTenSec = currentDocumentTimestamp + tenSec;
+          if (now > plusTenSec) {
+              location.reload();
+          }
+      }
+
+      reloadPage();
+  </script>
+
+  <script>document.querySelectorAll('.pet-form-display').forEach((el) => {
+      el.addEventListener('click', (ev) => {
+          ev.preventDefault();
+          el.nextElementSibling.style = 'display: block'
+      })
+  })
+  </script>

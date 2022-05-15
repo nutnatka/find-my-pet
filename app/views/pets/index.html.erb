@@ -2,18 +2,21 @@
 
 <div class="container mt-5 mb-5">
   <div class="row">
-    <% @pets.each do |pet| %>
-      <div class="pet-container col-12 text-center mt-2 mb-2 col-sm-6 col-md-4 col-lg-3 col-xl-2">
-        <%= link_to user_pet_path(pet.user, pet) do %>
-          <% if pet.avatar.attached? %>
-            <%= image_tag pet.avatar, width: '150px', height: '150px', class: 'rounded-circle border-dark' %>
-          <% else %>
-            <%= image_tag("paw-print.png", height: '150', width: '150', class: 'rounded-circle border-dark') %>
-          <% end %>
-          <p class="text-dark mb-2"><b><%= pet.name %></b><br>
-            <%= truncate(pet.additional_info, length: 50, omission: '...') %></p>
-        <% end %>
+    <div class="col-sm-12 col-md-4 col-lg-3 mb-5 col-12">
+      <div class="d-flex flex-column flex-shrink-0 p-3 border border-dark rounded">
+        <%= render 'filter' %>
       </div>
-    <% end %>
+    </div>
+    <div class="col-sm-12 col-md-8 col-lg-9 col-12">
+      <% if @q.result.empty? %>
+        <%= render 'no_results' %>
+      <% else %>
+        <%= render 'sorting' %>
+        <%= render 'pet' %>
+      <% end %>
+      <div class="d-flex justify-content-center">
+        <%= paginate @pets %>
+      </div>
+    </div>
   </div>
 </div>

@@ -4,7 +4,8 @@ class PetsController < ApplicationController
   before_action :set_pet, only: %i[edit update show]
 
   def index
-    @pets = Pet.order(:name)
+    @q = Pet.ransack(params[:q])
+    @pets = @q.result.page params[:page]
   end
 
   def show; end

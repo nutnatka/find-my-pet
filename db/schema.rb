@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
+ActiveRecord::Schema.define(version: 2022_05_14_162238) do
+=======
 ActiveRecord::Schema.define(version: 2022_05_08_121212) do
+>>>>>>> main
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -110,9 +114,15 @@ ActiveRecord::Schema.define(version: 2022_05_08_121212) do
 
   create_table "pets", force: :cascade do |t|
     t.string "name"
+<<<<<<< HEAD
+    t.integer "species"
+    t.string "breed"
+    t.integer "sex"
+=======
     t.string "species"
     t.string "breed"
     t.string "sex"
+>>>>>>> main
     t.boolean "sterilized"
     t.date "date_of_birth"
     t.string "color"
