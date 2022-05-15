@@ -1,22 +1,53 @@
-<% provide(:page_title, 'Profile') %>
+<% provide(:page_title, 'Pet Profile') %>
 <% provide(:profile_active, 'active') %>
 
 <div class="row mt-5">
-  <div class="col-12 text-center col-md-3 col-lg-5">
-    <% if current_user.avatar.attached? %>
-      <%= image_tag current_user.avatar, width: '200px', height: '200px', class: 'rounded-circle border border-dark' %>
+  <div class="col-2">
+    <%= link_to 'Back', :back, class: 'btn btn-outline-dark' %>
+  </div>
+  <div class="col-10 text-center">
+    <h2 class="m-0"><%= (@pet.name).upcase %>`S PROFILE</h2>
+  </div>
+</div>
+
+<div class="col-12 text-center col-md-5 col-lg-4 text-lg-start">
+  <%= render 'pets/pets' %>
+  <%= link_to t('.addPet'), user_path, class: 'fa-solid fa-circle-plus text-dark text-decoration-none pet-form-display mb-2 mt-2' %>
+  <div class="mt-4 mb-4" , id="pet-container">
+    <%= render 'pets/form' %>
+  </div>
+</div>
+
+<div class="col-12 text-center col-md-4 col-lg-2">
+  <%= link_to t('.createPost'), root_path, class: 'btn btn-outline-dark m-2 d-block w-100' %>
+  <%= link_to t('.createPost'), edit_user_registration_path, class: 'btn btn-outline-dark m-2 d-block w-100' %>
+  <%= link_to t('.destroyProfile'), registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-outline-dark m-2 d-block w-100' %>
+</div>
+</div>
+
+<div class="row mb-5 mt-5">
+  <div class="col-12 text-center mt-3 mb-2 col-sm-6">
+    <% if @pet.avatar.attached? %>
+      <%= image_tag @pet.avatar, width: '200px', height: '200px', class: 'rounded-circle border-dark' %>
     <% else %>
-      <%= image_tag("avatar.png", height: '200', width: '200', class: 'rounded-circle border border-dark') %>
+      <%= image_tag("paw-print.png", height: '200', width: '200', class: 'rounded-circle border-dark') %>
     <% end %>
   </div>
 
-  <div class="col-12 text-center col-md-5 col-lg-4 text-lg-start">
-    <%= render 'pets/pets' %>
-    <%= link_to t('.addPet'), user_path, class: 'fa-solid fa-circle-plus text-dark text-decoration-none pet-form-display mb-2 mt-2' %>
-    <div class="mt-4 mb-4" , id="pet-container">
-      <%= render 'pets/form' %>
-    </div>
-  </div>
+  <div class="col-12 text-center mt-3 mb-2 col-sm-6 text-sm-start">
+    <h5>PERSONAL INFO:</h5>
+
+    <p class="mb-2">
+      <% if @pet.breed? %>
+        <b>Breed:</b>
+        <%= @pet.breed %>
+      <% end %>
+    </p>
+
+    <p class="mb-2">
+      <b>Gender:</b>
+      <%= @pet.sex %>
+    </p>
 
   <div class="col-12 text-center col-md-4 col-lg-2">
     <%= link_to t('.createPost'), root_path, class: 'btn btn-outline-dark m-2 d-block w-100' %>
@@ -24,11 +55,3 @@
     <%= link_to t('.destroyProfile'), registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-outline-dark m-2 d-block w-100' %>
   </div>
 </div>
-
-<script>document.querySelectorAll('.pet-form-display').forEach((el) => {
-    el.addEventListener('click', (ev) => {
-        ev.preventDefault();
-        el.nextElementSibling.style = 'display: block'
-    })
-})
-</script>

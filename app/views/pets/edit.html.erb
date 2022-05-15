@@ -15,7 +15,6 @@
 </div>
 
 <%= form_with(model: [@user, @pet]) do |form| %>
-
   <% if @pet.errors.any? %>
     <div class="text-center text-danger mt-2" id="error_explanation">
       <h4>
@@ -34,7 +33,7 @@
       <% if @pet.avatar.attached? %>
         <%= image_tag @pet.avatar, width: '200px', height: '200px', class: 'rounded-circle border-dark' %>
       <% else %>
-        <%= image_tag("avatar.png", height: '200', width: '200', class: 'rounded-circle border-dark') %>
+        <%= image_tag("paw-print.png", height: '200', width: '200', class: 'rounded-circle border-dark') %>
       <% end %>
       <% if @pet.name? %>
         <p class="p-0 m-0 fw-bold">Upload <%= @pet.name %>`s new profile picture below!</p>
