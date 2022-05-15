@@ -6,17 +6,17 @@
       <% end %>
       <%= link_to "FindMyPet", root_path, class: "text-dark text-decoration-none ms-2" %>
     </div>
-    <form class="d-flex">
+    <form class="d-flex justify-content-between align-items-center mt-3 mt-sm-0">
       <% if current_user %>
-        <%= link_to "Profile", user_path(current_user), class: "btn btn-outline-dark me-1 nav-Link #{yield(:profile_active)}" %>
-        <%= link_to "Logout ", destroy_user_session_path, method: :delete, class: 'btn btn-outline-dark ms-1' %>
+        <%= link_to "Profile", user_path(current_user), class: "btn btn-outline-dark me-2 nav-Link #{yield(:profile_active)}" %>
+        <%= link_to "Logout ", destroy_user_session_path, method: :delete, class: 'btn btn-outline-dark me-2' %>
       <% else %>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
+        <button type="button" class="btn btn-dark me-2" data-bs-toggle="modal" data-bs-target="#loginModal">
           Log In
         </button>
-        <%= link_to "Get Started ", new_user_registration_path, class: "btn btn-outline-dark ms-1 nav-Link #{yield(:get_started_active)}" %>
+        <%= link_to "Get Started ", new_user_registration_path, class: "btn btn-outline-dark me-2 nav-Link #{yield(:get_started_active)}" %>
       <% end %>
-      <ul class="nav col-12 col-lg-auto mb-2 mb-md-0">
+      <ul class="nav m-0 p-0">
         <li class="dropdown">
           <%= link_to '#', class: 'nav-link px-2 dropdown-toggle text-black',
                       data: { "bs-toggle": 'dropdown' } do %>
