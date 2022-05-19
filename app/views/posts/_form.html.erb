@@ -1,0 +1,34 @@
+<div class="col-sm-12">
+  <h2 class="text-center">Make a thread</h2>
+  <%= form_with model: @post, local: true do |f| %>
+
+    <% if @post.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+        <ul>
+          <% @post.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form_input">
+      <%= f.label :title %>
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
+    <div class="form_input">
+      <%= f.label :content %>
+      <%= f.text_area :content, class: "form-control" %>
+    </div>
+
+    <div class="form_input d-none">
+      <%= f.collection_select(:category_id, Category.all, :id, :name, { :selected => :lost_pet }) %>
+    </div>
+
+    <div class="form_action row">
+      <%= f.submit "Post", class: "btn col-sm-12 submit_btn" %>
+    </div>
+  <% end %>
+</div>

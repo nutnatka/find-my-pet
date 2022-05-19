@@ -4,9 +4,9 @@
 #
 #  id              :bigint           not null, primary key
 #  name            :string
-#  species         :string
+#  species         :integer
 #  breed           :string
-#  sex             :string
+#  sex             :integer
 #  sterilized      :boolean
 #  date_of_birth   :date
 #  color           :string
@@ -14,6 +14,7 @@
 #  user_id         :bigint           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  slug            :string
 #
 
 one:

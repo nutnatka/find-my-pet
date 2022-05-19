@@ -5,6 +5,8 @@ Rails.application.routes.draw do
       resources :pets
     end
 
+    resources :posts
+
     root 'welcome#index'
     match '/users/:id', to: 'users#show', via: 'get'
     get 'users', to: 'welcome#index'
