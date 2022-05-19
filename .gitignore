@@ -29,3 +29,6 @@ yarn-debug.log*
 .yarn-integrity
 database.yml
 /.idea
+
+# Ignore application configuration
+/config/application.yml
