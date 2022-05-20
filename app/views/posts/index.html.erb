@@ -1,21 +1,17 @@
 <% provide(:page_title, 'Blog') %>
 <% provide(:blog_active, 'active') %>
 
-<div class="d-flex flex-row justify-content-between mt-5">
-  <h5><%= link_to 'General', posts_path, class: "text-dark #{'fw-bold' unless params.has_key?(:category) }" %></h5>
+<div class="posts-nav mt-5 d-flex flex-column text-center flex-md-row text-md-start justify-content-md-between">
+  <h5 class="m-1 text-center"><%= link_to 'General', posts_path, class: "text-dark #{'fw-bold' unless params.has_key?(:category) }" %></h5>
   <% Category.all.each do |cat| %>
-    <h5><%= link_to (cat.name).humanize.titleize, posts_path(category: cat.name), class: "text-dark #{'fw-bold' if params.key?(:category)}" %></h5>
+    <h5 class="m-1 text-center"><%= link_to (cat.name).humanize.titleize, posts_path(category: cat.name), class: "text-dark #{'fw-bold' if params.key?(:category)}" %></h5>
   <% end %>
 </div>
-<br>
-<br>
-<br>
-<br>
-<% @posts.each do |post| %>
-  Title: <%= post.title %><br>
-  Content: <%= post.content %><br>
-  Category: <%= post.category.name %><br><br>
-<% end %>
-<% if @posts.count == 0 %>
-  <p>At the moment, there are no posts available.</p>
-<% end %>
+<hr class="mt-2" style="border: 1px solid black;">
+
+<div class="posts m-0 mt-5 mb-5 row justify-content-evenly">
+  <%= render 'posts' %>
+</div>
+<div class="pagination d-flex flex-row justify-content-center">
+  <%= paginate @posts %>
+</div>

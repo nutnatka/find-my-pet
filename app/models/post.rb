@@ -18,4 +18,6 @@ class Post < ApplicationRecord
   has_many :likes, dependent: :destroy
 
   validates :title, :content, :category_id, presence: true
+
+  paginates_per 6
 end

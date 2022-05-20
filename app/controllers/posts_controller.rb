@@ -3,9 +3,9 @@ class PostsController < ApplicationController
   def index
     if params.has_key?(:category)
       @category = Category.find_by_name(params[:category])
-      @posts = Post.where(category: @category)
+      @posts = Post.where(category: @category).page params[:page]
     else
-      @posts = Post.all
+      @posts = Post.all.page params[:page]
     end
   end
 
