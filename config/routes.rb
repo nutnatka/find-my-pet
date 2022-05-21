@@ -10,5 +10,6 @@ Rails.application.routes.draw do
     root 'welcome#index'
     match '/users/:id', to: 'users#show', via: 'get'
     get 'users', to: 'welcome#index'
+    post 'posts#index', to: 'posts#new', as: 'new_posts_post'
   end
 end

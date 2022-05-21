@@ -14,7 +14,7 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
+    @post = Post.new(category_id: params[:category_id])
   end
 
   def create

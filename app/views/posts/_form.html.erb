@@ -24,8 +24,8 @@
       <%= f.rich_text_area :content %>
     </div>
 
-    <div class="field">
-      <%= f.collection_select(:category_id, Category.all, :id, :name, { :selected => :lost_pet }) %>
+    <div class="field d-none">
+      <%= f.collection_select(:category_id, Category.all, :id, :name) %>
     </div>
 
     <div class="form_action row">

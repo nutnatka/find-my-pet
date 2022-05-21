@@ -8,7 +8,7 @@
           who can help find it.</p>
       </div>
       <div class="col-2 text-end">
-        <%= button_to 'I`ve Lost my Pet!', class: 'btn btn-dark' %>
+        <%= button_to 'I`ve Lost my Pet!', new_posts_post_path(category_id: 8), class: 'btn btn-dark' %>
       </div>
     </div>
   <% end %>
@@ -19,7 +19,7 @@
           more details.</p>
       </div>
       <div class="col-2 text-end">
-        <%= button_to 'I`ve Found a Pet!', class: 'btn btn-dark' %>
+        <%= button_to 'I`ve Found a Pet!', new_posts_post_path(category_id: 9), class: 'btn btn-dark' %>
       </div>
     </div>
   <% end %>
@@ -30,7 +30,7 @@
           more details. Probably, here is a pet looking for you!</p>
       </div>
       <div class="col-2 text-end">
-        <%= button_to 'I Have a Pet to Adopt', class: 'btn btn-dark' %>
+        <%= button_to 'I Have a Pet to Adopt', new_posts_post_path(category_id: 10), class: 'btn btn-dark' %>
       </div>
     </div>
   <% end %>
@@ -41,17 +41,18 @@
           happiness.</p>
       </div>
       <div class="col-2 text-end">
-        <%= button_to 'I Have a Story to Tell', class: 'btn btn-dark' %>
+        <%= button_to 'I Have a Story to Tell', new_posts_post_path(category_id: 11), class: 'btn btn-dark' %>
       </div>
     </div>
   <% end %>
   <% if params['category'] == 'recommendations' %>
     <div class="row d-flex justify-content-between align-items-center">
       <div class="col-10">
-        <p class="m-0">Here are some some tips from experienced pet friends. Probably, you`ll find something useful here.</p>
+        <p class="m-0">Here are some some tips from experienced pet friends. Probably, you`ll find something useful
+          here.</p>
       </div>
       <div class="col-2 text-end">
-        <%= button_to 'Share Recommendation', class: 'btn btn-dark' %>
+        <%= button_to 'Share Recommendation', new_posts_post_path(category_id: 12), class: 'btn btn-dark' %>
       </div>
     </div>
   <% end %>
