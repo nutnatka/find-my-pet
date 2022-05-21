@@ -40,4 +40,25 @@ uk:
         Домашню тварину видалено
       moment.html: >
         На даний момент у вас немає домашніх тварин. Щоб додати свого вихованця, натисніть кнопку нижче.
+  welcome:
+    index:
+      looking_html: ШУКАЄШ ДРУЗІВ?
+      would_html: ХОЧЕТЕ ВЗЯТИ УЧАСТЬ У ПОШУКУ ДОМАШНІХ ТВАРИН?
+
+  activerecord:
+    attributes:
+      pet:
+        name: Ім'я
+        species: Вид
+        breed: Порода
+        sex: Стать
+        sterilized: Стерилізована
+        date_of_birth: Дата народження
+        color: Колір
+        additional_info: Додаткова інформація
+      places:
+        name: Ім'я
+        address: Aдрес
+      user:
+        email: електронна пошта
     

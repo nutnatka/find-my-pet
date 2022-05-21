@@ -71,4 +71,26 @@ en:
         The pet has been deleted
       moment.html: >
         At the moment you`ve got no pets added. To add your pet, click on the button below.
-  
+  welcome:
+    index:
+      looking_html: LOOKING FOR FRIENDS?
+      would_html: WOULD LIKE TO TAKE PART IN PETS SEARCHING?
+        
+  activerecord:
+    attributes:
+      pet:
+        name: Name
+        species: Species
+        breed: Breed
+        sex: Sex
+        sterilized: Sterilized
+        date_of_birth: Date_of_birth
+        color: Color
+        additional_info: Additional_info
+      places:
+        name: name
+        address: address
+      user:
+        email: email
+
+

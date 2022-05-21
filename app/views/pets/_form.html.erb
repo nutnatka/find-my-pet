@@ -2,7 +2,7 @@
   <%= form_with model: [@user, @user.pets.build] do |form| %>
 
     <div class="field">
-      <%== form.text_field :name, autofocus: true, required: true, class: 'form-control', placeholder: 'Name' %>
+      <%== form.text_field :name, autofocus: true, required: true, class: 'form-control', placeholder: true %>
       <p class="p-0 mb-2">* This field is required.</p>
     </div>
 
@@ -12,7 +12,7 @@
     </div>
 
     <div class="field">
-      <%== form.text_field :breed, autofocus: true, class: 'form-control mb-2', placeholder: 'Breed' %>
+      <%== form.text_field :breed, autofocus: true, class: 'form-control mb-2', placeholder: true %>
     </div>
 
     <div class="field">
@@ -37,11 +37,11 @@
     </div>
 
     <div class="field">
-      <%== form.text_field :color, autofocus: true, required: true, class: 'form-control mb-2', placeholder: 'Color' %>
+      <%== form.text_field :color, autofocus: true, required: true, class: 'form-control mb-2', placeholder: true %>
     </div>
 
     <div class="field">
-      <%== form.text_area :additional_info, autofocus: true, class: 'form-control mb-2', placeholder: 'Additional Info' %>
+      <%== form.text_area :additional_info, autofocus: true, class: 'form-control mb-2', placeholder: true %>
     </div>
     </div>
 

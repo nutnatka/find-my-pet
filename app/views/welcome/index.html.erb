@@ -3,7 +3,7 @@
 <% if @pets.any? %>
   <div class="new-friends-section text-center">
     <div class="container mb-5">
-      <h4 class="pt-5 pb-5">LOOKING FOR FRIENDS?</h4>
+      <h4 class="pt-5 pb-5"><%= t('.looking_html') %></h4>
       <div class="pets-container d-flex justify-content-around row mb-3">
         <% @pets.each do |pet| %>
           <div class="pet-container col-12 col-sm-6 col-md-4 col-lg-2">
@@ -31,7 +31,7 @@
 <% unless signed_in? %>
   <div class="get-started-section text-center" style="background-color: #ffe5d9;">
     <div class="container mb-5 pb-5">
-      <h4 class="pt-5">WOULD LIKE TO TAKE PART IN PETS SEARCHING?</h4>
+      <h4 class="pt-5"><%= t('.would_html') %></h4>
       <h1><i class="fa-solid fa-arrow-down"></i></h1>
       <%= link_to 'Get Started', new_user_registration_path, class: 'btn btn-dark p+' %>
     </div>
