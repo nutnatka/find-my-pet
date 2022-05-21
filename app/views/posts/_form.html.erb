@@ -14,16 +14,17 @@
       </div>
     <% end %>
 
-    <div class="form_input">
+    <div class="field">
       <%= f.label :title %>
       <%= f.text_field :title, class: "form-control" %>
     </div>
-    <div class="form_input">
+
+    <div class="field">
       <%= f.label :content %>
-      <%= f.text_area :content, class: "form-control" %>
+      <%= f.rich_text_area :content %>
     </div>
 
-    <div class="form_input d-none">
+    <div class="field">
       <%= f.collection_select(:category_id, Category.all, :id, :name, { :selected => :lost_pet }) %>
     </div>
 

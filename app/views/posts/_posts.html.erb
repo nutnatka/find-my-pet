@@ -5,7 +5,7 @@
       <div class="card-body text-dark">
         <p class="posted-by">Posted by <%= post.user.name %> <%= time_ago_in_words(post.created_at) %> ago</p>
         <h5 class="card-title fw-bold"><%= post.title %></h5>
-        <p class="card-text"><%= truncate(post.content, length: 100, omission: '...') %></p>
+<!--        <p class="card-text"><%#= truncate(post.content, length: 100, omission: '...') %></p>-->
       </div>
     <% end %>
   </div>
