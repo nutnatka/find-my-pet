@@ -7,6 +7,7 @@
       <%= link_to "FindMyPet", root_path, class: "text-dark text-decoration-none ms-2" %>
     </div>
     <form class="d-flex justify-content-between align-items-center mt-3 mt-sm-0">
+      <%= link_to "Blog", posts_path, class: "btn btn-outline-dark me-2 nav-Link #{yield(:blog_active)}" %>
       <% if current_user %>
         <%= link_to "Profile", user_path(current_user), class: "btn btn-outline-dark me-2 nav-Link #{yield(:profile_active)}" %>
         <%= link_to "Logout ", destroy_user_session_path, method: :delete, class: 'btn btn-outline-dark me-2' %>
