@@ -31,7 +31,7 @@ Rails.application.configure do
   end
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :local
+  # config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
@@ -80,11 +80,14 @@ Rails.application.configure do
     address: 'smtp.gmail.com',
     port: 587,
     domain: 'example.com',
-    user_name: ENV['DEV_GMAIL_USERNAME'],
-    password: ENV['DEV_GMAIL_PASSWORD'],
+    user_name: ENV.fetch('DEV_GMAIL_USERNAME', nil),
+    password: ENV.fetch('DEV_GMAIL_PASSWORD', nil),
     authentication: 'plain',
-    enable_starttls_auto: true }
+    enable_starttls_auto: true
+  }
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+
+  config.active_storage.service = :amazon
 end

@@ -33,20 +33,6 @@
     </div>
   <% end %>
 
-  <script>
-      function reloadPage() {
-          var currentDocumentTimestamp = new Date(performance.timing.domLoading).getTime();
-          var now = Date.now();
-          var tenSec = 10 * 1000;
-          var plusTenSec = currentDocumentTimestamp + tenSec;
-          if (now > plusTenSec) {
-              location.reload();
-          }
-      }
-
-      reloadPage();
-  </script>
-
   <script>document.querySelectorAll('.pet-form-display').forEach((el) => {
       el.addEventListener('click', (ev) => {
           ev.preventDefault();

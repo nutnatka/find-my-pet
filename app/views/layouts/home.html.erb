@@ -27,9 +27,8 @@
   <p class="alert alert-danger text-center"><%= alert %></p>
 <% end %>
 
-<div class="container <%= controller_name %> <%= action_name %>" , id="main-container">
-  <%= yield %>
-</div>
+<%= yield %>
+
 <%= render 'shared/footer' %>
 </body>
 </html>

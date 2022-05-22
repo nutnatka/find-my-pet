@@ -1,15 +1,13 @@
 <% provide(:page_title, 'Get Started') %>
 <% provide(:get_started_active, 'active') %>
 
-<div class="col-12">
-  <h2 class="text-center mt-5 mb-5">SETUP YOUR FIND MY PET PROFILE</h2>
+<h2 class="text-center mt-5 mb-5">SETUP YOUR PROFILE</h2>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <div class="container text-center">
+<div class="row justify-content-center">
+  <div class="container m-0 p-0 col-10 col-sm-8 col-md-6 col-lg-4 col-xl-3">
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
-    </div>
-
-    <div class="container m-0 p-0 d-flex flex-column align-items-center">
 
       <h6>How may we address you?</h6>
 
@@ -31,9 +29,9 @@
           should contain<br>at least one lowercase letter,<br>one uppercase letter, and one digit.</p>
       </div>
 
-      <div class="actions mt-4">
+      <div class="actions mt-4 d-flex justify-content-center">
         <%= f.submit "Create a Profile", class: 'btn btn-dark mb-4' %>
       </div>
-  <% end %>
+    <% end %>
   </div>
 </div>

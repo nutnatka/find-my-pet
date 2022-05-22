@@ -29,11 +29,15 @@
   <% end %>
 
   <div class="row mt-2">
-    <div class="col-12 text-muted text-center col-md-4">
+    <div class="col-12 text-center col-md-4">
       <% if @pet.avatar.attached? %>
-        <%= image_tag @pet.avatar, width: '200px', height: '200px', class: 'rounded-circle border-dark' %>
+        <%= image_tag @pet.avatar, width: '200px', height: '200px', class: 'rounded-circle border border-dark' %>
       <% else %>
-        <%= image_tag("paw-print.png", height: '200', width: '200', class: 'rounded-circle border-dark') %>
+        <% if @pet.cat? %>
+          <%= image_tag("cat.jpg", width: '200px', height: '200px', class: 'rounded-circle border border-dark') %>
+        <% elsif @pet.dog? %>
+          <%= image_tag("dog.jpg", width: '200px', height: '200px', class: 'rounded-circle border border-dark') %>
+        <% end %>
       <% end %>
       <% if @pet.name? %>
         <p class="p-0 m-0 fw-bold">Upload <%= @pet.name %>`s new profile picture below!</p>
@@ -46,7 +50,7 @@
     <div class="col-0 col-md-3">
     </div>
 
-    <div class="col-12 text-muted text-center mt-4 col-md-5 col-lg-4">
+    <div class="col-12 text-center mt-4 col-md-5 col-lg-4">
       <div class="field">
         <%== form.text_field :name, class: 'form-control', placeholder: 'Name' %>
       </div>
