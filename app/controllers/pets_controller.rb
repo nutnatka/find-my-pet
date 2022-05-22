@@ -11,27 +11,38 @@ class PetsController < ApplicationController
   def show; end
 
   def create
-    @pet = @user.pets.create(pet_params.merge(user_id: current_user.id))
+    @pet = @user.pets.new(pet_params)
+    @pet.user = current_user
 
-    redirect_to user_path(current_user), notice: 'The pet has been added.' if @pet.save
+    if @pet.save
+      redirect_to user_path(current_user), notice: 'The pet has been added.'
+    else
+      redirect_to user_path(current_user), notice: 'The pet failed to be created.'
+    end
   end
 
   def edit; end
 
   def update
-    if @pet.update(pet_params)
-      redirect_to user_path(current_user), notice: 'The pet has been updated.'
+    if current_user.id == @user.id
+      if @pet.update(pet_params)
+        redirect_to user_path(current_user), notice: 'The pet has been updated.'
+      else
+        render :edit
+      end
     else
       render :edit
     end
   end
 
   def destroy
-    @pet = @user.pets.friendly.find(params[:id])
-    @pet.destroy
+    if current_user.id == @user.id
+      @pet = @user.pets.friendly.find(params[:id])
+      @pet.destroy
 
-    respond_to do |format|
-      format.js { render layout: false }
+      respond_to do |format|
+        format.js { render layout: false }
+      end
     end
   end
 
