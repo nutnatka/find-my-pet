@@ -31,12 +31,12 @@
   <div class="row mt-2">
     <div class="col-12 text-center col-md-4">
       <% if @pet.avatar.attached? %>
-        <%= image_tag @pet.avatar, width: '200px', height: '200px', class: 'rounded-circle border border-dark' %>
+        <%= image_tag @pet.avatar, style: 'object-fit: cover; width: 100%', class: 'border border-dark' %>
       <% else %>
         <% if @pet.cat? %>
-          <%= image_tag("cat.jpg", width: '200px', height: '200px', class: 'rounded-circle border border-dark') %>
+          <%= image_tag("cat.jpg", style: 'object-fit: cover; width: 100%', class: 'border border-dark') %>
         <% elsif @pet.dog? %>
-          <%= image_tag("dog.jpg", width: '200px', height: '200px', class: 'rounded-circle border border-dark') %>
+          <%= image_tag("dog.jpg", style: 'object-fit: cover; width: 100%', class: 'border border-dark') %>
         <% end %>
       <% end %>
       <% if @pet.name? %>

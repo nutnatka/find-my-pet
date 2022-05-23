@@ -30,7 +30,7 @@ class User < ApplicationRecord
   has_one_attached :avatar
 
   validates :avatar, file_size: { less_than_or_equal_to: 10.megabytes, message: 'should be less than %{count}' },
-                     file_content_type: { allow: %w[image/jpeg image/png image/gif image/hiec], message: 'only allows jpeg, png, hiec and gif' }
+                     file_content_type: { allow: %w[image/jpeg image/png image/gif], message: 'only allows jpeg, png and gif' }
 
   validates :name, :email, presence: true
   validates :password, presence: true, allow_nil: true

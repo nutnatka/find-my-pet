@@ -2,10 +2,10 @@
 
 <% unless signed_in? %>
   <div class="get-started-section text-center" style="background-color: #ffe5d9;">
-    <div class="container mb-5 pb-5">
+    <div class="container pb-5">
       <h4 class="pt-5">WOULD LIKE TO TAKE PART IN PETS SEARCHING?</h4>
       <h1><i class="fa-solid fa-arrow-down"></i></h1>
-      <%= link_to 'Get Started', new_user_registration_path, class: 'btn btn-dark p+' %>
+      <%= link_to 'Get Started', new_user_registration_path, class: 'btn btn-dark' %>
     </div>
   </div>
 <% end %>
@@ -19,12 +19,12 @@
           <div class="pet-container col-8 col-sm-5 col-md-4 col-lg-3 col-xl-2">
             <%= link_to user_pet_path(pet.user, pet) do %>
               <% if pet.avatar.attached? %>
-                <%= image_tag pet.avatar, height: '200px', class: 'border border-dark w-100 rounded-circle' %>
+                <%= image_tag pet.avatar, width: '150px', height: '150px', style: 'object-fit: cover', class: 'border border-dark rounded-circle' %>
               <% else %>
                 <% if pet.cat? %>
-                  <%= image_tag("cat.jpg", height: '200px', class: 'border border-dark w-100 rounded-circle') %>
+                  <%= image_tag("cat.jpg", width: '150px', height: '150px', style: 'object-fit: cover', class: 'border border-dark rounded-circle') %>
                 <% elsif pet.dog? %>
-                  <%= image_tag("dog.jpg", height: '200px', class: 'border border-dark w-100 rounded-circle') %>
+                  <%= image_tag("dog.jpg", width: '150px', height: '150px', style: 'object-fit: cover', class: 'border border-dark rounded-circle') %>
                 <% end %>
               <% end %>
               <p class="text-dark mb-2"><b><%= pet.name %></b><br>
