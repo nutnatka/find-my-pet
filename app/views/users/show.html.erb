@@ -4,7 +4,7 @@
 <div class="row mt-5">
   <div class="col-12 text-center col-md-3 col-lg-5">
     <% if @user.avatar.attached? %>
-      <%= image_tag @user.avatar, width: '200px', height: '200px', class: 'rounded-circle border border-dark' %>
+      <%= image_tag @user.avatar, style: 'width: 100%; object-fit: cover;', class: 'border border-dark' %>
     <% else %>
       <%= image_tag("avatar.png", height: '200', width: '200', class: 'rounded-circle border border-dark') %>
     <% end %>

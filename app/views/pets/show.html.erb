@@ -14,12 +14,12 @@
 <div class="row mb-5 mt-5">
   <div class="col-12 text-center mt-3 mb-2 col-sm-6">
     <% if @pet.avatar.attached? %>
-      <%= image_tag @pet.avatar, width: '200px', height: '200px', class: 'rounded-circle border border-dark' %>
+      <%= image_tag @pet.avatar, style: 'width: 100%; object-fit: cover;', class: 'border border-dark' %>
     <% else %>
       <% if @pet.cat? %>
-        <%= image_tag("cat.jpg", width: '200px', height: '200px', class: 'rounded-circle border border-dark') %>
+        <%= image_tag("cat.jpg", style: 'width: 100%; object-fit: cover;', class: 'border border-dark') %>
       <% elsif @pet.dog? %>
-        <%= image_tag("dog.jpg", width: '200px', height: '200px', class: 'rounded-circle border border-dark') %>
+        <%= image_tag("dog.jpg", style: 'width: 100%; object-fit: cover;', class: 'border border-dark') %>
       <% end %>
     <% end %>
   </div>

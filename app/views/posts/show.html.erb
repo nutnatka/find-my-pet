@@ -1,3 +1,24 @@
-<%= @post.title %>
-<%= @post.category.name %>
-<%= @post.content %>
+<% provide(:page_title, 'Post') %>
+<% provide(:blog_active, 'active') %>
+
+<div class="post-container mt-5 row">
+  <div class="col-2">
+    <%= link_to 'Back', :back, class: 'btn btn-outline-dark' %>
+  </div>
+  <div class="col-8">
+    <h5 class="m-0 p-0 mb-2 text-center"><%= @post.created_at.strftime("%B %d, %y") %></h5>
+    <h4 class="m-0 p-0 text-center mb-5"><%= @post.title.upcase %></h4>
+    <%= image_tag "avatar.png", style: 'object-fit: cover; width: 100%;', class: 'border border-dark' %>
+    <p><%= @post.content %></p>
+  </div>
+  <div class="col-2 text-end">
+    <p class="m-0 p-0 mb-2">Posted by: <%= @post.user.name %></p>
+    <% if @post.category.name == 'lost_pets' %>
+      <%= link_to 'Help to Find a Pet', @post, class: 'btn btn-dark' %>
+    <% elsif @post.category.name == 'found_pets' %>
+      <%= link_to 'Help to Find a Pet`s Master', @post, class: 'btn btn-dark' %>
+    <% elsif @post.category.name == 'pets_to_adopt' %>
+      <%= link_to 'I want to Adopt this Pet', @post, class: 'btn btn-dark' %>
+    <% end %>
+  </div>
+</div>
