@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
+
   def index
     if params.has_key?(:category)
       @category = Category.find_by_name(params[:category])
