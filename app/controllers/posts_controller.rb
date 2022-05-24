@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-
   def index
     if params.has_key?(:category)
       @category = Category.find_by_name(params[:category])
@@ -21,7 +20,7 @@ class PostsController < ApplicationController
     @post = Post.create(post_params.merge(user_id: current_user.id))
 
     if @post.save
-      redirect_to @post, notice: "Post has been created"
+      redirect_to @post, notice: 'Post has been created'
     else
       render :new
     end

@@ -10,28 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_16_060657) do
+ActiveRecord::Schema.define(version: 20_220_516_060_657) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "action_text_rich_texts", force: :cascade do |t|
-    t.string "name", null: false
-    t.text "body"
-    t.string "record_type", null: false
-    t.integer "record_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index %w[record_type record_id name], name: "index_action_text_rich_texts_uniqueness", unique: true
+  create_table 'action_text_rich_texts', force: :cascade do |t|
+    t.string 'name', null: false
+    t.text 'body'
+    t.string 'record_type', null: false
+    t.integer 'record_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index %w[record_type record_id name], name: 'index_action_text_rich_texts_uniqueness', unique: true
   end
 
-  create_table "active_storage_attachments", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "record_type", null: false
-    t.bigint "record_id", null: false
-    t.bigint "blob_id", null: false
-    t.datetime "created_at", null: false
-    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
-    t.index %w[record_type record_id name blob_id], name: "index_active_storage_attachments_uniqueness", unique: true
+  create_table 'active_storage_attachments', force: :cascade do |t|
+    t.string 'name', null: false
+    t.string 'record_type', null: false
+    t.bigint 'record_id', null: false
+    t.bigint 'blob_id', null: false
+    t.datetime 'created_at', null: false
+    t.index ['blob_id'], name: 'index_active_storage_attachments_on_blob_id'
+    t.index %w[record_type record_id name blob_id], name: 'index_active_storage_attachments_uniqueness', unique: true
 
     create_table 'active_storage_blobs', force: :cascade do |t|
       t.string 'key', null: false
@@ -103,21 +103,21 @@ ActiveRecord::Schema.define(version: 2022_05_16_060657) do
       t.index ['user_id'], name: 'index_likes_on_user_id'
     end
 
-    create_table "pets", force: :cascade do |t|
-      t.string "name"
-      t.integer "species"
-      t.string "breed"
-      t.integer "sex"
-      t.boolean "sterilized"
-      t.date "date_of_birth"
-      t.string "color"
-      t.text "additional_info"
-      t.bigint "user_id", null: false
-      t.datetime "created_at", precision: 6, null: false
-      t.datetime "updated_at", precision: 6, null: false
-      t.string "slug"
-      t.index ["slug"], name: "index_pets_on_slug", unique: true
-      t.index ["user_id"], name: "index_pets_on_user_id"
+    create_table 'pets', force: :cascade do |t|
+      t.string 'name'
+      t.integer 'species'
+      t.string 'breed'
+      t.integer 'sex'
+      t.boolean 'sterilized'
+      t.date 'date_of_birth'
+      t.string 'color'
+      t.text 'additional_info'
+      t.bigint 'user_id', null: false
+      t.datetime 'created_at', precision: 6, null: false
+      t.datetime 'updated_at', precision: 6, null: false
+      t.string 'slug'
+      t.index ['slug'], name: 'index_pets_on_slug', unique: true
+      t.index ['user_id'], name: 'index_pets_on_user_id'
     end
 
     create_table 'messages', force: :cascade do |t|
@@ -131,16 +131,16 @@ ActiveRecord::Schema.define(version: 2022_05_16_060657) do
       t.index ['user_id'], name: 'index_messages_on_user_id'
     end
 
-    create_table "posts", force: :cascade do |t|
-      t.string "title"
-      t.text "content"
-      t.string "status"
-      t.bigint "user_id", null: false
-      t.datetime "created_at", precision: 6, null: false
-      t.datetime "updated_at", precision: 6, null: false
-      t.bigint "category_id", null: false
-      t.index ["category_id"], name: "index_posts_on_category_id"
-      t.index ["user_id"], name: "index_posts_on_user_id"
+    create_table 'posts', force: :cascade do |t|
+      t.string 'title'
+      t.text 'content'
+      t.string 'status'
+      t.bigint 'user_id', null: false
+      t.datetime 'created_at', precision: 6, null: false
+      t.datetime 'updated_at', precision: 6, null: false
+      t.bigint 'category_id', null: false
+      t.index ['category_id'], name: 'index_posts_on_category_id'
+      t.index ['user_id'], name: 'index_posts_on_user_id'
     end
 
     create_table 'places', force: :cascade do |t|
