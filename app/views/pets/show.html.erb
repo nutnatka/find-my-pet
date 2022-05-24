@@ -12,7 +12,7 @@
 </div>
 
 <div class="row mb-5 mt-5">
-  <div class="col-12 text-center mt-3 mb-2 col-sm-6">
+  <div class="col-12 text-center mt-3 mb-3 col-sm-4">
     <% if @pet.avatar.attached? %>
       <%= image_tag @pet.avatar, style: 'width: 100%; object-fit: cover;', class: 'border border-dark' %>
     <% else %>
@@ -24,27 +24,27 @@
     <% end %>
   </div>
 
-  <div class="col-12 text-center mt-3 mb-2 col-sm-6 text-sm-start">
-    <h5>PERSONAL INFO:</h5>
+  <div class="col-12 text-center mt-3 mb-2 col-sm-8 text-sm-start">
+    <h5 class="ms-4">PERSONAL INFO:</h5>
 
-    <p class="mb-2">
+    <p class="mb-2 ms-4">
       <b>Species:</b>
       <%= @pet.species %>
     </p>
 
-    <p class="mb-2">
+    <p class="mb-2 ms-4">
       <% if @pet.breed? %>
         <b>Breed:</b>
         <%= @pet.breed %>
       <% end %>
     </p>
 
-    <p class="mb-2">
+    <p class="mb-2 ms-4">
       <b>Gender:</b>
       <%= @pet.sex %>
     </p>
 
-    <p class="mb-2">
+    <p class="mb-2 ms-4">
       <b>Is sterilized:</b>
       <% if @pet.sterilized? %>
         yes
@@ -53,17 +53,17 @@
       <% end %>
     </p>
 
-    <p class="mb-2">
+    <p class="mb-2 ms-4">
       <b>DOB:</b>
       <%= @pet.date_of_birth.to_time.strftime('%B %e, %Y') %>
     </p>
 
-    <p class="mb-2">
+    <p class="mb-2 ms-4">
       <b>Color:</b>
       <%= @pet.color %>
     </p>
 
-    <p class="mb-2">
+    <p class="mb-2 ms-4">
       <% if @pet.additional_info? %>
         <b>Additional Info:</b>
         <%= @pet.additional_info %>

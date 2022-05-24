@@ -8,14 +8,14 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
-require('jquery')
-
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
+require('jquery')
 import "bootstrap"
-import { Tooltip, Popover } from "bootstrap"
+import {Tooltip, Popover} from "bootstrap"
+
 require("../stylesheets/application.scss")
 import "@fortawesome/fontawesome-free/css/all"
 

@@ -1,11 +1,28 @@
 <footer class="footer pb-3 pt-3 fixed-bottom" style="background-color: #b2d8d8;">
   <div class="container">
-    <ul class="nav justify-content-center border-bottom pb-3 mb-3 border-dark">
-      <!--      <li class="nav-item"><a href="#" class="nav-link px-2 text-dark">Home</a></li>-->
+    <ul class="nav justify-content-center border-bottom pb-3 mb-3 border-dark d-none d-lg-flex">
+      <li class="nav-item">
+        <%= link_to "Blog", posts_path, class: "text-dark me-4 #{yield(:blog_active)}" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Success Stories", posts_path(category: :success_stories), class: "text-dark me-4 #{yield(:blog_active)}" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Recommendations", posts_path(category: :recommendations), class: "text-dark me-4 #{yield(:blog_active)}" %>
+      </li>
       <li class="nav-item">
         <%= link_to root_path do %>
-          <%= image_tag("paw-print.png", height: '30', width: '30') %>
+          <%= image_tag("paw-print.png", height: '30', width: '30', class: 'me-4') %>
         <% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Lost Pets", posts_path(category: :lost_pets), class: "text-dark me-4 #{yield(:blog_active)}" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Found Pets", posts_path(category: :found_pets), class: "text-dark me-4 #{yield(:blog_active)}" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Pets to Adopt", posts_path(category: :pets_to_adopt), class: "text-dark me-4 #{yield(:blog_active)}" %>
       </li>
     </ul>
     <p class="text-center text-dark">© <%= Date.current.year %><%= link_to 'Geek Hub', 'https://geekhub.ck.ua/', target: '_blank', class: 'text-dark ms-2 text-decoration-none' %></p>
