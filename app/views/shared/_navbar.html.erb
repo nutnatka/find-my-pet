@@ -1,21 +1,22 @@
 <nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color: #b2d8d8;">
-  <div class="container d-flex justify-content-between">
-    <div class="d-flex align-items-center">
+  <div class="container d-flex flex-column justify-content-center flex-sm-row justify-content-sm-start justify-content-md-between">
+    <div class="d-flex align-items-center mt-md-0 mt-3">
       <%= link_to root_path do %>
         <%= image_tag("paw-print.png", height: '30', width: '30', class: "d-inline-block align-top") %>
       <% end %>
       <%= link_to "FindMyPet", root_path, class: "text-dark text-decoration-none ms-2" %>
     </div>
-    <form class="d-flex justify-content-between align-items-center mt-3 mt-sm-0">
-      <%= link_to "Blog", posts_path, class: "btn btn-outline-dark me-2 nav-Link #{yield(:blog_active)}" %>
+    <form class="d-flex flex-column align-items-center flex-sm-row justify-content-sm-start mt-sm-2 ms-sm-2 mt-md-0 mt-3 mt-sm-0">
+      <%= link_to "I`ve Lost my Pet!", new_post_from_welcome_path(category_id: 8), class: "btn btn-outline-dark me-2 mb-2 mb-sm-0 nav-Link" %>
+      <%= link_to "Blog", posts_path, class: "btn btn-outline-dark me-2 mb-2 mb-sm-0 nav-Link #{yield(:blog_active)}" %>
       <% if current_user %>
-        <%= link_to "Profile", user_path(current_user), class: "btn btn-outline-dark me-2 nav-Link #{yield(:profile_active)}" %>
-        <%= link_to "Logout ", destroy_user_session_path, method: :delete, class: 'btn btn-outline-dark me-2' %>
+        <%= link_to "Profile", user_path(current_user), class: "btn btn-outline-dark me-2 mb-2 mb-sm-0 nav-Link #{yield(:profile_active)}" %>
+        <%= link_to "Logout ", destroy_user_session_path, method: :delete, class: 'btn btn-outline-dark me-2 mb-2 mb-sm-0' %>
       <% else %>
-        <button type="button" class="btn btn-dark me-2" data-bs-toggle="modal" data-bs-target="#loginModal">
+        <button type="button" class="btn btn-dark me-2 mb-2 mb-sm-0" data-bs-toggle="modal" data-bs-target="#loginModal">
           Log In
         </button>
-        <%= link_to "Get Started ", new_user_registration_path, class: "btn btn-outline-dark me-2 nav-Link #{yield(:get_started_active)}" %>
+        <%= link_to "Get Started ", new_user_registration_path, class: "btn btn-outline-dark me-2 mb-2 mb-sm-0 nav-Link #{yield(:get_started_active)}" %>
       <% end %>
       <ul class="nav m-0 p-0">
         <li class="dropdown">

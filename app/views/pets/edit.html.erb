@@ -29,7 +29,7 @@
   <% end %>
 
   <div class="row mt-2">
-    <div class="col-12 text-center col-md-4">
+    <div class="col-12 text-center col-md-4 mt-4">
       <% if @pet.avatar.attached? %>
         <%= image_tag @pet.avatar, style: 'object-fit: cover; width: 100%', class: 'border border-dark' %>
       <% else %>
