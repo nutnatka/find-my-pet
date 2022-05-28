@@ -26,62 +26,18 @@
     </div>
   </div>
 <% end %>
-</div>
+<!--
 <div class="map">
-<% unless signed_in? %>
-  <iframe width="100%" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83016.62396197398!2d31.888244559008136!3d49.44162320119149!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d14c630957834d%3A0xe729cd97b20f9a4a!2z0KHQvtGB0L3QvtCy0YHQutC40Lkg0YDQsNC50L7QvSwg0KfQtdGA0LrQsNGB0YHRiywg0KfQtdGA0LrQsNGB0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsIDE4MDAw!5e0!3m2!1sru!2sua!4v1653332151950!5m2!1sru!2sua" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-  <script type="text/javascript">
-      function initialize() {
-          var locations = [
-              ['Bondi Beach', -33.890542, 151.274856, 4],
-              ['Coogee Beach', -33.923036, 151.259052, 5],
-              ['Cronulla Beach', -34.028249, 151.157507, 3],
-              ['Manly Beach', -33.80010128657071, 151.28747820854187, 2],
-              ['Maroubra Beach', -33.950198, 151.259302, 1]
-          ];
-
-          var map = new google.maps.Map(document.getElementById('map'), {
-              zoom: 10,
-              center: new google.maps.LatLng(-33.92, 151.25),
-              mapTypeId: google.maps.MapTypeId.ROADMAP
-          });
-
-          var infowindow = new google.maps.InfoWindow();
-
-          var marker, i;
-
-          for (i = 0; i < locations.length; i++) {
-              marker = new google.maps.Marker({
-                  position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-                  map: map
-              });
-
-              google.maps.event.addListener(marker, 'click', (function(marker, i) {
-                  return function() {
-                      infowindow.setContent(locations[i][0]);
-                      infowindow.open(map, marker);
-                  }
-              })(marker, i));
-          }
-
-      function loadScript() {
-          var script = document.createElement('script');
-          script.type = 'text/javascript';
-          script.src = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83016.62396197398!2d31.888244559008136!3d49.44162320119149!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d14c630957834d%3A0xe729cd97b20f9a4a!2z0KHQvtGB0L3QvtCy0YHQutC40Lkg0YDQsNC50L7QvSwg0KfQtdGA0LrQsNGB0YHRiywg0KfQtdGA0LrQsNGB0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsIDE4MDAw!5e0!3m2!1sru!2sua!4v1653332151950!5m2!1sru!2sua' +
-              'callback=initialize';
-          document.body.appendChild(script);
-      }
-
-      window.onload = loadScript;
-  </script>
-  <div class="get-started-section text-center" style="background-color: #ffe5d9;">
-    <div class="container mb-5 pb-5">
-      <h4 class="pt-5"><%= t('.would_html') %></h4>
-      <h1><i class="fa-solid fa-arrow-down"></i></h1>
-      <%= link_to 'Get Started', new_user_registration_path, class: 'btn btn-dark p+' %>
+  <% unless signed_in? %>
+    <div class="get-started-section text-center" style="background-color: #ffe5d9;">
+      <div class="container mb-5 pb-5">
+        <h4 class="pt-5"><%= t('.would_html') %></h4>
+        <h1><i class="fa-solid fa-arrow-down"></i></h1>
+        <%= link_to 'Get Started', new_user_registration_path, class: 'btn btn-dark p+' %>
+      </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+  <%= render 'welcome/googlemap' %>
 </div>
+-->
 
