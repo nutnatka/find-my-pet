@@ -1,7 +1,7 @@
 class PetsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   before_action :set_user, except: [:index]
-  before_action :set_pet, only: %i[edit update show find_pet find_master]
+  before_action :set_pet, only: %i[edit update show find_pet adopt_pet]
 
   def index
     @q = Pet.ransack(params[:q])
@@ -49,19 +49,18 @@ class PetsController < ApplicationController
   def find_pet
     if current_user.id == @user.id
       @pet.home_again!
-      @pet.posts = @pet.posts.where(category: 'lost_pets')
+      @pet.posts = @pet.posts.where(category: 'lost_pets').or(@pet.posts.where(category: 'found_pets'))
       @pet.posts.destroy
-      redirect_to @user, notice: "The pet has been found!"
+      redirect_to @user, notice: "The pet has been found! You can share the success story by click on the 'Share Success Story' button."
     end
   end
 
-  def find_master
+  def adopt_pet
     if current_user.id == @user.id
-      @pet.home_again!
-      @pet.posts = @pet.posts.where(category: 'found_pets').or(@pet.posts.where(category: 'pets_to_adopt'))
+      @pet.adopted!
+      @pet.posts = @pet.posts.where(category: 'pets_to_adopt')
       @pet.posts.destroy
-      @pet.destroy
-      redirect_to @user, notice: "The pet master has been found!"
+      redirect_to @user, notice: "The pet has found its family! You can share the success story by click on the 'Share Success Story' button."
     end
   end
 

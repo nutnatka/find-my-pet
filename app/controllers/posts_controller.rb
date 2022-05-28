@@ -38,12 +38,14 @@ class PostsController < ApplicationController
 
   def change_pet_status
     @pet = @post.pet
-    if @post.category.name == 'lost_pets'
-      @pet.lost!
-    elsif @post.category.name == 'found_pets'
-      @pet.found!
-    elsif @post.category.name == 'pets_to_adopt'
-      @pet.to_adopt!
+    unless @pet.nil?
+         if @post.category.name == 'lost_pets'
+           @pet.lost!
+         elsif @post.category.name == 'found_pets'
+           @pet.found!
+         elsif @post.category.name == 'pets_to_adopt'
+           @pet.to_adopt!
+         end
     end
   end
 end

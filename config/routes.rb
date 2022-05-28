@@ -5,7 +5,7 @@ Rails.application.routes.draw do
       resources :pets do
         member do
           post :find_pet
-          post :find_master
+          post :adopt_pet
         end
       end
     end
