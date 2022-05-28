@@ -2,7 +2,12 @@ Rails.application.routes.draw do
   scope '(:locale)', locale: /#{I18n.available_locales.join("|")}/ do
     devise_for :users, controllers: { registrations: 'users/registrations' }
     resources :users, only: [:show] do
-      resources :pets
+      resources :pets do
+        member do
+          post :find_pet
+          post :find_master
+        end
+      end
     end
 
     resources :posts

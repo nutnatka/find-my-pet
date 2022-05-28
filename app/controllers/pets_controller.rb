@@ -1,11 +1,11 @@
 class PetsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   before_action :set_user, except: [:index]
-  before_action :set_pet, only: %i[edit update show]
+  before_action :set_pet, only: %i[edit update show find_pet find_master]
 
   def index
     @q = Pet.ransack(params[:q])
-    @pets = @q.result.page params[:page]
+    @pets = @q.result.order(:name).page params[:page]
   end
 
   def show; end
@@ -43,6 +43,25 @@ class PetsController < ApplicationController
       respond_to do |format|
         format.js { render layout: false }
       end
+    end
+  end
+
+  def find_pet
+    if current_user.id == @user.id
+      @pet.home_again!
+      @pet.posts = @pet.posts.where(category: 'lost_pets')
+      @pet.posts.destroy
+      redirect_to @user, notice: "The pet has been found!"
+    end
+  end
+
+  def find_master
+    if current_user.id == @user.id
+      @pet.home_again!
+      @pet.posts = @pet.posts.where(category: 'found_pets').or(@pet.posts.where(category: 'pets_to_adopt'))
+      @pet.posts.destroy
+      @pet.destroy
+      redirect_to @user, notice: "The pet master has been found!"
     end
   end
 
