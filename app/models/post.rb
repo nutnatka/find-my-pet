@@ -20,5 +20,5 @@ class Post < ApplicationRecord
   has_rich_text :content
 
   validates :title, :category_id, presence: true
-  paginates_per 6
+  paginates_per 12
 end

@@ -36,7 +36,7 @@
           <% if pet.lost? %>
           <%= link_to 'My Pet was Found', find_pet_user_pet_path(@user, pet), method: :post, data: { confirm: 'Have you really found your pet?' }, class: 'ms-2 text-success text-decoration-underline' %>
           <% elsif pet.found? %>
-           <%= link_to 'Pet Master was Found', find_pet_user_pet_path(@user, pet), method: :post, data: { confirm: 'Have you really found pet master?' }, class: 'ms-2 text-success text-decoration-underline' %>
+           <%= link_to 'Pet Master was Found', find_master_user_pet_path(@user, pet), method: :post, data: { confirm: 'Have you really found pet master?' }, class: 'ms-2 text-success text-decoration-underline' %>
           <% elsif pet.to_adopt? %>
           <%= link_to 'Pet was Adopted', adopt_pet_user_pet_path(@user, pet), method: :post, data: { confirm: 'Is the pet really adopted?' }, class: 'ms-2 text-success text-decoration-underline' %>
         <% end %>
