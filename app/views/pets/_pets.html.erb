@@ -1,6 +1,6 @@
 <h2 class="text-center"><%= @user.name %></h2>
 <% if current_user.id == @user.id %>
-  <h5 class="mt-4 text-center">Your pets:</h5>
+  <h5 class="mt-4 text-center"><%= t('.yourpets_html') %></h5>
 <% end %>
 <p id='your-pets'></p>
 <% if current_user.pets.count == 0 %>
