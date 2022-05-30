@@ -1,45 +1,54 @@
-<nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color: #b2d8d8;">
-  <div class="container d-flex flex-column justify-content-center flex-sm-row justify-content-sm-start justify-content-md-between">
-    <div class="d-flex align-items-center mt-md-0 mt-3">
+<nav class="navbar navbar-light navbar-expand-lg sticky-top" style="background-color: #b2d8d8;">
+  <div class="container">
+    <div class="d-flex align-items-center">
       <%= link_to root_path do %>
         <%= image_tag("paw-print.png", height: '30', width: '30', class: "d-inline-block align-top") %>
       <% end %>
       <%= link_to "FindMyPet", root_path, class: "text-dark text-decoration-none ms-2" %>
     </div>
-    <form class="d-flex flex-column align-items-center flex-sm-row justify-content-sm-start mt-sm-2 ms-sm-2 mt-md-0 mt-3 mt-sm-0">
-      <%= link_to "I`ve Lost my Pet!", new_post_from_welcome_path(category_id: 8), class: "btn btn-outline-dark me-2 mb-2 mb-sm-0 nav-Link" %>
-      <%= link_to "Blog", posts_path, class: "btn btn-outline-dark me-2 mb-2 mb-sm-0 nav-Link #{yield(:blog_active)}" %>
-      <% if current_user %>
-        <%= link_to "Profile", user_path(current_user), class: "btn btn-outline-dark me-2 mb-2 mb-sm-0 nav-Link #{yield(:profile_active)}" %>
-        <%= link_to "Logout ", destroy_user_session_path, method: :delete, class: 'btn btn-outline-dark me-2 mb-2 mb-sm-0' %>
-      <% else %>
-        <button type="button" class="btn btn-dark me-2 mb-2 mb-sm-0" data-bs-toggle="modal" data-bs-target="#loginModal">
-          Log In
-        </button>
-        <%= link_to "Get Started ", new_user_registration_path, class: "btn btn-outline-dark me-2 mb-2 mb-sm-0 nav-Link #{yield(:get_started_active)}" %>
-      <% end %>
-      <ul class="nav m-0 p-0">
-        <li class="dropdown">
-          <%= link_to '#', class: 'nav-link px-2 dropdown-toggle text-black',
-                      data: { "bs-toggle": 'dropdown' } do %>
-            <%= tag.div '', class: "flag #{I18n.locale}-flag mt-1" %>
-            <%= t I18n.locale %>
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse" id="navbar">
+      <div class="container d-flex flex-row justify-content-end">
+        <ul class="navbar-nav">
+          <li><%= link_to "I`ve Lost my Pet!", new_post_from_welcome_path(category_id: 8), class: "btn btn-outline-dark nav-Link me-1" %></li>
+          <li><%= link_to "Blog", posts_path, class: "btn btn-outline-dark me-2 mb-2 mb-sm-0 nav-Link ms-1 me-1 #{yield(:blog_active)}" %></li>
+          <% if current_user %>
+            <li><%= link_to "Profile", user_path(current_user), class: "btn btn-outline-dark nav-Link ms-1 me-1 #{yield(:profile_active)}" %></li>
+            <li><%= link_to "Logout ", destroy_user_session_path, method: :delete, class: 'btn btn-outline-dark ms-1 me-1' %></li>
+          <% else %>
+            <li>
+              <button type="button" class="btn btn-dark ms-1 me-1" data-bs-toggle="modal" data-bs-target="#loginModal">
+                Log In
+              </button>
+            </li>
+            <li><%= link_to "Get Started ", new_user_registration_path, class: "btn btn-outline-dark ms-1 me-1 nav-Link #{yield(:get_started_active)}" %></li>
           <% end %>
+          <ul class="nav">
+            <li class="dropdown">
+              <%= link_to '#', class: 'nav-link px-2 dropdown-toggle text-black ms-1 p-0 mt-2',
+                          data: { "bs-toggle": 'dropdown' } do %>
+                <%= tag.div '', class: "flag #{I18n.locale}-flag mt-1" %>
+                <%= t I18n.locale %>
+              <% end %>
 
-          <ul class="dropdown-menu">
-            <% I18n.available_locales.each do |locale| %>
-              <li>
-                <% if I18n.locale == locale %>
-                  <%= tag.span t(locale), class: 'dropdown-item' %>
-                <% else %>
-                  <%= link_to t(locale), url_for(locale: locale),
-                              class: 'dropdown-item' %>
+              <ul class="dropdown-menu">
+                <% I18n.available_locales.each do |locale| %>
+                  <li>
+                    <% if I18n.locale == locale %>
+                      <%= tag.span t(locale), class: 'dropdown-item' %>
+                    <% else %>
+                      <%= link_to t(locale), url_for(locale: locale),
+                                  class: 'dropdown-item' %>
+                    <% end %>
+                  </li>
                 <% end %>
-              </li>
-            <% end %>
+              </ul>
+            </li>
           </ul>
-        </li>
-      </ul>
-    </form>
+        </ul>
+      </div>
+    </div>
   </div>
 </nav>
