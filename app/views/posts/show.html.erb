@@ -2,23 +2,54 @@
 <% provide(:blog_active, 'active') %>
 
 <div class="post-container mt-5 row">
-  <div class="col-2">
+
+  <div class="col-12 col-md-2">
     <%= link_to 'Back', :back, class: 'btn btn-outline-dark' %>
   </div>
-  <div class="col-8">
-    <h5 class="m-0 p-0 mb-2 text-center"><%= @post.created_at.strftime("%B %d, %y") %></h5>
-    <h4 class="m-0 p-0 text-center mb-5"><%= @post.title.upcase %></h4>
-    <%= image_tag "paw-search.jpg", style: 'object-fit: cover; width: 100%; height: 400px;', class: 'border border-dark' %>
-    <p><%= @post.content %></p>
-  </div>
-  <div class="col-2 text-end">
-    <p class="m-0 p-0 mb-2">Posted by: <%= @post.user.name %></p>
-    <% if @post.category.name == 'lost_pets' %>
-      <%= link_to 'Help to Find a Pet', @post, class: 'btn btn-dark' %>
-    <% elsif @post.category.name == 'found_pets' %>
-      <%= link_to 'Help to Find a Pet`s Master', @post, class: 'btn btn-dark' %>
-    <% elsif @post.category.name == 'pets_to_adopt' %>
-      <%= link_to 'I want to Adopt this Pet', @post, class: 'btn btn-dark' %>
+
+  <div class="mt-2 col-12 mt-sm-0 col-md-8">
+
+    <h4 class="text-center mb-4"><%= @post.title.upcase %></h4>
+
+    <% unless @post.category.name == 'success_stories' || @post.category.name == 'recommendations' %>
+      <div class="row">
+        <% if @post.pet.avatar.attached? %>
+          <div class="avatar-container col-12 col-sm-4 text-center">
+            <%= image_tag @post.pet.avatar, style: 'object-fit: cover;', class: 'border border-dark w-100' %>
+            <%= link_to 'Pet Profile', user_pet_path(@post.pet.user, @post.pet), target: :_blank, class: 'text-dark text-decoration-underline' %>
+          </div>
+          <div class="pet-info mt-3 mb-3 text-center col-12 mt-sm-0 text-sm-start mb-sm-2 col-sm-4">
+            <%= render 'posts/short_pet_info' %>
+          </div>
+          <div class="pet-info mt-3 mb-3 text-center col-12 mt-sm-0 text-sm-start mb-sm-2 col-sm-4">
+            <%= render 'posts/contact_info' %>
+          </div>
+        <% else %>
+          <div class="pet-info col-12 col-sm-6 text-center">
+            <%= render 'posts/short_pet_info' %>
+          </div>
+          <div class="pet-info col-12 col-sm-6 text-center">
+            <%= render 'posts/contact_info' %>
+          </div>
+        <% end %>
+      </div>
     <% end %>
+
+    <%= @post.content %>
+    <div class="actions mt-3 mb-3 text-center">
+      <% if @post.category.name == 'lost_pets' %>
+        <%= link_to 'Help to Find a Pet', @post, class: 'btn btn-dark' %>
+      <% elsif @post.category.name == 'found_pets' %>
+        <%= link_to 'Help to Find Pet Master', @post, class: 'btn btn-dark' %>
+      <% elsif @post.category.name == 'pets_to_adopt' %>
+        <%= link_to 'I`d Like to Adopt this Pet', @post, class: 'btn btn-dark' %>
+      <% end %>
+    </div>
+
+  </div>
+
+  <div class="col-12 text-center col-md-2 text-md-end">
+    <p class="p-0 m-0">Posted by: <%= @post.user.name %></p>
+    <p class="p-0 m-0"><%= @post.created_at.strftime("%B %d, %y at %H %p") %></p>
   </div>
 </div>

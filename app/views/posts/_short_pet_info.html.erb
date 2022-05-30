@@ -1,0 +1,19 @@
+<h5><b>Short Pet Info:</b></h5>
+<h6><b>Name:</b> <%= @post.pet.name %></h6>
+<h6>
+  <% if @post.pet.breed? %><b>Breed:</b> <%= @post.pet.breed %>
+  <% end %></h6>
+<h6><b>Gender:</b> <%= @post.pet.sex %></h6>
+<h6><b>Age:</b> <%= age(@post.pet) %></h6>
+<h6>
+  <% if @post.pet.sterilized? %><b>This pet is sterilized.</b>
+  <% end %></h6>
+<h6><b>Color:</b> <%= @post.pet.color %></h6>
+<h6>
+  <% if @post.pet.additional_info? %><b>Additional Info:</b> <%= @post.pet.additional_info %>
+  <% end %></h6>
+<% if @post.category.name == 'lost_pets' %>
+  <h6>The pet has been lost when.</h6>
+<% elsif @post.category.name == 'found_pets' %>
+  <h6>The pet has been found when.</h6>
+<% end %>

@@ -19,3 +19,6 @@ import "@fortawesome/fontawesome-free/css/all"
 
 require("trix")
 require("@rails/actiontext")
+
+require("jquery-mask-plugin")
+$.jMaskGlobals.watchDataMask = true;
