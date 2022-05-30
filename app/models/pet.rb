@@ -4,9 +4,9 @@
 #
 #  id              :bigint           not null, primary key
 #  name            :string
-#  species         :string
+#  species         :integer
 #  breed           :string
-#  sex             :string
+#  sex             :integer
 #  sterilized      :boolean
 #  date_of_birth   :date
 #  color           :string
@@ -14,19 +14,22 @@
 #  user_id         :bigint           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  slug            :string
 #
 class Pet < ApplicationRecord
   belongs_to :user
   has_many :places, dependent: :destroy
+  has_many :posts, dependent: :destroy
   has_one_attached :avatar
 
-  validates :avatar, file_size: { less_than_or_equal_to: 150.kilobytes, message: 'is too big. It should be less than %{count}' },
-            file_content_type: { allow: %w[image/jpeg image/png image/gif], message: 'only allows jpeg, png and gif' }
+  validates :avatar, file_size: { less_than_or_equal_to: 10.megabytes, message: 'is too big. It should be less than %{count}' },
+                     file_content_type: { allow: %w[image/jpeg image/png image/gif], message: 'only allows jpeg, png and gif' }
 
-  validates :name, :species, :sex, :color, presence: true
+  validates :name, :species, :sex, :color, :status, presence: true
 
   enum species: { cat: 1, dog: 2 }
   enum sex: { male: 1, female: 2, undefined: 3 }
+  enum status: { home: 0, lost: 1, found: 2, to_adopt: 3, home_again: 4, adopted: 5 }
 
   extend FriendlyId
   friendly_id :slug_candidates, use: :slugged

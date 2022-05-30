@@ -1,15 +1,13 @@
 <% provide(:page_title, 'Get Started') %>
 <% provide(:get_started_active, 'active') %>
 
-<div class="col-12">
-  <h2 class="text-center mt-5 mb-5">SETUP YOUR FIND MY PET PROFILE</h2>
+<h2 class="text-center mt-5 mb-5">SETUP YOUR PROFILE</h2>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <div class="container text-center">
+<div class="row justify-content-center">
+  <div class="container m-0 p-0 col-10 col-sm-8 col-md-6 col-lg-4 col-xl-3">
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
-    </div>
-
-    <div class="container m-0 p-0 d-flex flex-column align-items-center">
 
       <h6>How may we address you?</h6>
 
@@ -20,20 +18,43 @@
 
       <div class="field">
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder: 'Email' %>
-        <p>* This field is required.<br>Please enter a valid email address.</p>
+        <p class="m-0">* This field is required.</p>
+        <div class="form-check mb-3">
+          <%= f.check_box :allow_email, class: 'form-check-input' %>
+          <%= f.label :allow_email, 'Allow using this email as contact when pet search/adoption', class: 'form-check-label' %>
+        </div>
       </div>
 
       <div class="field">
         <%= f.password_field :password, autocomplete: "new-password", class: 'form-control', placeholder: 'Password' %>
-        <p>* This field is required.<br>Please enter the password containing<br>at least 6
-          characters.
-          It
-          should contain<br>at least one lowercase letter,<br>one uppercase letter, and one digit.</p>
+        <p>* This field is required.<br>Please enter the password containing at least 6
+          characters. It should contain at least one lowercase letter, one uppercase letter, and one digit.</p>
       </div>
 
-      <div class="actions mt-4">
+      <h6>Please provide contacts for pet search/adoption. You can do this later on your profile page.</h6>
+      <div class="field">
+        <%= f.text_field :phone, autofocus: true, class: 'form-control mb-3', placeholder: "Phone:" , 'data-mask': '+38000-000-00-00' %>
+      </div>
+
+      <div class="field">
+        <%= f.text_field :telegram, autofocus: true, class: 'form-control mb-3', placeholder: 'Telegram', 'data-mask': '+38000-000-00-00' %>
+      </div>
+
+      <div class="field">
+        <%= f.text_field :viber, autofocus: true, class: 'form-control mb-3', placeholder: 'Viber', 'data-mask': '+38000-000-00-00' %>
+      </div>
+
+      <div class="field">
+        <%= f.text_field :facebook, autofocus: true, class: 'form-control mb-3', placeholder: 'Facebook Profile Link' %>
+      </div>
+
+      <div class="field">
+        <%= f.text_field :instagram, autofocus: true, class: 'form-control mb-3', placeholder: 'Instagram Profile Link' %>
+      </div>
+
+      <div class="actions mt-4 d-flex justify-content-center">
         <%= f.submit "Create a Profile", class: 'btn btn-dark mb-4' %>
       </div>
-  <% end %>
+    <% end %>
   </div>
 </div>

@@ -1,0 +1,11 @@
+<% provide(:page_title, 'New Post') %>
+<% provide(:blog_active, 'active') %>
+
+<div class="page-header mt-4 mb-4">
+  <%= link_to 'Back', :back, class: 'btn btn-outline-dark' %>
+  <% if @post.category.name == 'recommendations' %>
+    <%= render 'form' %>
+  <% else %>
+    <%= render 'pet_form' %>
+  <% end %>
+</div>

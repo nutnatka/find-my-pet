@@ -1,12 +1,22 @@
 Rails.application.routes.draw do
-  scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
+  scope '(:locale)', locale: /#{I18n.available_locales.join("|")}/ do
     devise_for :users, controllers: { registrations: 'users/registrations' }
     resources :users, only: [:show] do
-      resources :pets
+      resources :pets do
+        member do
+          post :find_pet
+          post :find_master
+          post :adopt_pet
+        end
+      end
     end
+
+    resources :posts
 
     root 'welcome#index'
     match '/users/:id', to: 'users#show', via: 'get'
     get 'users', to: 'welcome#index'
+    post 'posts#index', to: 'posts#new', as: 'new_posts_post'
+    get 'welcome#index', to: 'posts#new', as: 'new_post_from_welcome'
   end
 end
