@@ -136,13 +136,10 @@ ActiveRecord::Schema.define(version: 2022_05_30_055900) do
 
   create_table "places", force: :cascade do |t|
     t.string "name"
-    t.string "address"
     t.float "latitude"
     t.float "longitude"
-    t.bigint "pet_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["pet_id"], name: "index_places_on_pet_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -193,7 +190,6 @@ ActiveRecord::Schema.define(version: 2022_05_30_055900) do
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
   add_foreign_key "pets", "users"
-  add_foreign_key "places", "pets"
   add_foreign_key "posts", "categories"
   add_foreign_key "posts", "pets"
   add_foreign_key "posts", "users"
