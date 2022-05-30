@@ -1,19 +1,19 @@
 <h5><b>Contact Info:</b></h5>
 <% if @post.category.name == 'found_pets' %>
   <h6><b>Founder Name:</b> <%= @post.pet.user.name %></h6>
-  <h6><%= link_to 'Founder Profile', user_path(@post.user), target: :_blank, class: 'text-dark text-decoration-underline' %></h6>
+  <h6><%= link_to 'Founder Profile', user_path(@post.user), target: '_blank', class: 'text-dark text-decoration-underline' %></h6>
 <% else %>
   <h6><b>Master Name:</b> <%= @post.pet.user.name %></h6>
-  <h6><%= link_to 'Master Profile', user_path(@post.user), target: :_blank, class: 'text-dark text-decoration-underline' %></h6>
+  <h6><%= link_to 'Master Profile', user_path(@post.user), target: '_blank', class: 'text-dark text-decoration-underline' %></h6>
 <% end %>
 <% if @post.user.facebook? %>
   <h6>
-    <b><%= link_to 'Facebook Profile', @post.user.facebook, target: :_blank, class: 'text-dark text-decoration-underline' %></b>
+    <b><%= link_to 'Facebook Profile', @post.user.facebook, target: '_blank', class: 'text-dark text-decoration-underline' %></b>
   </h6>
 <% end %>
 <% if @post.user.instagram %>
   <h6>
-    <b><%= link_to 'Instagram Profile', @post.user.instagram, target: :_blank, class: 'text-dark text-decoration-underline' %></b>
+    <b><%= link_to 'Instagram Profile', @post.user.instagram, target: '_blank', class: 'text-dark text-decoration-underline' %></b>
   </h6>
 <% end %>
 <% if @post.user.allow_email == true %>
