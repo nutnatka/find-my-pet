@@ -13,7 +13,7 @@
 </head>
 
 <body>
-<%= render 'layouts/navbar' %>
+<%= render 'shared/navbar' %>
 
 <% if current_user.nil? %>
   <%= render 'devise/sessions/new' %>
@@ -30,6 +30,6 @@
 <div class="container <%= controller_name %> <%= action_name %>" , id="main-container">
   <%= yield %>
 </div>
-<%= render 'layouts/footer' %>
+<%= render 'shared/footer' %>
 </body>
 </html>

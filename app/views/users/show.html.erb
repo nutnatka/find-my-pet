@@ -1,16 +1,16 @@
 <% provide(:page_title, 'Pet Profile') %>
 <% provide(:profile_active, 'active') %>
 
-<div class="row mt-5">
-  <div class="col-12 text-center col-md-3 col-lg-5">
+<div class="row mt-2 mt-md-5">
+  <div class="col-12 col-md-4">
     <% if @user.avatar.attached? %>
-      <%= image_tag @user.avatar, width: '200px', height: '200px', class: 'rounded-circle border border-dark' %>
+      <%= image_tag @user.avatar, style: 'width: 100%; object-fit: cover;', class: 'border border-dark' %>
     <% else %>
       <%= image_tag("avatar.png", height: '200', width: '200', class: 'rounded-circle border border-dark') %>
     <% end %>
   </div>
 
-  <div class="col-12 text-center col-md-5 col-lg-4 text-lg-start">
+  <div class="col-12 text-center mb-3 mb-sm-0 col-md-5">
     <%= render 'pets/pets' %>
     <% if current_user.id == @user.id %>
       <%= link_to t('.addPet'), user_path, class: 'fa-solid fa-circle-plus text-dark text-decoration-none pet-form-display mb-2 mt-2' %>
@@ -21,27 +21,17 @@
   </div>
 
   <% if current_user.id == @user.id %>
-    <div class="col-12 text-center col-md-4 col-lg-2">
-      <%= link_to t('.createPost'), root_path, class: 'btn btn-outline-dark m-2 d-block w-100' %>
-      <%= link_to t('.editProfile'), edit_user_registration_path, class: 'btn btn-outline-dark m-2 d-block w-100' %>
-      <%= link_to t('.destroyProfile'), registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-outline-dark m-2 d-block w-100' %>
+    <div class="col-12 text-center col-md-3 text-md-end">
+      <%= link_to "I`ve Lost my Pet", new_post_path(category_id: 8), class: 'btn btn-outline-dark w-100 mb-2' %>
+      <%= link_to "I`ve Found a Pet", new_post_path(category_id: 9), class: 'btn btn-outline-dark w-100 mb-2' %>
+      <%= link_to "Find Family for a Pet", new_post_path(category_id: 10), class: 'btn btn-outline-dark w-100 mb-2' %>
+      <%= link_to "Share Success Story", new_post_path(category_id: 11), class: 'btn btn-outline-dark w-100 mb-2' %>
+      <%= link_to "Share Recommendation", new_post_path(category_id: 12), class: 'btn btn-outline-dark w-100 mb-2' %>
+      <%= link_to t('.editProfile'), edit_user_registration_path, class: 'btn btn-outline-dark w-100 mb-2' %>
+      <%= link_to t('.destroyProfile'), registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-outline-dark w-100 mb-2' %>
     </div>
     </div>
   <% end %>
-
-  <script>
-      function reloadPage() {
-          var currentDocumentTimestamp = new Date(performance.timing.domLoading).getTime();
-          var now = Date.now();
-          var tenSec = 10 * 1000;
-          var plusTenSec = currentDocumentTimestamp + tenSec;
-          if (now > plusTenSec) {
-              location.reload();
-          }
-      }
-
-      reloadPage();
-  </script>
 
   <script>document.querySelectorAll('.pet-form-display').forEach((el) => {
       el.addEventListener('click', (ev) => {

@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_24_185115) do
+ActiveRecord::Schema.define(version: 2022_05_30_055900) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "action_text_rich_texts", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "body"
+    t.string "record_type", null: false
+    t.integer "record_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
+  end
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -45,10 +55,8 @@ ActiveRecord::Schema.define(version: 2022_05_24_185115) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
-    t.bigint "post_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["post_id"], name: "index_categories_on_post_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -121,16 +129,20 @@ ActiveRecord::Schema.define(version: 2022_05_24_185115) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug"
+    t.integer "status", default: 0, null: false
     t.index ["slug"], name: "index_pets_on_slug", unique: true
     t.index ["user_id"], name: "index_pets_on_user_id"
   end
 
   create_table "places", force: :cascade do |t|
     t.string "name"
+    t.string "address"
     t.float "latitude"
     t.float "longitude"
+    t.bigint "pet_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["pet_id"], name: "index_places_on_pet_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -140,6 +152,10 @@ ActiveRecord::Schema.define(version: 2022_05_24_185115) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "category_id", null: false
+    t.bigint "pet_id", null: false
+    t.index ["category_id"], name: "index_posts_on_category_id"
+    t.index ["pet_id"], name: "index_posts_on_pet_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -151,9 +167,15 @@ ActiveRecord::Schema.define(version: 2022_05_24_185115) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "name"
     t.boolean "admin", default: false
+    t.string "name"
     t.string "slug"
+    t.boolean "allow_email"
+    t.string "phone"
+    t.string "telegram"
+    t.string "viber"
+    t.string "facebook"
+    t.string "instagram"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["slug"], name: "index_users_on_slug", unique: true
@@ -161,7 +183,6 @@ ActiveRecord::Schema.define(version: 2022_05_24_185115) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "categories", "posts"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "likes", "comments"
@@ -172,5 +193,8 @@ ActiveRecord::Schema.define(version: 2022_05_24_185115) do
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
   add_foreign_key "pets", "users"
+  add_foreign_key "places", "pets"
+  add_foreign_key "posts", "categories"
+  add_foreign_key "posts", "pets"
   add_foreign_key "posts", "users"
 end

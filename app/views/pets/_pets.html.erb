@@ -1,28 +1,46 @@
-<h2><%= @user.name %></h2>
+<h2 class="text-center"><%= @user.name %></h2>
 <% if current_user.id == @user.id %>
-  <h5 class="mt-4"><%= t('.yourpets_html') %></h5>
+  <h5 class="mt-4 text-center"><%= t('.yourpets_html') %></h5>
 <% end %>
 <p id='your-pets'></p>
 <% if current_user.pets.count == 0 %>
   <p><%= t('.descr_html') %></p>
 <% else %>
   <% @user.pets.each do |pet| %>
-    <div id="pet-<%= pet.id %>">
+    <div class="d-flex justify-content-center" id="pet-<%= pet.id %>">
       <span>
+          <% if pet.lost? %>
+        <span class="badge alert-danger"><%= (pet.status).titleize %></span>
+          <% elsif pet.found? %>
+          <span class="badge alert-warning"><%= (pet.status).titleize %></span>
+          <% elsif pet.to_adopt? %>
+        <span class="badge alert-primary"><%= (pet.status).titleize %></span>
+          <% elsif pet.adopted? %>
+         <span class="badge alert-muted"><%= (pet.status).titleize %></span>
+      <% end %>
         <%= link_to user_pet_path(pet.user, pet) do %>
-        <% if pet.avatar.attached? %>
-          <%= image_tag pet.avatar, width: '50px', height: '50px', class: 'rounded-circle border border-dark mt-2 mb-2' %>
+          <% if pet.avatar.attached? %>
+          <%= image_tag pet.avatar, width: '50px', height: '50px', style: 'object-fit: cover;', class: 'rounded-circle border border-dark mt-2 mb-2' %>
         <% else %>
-          <%= image_tag("paw-print.png", height: '50', width: '50', class: 'rounded-circle border border-dark mt-2 mb-2') %>
+          <% if pet.cat? %>
+          <%= image_tag("cat.jpg", width: '50px', height: '50px', style: 'object-fit: cover;', class: 'rounded-circle border border-dark mt-2 mb-2') %>
+        <% elsif pet.dog? %>
+          <%= image_tag("dog.jpg", width: '50px', height: '50px', style: 'object-fit: cover;', class: 'rounded-circle border border-dark mt-2 mb-2') %>
         <% end %>
-
+        <% end %>
           <span class="pet-link text-dark"><%= pet.name %></span>
-
           <% end %>
         <% if current_user.id == @user.id %>
         <%= link_to '', edit_user_pet_path(@user, pet), class: 'fa-solid fa-pen-to-square text-dark text-decoration-none' %>
           <%= link_to '', user_pet_path(@user, pet), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: 'fa-solid fa-trash text-dark text-decoration-none', id: 'pet-item' %>
-      <% end %>
+          <% if pet.lost? %>
+          <%= link_to 'My Pet was Found', find_pet_user_pet_path(@user, pet), method: :post, data: { confirm: 'Have you really found your pet?' }, class: 'ms-2 text-success text-decoration-underline' %>
+          <% elsif pet.found? %>
+           <%= link_to 'Pet Master was Found', find_master_user_pet_path(@user, pet), method: :post, data: { confirm: 'Have you really found pet master?' }, class: 'ms-2 text-success text-decoration-underline' %>
+          <% elsif pet.to_adopt? %>
+          <%= link_to 'Pet was Adopted', adopt_pet_user_pet_path(@user, pet), method: :post, data: { confirm: 'Is the pet really adopted?' }, class: 'ms-2 text-success text-decoration-underline' %>
+        <% end %>
+        <% end %>
           </span>
     </div>
   <% end %>
