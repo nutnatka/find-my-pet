@@ -1,32 +1,45 @@
-<%= form_with model: @post, local: true do |f| %>
+<div class="row justify-content-center">
+  <div class="col-7">
+    <h4 class="text-center mt-5">Provide Recommendation:</h4>
 
-  <% if @post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+    <%= form_with model: @post, local: true do |f| %>
 
-      <ul>
-        <% @post.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+      <div class="text-center text-danger h5">
+        <% if @post.errors.any? %>
+          <% @post.errors.each do |error| %>
+            <%= error.full_message %>
+          <% end %>
         <% end %>
-      </ul>
-    </div>
-  <% end %>
+      </div>
 
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title, class: "form-control" %>
-  </div>
+      <div class="field mb-2">
+        <%= f.label :title, 'Please name the recommendation:' %>
+        <%= f.text_field :title, class: "form-control", required: true %>
+      </div>
 
-  <div class="field">
-    <%= f.label :content %>
-    <%= f.rich_text_area :content %>
-  </div>
+      <% if @pets.present? %>
+        <div class="field mb-2 d-none">
+          <%= f.label :title, 'Please, select the pet:' %>
+          <%= f.collection_select(:pet_id, @pets, :id, :name, {}, { class: 'form-select' }) %>
+        </div>
+      <% else %>
+        <p class="mt-4">You have to add at leat one pet to share recommendations. This can be done on your
+          <%= link_to 'profile page', current_user, class: 'text-dark text-decoration-underline' %>.</p>
+      <% end %>
 
-  <div class="field d-none">
-    <%= f.collection_select(:category_id, Category.all, :id, :name) %>
-  </div>
+      <div class="field mb-2">
+        <%= f.label :content, 'Please share recommendation:' %>
+        <%= f.rich_text_area :content, class: "form-control" %>
+      </div>
 
-  <div class="form_action row">
-    <%= f.submit "Post", class: "btn col-sm-12 submit_btn" %>
+
+      <div class="field d-none">
+        <%= f.collection_select(:category_id, Category.all, :id, :name) %>
+      </div>
+
+      <div class="form_action text-center">
+        <%= f.submit "Publish", class: "btn btn-dark" %>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>

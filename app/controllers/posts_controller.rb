@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
+  after_action :change_pet_status, only: [:create]
 
   def index
     if params.has_key?(:category)
@@ -16,6 +17,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new(category_id: params[:category_id])
+    @pets = (Pet.where(user: current_user)).order(:name)
   end
 
   def create
@@ -31,6 +33,19 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :content, :category_id)
+    params.require(:post).permit(:title, :content, :category_id, :pet_id)
+  end
+
+  def change_pet_status
+    @pet = @post.pet
+    unless @pet.nil?
+         if @post.category.name == 'lost_pets'
+           @pet.lost!
+         elsif @post.category.name == 'found_pets'
+           @pet.found!
+         elsif @post.category.name == 'pets_to_adopt'
+           @pet.to_adopt!
+         end
+    end
   end
 end

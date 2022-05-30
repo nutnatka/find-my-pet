@@ -14,11 +14,11 @@
 class Post < ApplicationRecord
   belongs_to :user
   belongs_to :category
+  belongs_to :pet
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_rich_text :content
 
-  validates :title, :content, :category_id, presence: true
-
-  paginates_per 6
+  validates :title, :category_id, presence: true
+  paginates_per 12
 end

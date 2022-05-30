@@ -1,8 +1,8 @@
 <% provide(:page_title, 'Pet Profile') %>
 <% provide(:profile_active, 'active') %>
 
-<div class="row mt-5">
-  <div class="col-12 text-center col-md-3 col-lg-4 p-0">
+<div class="row mt-2 mt-md-5">
+  <div class="col-12 col-md-4">
     <% if @user.avatar.attached? %>
       <%= image_tag @user.avatar, style: 'width: 100%; object-fit: cover;', class: 'border border-dark' %>
     <% else %>
@@ -10,7 +10,7 @@
     <% end %>
   </div>
 
-  <div class="col-12 text-center col-md-5 col-lg-5 p-0">
+  <div class="col-12 text-center mb-3 mb-sm-0 col-md-5">
     <%= render 'pets/pets' %>
     <% if current_user.id == @user.id %>
       <%= link_to t('.addPet'), user_path, class: 'fa-solid fa-circle-plus text-dark text-decoration-none pet-form-display mb-2 mt-2' %>
@@ -21,14 +21,14 @@
   </div>
 
   <% if current_user.id == @user.id %>
-    <div class="col-12 text-center text-md-end col-md-4 col-lg-2 p-0">
-      <%= link_to "I`ve Lost my Pet", new_post_path(category_id: 8), class: 'btn btn-outline-dark m-2 d-block w-100' %>
-      <%= link_to "I`ve Found a Pet", new_post_path(category_id: 9), class: 'btn btn-outline-dark m-2 d-block w-100' %>
-      <%= link_to "Find Family for a Pet", new_post_path(category_id: 10), class: 'btn btn-outline-dark m-2 d-block w-100' %>
-      <%= link_to "Share Success Story", new_post_path(category_id: 11), class: 'btn btn-outline-dark m-2 d-block w-100' %>
-      <%= link_to "Share Recommendation", new_post_path(category_id: 12), class: 'btn btn-outline-dark m-2 d-block w-100' %>
-      <%= link_to t('.editProfile'), edit_user_registration_path, class: 'btn btn-outline-dark m-2 d-block w-100' %>
-      <%= link_to t('.destroyProfile'), registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-outline-dark m-2 d-block w-100' %>
+    <div class="col-12 text-center col-md-3 text-md-end">
+      <%= link_to "I`ve Lost my Pet", new_post_path(category_id: 8), class: 'btn btn-outline-dark w-100 mb-2' %>
+      <%= link_to "I`ve Found a Pet", new_post_path(category_id: 9), class: 'btn btn-outline-dark w-100 mb-2' %>
+      <%= link_to "Find Family for a Pet", new_post_path(category_id: 10), class: 'btn btn-outline-dark w-100 mb-2' %>
+      <%= link_to "Share Success Story", new_post_path(category_id: 11), class: 'btn btn-outline-dark w-100 mb-2' %>
+      <%= link_to "Share Recommendation", new_post_path(category_id: 12), class: 'btn btn-outline-dark w-100 mb-2' %>
+      <%= link_to t('.editProfile'), edit_user_registration_path, class: 'btn btn-outline-dark w-100 mb-2' %>
+      <%= link_to t('.destroyProfile'), registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-outline-dark w-100 mb-2' %>
     </div>
     </div>
   <% end %>
