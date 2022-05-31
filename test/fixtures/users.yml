@@ -13,6 +13,12 @@
 #  admin                  :boolean          default(FALSE)
 #  name                   :string
 #  slug                   :string
+#  allow_email            :boolean
+#  phone                  :string
+#  telegram               :string
+#  viber                  :string
+#  facebook               :string
+#  instagram              :string
 #
 
 # This model initially had no columns defined. If you add columns to the

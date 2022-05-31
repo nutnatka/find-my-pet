@@ -6,6 +6,5 @@ class AddContactInfoToUsers < ActiveRecord::Migration[6.1]
     add_column :users, :viber, :string
     add_column :users, :facebook, :string
     add_column :users, :instagram, :string
-
   end
 end

@@ -14,10 +14,7 @@ class PetsController < ApplicationController
     @pet = @user.pets.build(pet_params)
     @pet.user = current_user
 
-    if @pet.save
-      redirect_to user_path(current_user), notice: 'The pet has been added.'
-    end
-
+    redirect_to user_path(current_user), notice: 'The pet has been added.' if @pet.save
   end
 
   def edit; end
@@ -35,12 +32,12 @@ class PetsController < ApplicationController
   end
 
   def destroy
-      @pet = current_user.pets.friendly.find(params[:id])
-      @pet.destroy!
+    @pet = current_user.pets.friendly.find(params[:id])
+    @pet.destroy!
 
-      respond_to do |format|
-        format.js { render layout: false }
-      end
+    respond_to do |format|
+      format.js { render layout: false }
+    end
   end
 
   def find_pet
