@@ -12,5 +12,4 @@
 #  updated_at :datetime         not null
 #
 class Place < ApplicationRecord
-  has_many :likes, dependent: :destroy
 end

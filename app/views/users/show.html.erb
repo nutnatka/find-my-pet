@@ -10,7 +10,7 @@
     <% end %>
   </div>
 
-  <div class="col-12 text-center mb-3 mb-sm-0 col-md-5">
+  <div class="col-12 mb-3 mb-sm-0 col-md-5 ps-5 pe-5">
     <%= render 'pets/pets' %>
     <% if current_user.id == @user.id %>
       <%= link_to t('.addPet'), user_path, class: 'fa-solid fa-circle-plus text-dark text-decoration-none pet-form-display mb-2 mt-2' %>

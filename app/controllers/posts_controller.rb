@@ -21,7 +21,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.create(post_params.merge(user_id: current_user.id))
+    @post = current_user.posts.create(post_params)
 
     if @post.save
       redirect_to @post, notice: 'Post has been created'
