@@ -13,6 +13,12 @@
 #  admin                  :boolean          default(FALSE)
 #  name                   :string
 #  slug                   :string
+#  allow_email            :boolean
+#  phone                  :string
+#  telegram               :string
+#  viber                  :string
+#  facebook               :string
+#  instagram              :string
 #
 require 'test_helper'
 
