@@ -11,14 +11,10 @@ class PetsController < ApplicationController
   def show; end
 
   def create
-    @pet = @user.pets.new(pet_params)
+    @pet = @user.pets.build(pet_params)
     @pet.user = current_user
 
-    if @pet.save
-      redirect_to user_path(current_user), notice: 'The pet has been added.'
-    else
-      redirect_to user_path(current_user), notice: 'The pet failed to be created.'
-    end
+    redirect_to user_path(current_user), notice: 'The pet has been added.' if @pet.save
   end
 
   def edit; end
@@ -36,13 +32,11 @@ class PetsController < ApplicationController
   end
 
   def destroy
-    if current_user.id == @user.id
-      @pet = @user.pets.friendly.find(params[:id])
-      @pet.destroy
+    @pet = current_user.pets.friendly.find(params[:id])
+    @pet.destroy!
 
-      respond_to do |format|
-        format.js { render layout: false }
-      end
+    respond_to do |format|
+      format.js { render layout: false }
     end
   end
 
@@ -73,7 +67,7 @@ class PetsController < ApplicationController
   private
 
   def pet_params
-    params.require(:pet).permit(:user_id, :name, :species, :breed, :sex, :sterilized, :date_of_birth, :color, :additional_info, :avatar)
+    params.require(:pet).permit(:user_id, :name, :species, :breed, :sex, :sterilized, :date_of_birth, :color, :additional_info, :avatar, :status)
   end
 
   def set_user
