@@ -33,4 +33,5 @@ database.yml
 # Ignore application configuration
 /config/application.yml
 /config/credentials.yml.enc
+
 /db/schema.rb
