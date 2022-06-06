@@ -11,7 +11,7 @@
             <%= image_tag("dog1.jpg", width: '150px', height: '150px', style: 'object-fit: cover', class: 'border border-dark rounded-circle') %>
           <% end %>
         <% end %>
-        <p class="text-dark mb-2"><b><%= pet.name %></b><br>
+        <p class="text-dark mb-2"><b><%= pet.name %>, the <%= pet.species %></b><br>
           <%= truncate(pet.additional_info, length: 25, omission: '...') %></p>
       <% end %>
     </div>
