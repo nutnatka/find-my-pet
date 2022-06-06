@@ -1,0 +1,35 @@
+<h4 class="text-center mt-5"> All in All ...</h4>
+
+<div class="row mb-5 d-flex align-items-center text-center">
+
+  <div class="col-6 col-sm-4 mt-3 col-lg-2 mt-lg-0 card">
+    <h5 class="p-0 m-0"><%= @users.count %></h5>
+    <h5 class="p-0 m-0"><%= pluralize_without_count(@users.count, 'user') %> added.</h5>
+  </div>
+
+  <div class="col-6 col-sm-4 mt-3 col-lg-2 mt-lg-0 card">
+    <h5 class="p-0 m-0"><%= @pets.count %></h5>
+    <h5 class="p-0 m-0"><%= pluralize_without_count(@pets.count, 'pet') %> added.</h5>
+  </div>
+
+
+  <div class="col-6 col-sm-4 mt-3 col-lg-2 mt-lg-0 card">
+    <h5 class="p-0 m-0"><%= @pets.lost.count %></h5>
+    <h5 class="p-0 m-0"><%= pluralize_without_count(@pets.lost.count, 'pet') %> lost.</h5>
+  </div>
+
+  <div class="col-6 col-sm-4 mt-3 col-lg-2 mt-lg-0 card">
+    <h5 class="p-0 m-0"><%= @pets.home_again.count %></h5>
+    <h5 class="p-0 m-0"><%= pluralize_without_count(@pets.home_again.count, 'pet') %> found.</h5>
+  </div>
+
+  <div class="col-6 col-sm-4 mt-3 col-lg-2 mt-lg-0 card">
+    <h5 class="p-0 m-0"><%= @pets.to_adopt.count %></h5>
+    <h5 class="p-0 m-0"><%= pluralize_without_count(@pets.to_adopt.count, 'pet') %> to adopt.</h5>
+  </div>
+
+  <div class="col-6 col-sm-4 mt-3 col-lg-2 mt-lg-0 card">
+    <h5 class="p-0 m-0"><%= @pets.adopted.count %></h5>
+    <h5 class="p-0 m-0"><%= pluralize_without_count(@pets.adopted.count, 'pet') %> adopted.</h5>
+  </div>
+</div>

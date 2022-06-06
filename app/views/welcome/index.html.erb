@@ -1,5 +1,11 @@
 <% provide(:page_title, 'FindMyPet') %>
 
+<div class="statistics" style="background-color: #ffe5d9;">
+  <div class="container" id="statistics-content">
+    <%= render 'statistics' %>
+  </div>
+</div>
+
 <div id="map">
   <%= google_maps_api_script_initialize %>
   <%= google_maps_api_script_tag %>
