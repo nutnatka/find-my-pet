@@ -17,9 +17,9 @@
       <%= image_tag @pet.avatar, style: 'width: 100%; object-fit: cover;', class: 'border border-dark' %>
     <% else %>
       <% if @pet.cat? %>
-        <%= image_tag("cat.jpg", style: 'width: 100%; object-fit: cover;', class: 'border border-dark') %>
+        <%= image_tag("cat1.jpg", style: 'width: 100%; object-fit: cover;', class: 'border border-dark') %>
       <% elsif @pet.dog? %>
-        <%= image_tag("dog.jpg", style: 'width: 100%; object-fit: cover;', class: 'border border-dark') %>
+        <%= image_tag("dog1.jpg", style: 'width: 100%; object-fit: cover;', class: 'border border-dark') %>
       <% end %>
     <% end %>
   </div>
