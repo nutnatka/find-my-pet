@@ -21,7 +21,16 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = current_user.posts.create(post_params)
+
+    postparams = post_params
+    placeparms = places_params
+    if !placeparms[:place_latitude].nil? && !placeparms[:place_longitude].nil?
+      @place = Place.create(name: placeparms[:place_name], latitude: placeparms[:place_latitude], longitude: placeparms[:place_longitude] )
+      @place.save
+      postparams[:place_id] = @place.id;
+    end
+
+    @post = current_user.posts.create(postparams)
 
     if @post.save
       redirect_to @post, notice: 'Post has been created'
@@ -31,6 +40,10 @@ class PostsController < ApplicationController
   end
 
   private
+
+  def places_params
+    params.require(:post).permit(:place_name, :place_latitude, :place_longitude)
+  end
 
   def post_params
     params.require(:post).permit(:title, :content, :category_id, :pet_id)

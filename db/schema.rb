@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_31_094315) do
+ActiveRecord::Schema.define(version: 2022_06_06_173201) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,8 +55,8 @@ ActiveRecord::Schema.define(version: 2022_05_31_094315) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", precision: 6, default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.datetime "updated_at", precision: 6, default: -> { "CURRENT_TIMESTAMP" }, null: false
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -105,8 +105,10 @@ ActiveRecord::Schema.define(version: 2022_05_31_094315) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "category_id", null: false
     t.bigint "pet_id", null: false
+    t.bigint "place_id"
     t.index ["category_id"], name: "index_posts_on_category_id"
     t.index ["pet_id"], name: "index_posts_on_pet_id"
+    t.index ["place_id"], name: "index_posts_on_place_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -118,8 +120,8 @@ ActiveRecord::Schema.define(version: 2022_05_31_094315) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "admin", default: false
     t.string "name"
+    t.boolean "admin", default: false
     t.string "slug"
     t.boolean "allow_email"
     t.string "phone"
@@ -137,5 +139,6 @@ ActiveRecord::Schema.define(version: 2022_05_31_094315) do
   add_foreign_key "pets", "users"
   add_foreign_key "posts", "categories"
   add_foreign_key "posts", "pets"
+  add_foreign_key "posts", "places"
   add_foreign_key "posts", "users"
 end
