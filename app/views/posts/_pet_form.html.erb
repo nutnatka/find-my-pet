@@ -21,13 +21,15 @@
               <% end %>
             </div>
 
-            <div class="field mb-2">
-              <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-              <%= f.label :name, 'Please, fill the address or set the pont on the map:' %>
-              <%= f.text_field :place_name, class: "form-control", required: true %>
-              <%= f.hidden_field :place_latitude %>
-              <%= f.hidden_field :place_longitude %>
-            </div>
+            <% if @post.category.name == 'lost_pets' || @post.category.name == 'found_pets' %>
+              <div class="field mb-2">
+                <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+                <%= f.label :name, 'Please fill the address or set the point on the map:' %>
+                <%= f.text_field :place_name, class: "form-control", required: true %>
+                <%= f.hidden_field :place_latitude %>
+                <%= f.hidden_field :place_longitude %>
+              </div>
+            <% end %>
 
             <div class="field mb-2">
               <% if @post.category.name == 'pets_to_adopt' %>
@@ -40,7 +42,7 @@
 
             <% if @pets.present? %>
               <div class="field mb-2">
-                <%= f.label :title, 'Please, select the pet:' %>
+                <%= f.label :title, 'Please select the pet:' %>
                 <%= f.collection_select(:pet_id, @pets, :id, :name, { prompt: 'select pet' }, { class: 'form-select', required: true }) %>
               </div>
               <p>If you haven`t added the pet yet, please do so on your
@@ -63,17 +65,19 @@
               <%= f.submit "Publish", class: "btn btn-dark" %>
             </div>
           <% end %>
-        </div>
+          </div>
     </div>
   </div>
-  <div class="col-6">
-    <div id="map-posts">
+  <% if @post.category.name == 'lost_pets' || @post.category.name == 'found_pets' %>
+    <div class="col-6">
+      <div id="map-posts">
 
-      <div id="map">
-        <%= google_maps_api_script_initialize %>
-        <%= google_maps_api_script_tag %>
+        <div id="map">
+          <%= google_maps_api_script_initialize %>
+          <%= google_maps_api_script_tag %>
+        </div>
       </div>
     </div>
-  </div>
+  <% end %>
 </div>
 
