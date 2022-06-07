@@ -6,9 +6,9 @@
           <%= image_tag pet.avatar, width: '150px', height: '150px', style: 'object-fit: cover;', class: 'rounded-circle border border-dark' %>
         <% else %>
           <% if pet.cat? %>
-            <%= image_tag("cat.jpg", width: '150px', height: '150px', style: 'object-fit: cover;', class: 'rounded-circle border border-dark') %>
+            <%= image_tag("cat1.jpg", width: '150px', height: '150px', style: 'object-fit: cover;', class: 'rounded-circle border border-dark') %>
           <% elsif pet.dog? %>
-            <%= image_tag("dog.jpg", width: '150px', height: '150px', style: 'object-fit: cover;', class: 'rounded-circle border border-dark') %>
+            <%= image_tag("dog1.jpg", width: '150px', height: '150px', style: 'object-fit: cover;', class: 'rounded-circle border border-dark') %>
           <% end %>
         <% end %>
         <p class="text-dark mb-2"><b><%= pet.name %></b><br>
