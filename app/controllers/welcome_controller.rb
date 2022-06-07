@@ -3,7 +3,6 @@ class WelcomeController < ApplicationController
 
   def index
     @pets = Pet.all
-    @pets_to_adopt = @pets.to_adopt.last(6)
-    @users = User.all
+    @pets_to_adopt = @pets.to_adopt.order(updated_at: :desc).take(6)
   end
 end

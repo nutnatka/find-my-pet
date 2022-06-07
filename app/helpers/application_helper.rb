@@ -12,7 +12,9 @@ module ApplicationHelper
   end
 
   def pluralize_without_count(count, noun, text = nil)
-    if count != 0
+    if count == 0
+      "#{noun.pluralize}#{text}"
+    else
       count == 1 ? "#{noun}#{text}" : "#{noun.pluralize}#{text}"
     end
   end
