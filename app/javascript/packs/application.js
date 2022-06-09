@@ -22,3 +22,5 @@ require("@rails/actiontext")
 
 require("jquery-mask-plugin")
 $.jMaskGlobals.watchDataMask = true;
+
+import "controllers"

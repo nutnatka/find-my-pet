@@ -1,0 +1,51 @@
+<% if @success_posts.count > 1 %>
+  <h4 class="mt-4 text-center">FOUND PETS SUCCESS STORIES</h4>
+
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      <% @success_posts.each_with_index do |success_story| %>
+        <div class="swiper-slide card mb-5 mt-3 border border-dark">
+          <div class="card-body">
+            <%= link_to post_path(success_story) do %>
+              <h5 class="card-title text-center text-dark mt-2"><%= success_story.title.upcase %></h5>
+              <p class="text-end text-dark">Posted by: <%= success_story.user.name %>
+                <br><%= success_story.created_at.strftime("%B %d, %y at %H %p") %></p>
+              <div class="d-flex flex-column flex-lg-row mt-3 mb-3">
+                <div class="avatar-container col-12 col-lg-3">
+                  <% if success_story.pet.avatar.attached? %>
+                    <%= image_tag success_story.pet.avatar, class: 'w-100 border border-dark', style: 'height: 300px; object-fit: cover' %>
+                  <% else %>
+                    <% if success_story.pet.cat? %>
+                      <%= image_tag("cat1.jpg", class: 'w-100 border border-dark', style: 'height: 300px; object-fit: cover') %>
+                    <% elsif success_story.pet.dog? %>
+                      <%= image_tag("dog1.jpg", class: 'w-100 border border-dark', style: 'height: 300px; object-fit: cover') %>
+                    <% end %>
+                  <% end %>
+            <% end %>
+            </div>
+            <div class="content col-12 ps-0 col-lg-9 ps-lg-5">
+              <p><%= truncate(strip_tags(success_story.content.to_s), length: 1500, omission: '...') %>
+            </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+<% end %>
+<div class="text-center mb-3">
+  <%= link_to 'Go to Blog', posts_path(category: :success_stories), class: 'btn btn-dark' %>
+</div>
+
+<script>
+    var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        loop: true,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+    });
+</script>
