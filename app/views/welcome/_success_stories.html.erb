@@ -25,7 +25,7 @@
                 <h5 class="card-title text-center text-dark mt-4"><%= success_story.title.upcase %></h5>
                 <p class="m-0 p-0 text-end text-dark">Posted by: <%= success_story.user.name %>
                   <br><%= success_story.created_at.strftime("%B %d, %y at %H %p") %></p>
-                <p class="text-center text-lg-start mb-4 mt-5"><%= truncate(strip_tags(success_story.content.to_s), length: 250, omission: '...') %>
+                <p class="text-center text-lg-start mb-4"><%= truncate(strip_tags(success_story.content.to_s), length: 400, omission: '...') %>
               </div>
               <div class="swiper-pagination"></div>
               </div>
