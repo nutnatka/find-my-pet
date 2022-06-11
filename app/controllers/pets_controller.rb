@@ -1,6 +1,6 @@
 class PetsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
-  before_action :set_user, except: [:index]
+  before_action :authenticate_user!, except: :index
+  before_action :set_user, except: :index
   before_action :set_pet, only: %i[edit update show find_pet find_master adopt_pet]
 
   def index
@@ -20,20 +20,16 @@ class PetsController < ApplicationController
   def edit; end
 
   def update
-    if current_user.id == @user.id
-      if @pet.update(pet_params)
-        redirect_to user_path(current_user), notice: 'The pet has been updated.'
-      else
-        render :edit
-      end
+    if current_user == @user && @pet.update(pet_params)
+      redirect_to user_path(current_user), notice: 'The pet has been updated.'
     else
       render :edit
     end
   end
 
   def destroy
-    @pet = current_user.pets.friendly.find(params[:id])
-    @pet.destroy!
+    @pet = current_user.pets.find(params[:id])
+    @pet.destroy
 
     respond_to do |format|
       format.js { render layout: false }
@@ -41,25 +37,28 @@ class PetsController < ApplicationController
   end
 
   def find_pet
-    if current_user.id == @user.id
+    if current_user == @user
+      @posts = @pet.posts.with_lost_pet
+      @posts.destroy_all
       @pet.home_again!
-      @posts = @pet.posts.destroy_by(category_id: 8)
       redirect_to @user, notice: "The pet has been found! You can share the success story by click on the 'Share Success Story' button."
     end
   end
 
   def find_master
-    if current_user.id == @user.id
+    if current_user == @user
+      @posts = @pet.posts.with_found_pet
+      @posts.destroy_all
       @pet.home_again!
-      @posts = @pet.posts.destroy_by(category_id: 9)
       redirect_to @user, notice: "The pet master has been found! You can share the success story by click on the 'Share Success Story' button."
     end
   end
 
   def adopt_pet
-    if current_user.id == @user.id
+    if current_user == @user
+      @posts = @pet.posts.with_pet_to_adopt
+      @posts.destroy_all
       @pet.adopted!
-      @posts = @pet.posts.destroy_by(category_id: 10)
       redirect_to @user, notice: "The pet has found its family! You can share the success story by click on the 'Share Success Story' button."
     end
   end
@@ -71,10 +70,10 @@ class PetsController < ApplicationController
   end
 
   def set_user
-    @user = User.friendly.find(params[:user_id])
+    @user = User.find(params[:user_id])
   end
 
   def set_pet
-    @pet = Pet.friendly.find(params[:id])
+    @pet = Pet.find(params[:id])
   end
 end

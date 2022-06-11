@@ -23,4 +23,9 @@ class Post < ApplicationRecord
   validates :title, :category_id, presence: true
 
   paginates_per 12
+
+  scope :with_lost_pet, -> { joins(:category).merge(Category.lost_pet) }
+  scope :with_found_pet, -> { joins(:category).merge(Category.found_pet) }
+  scope :with_pet_to_adopt, -> { joins(:category).merge(Category.pet_to_adopt) }
+  scope :with_success_stories, -> { joins(:category).merge(Category.success_story) }
 end

@@ -3,11 +3,11 @@
     <div class="row justify-content-center">
       <div class="col-7">
         <h4 class="text-center mt-5">Provide Info
-          <% if @post.category.name == 'lost_pets' %>
+          <% if @post.category_id == 8 %>
             Necessary for Your Pet Search:</h4>
-          <% elsif @post.category.name == 'found_pets' || @post.category.name == 'pets_to_adopt' %>
+          <% elsif @post.category_id == 9 || @post.category_id == 10 %>
             Necessary to Find the Pet`s Master:</h4>
-          <% elsif @post.category.name == 'success_stories' %>
+          <% elsif @post.category_id == 11 %>
             about your Pet Finding History:</h4>
           <% end %>
 
@@ -21,7 +21,7 @@
               <% end %>
             </div>
 
-            <% if @post.category.name == 'lost_pets' || @post.category.name == 'found_pets' %>
+            <% unless @post.category_id == 11 || @post.category_id == 12 %>
               <div class="field mb-2">
                 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
                 <%= f.label :name, 'Please fill the address or set the point on the map:' %>
@@ -32,7 +32,7 @@
             <% end %>
 
             <div class="field mb-2">
-              <% if @post.category.name == 'pets_to_adopt' %>
+              <% if @post.category_id == 10 %>
                 <%= f.label :title, 'Please give the short description of the pet to be adopted:' %>
               <% else %>
                 <%= f.label :title, 'Please give the short description of what has happened:' %>
@@ -68,7 +68,7 @@
           </div>
     </div>
   </div>
-  <% if @post.category.name == 'lost_pets' || @post.category.name == 'found_pets' %>
+  <% if @post.category_id == 8 || @post.category_id == 9 %>
     <div class="col-6">
       <div id="map-posts">
 
