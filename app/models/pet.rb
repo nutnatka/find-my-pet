@@ -18,11 +18,11 @@
 #  status          :integer          default("home"), not null
 #
 class Pet < ApplicationRecord
-  extend FriendlyId
-  friendly_id :slug_candidates, use: [:slugged, :finders]
-
   belongs_to :user
   has_many :posts, dependent: :destroy
+
+  extend FriendlyId
+  friendly_id :slug_candidates, use: :slugged
 
   has_one_attached :avatar
 
