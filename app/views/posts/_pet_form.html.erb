@@ -21,7 +21,7 @@
               <% end %>
             </div>
 
-            <% if @post.category.name == 'lost_pets' || @post.category.name == 'found_pets' %>
+            <% if @post.category.id == 8 || @post.category.id == 9 %>
               <div class="field mb-2">
                 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
                 <%= f.label :name, 'Please fill the address or set the point on the map:' %>
@@ -68,7 +68,7 @@
           </div>
     </div>
   </div>
-  <% if @post.category.name == 'lost_pets' || @post.category.name == 'found_pets' %>
+  <% if @post.category.id == 8 || @post.category.id == 9 %>
     <div class="col-6">
       <div id="map-posts">
         <div id="map">
