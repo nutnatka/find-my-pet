@@ -17,13 +17,6 @@
 
   <div class="card border border-dark pt-3 pb-3 mb-2 col-12 col-sm-5 ms-0 ms-sm-2 me-0 me-sm-2 col-lg-2">
     <%= link_to posts_path(category: :success_stories), class: 'text-dark' do %>
-      <h5 class="p-0 m-0"><%= @pets.found.count %><br><%= pluralize_without_count(@pets.found.count, 'pet') %> found.
-      </h5>
-    <% end %>
-  </div>
-
-  <div class="card border border-dark pt-3 pb-3 mb-2 col-12 col-sm-5 ms-0 ms-sm-2 me-0 me-sm-2 col-lg-2">
-    <%= link_to posts_path(category: :success_stories), class: 'text-dark' do %>
       <h5 class="p-0 m-0"><%= @pets.home_again.count %><br><%= pluralize_without_count(@pets.home_again.count, 'pet') %>
         home again.</h5>
     <% end %>
