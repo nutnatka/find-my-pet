@@ -6,14 +6,10 @@
     <% @lost_posts.each do |lost_post| %>
       <div class="card p-0 m-4 border border-dark col-10 col-md-5 col-lg-3">
 
-        <% if lost_post.pet.avatar.attached? %>
-          <%= image_tag lost_post.pet.avatar, class: 'card-img-top w-100 rounded-0', style: 'height: 200px; object-fit: cover' %>
-        <% else %>
-          <% if lost_post.pet.cat? %>
-            <%= image_tag("cat1.jpg", class: 'card-img-top w-100 rounded-0', style: 'height: 200px; object-fit: cover') %>
-          <% elsif lost_post.pet.dog? %>
-            <%= image_tag("dog1.jpg", class: 'card-img-top w-100 rounded-0', style: 'height: 200px; object-fit: cover') %>
-          <% end %>
+        <% if lost_post.pet.cat? %>
+          <%= image_tag("cat1.jpg", class: 'card-img-top w-100 rounded-0', style: 'height: 200px; object-fit: cover') %>
+        <% elsif lost_post.pet.dog? %>
+          <%= image_tag("dog1.jpg", class: 'card-img-top w-100 rounded-0', style: 'height: 200px; object-fit: cover') %>
         <% end %>
 
         <div class="card-body">
