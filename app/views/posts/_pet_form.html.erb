@@ -1,3 +1,6 @@
+<script type="text/javascript" src="/assets/petForm.js" charset="utf-8">
+
+</script>
 <div class="row">
   <div class="col-6">
     <div class="row justify-content-center">
@@ -63,15 +66,14 @@
               <%= f.submit "Publish", class: "btn btn-dark" %>
             </div>
           <% end %>
-        </div>
++          </div>
     </div>
   </div>
   <div class="col-6">
     <div id="map-posts">
-
       <div id="map">
-        <%= google_maps_api_script_initialize %>
-        <%= google_maps_api_script_tag %>
+        <%= google_maps_tag 'google_maps_posts' %>
+        <%= google_maps_initialize '_posts' %>
       </div>
     </div>
   </div>
