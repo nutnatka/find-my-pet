@@ -10,3 +10,11 @@ Place.create!([
                 { name: 'Westminster Abbey', latitude: 51.499581, longitude: -0.127309 },
                 { name: 'Big Ben', latitude: 51.500792, longitude: -0.124613 }
               ])
+
+Category.create!([
+                { name: 'lost_pets', id: '8' },
+                { name: 'found_pets', id: '9' },
+                { name: 'pets_to_adopt', id: '10'},
+                { name: 'success_stories', id: '11'},
+                { name: 'recommendations', id: '12'}
+              ])
