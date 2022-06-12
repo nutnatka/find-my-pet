@@ -77,16 +77,4 @@ function initAutocomplete(map, marker) {
 
     });
 
-    // strictBoundsInputElement.addEventListener("change", () => {
-    //     autocomplete.setOptions({
-    //         strictBounds: strictBoundsInputElement.checked,
-    //     });
-    //     if (strictBoundsInputElement.checked) {
-    //         biasInputElement.checked = strictBoundsInputElement.checked;
-    //         autocomplete.bindTo("bounds", map);
-    //     }
-    //
-    //     input.value = "";
-    // });
-
 }
