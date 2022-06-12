@@ -1,32 +1,33 @@
+
 <% @posts.each do |post| %>
   <div class="col-12 col-sm-6 col-md-4 col-lg-3 p-3">
     <div class="card p-0 h-100">
       <%= link_to post_path(post) do %>
         <% if post.category.name == 'recommendations' %>
-          <%= image_tag('catndog.jpg', class: 'card-img-top w-100 rounded-0', style: 'height: 300px; object-fit: cover') %>
+          <%= image_tag('catndog.jpg', class: 'card-img-top') %>
         <% else %>
           <% if post.pet.avatar.attached? %>
-            <%= image_tag post.pet.avatar, class: 'card-img-top w-100 rounded-0', style: 'height: 300px; object-fit: cover' %>
+            <%= image_tag post.pet.avatar, class: 'card-img-top' %>
           <% else %>
             <% if post.pet.cat? %>
-              <%= image_tag("cat1.jpg", class: 'card-img-top w-100 rounded-0', style: 'height: 300px; object-fit: cover') %>
+              <%= image_tag("cat1.jpg", class: 'card-img-top') %>
             <% elsif post.pet.dog? %>
-              <%= image_tag("dog1.jpg", class: 'card-img-top w-100 rounded-0', style: 'height: 300px; object-fit: cover') %>
+              <%= image_tag("dog1.jpg", class: 'card-img-top') %>
             <% end %>
           <% end %>
         <% end %>
         <div class="card-body text-dark">
-          <p class="posted-by p-0 m-0 mb-2">Posted by <%= post.user.name %> <%= time_ago_in_words(post.created_at) %>
-            ago</p>
-          <h5 class="card-title fw-bold text-center p-0 m-0"><%= post.title %></h5>
-          <p class="card-text"><%= truncate(strip_tags(post.content.to_s), length: 100, omission: '...') %><br>
-            <% if post.pet.lost? || post.pet.found? %>The place where the pet was lost: <%= post.place.name unless post.place.nil? %><br>
-              The date when the pet was lost:<br>
-            <% end %></p>
-
-
+          <p class="posted-by">Posted by <%= post.user.name %> <%= time_ago_in_words(post.created_at) %> ago</p>
+          <h5 class="card-title fw-bold text-center"><%= post.title %></h5>
+          <p class="card-text"><%= truncate(strip_tags(post.content.to_s), length: 100, omission: '...') %>
         </div>
       <% end %>
+        <%= post.place.name unless post.place.nil?%>
+        <br>
+        <%= post.place.latitude unless post.place.nil?%>
+        <br>
+        <%= post.place.longitude unless post.place.nil?%>
+        <br>
     </div>
   </div>
 <% end %>

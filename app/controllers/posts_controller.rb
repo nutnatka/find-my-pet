@@ -17,10 +17,11 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new(category_id: params[:category_id])
-    @pets = Pet.where(user: current_user).order(:name)
+    @pets = (Pet.where(user: current_user)).order(:name)
   end
 
   def create
+
     postparams = post_params
     placeparms = places_params
     if !placeparms[:place_latitude].nil? && !placeparms[:place_longitude].nil?
@@ -45,7 +46,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content, :category_id, :pet_id, :date)
+    params.require(:post).permit(:title, :content, :category_id, :pet_id)
   end
 
   def change_pet_status

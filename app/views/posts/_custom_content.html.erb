@@ -1,0 +1,59 @@
+<% if @posts.count == 0 %>
+  <p>At the moment, there are no posts available.</p>
+<% else %>
+  <% if params['category'] == 'lost_pets' %>
+    <div class="row d-flex justify-content-between align-items-center">
+      <div class="col-sm-6 col-md-8 col-xl-10">
+        <p class="m-0">Here are some lost pets. Please, click on the post to get more details. Probably, you are the one
+          who can help the pet to see its master again.</p>
+      </div>
+      <div class="col-sm-6 mt-2 mt-sm-0 text-center col-md-4 col-xl-2 text-sm-end">
+        <%= button_to 'I`ve Lost my Pet!', new_posts_post_path(category_id: 8), class: 'btn btn-dark' %>
+      </div>
+    </div>
+  <% end %>
+  <% if params['category'] == 'found_pets' %>
+    <div class="row d-flex justify-content-between align-items-center">
+      <div class="col-sm-6 col-md-8 col-xl-10">
+        <p class="m-0">Here are some found pets. They are looking for their masters. Please, click on the post to get
+          more details.</p>
+      </div>
+      <div class="col-sm-6 mt-2 mt-sm-0 text-center col-md-4 col-xl-2 text-sm-end">
+        <%= button_to 'I`ve Found a Pet!', new_posts_post_path(category_id: 9), class: 'btn btn-dark' %>
+      </div>
+    </div>
+  <% end %>
+  <% if params['category'] == 'pets_to_adopt' %>
+    <div class="row d-flex justify-content-between align-items-center">
+      <div class="col-sm-6 col-md-8 col-xl-10">
+        <p class="m-0">Here are some pets looking for a family. Please, click on the post to get
+          more details. Probably, there is a pet looking for you!</p>
+      </div>
+      <div class="col-sm-6 mt-2 mt-sm-0 text-center col-md-4 col-xl-2 text-sm-end">
+        <%= button_to 'I Have a Pet to Adopt', new_posts_post_path(category_id: 10), class: 'btn btn-dark' %>
+      </div>
+    </div>
+  <% end %>
+  <% if params['category'] == 'success_stories' %>
+    <div class="row d-flex justify-content-between align-items-center">
+      <div class="col-sm-6 col-md-8 col-xl-10">
+        <p class="m-0">Here are some success stories of those who found their pets! It`s always a good idea to share
+          happiness.</p>
+      </div>
+      <div class="col-sm-6 mt-2 mt-sm-0 text-center col-md-4 col-xl-2 text-sm-end">
+        <%= button_to 'I Have a Story to Tell', new_posts_post_path(category_id: 11), class: 'btn btn-dark' %>
+      </div>
+    </div>
+  <% end %>
+  <% if params['category'] == 'recommendations' %>
+    <div class="row d-flex justify-content-between align-items-center">
+      <div class="col-sm-6 col-md-8 col-xl-10">
+        <p class="m-0">Here are some some tips from experienced pet friends. Probably, you`ll find something useful
+          here.</p>
+      </div>
+      <div class="col-sm-6 mt-2 mt-sm-0 text-center col-md-4 col-xl-2 text-sm-end">
+        <%= button_to 'Share Recommendation', new_posts_post_path(category_id: 12), class: 'btn btn-dark' %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

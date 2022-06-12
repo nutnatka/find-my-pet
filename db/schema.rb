@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_11_220159) do
+ActiveRecord::Schema.define(version: 2022_06_06_173201) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,7 +57,6 @@ ActiveRecord::Schema.define(version: 2022_06_11_220159) do
     t.string "name"
     t.datetime "created_at", precision: 6, default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.datetime "updated_at", precision: 6, default: -> { "CURRENT_TIMESTAMP" }, null: false
-    t.index ["name"], name: "index_categories_on_name", unique: true
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -107,7 +106,6 @@ ActiveRecord::Schema.define(version: 2022_06_11_220159) do
     t.bigint "category_id", null: false
     t.bigint "pet_id", null: false
     t.bigint "place_id"
-    t.date "date"
     t.index ["category_id"], name: "index_posts_on_category_id"
     t.index ["pet_id"], name: "index_posts_on_pet_id"
     t.index ["place_id"], name: "index_posts_on_place_id"

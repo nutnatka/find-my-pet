@@ -15,20 +15,12 @@
 class Post < ApplicationRecord
   belongs_to :user
   belongs_to :category
-  belongs_to :pet, optional: true
-  belongs_to :place, optional: true
+  belongs_to :pet
+  belongs_to :place
 
   has_rich_text :content
 
   validates :title, :category_id, presence: true
-  validates :pet_id, :place_id, presence: true, allow_nil: true
-
 
   paginates_per 12
-
-  scope :with_lost_pet, -> { joins(:category).merge(Category.lost_pet) }
-  scope :with_found_pet, -> { joins(:category).merge(Category.found_pet) }
-  scope :with_pet_to_adopt, -> { joins(:category).merge(Category.pet_to_adopt) }
-  scope :with_success_stories, -> { joins(:category).merge(Category.success_story) }
-  scope :with_recommendations, -> { joins(:category).merge(Category.recommendation) }
 end

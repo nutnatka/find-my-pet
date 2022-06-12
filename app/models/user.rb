@@ -21,9 +21,6 @@
 #  instagram              :string
 #
 class User < ApplicationRecord
-  extend FriendlyId
-  friendly_id :slug_candidates, use: [:slugged, :finders]
-
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -33,6 +30,9 @@ class User < ApplicationRecord
     assoc.has_many :pets
     assoc.has_many :posts
   end
+
+  extend FriendlyId
+  friendly_id :slug_candidates, use: :slugged
 
   has_one_attached :avatar
 
