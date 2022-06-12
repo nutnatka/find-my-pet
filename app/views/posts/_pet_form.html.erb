@@ -1,82 +1,96 @@
-<div class="row">
-  <div class="col-6">
-    <div class="row justify-content-center">
-      <div class="col-7">
-        <h4 class="text-center mt-5">Provide Info
-          <% if @post.category.name == 'lost_pets' %>
-            Necessary for Your Pet Search:</h4>
-          <% elsif @post.category.name == 'found_pets' || @post.category.name == 'pets_to_adopt' %>
-            Necessary to Find the Pet`s Master:</h4>
-          <% elsif @post.category.name == 'success_stories' %>
-            about your Pet Finding History:</h4>
-          <% end %>
+<h4 class="text-center mt-2">Provide Info
+  <% if @post.category_id == 8 %>
+    Necessary for Your Pet Search:</h4>
+  <% elsif @post.category_id == 9 || @post.category_id == 10 %>
+    Necessary to Find the Pet`s Master:</h4>
+  <% elsif @post.category_id == 11 %>
+    about your Pet Finding History:</h4>
+  <% end %>
 
-
-          <%= form_with model: @post, local: true do |f| %>
-            <div class="text-center text-danger h5">
-              <% if @post.errors.any? %>
-                <% @post.errors.each do |error| %>
-                  <%= error.full_message %>
-                <% end %>
-              <% end %>
-            </div>
-
-            <% if @post.category.id == 8 || @post.category.id == 9 %>
-              <div class="field mb-2">
-                <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-                <%= f.label :name, 'Please fill the address or set the point on the map:' %>
-                <%= f.text_field :place_name, class: "form-control", required: true %>
-                <%= f.hidden_field :place_latitude %>
-                <%= f.hidden_field :place_longitude %>
-              </div>
-            <% end %>
-
-            <div class="field mb-2">
-              <% if @post.category.name == 'pets_to_adopt' %>
-                <%= f.label :title, 'Please give the short description of the pet to be adopted:' %>
-              <% else %>
-                <%= f.label :title, 'Please give the short description of what has happened:' %>
-              <% end %>
-              <%= f.text_field :title, class: "form-control", required: true %>
-            </div>
-
-            <% if @pets.present? %>
-              <div class="field mb-2">
-                <%= f.label :title, 'Please select the pet:' %>
-                <%= f.collection_select(:pet_id, @pets, :id, :name, { prompt: 'select pet' }, { class: 'form-select', required: true }) %>
-              </div>
-              <p>If you haven`t added the pet yet, please do so on your
-                <%= link_to 'profile page', current_user, class: 'text-dark text-decoration-underline' %>.</p>
-            <% else %>
-              <p>Please add pet on your
-                <%= link_to 'profile page', current_user, class: 'text-dark text-decoration-underline' %> first.</p>
-            <% end %>
-
-            <div class="field mb-2">
-              <%= f.label :content, 'Please give details:' %>
-              <%= f.rich_text_area :content, class: "form-control" %>
-            </div>
-
-            <div class="field d-none">
-              <%= f.collection_select(:category_id, Category.all, :id, :name) %>
-            </div>
-
-            <div class="form_action text-center">
-              <%= f.submit "Publish", class: "btn btn-dark" %>
-            </div>
-          <% end %>
-        </div>
+  <%= form_with model: @post, local: true do |f| %>
+    <div class="text-center text-danger h5">
+      <% if @post.errors.any? %>
+        <% @post.errors.each do |error| %>
+          <%= error.full_message %>
+        <% end %>
+      <% end %>
     </div>
-  </div>
-  <% if @post.category.id == 8 || @post.category.id == 9 %>
-    <div class="col-6">
-      <div id="map-posts">
-        <div id="map">
-          <%= google_maps_tag '_posts' %>
-          <%= google_maps_initialize '_posts' %>
+
+    <div class="d-flex flex-column flex-md-row justify-content-between mt-4">
+      <div class="col-5">
+        <div class="field mb-2">
+          <% if @post.category_id == 10 %>
+            <%= f.label :title, 'Please give the short description of the pet to be adopted:' %>
+          <% else %>
+            <%= f.label :title, 'Please give the short description of what has happened:' %>
+          <% end %>
+          <%= f.text_field :title, class: "form-control", required: true, placeholder: 'post title' %>
+        </div>
+
+        <% if @pets.present? %>
+          <div class="field mb-2">
+            <%= f.label :title, 'Please select the pet:' %>
+            <%= f.collection_select(:pet_id, @pets, :id, :name, { prompt: 'select pet' }, { class: 'form-select', required: true }) %>
+          </div>
+          <p>If you haven`t added the pet yet, please do so on your
+            <%= link_to 'profile page', current_user, class: 'text-dark text-decoration-underline' %>.</p>
+        <% else %>
+          <p>Please add pet on your
+            <%= link_to 'profile page', current_user, class: 'text-dark text-decoration-underline' %> first.</p>
+        <% end %>
+
+        <% if @post.category_id == 8 || @post.category_id == 9 %>
+          <div class="field mb-2">
+            <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+            <%= f.label :name, 'Please fill the address or set the point on the map:' %>
+            <%= f.text_field :place_name, class: "form-control", required: true %>
+            <%= f.hidden_field :place_latitude %>
+            <%= f.hidden_field :place_longitude %>
+          </div>
+
+          <div class="field mb-2">
+            <%= f.label :date, 'Please select date:' %>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text fa-solid fa-calendar-days" , style="background-color: white;"></div>
+              </div>
+              <%= f.text_field :date, class: 'form-control', required: true, style: 'background-color: white;', placeholder: 'select date',
+                               data: {
+                                 controller: "flatpickr",
+                                 flatpickr_date_format: "%B %d %Y",
+                                 flatpickr_min_date: Time.zone.now - 30.days,
+                                 flatpickr_max_date: Time.zone.now } %>
+            </div>
+          </div>
+
+          <p>Please make sure you`ve provided your contact info.<br>
+            This can be done on your
+            <%= link_to 'profile', current_user, class: 'text-dark text-decoration-underline' %> page.</p>
+        <% end %>
+
+        <div class="field d-none">
+          <%= f.collection_select(:category_id, Category.all, :id, :name) %>
         </div>
       </div>
+
+      <% if @post.category_id == 8 || @post.category_id == 9 %>
+        <div class="col-6 border border-muted">
+          <div id="map-posts">
+            <div id="map">
+              <%= google_maps_tag '_posts' %>
+              <%= google_maps_initialize '_posts' %>
+         </div>
+          </div>
+      <% end %>
+      </div>
+    </div>
+
+    <div class="field mb-2">
+      <%= f.label :content, 'Please give details:' %>
+      <%= f.rich_text_area :content, class: "form-control", placeholder: 'Share your story here' %>
+    </div>
+
+    <div class="form_action text-center">
+      <%= f.submit "Publish", class: "btn btn-dark" %>
     </div>
   <% end %>
-</div>
-

@@ -18,16 +18,16 @@
 #  status          :integer          default("home"), not null
 #
 class Pet < ApplicationRecord
+  extend FriendlyId
+  friendly_id :slug_candidates, use: [:slugged, :finders]
+
   belongs_to :user
   has_many :posts, dependent: :destroy
-
-  extend FriendlyId
-  friendly_id :slug_candidates, use: :slugged
 
   has_one_attached :avatar
 
   validates :avatar, file_size: { less_than_or_equal_to: 10.megabytes, message: 'is too big. It should be less than %{count}' },
-                     file_content_type: { allow: %w[image/jpeg image/png image/gif], message: 'only allows jpeg, png and gif' }
+            file_content_type: { allow: %w[image/jpeg image/png image/gif], message: 'only allows jpeg, png and gif' }
   validates :name, :species, :sex, :color, :status, presence: true
 
   enum species: { cat: 1, dog: 2 }
