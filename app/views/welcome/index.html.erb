@@ -1,5 +1,11 @@
 <% provide(:page_title, 'FindMyPet') %>
 
+<div class="statistics" style="background-color: #ffe5d9;">
+  <div class="container" id="statistics-content">
+    <%= render 'statistics' %>
+  </div>
+</div>
+
 <div id="map-index">
   <div hidden>
     <% Place.all.each do |place| %>
@@ -14,8 +20,7 @@
     <%= google_maps_tag %>
     <%= google_maps_initialize %>
   </div>
-</div>
-
+  
 <% unless signed_in? %>
   <div class="get-started-section text-center" style="background-color: #ffe5d9;">
     <div class="container pb-5">
@@ -26,33 +31,23 @@
   </div>
 <% end %>
 
-<% if @pets.any? %>
+<% if @pets.to_adopt.any? %>
   <div class="new-friends-section text-center" id="main-container">
     <div class="container mb-5">
       <h4 class="pt-5 pb-5"><%= t('.looking_html') %></h4>
-      <div class="pets-container d-flex justify-content-around row mb-3">
-        <% @pets.each do |pet| %>
-          <div class="pet-container col-8 col-sm-5 col-md-4 col-lg-3 col-xl-2">
-            <%= link_to user_pet_path(pet.user, pet) do %>
-              <% if pet.avatar.attached? %>
-                <%= image_tag pet.avatar, width: '150px', height: '150px', style: 'object-fit: cover', class: 'border border-dark rounded-circle' %>
-              <% else %>
-                <% if pet.cat? %>
-                  <%= image_tag("cat.jpg", width: '150px', height: '150px', style: 'object-fit: cover', class: 'border border-dark rounded-circle') %>
-                <% elsif pet.dog? %>
-                  <%= image_tag("dog.jpg", width: '150px', height: '150px', style: 'object-fit: cover', class: 'border border-dark rounded-circle') %>
-                <% end %>
-              <% end %>
-              <p class="text-dark mb-2"><b><%= pet.name %></b><br>
-                <%= truncate(pet.additional_info, length: 25, omission: '...') %></p>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
-      <div class="pet-actions d-flex flex-column flex-sm-row justify-content-evenly">
-        <%= link_to 'Find More Friends', user_pets_path(@pets), class: 'btn btn-dark m-2' %>
-        <%= link_to 'Adopt a Pet', root_path, class: 'btn btn-outline-dark m-2' %>
-      </div>
+      <%= render 'friends' %>
     </div>
   </div>
 <% end %>
+
+<div class="success-stories-section" style="background-color: #ffe5d9;">
+  <div class="container">
+    <%= render 'success_stories' %>
+  </div>
+</div>
+
+<div class="recently-lost-pets">
+  <div class="container">
+    <%= render 'lost_pets' %>
+  </div>
+</div>

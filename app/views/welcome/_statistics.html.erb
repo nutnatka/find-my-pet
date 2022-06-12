@@ -1,0 +1,44 @@
+<h4 class="text-center mt-5"> All in All ...</h4>
+
+<div class="row mb-5 d-flex align-items-center text-center ms-2 me-2">
+
+  <div class="col-6 col-sm-4 mt-3 col-lg-2 mt-lg-0 card" style="background-color: #ffe5d9;">
+    <%= link_to user_pets_path(@pets), class: 'text-dark' do %>
+      <h5 class="p-0 m-0"><%= @pets.count %><br><%= pluralize_without_count(@pets.count, 'pet') %> added.</h5>
+    <% end %>
+  </div>
+
+
+  <div class="col-6 col-sm-4 mt-3 col-lg-2 mt-lg-0 card" style="background-color: #ffe5d9;">
+    <%= link_to posts_path(category: :lost_pets), class: 'text-dark' do %>
+      <h5 class="p-0 m-0"><%= @pets.lost.count %><br><%= pluralize_without_count(@pets.lost.count, 'pet') %> lost.</h5>
+    <% end %>
+  </div>
+
+  <div class="col-6 col-sm-4 mt-3 col-lg-2 mt-lg-0 card" style="background-color: #ffe5d9;">
+    <%= link_to posts_path(category: :success_stories), class: 'text-dark' do %>
+      <h5 class="p-0 m-0"><%= @pets.found.count %><br><%= pluralize_without_count(@pets.found.count, 'pet') %> found.</h5>
+    <% end %>
+  </div>
+
+  <div class="col-6 col-sm-4 mt-3 col-lg-2 mt-lg-0 card" style="background-color: #ffe5d9;">
+    <%= link_to posts_path(category: :success_stories), class: 'text-dark' do %>
+      <h5 class="p-0 m-0"><%= @pets.home_again.count %><br><%= pluralize_without_count(@pets.home_again.count, 'pet') %>
+        home again.</h5>
+    <% end %>
+  </div>
+
+  <div class="col-6 col-sm-4 mt-3 col-lg-2 mt-lg-0 card" style="background-color: #ffe5d9;">
+    <%= link_to posts_path(category: :pets_to_adopt), class: 'text-dark' do %>
+      <h5 class="p-0 m-0"><%= @pets.to_adopt.count %><br><%= pluralize_without_count(@pets.to_adopt.count, 'pet') %> to
+        adopt.</h5>
+    <% end %>
+  </div>
+
+  <div class="col-6 col-sm-4 mt-3 col-lg-2 mt-lg-0 card" style="background-color: #ffe5d9;">
+    <%= link_to posts_path(category: :success_stories), class: 'text-dark' do %>
+      <h5 class="p-0 m-0"><%= @pets.adopted.count %><br><%= pluralize_without_count(@pets.adopted.count, 'pet') %>
+        adopted.</h5>
+    <% end %>
+  </div>
+</div>
