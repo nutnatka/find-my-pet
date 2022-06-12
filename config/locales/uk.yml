@@ -7,6 +7,11 @@ uk:
       addPet: Додати тваринку
       editProfile: Змінити профіль
       destroyProfile: Видалити профіль
+      recommendationPost: Поділитися рекомендацією
+      successPost: Розповісти про порятунок
+      adoptPost: Знайти улюбленцю сім'ю
+      foundPost: Шукати власника улюбленця
+      lostPost: Почати пошук улюбленця
   pets:
     pets:
       descr_html: >
@@ -26,7 +31,7 @@ uk:
       click_html: >
         Натисніть тут, щоб завантажити аватар вихованця
       please_html: >
-       Будь ласка, використовуйте файли jpeg, png або gif розміром менше 150 КБ.
+        Будь ласка, використовуйте файли jpeg, png або gif розміром менше 150 КБ.
       pet:
         Мій вихованець стерилізований
       birthday_html:
@@ -41,9 +46,60 @@ uk:
       moment.html: >
         На даний момент у вас немає домашніх тварин. Щоб додати свого вихованця, натисніть кнопку нижче.
   welcome:
+    statistics:
+      heading_html: >
+        Всього ...
+      add_html: >
+        додано.
+      lost_html: >
+        загублено.
+      home_html: >
+        вже знову вдома.
+      adopt_html: >
+        у пошуках сім'ї.
+      success_html: >
+        у надійних руках.
+    friends:
+      moreFriends: Знайти більше друзів
+      adoptPet: Взяти улюбленця
     index:
       looking_html: ШУКАЄШ ДРУЗІВ?
       would_html: ХОЧЕТЕ ВЗЯТИ УЧАСТЬ У ПОШУКУ ДОМАШНІХ ТВАРИН?
+      start: Розпочати
+    success_stories:
+      success_html: ІТОРІЇ ПРО ПОРЯТУНОК УЛЮБЛЕНЦІВ
+      go_to_blog: До блогу
+    lost_pets:
+      recently_lost_html: НЕЩОДАВНО ЗАГУБЛЕНІ УЛЮБЛЕНЦІ
+      lost_html: у бігах!
+      date_html: загублено
+      pet_info_html: Це -
+      pet_age_html: віком десь
+      sterile_html: Цей улюбленець - стерилізований.
+      breed_html: Порода улюбленця -
+      pet_place_html: Місце, де улюбленець заугубився
+      contact_info_html: Якщо Ви бачили цього улюбленця, будь-ласка зв'яжіться з
+      master: господарем
+      more_info: Дізнатися більше
+      help_pet: Допомогти у пошуках
+      get_more_info: Дізнатися більше
+      find_pet: Знайти мого улюбленця
+      map: Переглянути мапу
+  shared:
+    navbar:
+      lostPet: Шукати улюбленця
+      blog: Блог
+      profile: Профіль
+      logout: Вихід
+      login_html: >
+        Вхід
+      start: Розпочати
+    footer:
+      success: Історії порятунку
+      recommendation: Рекомендації
+      lost: Загублені
+      found: Знайдені
+      adopt: Шукають сім'ю
 
   activerecord:
     attributes:

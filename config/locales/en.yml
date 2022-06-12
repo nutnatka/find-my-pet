@@ -38,6 +38,11 @@ en:
       addPet: Add a Pet
       editProfile: Edit Profile
       destroyProfile: Destroy Profile
+      recommendationPost: Share Recommendation
+      successPost: Share Success Story
+      adoptPost: Find Family for a Pet
+      foundPost: I`ve Found a Pet
+      lostPost: I`ve Lost my Pet
   pets:
     pets:
       descr_html: >
@@ -72,10 +77,61 @@ en:
       moment.html: >
         At the moment you`ve got no pets added. To add your pet, click on the button below.
   welcome:
+    statistics:
+      heading_html: >
+        All in All ...
+      add_html: >
+        added.
+      lost_html: >
+        lost.
+      home_html: >
+        home again.
+      adopt_html: >
+        to adopt.
+      success_html: >
+        adopted.
+    friends:
+      moreFriends: Find More Friends
+      adoptPet: Adopt a Pet
     index:
       looking_html: LOOKING FOR FRIENDS?
       would_html: WOULD LIKE TO TAKE PART IN PETS SEARCHING?
-        
+      start: Get Started
+    success_stories:
+      success_html: FOUND PETS SUCCESS STORIES
+      go_to_blog: Go to Blog
+    lost_pets:
+      recently_lost_html: RECENTLY LOST PETS
+      lost_html: got lost!
+      date_html: was lost
+      pet_info_html: It is a
+      pet_age_html: aged approximately
+      sterile_html: This pet is sterilized.
+      breed_html: The pet`s breed is
+      pet_place_html: The place where it was lost
+      contact_info_html: If you`ve seen this pet, please contact its
+      master: master
+      more_info: Get more Info
+      help_pet: Help to Find a Pet
+      get_more_info: Find out More
+      find_pet: Find my Pet
+      map: View Lost Pets Map
+  shared:
+    navbar:
+      lostPet: I`ve Lost my Pet!
+      blog: Blog
+      profile: Profile
+      logout: Logout
+      login_html: >
+        Log In
+      start: Get Started
+    footer:
+      success: Success Stories
+      recommendation: Recommendations
+      lost: Lost Pets
+      found: Found Pets
+      adopt: Pets to Adopt
+
   activerecord:
     attributes:
       pet:

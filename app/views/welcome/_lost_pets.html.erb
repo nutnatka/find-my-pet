@@ -1,5 +1,5 @@
 <% if @lost_posts.any? %>
-  <h4 class="mt-4 text-center">RECENTLY LOST PETS</h4>
+  <h4 class="mt-4 text-center"><%= t('.recently_lost_html') %></h4>
 
   <div class="row justify-content-center justify-content-lg-evenly">
 
@@ -13,35 +13,35 @@
         <% end %>
 
         <div class="card-body">
-          <h5 class="card-title text-center"><b><%= lost_post.pet.name %> got lost!</b></h5>
-          <p class="card-text"><%= lost_post.pet.name %> was lost then. It is
-            a <%= lost_post.pet.color %> <%= lost_post.pet.species %> aged approximately <%= age(lost_post.pet) %>.
-            <% if lost_post.pet.sterilized? %>This pet is sterilized.
+          <h5 class="card-title text-center"><b><%= lost_post.pet.name %> <%= t('.lost_html') %></b></h5>
+          <p class="card-text"><%= lost_post.pet.name %> <%= t('.date_html') %>
+            <b><%= lost_post.date.strftime("%m/%d/%y") %></b>
+            . <%= t('.pet_info_html') %> <%= lost_post.pet.color %> <%= lost_post.pet.species %> <%= t('.pet_age_html') %>
+            <%= age(lost_post.pet) %>.
+            <% if lost_post.pet.sterilized? %><%= t('.sterile_html') %>
             <% end %>
             <% if lost_post.pet.male? || lost_post.pet.female? %>
-              It is <%= lost_post.pet.sex %>.
+              <%= t('.pet_info_html') %> <%= lost_post.pet.sex %>.
             <% end %><br>
             <% if lost_post.pet.breed? %>
-              The pet`s breed is <%= lost_post.pet.breed %>.
-            <% end %><br>The
-            place where it was lost: <%= lost_post.place.name %><br>The
-            date when it has been lost:</p>
-          <p class="text-center m-0"><b>If you`ve seen this pet, please contact
-            its <%= link_to 'master', user_path(lost_post.pet.user), target: '_blank', class: 'text-dark text-decoration-underline' %>
-            .</b></p>
+              <%= t('.breed_html') %> <%= lost_post.pet.breed %>.
+            <% end %><br><b><%= t('.pet_place_html') %>:</b> <%= lost_post.place.name %></p>
+          <p class="text-center m-0">
+            <b><%= t('.contact_info_html') %> <%= link_to t('.master'), user_path(lost_post.pet.user), target: '_blank', class: 'text-dark text-decoration-underline' %>
+              .</b></p>
         </div>
 
         <div class="text-center mb-3">
-          <%= link_to 'Get more Info', post_path(lost_post), class: 'btn btn-outline-dark m-2' %>
-          <%= link_to 'Help to Find a Pet', post_path(lost_post), class: 'btn btn-dark m-2' %>
+          <%= link_to t('.more_info'), post_path(lost_post), class: 'btn btn-outline-dark m-2' %>
+          <%= link_to t('.help_pet'), post_path(lost_post), class: 'btn btn-dark m-2' %>
         </div>
       </div>
     <% end %>
   </div>
 
   <div class="actions mt-5 mb-5 text-center">
-    <%= link_to 'Find out More', posts_path(category: :lost_pets), class: 'btn btn-dark m-2' %>
-    <%= link_to 'Find my Pet', new_post_from_welcome_path(category_id: 8), class: 'btn btn-outline-dark m-2' %>
-    <%= link_to 'View Lost Pets Map', root_path, class: 'btn btn-dark m-2' %>
+    <%= link_to t('.get_more_info'), posts_path(category: :lost_pets), class: 'btn btn-dark m-2' %>
+    <%= link_to t('.find_pet'), new_post_from_welcome_path(category_id: 8), class: 'btn btn-outline-dark m-2' %>
+    <%= link_to t('.map'), root_path, class: 'btn btn-dark m-2' %>
   </div>
 <% end %>
