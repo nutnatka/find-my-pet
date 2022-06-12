@@ -17,7 +17,7 @@ module GoogleMapsHelper
   end
 
   def google_maps_key
-    "AIzaSyCUZ-5UWEvyvPXR_5poayIAV9V3ZLyBAm4"
+    Rails.application.credentials.fetch(:google_api_key)
   end
 
 end
