@@ -22,8 +22,6 @@ class PetsController < ApplicationController
   def update
     if @pet.update(pet_params)
       redirect_to user_path(current_user), notice: 'The pet has been updated.'
-    else
-      render :edit
     end
   end
 
@@ -37,24 +35,24 @@ class PetsController < ApplicationController
   end
 
   def find_pet
-      @posts = @pet.posts.with_lost_pet
-      @posts.destroy_all
-      @pet.home_again!
-      redirect_to @user, notice: "The pet has been found! You can share the success story by click on the 'Share Success Story' button."
+    @posts = @pet.posts.with_lost_pet
+    @posts.destroy_all
+    @pet.home_again!
+    redirect_to @user, notice: "The pet has been found! You can share the success story by click on the 'Share Success Story' button."
   end
 
   def find_master
-      @posts = @pet.posts.with_found_pet
-      @posts.destroy_all
-      @pet.home_again!
-      redirect_to @user, notice: "The pet master has been found! You can share the success story by click on the 'Share Success Story' button."
+    @posts = @pet.posts.with_found_pet
+    @posts.destroy_all
+    @pet.home_again!
+    redirect_to @user, notice: "The pet master has been found! You can share the success story by click on the 'Share Success Story' button."
   end
 
   def adopt_pet
-      @posts = @pet.posts.with_pet_to_adopt
-      @posts.destroy_all
-      @pet.adopted!
-      redirect_to @user, notice: "The pet has found its family! You can share the success story by click on the 'Share Success Story' button."
+    @posts = @pet.posts.with_pet_to_adopt
+    @posts.destroy_all
+    @pet.adopted!
+    redirect_to @user, notice: "The pet has found its family! You can share the success story by click on the 'Share Success Story' button."
   end
 
   private

@@ -77,8 +77,8 @@
         <div class="col-6 border border-muted">
           <div id="map-posts">
             <div id="map">
-              <%= google_maps_api_script_initialize %>
-              <%= google_maps_api_script_tag %>
+              <%= google_maps_tag '_posts' %>
+              <%= google_maps_initialize '_posts' %>
             </div>
           </div>
       <% end %>

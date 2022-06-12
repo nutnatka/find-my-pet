@@ -23,7 +23,6 @@ class Post < ApplicationRecord
   validates :title, :category_id, presence: true
   validates :pet_id, :place_id, presence: true, allow_nil: true
 
-
   paginates_per 12
 
   scope :with_lost_pet, -> { joins(:category).merge(Category.lost_pet) }

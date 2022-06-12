@@ -15,16 +15,16 @@
             <% end %>
           <% end %>
         <% end %>
+
         <div class="card-body text-dark">
           <p class="posted-by p-0 m-0 mb-2">Posted by <%= post.user.name %> <%= time_ago_in_words(post.created_at) %>
             ago</p>
           <h5 class="card-title fw-bold text-center p-0 m-0"><%= post.title %></h5>
           <p class="card-text"><%= truncate(strip_tags(post.content.to_s), length: 100, omission: '...') %><br>
-            <% if post.pet.lost? || post.pet.found? %>The place where the pet was lost: <%= post.place.name unless post.place.nil? %><br>
+            <% if post.pet.lost? || post.pet.found? %>The place where the pet was
+              lost: <%= post.place.name unless post.place.nil? %><br>
               The date when the pet was lost:<br>
             <% end %></p>
-
-
         </div>
       <% end %>
     </div>

@@ -7,9 +7,18 @@
 </div>
 
 <div id="map-index">
+  <div hidden>
+    <% Place.all.each do |place| %>
+      <div
+        class="card mb-3 border border-dark lost-pet-card"
+        data-latitude="<%= place.latitude %>"
+        data-longitude="<%= place.longitude %>">
+      </div>
+    <% end %>
+  </div>
   <div id="map">
-    <%= google_maps_api_script_initialize %>
-    <%= google_maps_api_script_tag %>
+    <%= google_maps_tag %>
+    <%= google_maps_initialize %>
   </div>
 </div>
 
@@ -33,7 +42,7 @@
 <% end %>
 
 <div class="success-stories-section" style="background-color: #ffe5d9;">
-  <%= render 'success_stories' %>
+    <%= render 'success_stories' %>
 </div>
 
 <div class="recently-lost-pets">
