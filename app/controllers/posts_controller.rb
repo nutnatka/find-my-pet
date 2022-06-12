@@ -45,7 +45,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content, :category_id, :pet_id)
+    params.require(:post).permit(:title, :content, :category_id, :pet_id, :date)
   end
 
   def change_pet_status

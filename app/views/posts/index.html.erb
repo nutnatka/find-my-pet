@@ -9,7 +9,12 @@
 </div>
 <hr class="mt-2" style="border: 1px solid black;">
 
-<%= render 'custom_content' %>
+<div class="d-flex flex-column">
+  <% unless @posts.any? %>
+    <p class="p-0 m-0 mb-2 mb-md-0">At the moment, there are no posts available.</p>
+  <% end %>
+  <p> You can create your own post on your profile page.</p>
+</div>
 
 <div class="posts mt-2 mb-5 row justify-content-start">
   <%= render 'posts' %>

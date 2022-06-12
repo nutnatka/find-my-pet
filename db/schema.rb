@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_11_070250) do
+ActiveRecord::Schema.define(version: 2022_06_11_220159) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -107,6 +107,7 @@ ActiveRecord::Schema.define(version: 2022_06_11_070250) do
     t.bigint "category_id", null: false
     t.bigint "pet_id", null: false
     t.bigint "place_id"
+    t.date "date"
     t.index ["category_id"], name: "index_posts_on_category_id"
     t.index ["pet_id"], name: "index_posts_on_pet_id"
     t.index ["place_id"], name: "index_posts_on_place_id"
