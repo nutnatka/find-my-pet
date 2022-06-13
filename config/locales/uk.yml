@@ -249,7 +249,31 @@ uk:
         facebook: Посилання на профіль Фейсбук
         instagram: Посилання на профіль Інстаграм
         createProfile: Створити Профіль
-
+    sessions:
+      new:
+        login: Вхід
+        email: Імейл
+        required: Це поле - обов'язкове.
+        password: Пароль
+        forgotPass: Забули пароль?
+        signUp: Зареєструватися
+    shared:
+      links:
+        instructions: Ще не отримали інструкції для підтвердження облікового запису?
+    passwords:
+      new:
+        forgotPass: Забули пароль?
+        email: Імейл
+        sendMe: Відправити мені інструкції щодо скидання пароля
+      edit:
+        changePass: Змінити пароль
+        newPass: Новий пароль
+        passConfirm: Підтвердити новий пароль
+        change: Змінити мій пароль
+    confirmations:
+      new:
+        resend: Відправити інструкції ще раз
+        resendCom: Відправити інструкції про підвердження облікового запису
 
 
 
