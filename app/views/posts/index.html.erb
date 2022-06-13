@@ -2,7 +2,7 @@
 <% provide(:blog_active, 'active') %>
 
 <div class="posts-nav mt-5 d-flex flex-column text-center flex-md-row text-md-start justify-content-md-between">
-  <h5 class="m-1 text-center"><%= link_to 'General', posts_path, class: "text-dark #{'fw-bold' unless params.has_key?(:category) }" %></h5>
+  <h5 class="m-1 text-center"><%= link_to t('.general'), posts_path, class: "text-dark #{'fw-bold' unless params.has_key?(:category) }" %></h5>
   <% Category.all.each do |cat| %>
     <h5 class="m-1 text-center"><%= link_to (cat.name).humanize.titleize, posts_path(category: cat.name), class: "text-dark #{'fw-bold' if params[:category] == cat.name}" %></h5>
   <% end %>
@@ -11,9 +11,9 @@
 
 <div class="d-flex flex-column">
   <% unless @posts.any? %>
-    <p class="p-0 m-0 mb-2 mb-md-0">At the moment, there are no posts available.</p>
+    <p class="p-0 m-0 mb-2 mb-md-0"><%= t('.no_posts')%></p>
   <% end %>
-  <p> You can create your own post on your profile page.</p>
+  <p><%= t('.post_hint') %></p>
 </div>
 
 <div class="posts mt-2 mb-5 row justify-content-start">

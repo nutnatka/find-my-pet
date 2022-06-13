@@ -3,7 +3,7 @@
 
     <div class="field">
       <%== form.text_field :name, autofocus: true, required: true, class: 'form-control', placeholder: true %>
-      <p class="p-0 mb-2">* This field is required.</p>
+      <p class="p-0 mb-2">* <%= t('.required') %></p>
     </div>
 
     <div class="field">
@@ -17,11 +17,9 @@
 
     <div class="field">
       <p class="mb-0"><b><%= t('.select_html') %></b></p>
-      <p class="mb-0"><%= form.radio_button :sex, 'male', checked: true, class: 'form-check-input me-2' %>
-        Male</p>
-      <p class="mb-0"><%= form.radio_button :sex, 'female', class: 'form-check-input me-2' %> Female</p>
-      <p class="mb-2"><%= form.radio_button :sex, 'undefined', class: 'form-check-input me-2' %> Prefer not to
-        Say</p>
+      <p class="mb-0"><%= form.radio_button :sex, 'male', checked: true, class: 'form-check-input me-2' %> <%= t('.male') %></p>
+      <p class="mb-0"><%= form.radio_button :sex, 'female', class: 'form-check-input me-2' %> <%= t('.female') %></p>
+      <p class="mb-2"><%= form.radio_button :sex, 'undefined', class: 'form-check-input me-2' %> <%= t('.preferNotSay') %></p>
     </div>
 
     <div class="field">
@@ -37,11 +35,11 @@
     </div>
 
     <div class="field">
-      <%== form.text_field :color, autofocus: true, required: true, class: 'form-control mb-2', placeholder: true %>
+      <%== form.text_field :color, autofocus: true, required: true, class: 'form-control mb-2', placeholder: t('.color') %>
     </div>
 
     <div class="field">
-      <%== form.text_area :additional_info, autofocus: true, class: 'form-control mb-2', placeholder: true %>
+      <%== form.text_area :additional_info, autofocus: true, class: 'form-control mb-2', placeholder: t('.addInfo') %>
     </div>
     </div>
 

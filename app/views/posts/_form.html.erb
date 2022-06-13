@@ -1,6 +1,6 @@
 <div class="row justify-content-center">
   <div class="col-7">
-    <h4 class="text-center mt-5">Provide Recommendation:</h4>
+    <h4 class="text-center mt-5"><%= t('.recommendation') %>:</h4>
 
     <%= form_with model: @post, local: true do |f| %>
 
@@ -13,22 +13,22 @@
       </div>
 
       <div class="field mb-2">
-        <%= f.label :title, 'Please name the recommendation:' %>
+        <%= f.label :title, t('.recommendationName') %>:
         <%= f.text_field :title, class: "form-control", required: true %>
       </div>
 
       <% if @pets.present? %>
         <div class="field mb-2 d-none">
-          <%= f.label :title, 'Please, select the pet:' %>
+          <%= f.label :title, t('.petSelect') %>:
           <%= f.collection_select(:pet_id, @pets, :id, :name, {}, { class: 'form-select' }) %>
         </div>
       <% else %>
-        <p class="mt-4">You have to add at leat one pet to share recommendations. This can be done on your
-          <%= link_to 'profile page', current_user, class: 'text-dark text-decoration-underline' %>.</p>
+        <p class="mt-4"><%= t('.recommendationInfo') %>
+          <%= link_to t('.profile'), current_user, class: 'text-dark text-decoration-underline' %>.</p>
       <% end %>
 
       <div class="field mb-2">
-        <%= f.label :content, 'Please share recommendation:' %>
+        <%= f.label :content, t('.shareRecommendation') %>:
         <%= f.rich_text_area :content, class: "form-control" %>
       </div>
 
@@ -38,7 +38,7 @@
       </div>
 
       <div class="form_action text-center">
-        <%= f.submit "Publish", class: "btn btn-dark" %>
+        <%= f.submit t('.publish'), class: "btn btn-dark" %>
       </div>
     <% end %>
   </div>
