@@ -15,7 +15,7 @@
         <div class="card-body">
           <h5 class="card-title text-center"><b><%= lost_post.pet.name %> <%= t('.lost') %></b></h5>
           <p class="card-text"><%= lost_post.pet.name %> <%= t('.date') %>
-            <b><%= lost_post.date.strftime("%m/%d/%y") %></b>
+            <b><%= lost_post.date %></b>
             . <%= t('.pet_info') %> <%= lost_post.pet.color %> <%= lost_post.pet.species %> <%= t('.pet_age') %>
             <%= age(lost_post.pet) %>.
             <% if lost_post.pet.sterilized? %><%= t('.sterile') %>
