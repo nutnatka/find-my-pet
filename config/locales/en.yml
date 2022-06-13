@@ -280,6 +280,7 @@ en:
         facebook: Facebook Profile Link
         instagram: Instagram Profile Link
         createProfile: Create a Profile
+
   activerecord:
     attributes:
       pet:

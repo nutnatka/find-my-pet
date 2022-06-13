@@ -249,6 +249,10 @@ uk:
         facebook: Посилання на профіль Фейсбук
         instagram: Посилання на профіль Інстаграм
         createProfile: Створити Профіль
+
+
+
+
   activerecord:
     attributes:
       pet:
