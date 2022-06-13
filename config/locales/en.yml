@@ -262,8 +262,24 @@ en:
       details: Please give details
       shareStory: Share your story here
       publish: Publish
-
-
+  devise:
+    registrations:
+      new:
+        setup: SETUP YOUR PROFILE
+        address: How may we address you?
+        name: Name
+        required: This field is required.
+        email: Email
+        allow: Allow using this email as contact.
+        password: Password
+        passRestrictions: Please enter the password containing at least 6 characters. It should contain at least one lowercase letter, one uppercase letter, and one digit.
+        contacts: Please provide contacts for pet search/adoption. You can do this later on your profile page.
+        phone: Phone number
+        telegram: Telegram
+        viber: Viber
+        facebook: Facebook Profile Link
+        instagram: Instagram Profile Link
+        createProfile: Create a Profile
   activerecord:
     attributes:
       pet:
