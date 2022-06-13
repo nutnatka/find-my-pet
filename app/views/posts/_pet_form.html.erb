@@ -1,10 +1,10 @@
-<h4 class="text-center mt-2">Provide Info
+<h4 class="text-center mt-2"><%= t('.info') %>
   <% if @post.category_id == 8 %>
-    Necessary for Your Pet Search:</h4>
+    <%= t('.petSearch') %>:</h4>
   <% elsif @post.category_id == 9 || @post.category_id == 10 %>
-    Necessary to Find the Pet`s Master:</h4>
+    <%= t('.masterSearch') %>:</h4>
   <% elsif @post.category_id == 11 %>
-    about your Pet Finding History:</h4>
+    <%= t('.success') %>:</h4>
   <% end %>
 
   <%= form_with model: @post, local: true do |f| %>
@@ -20,41 +20,41 @@
       <div class="col-5">
         <div class="field mb-2">
           <% if @post.category_id == 10 %>
-            <%= f.label :title, 'Please give the short description of the pet to be adopted:' %>
+            <%= f.label :title, t('.adoptPetInfo') %>:
           <% else %>
-            <%= f.label :title, 'Please give the short description of what has happened:' %>
+            <%= f.label :title, t('.situationInfo') %>:
           <% end %>
-          <%= f.text_field :title, class: "form-control", required: true, placeholder: 'post title' %>
+          <%= f.text_field :title, class: "form-control", required: true, placeholder: t('.postTitle') %>
         </div>
 
         <% if @pets.present? %>
           <div class="field mb-2">
-            <%= f.label :title, 'Please select the pet:' %>
-            <%= f.collection_select(:pet_id, @pets, :id, :name, { prompt: 'select pet' }, { class: 'form-select', required: true }) %>
+            <%= f.label :title, t('.petSelect') %>:
+            <%= f.collection_select(:pet_id, @pets, :id, :name, { prompt: t('.prompt') }, { class: 'form-select', required: true }) %>
           </div>
-          <p>If you haven`t added the pet yet, please do so on your
-            <%= link_to 'profile page', current_user, class: 'text-dark text-decoration-underline' %>.</p>
+          <p><%= t('.noPet') %>
+            <%= link_to t('.profile'), current_user, class: 'text-dark text-decoration-underline' %>.</p>
         <% else %>
-          <p>Please add pet on your
-            <%= link_to 'profile page', current_user, class: 'text-dark text-decoration-underline' %> first.</p>
+          <p><%= t('.addPet') %>
+            <%= link_to t('.profile'), current_user, class: 'text-dark text-decoration-underline' %> first.</p>
         <% end %>
 
         <% if @post.category_id == 8 || @post.category_id == 9 %>
           <div class="field mb-2">
             <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-            <%= f.label :name, 'Please fill the address or set the point on the map:' %>
+            <%= f.label :name, t('.address') %>:
             <%= f.text_field :place_name, class: "form-control", required: true %>
             <%= f.hidden_field :place_latitude %>
             <%= f.hidden_field :place_longitude %>
           </div>
 
           <div class="field mb-2">
-            <%= f.label :date, 'Please select date:' %>
+            <%= f.label :date, t('.date') %>:
             <div class="input-group">
               <div class="input-group-prepend">
                 <div class="input-group-text fa-solid fa-calendar-days" , style="background-color: white;"></div>
               </div>
-              <%= f.text_field :date, class: 'form-control', required: true, style: 'background-color: white;', placeholder: 'select date',
+              <%= f.text_field :date, class: 'form-control', required: true, style: 'background-color: white;', placeholder: t('.dateSelect'),
                                data: {
                                  controller: "flatpickr",
                                  flatpickr_date_format: "%B %d %Y",
@@ -63,9 +63,8 @@
             </div>
           </div>
 
-          <p>Please make sure you`ve provided your contact info.<br>
-            This can be done on your
-            <%= link_to 'profile', current_user, class: 'text-dark text-decoration-underline' %> page.</p>
+          <p><%= t('.contactInfo') %><br><%= t('.done') %>
+            <%= link_to t('.profile'), current_user, class: 'text-dark text-decoration-underline' %>.</p>
         <% end %>
 
         <div class="field d-none">
@@ -79,18 +78,18 @@
             <div id="map">
               <%= google_maps_tag '_posts' %>
               <%= google_maps_initialize '_posts' %>
-         </div>
+            </div>
           </div>
       <% end %>
       </div>
     </div>
 
     <div class="field mb-2">
-      <%= f.label :content, 'Please give details:' %>
-      <%= f.rich_text_area :content, class: "form-control", placeholder: 'Share your story here' %>
+      <%= f.label :content, t('.details') %>:
+      <%= f.rich_text_area :content, class: "form-control", placeholder: t('.shareStory') %>
     </div>
 
     <div class="form_action text-center">
-      <%= f.submit "Publish", class: "btn btn-dark" %>
+      <%= f.submit t('.publish'), class: "btn btn-dark" %>
     </div>
   <% end %>

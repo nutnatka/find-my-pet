@@ -26,13 +26,13 @@
           <%= link_to '', user_pet_path(@user, pet), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: 'fa-solid fa-trash text-dark text-decoration-none', id: 'pet-item' %>
           <% if pet.lost? %>
       <span class="badge alert-danger"><%= (pet.status).titleize %></span>
-            <%= link_to 'My Pet was Found', find_pet_user_pet_path(@user, pet), method: :post, data: { confirm: 'Have you really found your pet?' }, class: 'ms-2 text-success text-decoration-underline' %>
+            <%= link_to t('.petFound'), find_pet_user_pet_path(@user, pet), method: :post, data: { confirm: 'Have you really found your pet?' }, class: 'ms-2 text-success text-decoration-underline' %>
     <% elsif pet.found? %>
       <span class="badge alert-warning"><%= (pet.status).titleize %></span>
-            <%= link_to 'Pet Master was Found', find_master_user_pet_path(@user, pet), method: :post, data: { confirm: 'Have you really found pet master?' }, class: 'ms-2 text-success text-decoration-underline' %>
+            <%= link_to t('.masterFound'), find_master_user_pet_path(@user, pet), method: :post, data: { confirm: 'Have you really found pet master?' }, class: 'ms-2 text-success text-decoration-underline' %>
     <% elsif pet.to_adopt? %>
       <span class="badge alert-primary"><%= (pet.status).titleize %></span>
-            <%= link_to 'Pet was Adopted', adopt_pet_user_pet_path(@user, pet), method: :post, data: { confirm: 'Is the pet really adopted?' }, class: 'ms-2 text-success text-decoration-underline' %>
+            <%= link_to t('.petAdopted'), adopt_pet_user_pet_path(@user, pet), method: :post, data: { confirm: 'Is the pet really adopted?' }, class: 'ms-2 text-success text-decoration-underline' %>
      <% elsif pet.adopted? %>
         <span class="badge alert-dark"><%= (pet.status).titleize %></span>
           <% end %>

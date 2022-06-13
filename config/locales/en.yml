@@ -38,6 +38,11 @@ en:
       addPet: Add a Pet
       editProfile: Edit Profile
       destroyProfile: Destroy Profile
+      recommendationPost: Share Recommendation
+      successPost: Share Success Story
+      adoptPost: Find Family for a Pet
+      foundPost: I`ve Found a Pet
+      lostPost: I`ve Lost my Pet
   pets:
     pets:
       descr_html: >
@@ -45,7 +50,11 @@ en:
         To add your pet, click on the button below.
       yourpets_html: >
         Your pets:
+      petFound: My Pet was Found
+      masterFound: Pet Master was Found
+      petAdopted: Pet was Adopted
     form:
+      required: This field is required.
       mypet_html: >
         My pet is a:
       cat_html: >
@@ -66,16 +75,195 @@ en:
         Save Pet
       cancel:
         Cancel
+      male: male
+      female: female
+      preferNotSay: Prefer not to Say
+      color: Color
+      addInfo: Additional Info
     destroy:
       del.html: >
         The pet has been deleted
       moment.html: >
         At the moment you`ve got no pets added. To add your pet, click on the button below.
+    filter:
+      filterBy: Filter by
+      clear: Clear
+      name: Name
+      species: Species
+      prompt: please choose species
+      breed: Breed
+      sterile: Sterilized
+      sex: Gender
+      promptGender: please choose gender
+      color: Color
+      filter: Filter
+    sorting:
+      sort: Sort by
+      birthday: Birthday
+    no_results:
+      sorry: Sorry, no pets found.
+      please: Please consider using different filters.
+      click: Click
+      here: here
+      see: to see all the pets.
+    show:
+      profiles: Pet Profiles
+      master: Pet Master
+      profile: PROFILE OF
+      pet:
+      info: PERSONAL INFO
+      species: Species
+      breed: Breed
+      sex: Gender
+      sterile: Is sterilized
+      yes: yes
+      no: no
+      dateOfBirth: Date of Birth
+      color: Color
+      addInfo: Additional Info
+    edit:
+      petIs: My pet is a
+      back: back
+      edit: EDIT
+      profile: THE PROFILE OF
+      pet:
+      editProfile: EDIT PET`S PROFILE
+      prohibit: prohibited this pet from being updated
+      upload: Upload new profile picture for
+      below: below
+      uploadAvatar: Upload pet`s new profile picture below
+      name: Name
+      speciesPrompt: please choose species
+      breed: Breed
+      genderSelect: Select Pet`s Gender
+      male: Male
+      female: Female
+      preferNotSay: Prefer not to Say
+      sterile: My Pet is Sterilized
+      birthday: Select Pet`s Birthday
+      color: Color
+      addInfo: Additional Info
+      updatePet: Update Pet Info
   welcome:
+    statistics:
+      heading: All in All ...
+      add: added.
+      lost: lost.
+      home: home again.
+      adopt: to adopt.
+      success: adopted.
+    friends:
+      moreFriends: Find More Friends
+      adoptPet: Adopt a Pet
     index:
       looking_html: LOOKING FOR FRIENDS?
       would_html: WOULD LIKE TO TAKE PART IN PETS SEARCHING?
-        
+      start: Get Started
+    success_stories:
+      success: FOUND PETS SUCCESS STORIES
+      go_to_blog: Go to Blog
+    lost_pets:
+      recently_lost: RECENTLY LOST PETS
+      lost: got lost!
+      date: was lost
+      pet_info: It is a
+      pet_age: aged approximately
+      sterile: This pet is sterilized.
+      breed: The pet`s breed is
+      pet_place: The place where it was lost
+      contact_info: If you`ve seen this pet, please contact its
+      master: master
+      more_info: Get more Info
+      help_pet: Help to Find a Pet
+      get_more_info: Find out More
+      find_pet: Find my Pet
+      map: View Lost Pets Map
+  shared:
+    navbar:
+      lostPet: I`ve Lost my Pet!
+      blog: Blog
+      profile: Profile
+      logout: Logout
+      login_html: >
+        Log In
+      start: Get Started
+    footer:
+      success: Success Stories
+      recommendation: Recommendations
+      lost: Lost Pets
+      found: Found Pets
+      adopt: Pets to Adopt
+  posts:
+    index:
+      general: General
+      no_posts: At the moment, there are no posts available.
+      post_hint: You can create your own post on your profile page.
+    posts:
+      ago: ago
+      lostPlace: The place where the pet was lost
+      lostDate: The date when the pet was lost
+    short_pet_info:
+      petInfo: Short Pet Info
+      name: Name
+      breed: Breed
+      sex: Gender
+      age: Age
+      color: Color
+      addInfo: Additional Info
+      dateLost: The pet has been lost on the
+      foundDate: The pet has been found on the
+    contact_info:
+      contactInfo: Contact Info
+      founder: Founder Name
+      founderProfile: Founder Profile
+      master: Master Name
+      masterProfile: Master Profile
+      facebook: Facebook Profile
+      instagram: Instagram Profile
+      email: Email
+      phone: Phone
+      telegram: Telegram
+      viber: Viber
+    show:
+      help: Help to Find a Pet
+      masterHelp: Help to Find Pet Master
+      adopt: I`d Like to Adopt this Pet
+      posted: Posted by
+      back: Back
+      petProfile: Pet Profile
+    new:
+      back: Back
+    form:
+      recommendation: Provide Recommendation
+      recommendationName: Please name the recommendation
+      petSelect: Please select the pet
+      recommendationInfo: You have to add at least one pet to share recommendations. This can be done on your
+      profile: profile page
+      shareRecommendation: Please share recommendation
+      publish: Publish
+    pet_form:
+      info: Provide Info
+      petSearch: Necessary for Your Pet Search
+      masterSearch: Necessary to Find the Pet`s Master
+      success: about your Pet Finding History
+      adoptPetInfo: Please give the short description of the pet to be adopted
+      situationInfo: Please give the short description of what has happened
+      postTitle: post title
+      petSelect: Please select the pet
+      prompt: select pet
+      noPet: If you haven`t added the pet yet, please do so on your
+      profile: profile page
+      addPet: Please add pet on your
+      address: Please fill the address or set the point on the map
+      date: Please select date
+      dateSelect: select date
+      contactInfo: Please make sure you`ve provided your contact info.
+      done: This can be done on your
+      details: Please give details
+      shareStory: Share your story here
+      publish: Publish
+
+
   activerecord:
     attributes:
       pet:

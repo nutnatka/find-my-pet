@@ -3,11 +3,11 @@
 
 <div class="row mt-5">
   <div class="col-2">
-    <%= link_to 'Pet Profiles', user_pets_path, class: 'btn btn-outline-dark mb-2' %>
-    <%= link_to 'Pet Master', user_path(@user), class: 'btn btn-outline-dark' %>
+    <%= link_to t('.profiles'), user_pets_path, class: 'btn btn-outline-dark mb-2' %>
+    <%= link_to t('.master'), user_path(@user), class: 'btn btn-outline-dark' %>
   </div>
   <div class="col-10 text-center">
-    <h2 class="m-0"><%= (@pet.name).upcase %>`S PROFILE</h2>
+    <h2 class="m-0"><%= t('.profile') %> <%= (@pet.name).upcase %><%= t('.pet') %></h2>
   </div>
 </div>
 
@@ -25,47 +25,47 @@
   </div>
 
   <div class="col-12 text-center mt-3 mb-2 col-sm-8 text-sm-start">
-    <h5 class="ms-4">PERSONAL INFO:</h5>
+    <h5 class="ms-4"><%= t('.info') %>:</h5>
 
     <p class="mb-2 ms-4">
-      <b>Species:</b>
+      <b><%= t('.species') %>:</b>
       <%= @pet.species %>
     </p>
 
     <p class="mb-2 ms-4">
       <% if @pet.breed? %>
-        <b>Breed:</b>
+        <b><%= t('.breed') %>:</b>
         <%= @pet.breed %>
       <% end %>
     </p>
 
     <p class="mb-2 ms-4">
-      <b>Gender:</b>
+      <b><%= t('.sex') %>:</b>
       <%= @pet.sex %>
     </p>
 
     <p class="mb-2 ms-4">
-      <b>Is sterilized:</b>
+      <b><%= t('.sterile') %>:</b>
       <% if @pet.sterilized? %>
-        yes
+        <%= t('.yes') %>
       <% else %>
-        no
+        <%= t('.no') %>
       <% end %>
     </p>
 
     <p class="mb-2 ms-4">
-      <b>DOB:</b>
+      <b><%= t('.dateOfBirth') %>:</b>
       <%= @pet.date_of_birth.to_time.strftime('%B %e, %Y') %>
     </p>
 
     <p class="mb-2 ms-4">
-      <b>Color:</b>
+      <b><%= t('.color') %>:</b>
       <%= @pet.color %>
     </p>
 
     <p class="mb-2 ms-4">
       <% if @pet.additional_info? %>
-        <b>Additional Info:</b>
+        <b><%= t('.addInfo') %>:</b>
         <%= @pet.additional_info %>
       <% end %>
     </p>
