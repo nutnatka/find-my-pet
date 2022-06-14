@@ -20,9 +20,7 @@ class PetsController < ApplicationController
   def edit; end
 
   def update
-    if @pet.update(pet_params)
-      redirect_to user_path(current_user), notice: 'The pet has been updated.'
-    end
+    redirect_to user_path(current_user), notice: 'The pet has been updated.' if @pet.update(pet_params)
   end
 
   def destroy

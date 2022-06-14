@@ -26,7 +26,7 @@ class PostsController < ApplicationController
     if !placeparms[:place_latitude].nil? && !placeparms[:place_longitude].nil?
       @place = Place.create(name: placeparms[:place_name], latitude: placeparms[:place_latitude], longitude: placeparms[:place_longitude])
       @place.save
-      postparams[:place_id] = @place.id;
+      postparams[:place_id] = @place.id
     end
 
     @post = current_user.posts.create(postparams)
