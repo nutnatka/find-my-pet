@@ -241,6 +241,8 @@ en:
       profile: profile page
       shareRecommendation: Please share recommendation
       publish: Publish
+      name: Recommendation Name
+      share: Here you can share recommendation
     pet_form:
       info: Provide Info
       petSearch: Necessary for Your Pet Search
@@ -262,7 +264,49 @@ en:
       details: Please give details
       shareStory: Share your story here
       publish: Publish
-
+  devise:
+    registrations:
+      new:
+        setup: SETUP YOUR PROFILE
+        address: How may we address you?
+        name: Name
+        required: This field is required.
+        email: Email
+        allow: Allow using this email as contact.
+        password: Password
+        passRestrictions: Please enter the password containing at least 6 characters. It should contain at least one lowercase letter, one uppercase letter, and one digit.
+        contacts: Please provide contacts for pet search/adoption. You can do this later on your profile page.
+        phone: Phone number
+        telegram: Telegram
+        viber: Viber
+        facebook: Facebook Profile Link
+        instagram: Instagram Profile Link
+        createProfile: Create a Profile
+    sessions:
+      new:
+        login: Log in
+        email: Email
+        required: This field is required.
+        password: Password
+        forgotPass: Forgot your password?
+        signUp: Sign up
+    shared:
+      links:
+        instructions: Didn't receive confirmation instructions?
+    passwords:
+      new:
+        forgotPass: Forgot your password?
+        email: Email
+        sendMe: Send me reset password instructions
+      edit:
+        changePass: Change your password
+        newPass: New Password
+        passConfirm: Confirm New Password
+        change: Change my password
+    confirmations:
+      new:
+        resend: Resend confirmation instructions
+        resendCom: Resend confirmation instructions
 
   activerecord:
     attributes:

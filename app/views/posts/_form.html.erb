@@ -1,5 +1,5 @@
 <div class="row justify-content-center">
-  <div class="col-7">
+  <div class="col-12 col-sm-10 col-md-7">
     <h4 class="text-center mt-5"><%= t('.recommendation') %>:</h4>
 
     <%= form_with model: @post, local: true do |f| %>
@@ -14,7 +14,7 @@
 
       <div class="field mb-2">
         <%= f.label :title, t('.recommendationName') %>:
-        <%= f.text_field :title, class: "form-control", required: true %>
+        <%= f.text_field :title, class: "form-control", required: true, placeholder: t('.name') %>
       </div>
 
       <% if @pets.present? %>
@@ -29,7 +29,7 @@
 
       <div class="field mb-2">
         <%= f.label :content, t('.shareRecommendation') %>:
-        <%= f.rich_text_area :content, class: "form-control" %>
+        <%= f.rich_text_area :content, class: "form-control", placeholder: t('.share') %>
       </div>
 
 

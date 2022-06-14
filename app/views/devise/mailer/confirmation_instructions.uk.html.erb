@@ -1,0 +1,6 @@
+<p>Ласкаво просимо, <%= @user.name %>!</p>
+
+<p>Дякую за реєстрацію на FindMyPet.</p>
+<p>Ви можете підтвердити електорнну адесу, натиснувши на посилання нижче:</p>
+
+<p><%= link_to 'Підтвердити імейл', confirmation_url(@resource, confirmation_token: @token) %></p>
