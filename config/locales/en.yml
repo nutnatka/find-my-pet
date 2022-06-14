@@ -241,6 +241,8 @@ en:
       profile: profile page
       shareRecommendation: Please share recommendation
       publish: Publish
+      name: Recommendation Name
+      share: Here you can share recommendation
     pet_form:
       info: Provide Info
       petSearch: Necessary for Your Pet Search
