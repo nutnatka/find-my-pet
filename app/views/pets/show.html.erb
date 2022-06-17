@@ -1,31 +1,42 @@
 <% provide(:page_title, 'Pet Profile') %>
 <% provide(:profile_active, 'active') %>
 
-<div class="row mt-5">
-  <div class="col-2">
+<div class="d-flex flex-column flex-lg-row mt-4 align-items-center align-items-lg-baseline ">
+  <div class="col-12 col-sm-10 col-md-8 col-lg-2 d-flex flex-column">
     <%= link_to t('.profiles'), user_pets_path, class: 'btn btn-outline-dark mb-2' %>
-    <%= link_to t('.master'), user_path(@user), class: 'btn btn-outline-dark' %>
+    <%= link_to t('.master'), user_path(@user), class: 'btn btn-outline-dark mb-2' %>
   </div>
-  <div class="col-10 text-center">
-    <h2 class="m-0"><%= t('.profile') %> <%= (@pet.name).upcase %><%= t('.pet') %></h2>
+  <div class="col-12 col-sm-10 col-md-8 col-lg-8 text-center">
+    <h2><%= t('.profile') %> <%= (@pet.name).upcase %><%= t('.pet') %></h2>
+  </div>
+  <div class="col-12 col-sm-10 col-md-8 col-lg-2 text-start text-lg-end">
+    <% if current_user.id == @pet.user.id %>
+      <%= link_to 'Edit Pet', edit_user_pet_path(@user, @pet), class: 'btn btn-outline-dark mb-2 w-100' %>
+    <% end %>
   </div>
 </div>
 
-<div class="row mb-5 mt-5">
-  <div class="col-12 text-center mt-3 mb-3 col-sm-4">
+<div class="d-flex flex-column flex-lg-row align-items-center align-items-lg-start baseline mt-4">
+  <div class="col-12 col-sm-10 col-md-8 col-lg-4">
     <% if @pet.avatar.attached? %>
-      <%= image_tag @pet.avatar, style: 'width: 100%; object-fit: cover;', class: 'border border-dark' %>
+      <%= image_tag @pet.avatar, style: 'width: 100%; object-fit: cover;', class: 'border border-dark rounded-3' %>
     <% else %>
       <% if @pet.cat? %>
-        <%= image_tag("cat1.jpg", style: 'width: 100%; object-fit: cover;', class: 'border border-dark') %>
+        <%= image_tag("cat1.jpg", style: 'width: 100%; object-fit: cover;', class: 'border border-dark rounded-3') %>
       <% elsif @pet.dog? %>
-        <%= image_tag("dog1.jpg", style: 'width: 100%; object-fit: cover;', class: 'border border-dark') %>
+        <%= image_tag("dog1.jpg", style: 'width: 100%; object-fit: cover;', class: 'border border-dark rounded-3') %>
       <% end %>
     <% end %>
   </div>
 
-  <div class="col-12 text-center mt-3 mb-2 col-sm-8 text-sm-start">
+  <div class="col-12 col-sm-10 col-md-8 col-lg-6">
     <h5 class="ms-4"><%= t('.info') %>:</h5>
+
+    <% unless @pet.home_again? || @pet.home? %>
+      <p class="mb-2 ms-4 text-danger">
+        This pet is <%= @pet.status.humanize.downcase %>!
+      </p>
+    <% end %>
 
     <p class="mb-2 ms-4">
       <b><%= t('.species') %>:</b>
@@ -53,10 +64,12 @@
       <% end %>
     </p>
 
-    <p class="mb-2 ms-4">
-      <b><%= t('.dateOfBirth') %>:</b>
-      <%= @pet.date_of_birth.to_time.strftime('%B %e, %Y') %>
-    </p>
+    <% if @pet.date_of_birth? %>
+      <p class="mb-2 ms-4">
+        <b><%= t('.dateOfBirth') %>:</b>
+        <%= @pet.date_of_birth.to_time.strftime('%B %e, %Y') %>
+      </p>
+    <% end %>
 
     <p class="mb-2 ms-4">
       <b><%= t('.color') %>:</b>
@@ -69,5 +82,26 @@
         <%= @pet.additional_info %>
       <% end %>
     </p>
+  </div>
+
+  <div class="col-12 col-sm-10 col-md-8 col-lg-2">
+    <% if current_user.id == @pet.user.id %>
+      <div class="d-flex flex-column">
+        <% if @pet.lost? %>
+          <%= link_to t('.petFound'), find_pet_user_pet_path(@user, @pet), method: :post, data: { confirm: 'Have you really found your pet?' }, class: 'btn btn-outline-dark mb-2' %>
+        <% elsif @pet.found? %>
+          <%= link_to t('.masterFound'), find_master_user_pet_path(@user, @pet), method: :post, data: { confirm: 'Have you really found pet master?' }, class: 'btn btn-outline-dark mb-2' %>
+        <% elsif @pet.to_adopt? %>
+          <%= link_to t('.petAdopted'), adopt_pet_user_pet_path(@user, @pet), method: :post, data: { confirm: 'Is the pet really adopted?' }, class: 'btn btn-outline-dark mb-2' %>
+        <% end %>
+    <% end %>
+    <% if @pet.lost? %>
+      <%= link_to 'Help to Find this Pet', @post, class: 'btn btn-dark mb-2' %>
+    <% elsif @pet.found? %>
+      <%= link_to 'Help to Find Pet Master', @post, class: 'btn btn-dark mb-2' %>
+    <% elsif @pet.to_adopt? %>
+      <%= link_to 'Adop this Pet', @post, class: 'btn btn-dark mb-2' %>
+    <% end %>
+    </div>
   </div>
 </div>

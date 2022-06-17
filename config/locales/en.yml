@@ -56,19 +56,19 @@ en:
     form:
       required: This field is required.
       mypet_html: >
-        My pet is a:
+        The pet is a:
       cat_html: >
         cat
       dog_html: >
         dog
       select_html: >
-        Select Pet`s Gender:
+        Choose Pet`s Gender:
       click_html: >
         Click here to Upload Pet`s Avatar
       please_html: >
         Please use jpeg, png or gif files less than 150kb.
       pet:
-        My Pet is Sterilized
+        Pet is Sterilized
       birthday_html:
         Select Pet`s Birthday
       save:
@@ -77,7 +77,7 @@ en:
         Cancel
       male: male
       female: female
-      preferNotSay: Prefer not to Say
+      preferNotSay: unknown
       color: Color
       addInfo: Additional Info
     destroy:
@@ -110,7 +110,7 @@ en:
       profiles: Pet Profiles
       master: Pet Master
       profile: PROFILE OF
-      pet:
+      pet: .
       info: PERSONAL INFO
       species: Species
       breed: Breed

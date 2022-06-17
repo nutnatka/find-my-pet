@@ -6,7 +6,7 @@
 <% if current_user.pets.count == 0 %>
   <p><%= t('.descr_html') %></p>
 <% else %>
-  <% @user.pets.each do |pet| %>
+  <% @pets.each do |pet| %>
     <div id="pet-<%= pet.id %>">
       <span>
   <%= link_to user_pet_path(pet.user, pet) do %>
@@ -41,3 +41,6 @@
     </div>
   <% end %>
 <% end %>
+<div class="pagination d-flex justify-content-center">
+  <%= paginate @pets %>
+</div>
