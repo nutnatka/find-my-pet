@@ -82,6 +82,13 @@
         <%= @pet.additional_info %>
       <% end %>
     </p>
+
+    <p class="mb-2 ms-4">
+      <% if @pet.social_network_link? %>
+        <b>Pet`s Social Network:</b>
+        <%= link_to @pet.social_network_link, @pet.social_network_link, class: 'text-dark text-decoration-underline', target: '_blank' %>
+      <% end %>
+    </p>
   </div>
 
   <div class="col-12 col-sm-10 col-md-8 col-lg-2">
@@ -100,7 +107,7 @@
     <% elsif @pet.found? %>
       <%= link_to 'Help to Find Pet Master', @post, class: 'btn btn-dark mb-2' %>
     <% elsif @pet.to_adopt? %>
-      <%= link_to 'Adop this Pet', @post, class: 'btn btn-dark mb-2' %>
+      <%= link_to 'Adopt this Pet', @post, class: 'btn btn-dark mb-2' %>
     <% end %>
     </div>
   </div>

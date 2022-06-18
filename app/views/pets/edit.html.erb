@@ -99,6 +99,11 @@
       <div class="field">
         <%== form.text_area :additional_info, class: 'form-control mb-4', placeholder: t('.addInfo') %>
       </div>
+
+      <div class="field">
+        <%= form.label :social_network_link, 'Please share the pet`s social network link if any:', class: 'fw-bold' %>
+        <%== form.text_field :social_network_link, autofocus: true, class: 'form-control mb-2', placeholder: 'Social Network Link' %>
+      </div>
     </div>
   </div>
   <div class="container d-flex justify-content-center">

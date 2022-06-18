@@ -52,6 +52,11 @@
     <%== form.text_area :additional_info, autofocus: true, class: 'form-control mb-2', placeholder: t('.addInfo') %>
   </div>
 
+  <div class="field">
+    <%= form.label :social_network_link, 'Please share the pet`s social network link if any:', class: 'fw-bold' %>
+    <%== form.text_field :social_network_link, autofocus: true, class: 'form-control mb-2', placeholder: 'Social Network Link' %>
+  </div>
+
   <div class="container d-flex justify-content-center">
     <%= form.submit t('.save'), class: 'btn btn-dark' %>
     <%= link_to t('.cancel'), user_path, class: 'btn btn-outlined-dark' %>
