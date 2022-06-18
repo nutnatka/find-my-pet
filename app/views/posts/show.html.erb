@@ -45,9 +45,7 @@
         <%= link_to t('.adopt'), @post, class: 'btn btn-dark' %>
       <% end %>
     </div>
-
   </div>
-
   <div class="col-12 text-center col-md-2 text-md-end">
     <p class="p-0 m-0"><%= t('.posted') %>: <%= @post.user.name %></p>
     <p class="p-0 m-0"><%= @post.created_at.strftime("%B %d, %y at %H %p") %></p>

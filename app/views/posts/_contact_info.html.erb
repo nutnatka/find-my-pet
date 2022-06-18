@@ -17,10 +17,10 @@
   </h6>
 <% end %>
 <% if @post.user.allow_email == true %>
-  <h6><b><%= t('.email') %>:</b> <%= @post.user.email %></h6>
+  <h6><b><%= t('.email') %>:</b> <%= mail_to(@post.user.email, nil, html_options = { class: 'text-dark text-decoration-underline' }) %></h6>
 <% end %>
 <% if @post.user.phone? %>
-  <h6><b><%= t('.phone') %>:</b> <%= @post.user.phone %></h6>
+  <h6><b><%= t('.phone') %>:</b> <%= phone_to(@post.user.phone, nil, html_options = { class: 'text-dark text-decoration-underline' }) %></h6>
 <% end %>
 <% if @post.user.telegram? %>
   <h6><b><%= t('.telegram') %>:</b> <%= @post.user.telegram %></h6>
