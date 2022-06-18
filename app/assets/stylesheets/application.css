@@ -49,6 +49,11 @@ h1, h2, h3, h4, h5, h6, p, span, labe, option, nav-link {
     color: #212529;
 }
 
+.logo {
+    font-family: 'Montserrat', sans-serif !important;
+    color: #212529;
+}
+
 a:link {
     text-decoration: none;
 }

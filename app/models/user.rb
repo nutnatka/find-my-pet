@@ -41,6 +41,7 @@ class User < ApplicationRecord
                      file_content_type: { allow: %w[image/jpeg image/png image/gif], message: 'only allows jpeg, png and gif' }
   validates :name, :email, presence: true
   validates :password, presence: true, allow_nil: true
+  validates :name, length: { in: 2..30 }
 
   validate :password_complexity
 

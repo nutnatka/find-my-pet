@@ -57,14 +57,14 @@ uk:
     filter:
       filterBy: Фільтр
       clear: Очистити
-      name: Ім'ям
-      species: Видом
+      name: Ім'я
+      species: Вид
       prompt: будь-ласка, оберіть вид
-      breed: Породою
-      sterile: Стерилізованністю
-      sex: Статтю
+      breed: Порода
+      sterile: Стерилізований(а)
+      sex: Стать
       promptGender: будь-ласка, оберіть стать
-      color: Кольором
+      color: Колір
       filter: Фільтрувати
     sorting:
       sort: Сортувати за
@@ -116,11 +116,11 @@ uk:
   welcome:
     statistics:
       heading: Всього ...
-      add: додано.
-      lost: загублено.
-      home: вже знову вдома.
-      adopt: у пошуках сім'ї.
-      success: у надійних руках.
+      add: додано
+      lost: загублено
+      home: вже знову вдома
+      adopt: у пошуках сім'ї
+      success: у надійних руках
     friends:
       moreFriends: Знайти більше друзів
       adoptPet: Взяти улюбленця
