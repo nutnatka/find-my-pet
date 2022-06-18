@@ -147,11 +147,11 @@ en:
   welcome:
     statistics:
       heading: All in All ...
-      add: added.
-      lost: lost.
-      home: home again.
-      adopt: to adopt.
-      success: adopted.
+      add: added
+      lost: lost
+      home: home again
+      adopt: to adopt
+      success: adopted
     friends:
       moreFriends: Find More Friends
       adoptPet: Adopt a Pet

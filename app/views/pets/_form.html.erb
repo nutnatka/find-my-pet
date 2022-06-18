@@ -45,7 +45,8 @@
   </div>
 
   <div class="field">
-    <%== form.text_field :color, autofocus: true, required: true, class: 'form-control mb-2', placeholder: t('.color') %>
+    <%== form.text_field :color, autofocus: true, required: true, class: 'form-control', placeholder: t('.color') %>
+    <p class="mb-2">* <%= t('devise.registrations.new.required') %></p>
   </div>
 
   <div class="field">
