@@ -10,6 +10,11 @@ module GoogleMapsHelper
     javascript_include_tag "google_maps#{idMap}"
   end
 
+  def google_content(text)
+    "<![CDATA[" + raw(text)
+    # raw(text).gsub('<', '&lt;').gsub('>', '&gt;')
+  end
+
   private
 
   def google_maps_source(idMap)
@@ -17,7 +22,8 @@ module GoogleMapsHelper
   end
 
   def google_maps_key
-    Rails.application.credentials.fetch(:google_api_key)
+    # Rails.application.credentials.fetch(:google_api_key)
+    Rails.application.credentials.dig(:google, :api_key)
   end
 
 end
