@@ -42,6 +42,7 @@ class User < ApplicationRecord
   validates :name, :email, presence: true
   validates :password, presence: true, allow_nil: true
   validates :name, length: { in: 2..30 }
+  validates_format_of  :email, with: /(^[\+A-Z0-9\._%-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$)/i
 
   validate :password_complexity
 

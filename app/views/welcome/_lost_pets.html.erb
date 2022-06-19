@@ -16,8 +16,10 @@
           <h5 class="card-title text-center"><b><%= lost_post.pet.name %> <%= t('.lost') %></b></h5>
           <p class="card-text"><%= lost_post.pet.name %> <%= t('.date') %>
             <b><%= lost_post.date %></b>
-            . <%= t('.pet_info') %> <%= lost_post.pet.color %> <%= lost_post.pet.species %> <%= t('.pet_age') %>
-            <%= age(lost_post.pet) %>.
+            <% if lost_post.pet.date_of_birth %>
+              . <%= t('.pet_info') %> <%= lost_post.pet.color %> <%= lost_post.pet.species %> <%= t('.pet_age') %>
+              <%= age(lost_post.pet) %>.
+            <% end %>
             <% if lost_post.pet.sterilized? %><%= t('.sterile') %>
             <% end %>
             <% if lost_post.pet.male? || lost_post.pet.female? %>
