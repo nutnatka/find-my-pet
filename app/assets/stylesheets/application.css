@@ -14,12 +14,13 @@
  *= require_self
  */
 
-body{
+body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
-footer{
+
+footer {
     margin-top: auto;
 }
 
@@ -27,7 +28,7 @@ footer{
     display: none;
 }
 
-h1, h2, h3, h4, h5, h6, p, span, labe, option {
+h1, h2, h3, h4, h5, h6, p, span, labe, option, nav-link {
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -37,6 +38,20 @@ h1, h2, h3, h4, h5, h6, p, span, labe, option {
 
 .btn {
     font-family: 'Montserrat', sans-serif !important;
+}
+
+.nav-item {
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+.nav-link {
+    font-family: 'Montserrat', sans-serif !important;
+    color: #212529;
+}
+
+.logo {
+    font-family: 'Montserrat', sans-serif !important;
+    color: #212529;
 }
 
 a:link {

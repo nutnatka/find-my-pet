@@ -2,7 +2,7 @@
 
 <div class="row d-flex justify-content-center">
   <div class="col-md-6 col-lg-4">
-    <h2 class="text-center mt-5 mb-5">Change your password</h2>
+    <h2 class="text-center mt-5 mb-5"><%= t('.changePass') %></h2>
 
     <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
       <div class="container text-center">
@@ -11,16 +11,16 @@
       <%= f.hidden_field :reset_password_token %>
 
       <div class="field">
-        <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: 'form-control', placeholder: 'New Password' %>
-        <p>Please enter the password containing at least 6<br>characters. It should contain at least one lowercase letter,<br>one uppercase letter, and one digit.</p>
+        <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: 'form-control', placeholder: t('.newPass') %>
+        <p><%= t('devise.registrations.new.passRestrictions') %></p>
       </div>
 
       <div class="field">
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control mt-2', placeholder: 'Confirm New Password' %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control mt-2', placeholder: t('.passConfirm') %>
       </div>
 
       <div class="actions mt-3 text-center">
-        <%= f.submit "Change my password", class: 'btn btn-dark' %>
+        <%= f.submit t('.change'), class: 'btn btn-dark' %>
       </div>
     <% end %>
 
