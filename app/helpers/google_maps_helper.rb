@@ -22,6 +22,7 @@ module GoogleMapsHelper
   
   def google_maps_key
     # Rails.application.credentials.fetch(:google_api_key)
-    Rails.application.credentials.dig(:google, :api_key)
+    # Rails.application.credentials.dig(:google, :api_key)
+    ENV.fetch('GOOGLEAPIKEY', nil)
   end
 end
