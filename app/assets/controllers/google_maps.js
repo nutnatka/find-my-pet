@@ -29,25 +29,25 @@ function initMap() {
         map.setCenter(latLng);
     });
 
-    // const icons = {
-    //     catRed: "/assets/catRed.png",
-    //     catGreen: "/assets/catGreen.png",
-    //     dogRed: "/assets/dogRed.png",
-    //     dogGreen: "/assets/dogGreen.png",
-    // };
+    const icons = {
+        catRed: "/assets/catRed.png",
+        catGreen: "/assets/catGreen.png",
+        dogRed: "/assets/dogRed.png",
+        dogGreen: "/assets/dogGreen.png",
+    };
     const pets = document.querySelectorAll("div.pet-card");
 
     pets.forEach(pet => {
         const category = Number(pet.getAttribute("data-category"));
         const species = pet.getAttribute("data-species");
-        //const iconId = species + (category === 8 ? "Red" : "Green");
+        const iconId = species + (category === 8 ? "Red" : "Green");
 
         const marker = new google.maps.Marker({
             position: {
                 lat: Number(pet.getAttribute("data-latitude")),
                 lng: Number(pet.getAttribute("data-longitude"))
             },
-            //icon: icons[iconId],
+            icon: icons[iconId],
             map: map
         });
 
