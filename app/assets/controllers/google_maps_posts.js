@@ -93,7 +93,7 @@ function initAutocomplete(map, marker) {
         marker.setPosition(place.geometry.location);
         marker.setVisible(true);
 
-        dsetDataDocument(marker);
+        setDataDocument(marker);
 
     });
 
