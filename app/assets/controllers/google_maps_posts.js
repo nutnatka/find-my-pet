@@ -26,7 +26,7 @@ function initMap() {
             position: latLng,
             map: map,
         });
-        mapIndex.setCenter(latLng);
+        map.setCenter(latLng);
     });
 
     const marker = new google.maps.Marker({
