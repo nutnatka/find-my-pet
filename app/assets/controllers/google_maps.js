@@ -33,7 +33,7 @@ function initMap() {
         catRed: "/assets/catRed.png",
         catGreen: "/assets/catGreen.png",
         dogRed: "/assets/dogRed.png",
-        dogGreen: "/assets/dogGreen",
+        dogGreen: "/assets/dogGreen.png",
     };
     const pets = document.querySelectorAll("div.pet-card");
 
