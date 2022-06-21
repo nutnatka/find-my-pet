@@ -47,7 +47,7 @@ function initMap() {
                 lat: Number(pet.getAttribute("data-latitude")),
                 lng: Number(pet.getAttribute("data-longitude"))
             },
-            icon: icons[iconId],
+            //icon: icons[iconId],
             map: map
         });
 
