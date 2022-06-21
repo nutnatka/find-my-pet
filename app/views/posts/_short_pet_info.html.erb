@@ -4,7 +4,9 @@
   <% if @post.pet.breed? %><b><%= t('.breed') %>:</b> <%= @post.pet.breed %>
   <% end %></h6>
 <h6><b><%= t('.sex') %>:</b> <%= @post.pet.sex %></h6>
-<h6><b><%= t('.age') %>:</b> <%= age(@post.pet) %></h6>
+<% if @post.pet.date_of_birth %>
+  <h6><b><%= t('.age') %>:</b> <%= age(@post.pet) %></h6>
+<% end %>
 <h6>
   <% if @post.pet.sterilized? %><b><%= t('welcome.lost_pets.sterile') %></b>
   <% end %></h6>
