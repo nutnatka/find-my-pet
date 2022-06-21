@@ -1,52 +1,65 @@
-<div class="text-muted">
-  <%= form_with model: [@user, @user.pets.build] do |form| %>
+<%= form_with model: [@user, @user.pets.build] do |form| %>
 
-    <div class="field">
-      <%== form.text_field :name, autofocus: true, required: true, class: 'form-control', placeholder: true %>
-      <p class="p-0 mb-2">* This field is required.</p>
-    </div>
+  <div class="field">
+    <%= form.label :name, 'Please provide the pet name if any:', class: 'fw-bold' %>
+    <%== form.text_field :name, autofocus: true, class: 'form-control mb-2', placeholder: true %>
+  </div>
 
-    <div class="field">
-      <p class="p-0 m-0"><b><%= t('.mypet_html') %></b></p>
-      <%= form.select(:species, Pet.species.map { |k, v| [k.humanize, k] }, {}, { class: 'form-select mb-2' }) %>
-    </div>
+  <div class="field">
+    <p class="p-0 m-0"><b><%= t('.mypet_html') %></b></p>
+    <%= form.select(:species, Pet.species.map { |key, value| [key.humanize, key] }, { prompt: 'Select pet species'}, { class: 'form-select mb-2', required: true }) %>
+  </div>
 
-    <div class="field">
-      <%== form.text_field :breed, autofocus: true, class: 'form-control mb-2', placeholder: true %>
-    </div>
+  <div class="field">
+    <p class="r-0 m-0"><b>Provide the breed if any:</b></p>
+    <%== form.text_field :breed, autofocus: true, class: 'form-control mb-2', placeholder: true %>
+  </div>
 
-    <div class="field">
-      <p class="mb-0"><b><%= t('.select_html') %></b></p>
-      <p class="mb-0"><%= form.radio_button :sex, 'male', checked: true, class: 'form-check-input me-2' %>
-        Male</p>
-      <p class="mb-0"><%= form.radio_button :sex, 'female', class: 'form-check-input me-2' %> Female</p>
-      <p class="mb-2"><%= form.radio_button :sex, 'undefined', class: 'form-check-input me-2' %> Prefer not to
-        Say</p>
-    </div>
+  <div class="field">
+    <p class="mb-0"><b><%= t('.select_html') %></b></p>
+    <p class="mb-0"><%= form.radio_button :sex, 'male', required: true, class: 'form-check-input me-2' %> <%= t('.male') %></p>
+    <p class="mb-0"><%= form.radio_button :sex, 'female', class: 'form-check-input me-2' %> <%= t('.female') %></p>
+    <p class="mb-2"><%= form.radio_button :sex, 'undefined', class: 'form-check-input me-2' %> <%= t('.preferNotSay') %></p>
+  </div>
 
-    <div class="field">
-      <p class="mb-2">
-        <%= form.check_box :sterilized, class: 'form-check-input' %>
-        <b><%= form.label :sterilized, t('.pet'), class: 'ms-2 font-bold' %></b>
-      </p>
-    </div>
+  <div class="field">
+    <p class="mb-2">
+      <%= form.check_box :sterilized, class: 'form-check-input ' %>
+      <b><%= form.label :sterilized, t('.pet'), class: 'ms-2 font-bold' %></b>
+    </p>
+  </div>
 
-    <div class="field input-group-text mb-2 text-muted">
-    <span><b><%= t('.birthday_html') %></b><br>
-      <%= form.date_select(:date_of_birth, autofocus: true, order: [:day, :month, :year], start_year: Date.current.year, end_year: Date.current.year - 15) %></span>
+  <div class="field mb-2">
+    <b><%= form.label :date_of_birth, t('.birthday_html') %>:</b>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <div class="input-group-text fa-solid fa-calendar-days" , style="background-color: white;"></div>
+      </div>
+      <%= form.text_field :date_of_birth, class: 'form-control ', style: 'background-color: white;',
+                          data: {
+                            controller: "flatpickr",
+                            flatpickr_date_format: "%B %d %Y",
+                            flatpickr_min_date: Time.zone.now - 15.years,
+                            flatpickr_max_date: Time.zone.now } %>
     </div>
+  </div>
 
-    <div class="field">
-      <%== form.text_field :color, autofocus: true, required: true, class: 'form-control mb-2', placeholder: true %>
-    </div>
+  <div class="field">
+    <%== form.text_field :color, autofocus: true, required: true, class: 'form-control', placeholder: t('.color') %>
+    <p class="mb-2">* <%= t('devise.registrations.new.required') %></p>
+  </div>
 
-    <div class="field">
-      <%== form.text_area :additional_info, autofocus: true, class: 'form-control mb-2', placeholder: true %>
-    </div>
-    </div>
+  <div class="field">
+    <%== form.text_area :additional_info, autofocus: true, class: 'form-control mb-2', placeholder: t('.addInfo') %>
+  </div>
 
-    <div class="container d-flex justify-content-center">
-      <%= form.submit t('.save'), class: 'btn btn-dark' %>
-      <%= link_to t('.cancel'), user_path, class: 'btn btn-outlined-dark' %>
-    </div>
-  <% end %>
+  <div class="field">
+    <%= form.label :social_network_link, 'Please share the pet`s social network link if any:', class: 'fw-bold' %>
+    <%== form.text_field :social_network_link, autofocus: true, class: 'form-control mb-2', placeholder: 'Social Network Link' %>
+  </div>
+
+  <div class="container d-flex justify-content-center">
+    <%= form.submit t('.save'), class: 'btn btn-dark' %>
+    <%= link_to t('.cancel'), user_path, class: 'btn btn-outlined-dark' %>
+  </div>
+<% end %>

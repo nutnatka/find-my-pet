@@ -1,15 +1,15 @@
 <% provide(:page_title, 'Edit Pet Profile') %>
 <% provide(:profile_active, 'active') %>
 
-<div class="row mt-5">
-  <div class="col-2">
-    <%= link_to 'Back', user_path(current_user), class: 'btn btn-outline-dark' %>
+<div class="d-flex flex-lg-row flex-column mt-4 align-items-center align-items-lg-start">
+  <div class="col-12 col-sm-10 col-md-8 col-lg-2 text-center text-lg-start">
+    <%= link_to t('.back'), user_path(current_user), class: 'btn btn-outline-dark w-100' %>
   </div>
-  <div class="col-10 text-center">
+  <div class="col-12 col-sm-10 text-center mt-2 mt-lg-0">
     <% if @pet.name? %>
-      <h2 class="m-0">EDIT <%= (@pet.name).upcase %>`S PROFILE</h2>
+      <h2 class="m-0"><%= t('.edit') %> <%= t('.profile') %> <%= (@pet.name).upcase %></h2>
     <% else %>
-      <h2 class="m-0">EDIT PET`S PROFILE</h2>
+      <h2 class="m-0"><%= t('.editProfile') %></h2>
     <% end %>
   </div>
 </div>
@@ -19,7 +19,7 @@
     <div class="text-center text-danger mt-2" id="error_explanation">
       <h4>
         <%= pluralize(@pet.errors.count, "error") %>
-        prohibited this pet from being updated:
+        <%= t('.prohibit') %>:
       </h4>
 
       <% @pet.errors.full_messages.each do |msg| %>
@@ -28,74 +28,86 @@
     </div>
   <% end %>
 
-  <div class="row mt-2">
-    <div class="col-12 text-center col-md-4 mt-4">
+  <div class="d-flex flex-column flex-lg-row mt-4 align-items-center align-items-lg-start justify-content-evenly">
+    <div class="col-12 col-sm-10 col-md-8 col-lg-4">
       <% if @pet.avatar.attached? %>
-        <%= image_tag @pet.avatar, style: 'object-fit: cover; width: 100%', class: 'border border-dark' %>
+        <%= image_tag @pet.avatar, style: 'object-fit: cover; width: 100%', class: 'border border-dark rounded-3' %>
       <% else %>
         <% if @pet.cat? %>
-          <%= image_tag("cat.jpg", style: 'object-fit: cover; width: 100%', class: 'border border-dark') %>
+          <%= image_tag("cat1.jpg", style: 'object-fit: cover; width: 100%', class: 'border border-dark rounded-3') %>
         <% elsif @pet.dog? %>
-          <%= image_tag("dog.jpg", style: 'object-fit: cover; width: 100%', class: 'border border-dark') %>
+          <%= image_tag("dog1.jpg", style: 'object-fit: cover; width: 100%', class: 'border border-dark rounded-3') %>
         <% end %>
       <% end %>
       <% if @pet.name? %>
-        <p class="p-0 m-0 fw-bold">Upload <%= @pet.name %>`s new profile picture below!</p>
+        <p class="p-0 m-0 fw-bold"><%= t('.upload') %> <%= @pet.name %> <%= t('.below') %>!</p>
       <% else %>
-        <p class="p-0 m-0 fw-bold">Upload pet`s new profile picture below!</p>
+        <p class="p-0 m-0 fw-bold"><%= t('.uploadAvatar') %>!</p>
       <% end %>
       <%= form.file_field :avatar, class: 'form-control' %>
     </div>
 
-    <div class="col-0 col-md-3">
-    </div>
-
-    <div class="col-12 text-center mt-4 col-md-5 col-lg-4">
+    <div class="col-12 col-sm-10 col-md-8 col-lg-5">
       <div class="field">
-        <%== form.text_field :name, class: 'form-control', placeholder: true %>
+        <%= form.label :name, 'Please change the pet name if necessary:', class: 'fw-bold' %>
+        <%== form.text_field :name, class: 'form-control', placeholder: t('.name') %>
       </div>
 
       <div class="field">
-        <p class="p-0 m-0"><b>My pet is a:</b></p>
-        <%= form.select(:species, Pet.species.map { |k, v| [k.humanize, k] }, { prompt: 'please choose species' }, { class: 'form-select mb-2' }) %>
+        <p class="p-0 m-0"><b><%= t('.petIs') %>:</b></p>
+        <%= form.select(:species, Pet.species.map { |key, v| [key.humanize, key] }, { prompt: t('.speciesPrompt') }, { class: 'form-select mb-2', required: true }) %>
       </div>
 
       <div class="field">
-        <%== form.text_field :breed, class: 'form-control mb-2', placeholder: true %>
+        <p class="r-0 m-0"><b>Provide the breed if any:</b></p>
+        <%== form.text_field :breed, class: 'form-control mb-2', placeholder: t('.breed') %>
       </div>
 
       <div class="field">
-        <p class="mb-0"><b>Select Pet`s Gender:</b></p>
-        <p class="mb-0"><%= form.radio_button :sex, 'male', checked: true, class: 'form-check-input me-2' %>
-          Male</p>
-        <p class="mb-0"><%= form.radio_button :sex, 'female', class: 'form-check-input me-2' %> Female</p>
-        <p class="mb-2"><%= form.radio_button :sex, 'undefined', class: 'form-check-input me-2' %> Prefer not to
-          Say</p>
+        <p class="mb-0"><b><%= t('.genderSelect') %>:</b></p>
+        <p class="mb-0"><%= form.radio_button :sex, 'male', required: true, class: 'form-check-input me-2' %> <%= t('.male') %></p>
+        <p class="mb-0"><%= form.radio_button :sex, 'female', class: 'form-check-input me-2' %> <%= t('.female') %></p>
+        <p class="mb-2"><%= form.radio_button :sex, 'undefined', class: 'form-check-input me-2' %> Unknown</p>
       </div>
 
       <div class="field">
         <p class="mb-2">
           <%= form.check_box :sterilized, class: 'form-check-input' %>
-          <b><%= form.label :sterilized, 'My Pet is Sterilized', class: 'ms-2 font-bold' %></b>
+          <b><%= form.label :sterilized, t('.sterile'), class: 'ms-2 font-bold' %></b>
         </p>
       </div>
 
-      <div class="field input-group-text mb-2 text-muted">
-    <span><b>Select Pet`s Birthday:</b><br>
-      <%= form.date_select(:date_of_birth, order: [:day, :month, :year], start_year: Date.current.year, end_year: Date.current.year - 15) %></span>
+      <div class="field mb-2">
+        <b><%= form.label :date_of_birth, 'Select Pet`s Birthday:' %></b>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text fa-solid fa-calendar-days" , style="background-color: white;"></div>
+          </div>
+          <%= form.text_field :date_of_birth, class: 'form-control ', style: 'background-color: white;',
+                              data: {
+                                controller: "flatpickr",
+                                flatpickr_date_format: "%B %d %Y",
+                                flatpickr_min_date: Time.zone.now - 15.years,
+                                flatpickr_max_date: Time.zone.now } %>
+        </div>
       </div>
 
       <div class="field">
-        <%== form.text_field :color, class: 'form-control mb-2', placeholder: true %>
+        <%== form.text_field :color, class: 'form-control mb-2', required: true, placeholder: t('.color') %>
       </div>
 
       <div class="field">
-        <%== form.text_area :additional_info, class: 'form-control mb-4', placeholder: true %>
+        <%== form.text_area :additional_info, class: 'form-control mb-4', placeholder: t('.addInfo') %>
+      </div>
+
+      <div class="field">
+        <%= form.label :social_network_link, 'Please share the pet`s social network link if any:', class: 'fw-bold' %>
+        <%== form.text_field :social_network_link, autofocus: true, class: 'form-control mb-2', placeholder: 'Social Network Link' %>
       </div>
     </div>
-
-    <div class="container d-flex justify-content-center">
-      <%= form.submit 'Update Pet Info', class: 'btn btn-dark mb-4 mt-4' %>
-    </div>
+  </div>
+  <div class="container d-flex justify-content-center">
+    <%= form.submit t('.updatePet'), class: 'btn btn-dark mb-4 mt-4' %>
+  </div>
 <% end %>
 </div>

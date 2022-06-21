@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_12_100319) do
+ActiveRecord::Schema.define(version: 2022_06_18_040841) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 2022_06_12_100319) do
   end
 
   create_table "pets", force: :cascade do |t|
-    t.string "name"
+    t.string "name", default: "Unknown"
     t.integer "species"
     t.string "breed"
     t.integer "sex"
@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(version: 2022_06_12_100319) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug"
     t.integer "status", default: 0, null: false
+    t.string "social_network_link"
     t.index ["slug"], name: "index_pets_on_slug", unique: true
     t.index ["user_id"], name: "index_pets_on_user_id"
   end
@@ -131,6 +132,11 @@ ActiveRecord::Schema.define(version: 2022_06_12_100319) do
     t.string "viber"
     t.string "facebook"
     t.string "instagram"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["slug"], name: "index_users_on_slug", unique: true

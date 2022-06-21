@@ -21,13 +21,13 @@
 #  instagram              :string
 #
 class User < ApplicationRecord
-  extend FriendlyId
-  friendly_id :slug_candidates, use: [:slugged, :finders]
+  include Friendable
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,
+         :confirmable
 
   with_options dependent: :destroy do |assoc|
     assoc.has_many :pets
@@ -38,8 +38,10 @@ class User < ApplicationRecord
 
   validates :avatar, file_size: { less_than_or_equal_to: 10.megabytes, message: 'should be less than %{count}' },
                      file_content_type: { allow: %w[image/jpeg image/png image/gif], message: 'only allows jpeg, png and gif' }
-  validates :name, :email, :password, presence: true
+  validates :name, :email, presence: true
   validates :password, presence: true, allow_nil: true
+  validates :name, length: { in: 2..30 }
+  validates_format_of  :email, with: /(^[\+A-Z0-9\._%-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$)/i
 
   validate :password_complexity
 

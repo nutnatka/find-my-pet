@@ -12,9 +12,9 @@ Place.create!([
               ])
 
 Category.create!([
-                { name: 'lost_pets', id: '8' },
-                { name: 'found_pets', id: '9' },
-                { name: 'pets_to_adopt', id: '10'},
-                { name: 'success_stories', id: '11'},
-                { name: 'recommendations', id: '12'}
-              ])
+                   { name: 'lost_pets', id: '8' },
+                   { name: 'found_pets', id: '9' },
+                   { name: 'pets_to_adopt', id: '10' },
+                   { name: 'success_stories', id: '11' },
+                   { name: 'recommendations', id: '12' }
+                 ])

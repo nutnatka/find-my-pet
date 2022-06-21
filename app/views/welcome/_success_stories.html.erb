@@ -1,6 +1,6 @@
 <% if @success_posts.count > 1 %>
   <div class="container">
-    <h4 class="pt-5 text-center">FOUND PETS SUCCESS STORIES</h4>
+    <h4 class="pt-5 text-center"><%= t('.success') %></h4>
 
     <div class="mt-4 row justify-content-center">
       <div class="swiper mySwiper col-12 col-md-8">
@@ -36,7 +36,7 @@
         </div>
       </div>
       <div class="text-center mt-4 mb-3">
-        <%= link_to 'Go to Blog', posts_path(category: :success_stories), class: 'btn btn-dark' %>
+        <%= link_to t('.go_to_blog'), posts_path(category: :success_stories), class: 'btn btn-dark' %>
       </div>
     </div>
   </div>

@@ -32,9 +32,9 @@
 <% unless signed_in? %>
   <div class="get-started-section text-center" style="background-color: #ffe5d9;">
     <div class="container pb-5">
-      <h4 class="pt-5">WOULD LIKE TO TAKE PART IN PETS SEARCHING?</h4>
+      <h4 class="pt-5"><%= t('.would_html') %></h4>
       <h1><i class="fa-solid fa-arrow-down"></i></h1>
-      <%= link_to 'Get Started', new_user_registration_path, class: 'btn btn-dark' %>
+      <%= link_to t('.start'), new_user_registration_path, class: 'btn btn-dark' %>
     </div>
   </div>
 <% end %>

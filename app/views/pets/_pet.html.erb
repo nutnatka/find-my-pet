@@ -12,7 +12,7 @@
           <% end %>
         <% end %>
         <p class="text-dark mb-2"><b><%= pet.name %></b><br>
-          <%= truncate(pet.additional_info, length: 50, omission: '...') %></p>
+          <%= truncate(pet.additional_info, length: 50, omission: '...', style: 'word-wrap: break-word;') %></p>
       <% end %>
     </div>
   <% end %>
