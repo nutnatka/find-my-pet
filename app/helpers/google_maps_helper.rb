@@ -21,6 +21,6 @@ module GoogleMapsHelper
   end
   
   def google_maps_key
-    ENV.fetch('GOOGLEAPIKEY', nil)
+    ENV.fetch('GOOGLE_API_KEY', nil)
   end
 end
