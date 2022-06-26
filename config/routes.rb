@@ -3,12 +3,13 @@ Rails.application.routes.draw do
     devise_for :users, controllers: { registrations: 'users/registrations' }
     resources :users, only: :show do
       get 'posts', action: :user_posts, controller: 'posts', as: 'posts'
-      resources :pets do
-        member do
-          post :find_pet
-          post :find_master
-          post :adopt_pet
-        end
+    end
+
+    resources :pets do
+      member do
+        post :find
+        post :find_master
+        post :adopt_pet
       end
     end
 

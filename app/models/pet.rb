@@ -27,12 +27,14 @@ class Pet < ApplicationRecord
   has_one_attached :avatar
 
   validates :avatar, file_size: { less_than_or_equal_to: 10.megabytes, message: 'is too big. It should be less than %{count}' },
-                     file_content_type: { allow: %w[image/jpeg image/png image/gif], message: 'only allows jpeg, png and gif' }
+            file_content_type: { allow: %w[image/jpeg image/png image/gif], message: 'only allows jpeg, png and gif' }
   validates :species, :sex, :color, :status, presence: true
 
   enum species: { cat: 1, dog: 2 }
   enum sex: { male: 1, female: 2, undefined: 3 }
   enum status: { home: 0, lost: 1, found: 2, to_adopt: 3, home_again: 4, adopted: 5 }
+
+  private
 
   def slug_candidates
     [:name] + Array.new(6) { |index| [:name, index + 2] }

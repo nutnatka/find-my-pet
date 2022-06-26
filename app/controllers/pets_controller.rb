@@ -1,8 +1,7 @@
 class PetsController < ApplicationController
   before_action :authenticate_user!, except: :index
-  before_action :set_user, except: :index
-  before_action :set_pet, only: %i[edit update show find_pet find_master adopt_pet]
-  before_action :check_if_authorized, only: %i[update create find_pet find_master adopt_pet]
+  before_action :set_pet, only: %i[edit update show find find_master adopt_pet]
+  before_action :check_if_authorized, only: %i[edit destroy update find find_master adopt_pet]
 
   def index
     @q = Pet.ransack(params[:q])
@@ -12,15 +11,15 @@ class PetsController < ApplicationController
   def show; end
 
   def create
-    @pet = @user.pets.build(pet_params)
+    @pet = current_user.pets.build(pet_params)
 
-    redirect_to user_path(current_user), notice: 'The pet has been added.' if @pet.save
+    redirect_to current_user, notice: 'The pet has been added.' if @pet.save
   end
 
   def edit; end
 
   def update
-    redirect_to user_path(current_user), notice: 'The pet has been updated.' if @pet.update(pet_params)
+    redirect_to current_user, notice: 'The pet has been updated.' if @pet.update(pet_params)
   end
 
   def destroy
@@ -32,31 +31,25 @@ class PetsController < ApplicationController
     end
   end
 
-  def find_pet
+  def find
     @posts = @pet.posts.with_lost_pet
-    @posts.each do |post|
-      post.archived!
-    end
+    @posts.update_all(status: 'archived')
     @pet.home_again!
-    redirect_to @user, notice: "The pet has been found! You can share the success story by click on the 'Share Success Story' button."
+    redirect_to @pet.user, notice: "The pet has been found! You can share the success story by click on the 'Share Success Story' button."
   end
 
   def find_master
     @posts = @pet.posts.with_found_pet
-    @posts.each do |post|
-      post.archived!
-    end
+    @posts.update_all(status: 'archived')
     @pet.home_again!
-    redirect_to @user, notice: "The pet master has been found! You can share the success story by click on the 'Share Success Story' button."
+    redirect_to @pet.user, notice: "The pet master has been found! You can share the success story by click on the 'Share Success Story' button."
   end
 
   def adopt_pet
     @posts = @pet.posts.with_pet_to_adopt
-    @posts.each do |post|
-      post.archived!
-    end
+    @posts.update_all(status: 'archived')
     @pet.adopted!
-    redirect_to @user, notice: "The pet has found its family! You can share the success story by click on the 'Share Success Story' button."
+    redirect_to @pet.user, notice: "The pet has found its family! You can share the success story by click on the 'Share Success Story' button."
   end
 
   private
@@ -65,16 +58,13 @@ class PetsController < ApplicationController
     params.require(:pet).permit(:user_id, :name, :species, :breed, :sex, :sterilized, :date_of_birth, :color, :additional_info, :avatar, :status, :social_network_link)
   end
 
-  def set_user
-    @user = User.find(params[:user_id])
-  end
-
   def set_pet
     @pet = Pet.find(params[:id])
   end
 
   def check_if_authorized
-    if current_user == @user
+    if current_user != @pet.user
+      redirect_to @pet.user, notice: 'Sorry, you are not authorized to perform this action.'
     end
   end
 end

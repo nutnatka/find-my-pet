@@ -28,7 +28,7 @@
 
 <% if current_user.id == @user.id %>
   <div class="col-12 col-lg-4 ps-lg-5 ps-0 ">
-    <%= link_to t('.lostPost'), new_post_path(category_id: 8), class: 'btn btn-outline-dark w-100 mb-2' %>
+    <%= link_to t('.lostPost'), new_post_path(category_id: Category.find_by_name('lost_pets').id), class: 'btn btn-outline-dark w-100 mb-2' %>
     <%= link_to t('.foundPost'), new_post_path(category_id: 9), class: 'btn btn-outline-dark w-100 mb-2' %>
     <%= link_to t('.adoptPost'), new_post_path(category_id: 10), class: 'btn btn-outline-dark w-100 mb-2' %>
     <%= link_to t('.successPost'), new_post_path(category_id: 11), class: 'btn btn-outline-dark w-100 mb-2' %>

@@ -14,7 +14,7 @@
     <% @pets.each do |pet| %>
       <div id="pet-<%= pet.id %>">
       <span>
-  <%= link_to user_pet_path(pet.user, pet) do %>
+  <%= link_to pet_path(pet) do %>
     <% if pet.avatar.attached? %>
       <%= image_tag pet.avatar, width: '50px', height: '50px', style: 'object-fit: cover;', class: 'rounded-circle border border-dark mt-2 mb-2' %>
     <% else %>
@@ -27,17 +27,17 @@
           <span class="pet-link text-dark"><%= pet.name %></span>
   <% end %>
         <% if current_user.id == @user.id %>
-    <%= link_to '', edit_user_pet_path(@user, pet), class: 'fa-solid fa-pen-to-square text-dark text-decoration-none' %>
-          <%= link_to '', user_pet_path(@user, pet), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: 'fa-solid fa-trash text-dark text-decoration-none', id: 'pet-item' %>
+    <%= link_to '', edit_pet_path(pet), class: 'fa-solid fa-pen-to-square text-dark text-decoration-none' %>
+          <%= link_to '', pet_path(pet), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: 'fa-solid fa-trash text-dark text-decoration-none', id: 'pet-item' %>
           <% if pet.lost? %>
       <span class="badge alert-danger"><%= (pet.status).titleize %></span>
-            <%= link_to t('.petFound'), find_pet_user_pet_path(@user, pet), method: :post, data: { confirm: 'Have you really found your pet?' }, class: 'ms-2 text-success text-decoration-underline' %>
+            <%= link_to t('.petFound'), find_pet_path(pet), method: :post, data: { confirm: 'Have you really found your pet?' }, class: 'ms-2 text-success text-decoration-underline' %>
     <% elsif pet.found? %>
       <span class="badge alert-warning"><%= (pet.status).titleize %></span>
-            <%= link_to t('.masterFound'), find_master_user_pet_path(@user, pet), method: :post, data: { confirm: 'Have you really found pet master?' }, class: 'ms-2 text-success text-decoration-underline' %>
+            <%= link_to t('.masterFound'), find_master_pet_path(pet), method: :post, data: { confirm: 'Have you really found pet master?' }, class: 'ms-2 text-success text-decoration-underline' %>
     <% elsif pet.to_adopt? %>
       <span class="badge alert-primary"><%= (pet.status).titleize %></span>
-            <%= link_to t('.petAdopted'), adopt_pet_user_pet_path(@user, pet), method: :post, data: { confirm: 'Is the pet really adopted?' }, class: 'ms-2 text-success text-decoration-underline' %>
+            <%= link_to t('.petAdopted'), adopt_pet_pet_path(pet), method: :post, data: { confirm: 'Is the pet really adopted?' }, class: 'ms-2 text-success text-decoration-underline' %>
      <% elsif pet.adopted? %>
         <span class="badge alert-dark"><%= (pet.status).titleize %></span>
           <% end %>
