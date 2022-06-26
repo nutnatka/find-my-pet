@@ -1,0 +1,49 @@
+<% provide(:page_title, 'My Posts') %>
+<% provide(:blog_active, 'active') %>
+
+<h4 class="text-center text-dark mt-5">My Posts</h4>
+
+<% if current_user.posts.any? %>
+  <div class="table-responsive">
+    <table class="table mt-3 table table-hover">
+      <thead>
+      <tr style="background-color: #b2d8d8;" class="text-center">
+        <th scope="col">Title</th>
+        <th scope="col">Status</th>
+        <th scope="col">Category</th>
+        <th scope="col">Pet</th>
+        <th scope="col">Publication Date</th>
+        <th scope="col">Actions</th>
+      </tr>
+      </thead>
+      <tbody class="table-light text-center">
+      <% @posts.each do |post| %>
+        <tr>
+          <th scope="row">
+            <%= link_to post_path(post), class: 'text-dark' do %>
+              <%= post.title %></th>
+            <% end %>
+            <td><%= (post.status).titleize %></td>
+            <td><%= post.category.name.titleize %></td>
+            <td>
+              <% if post.pet.name.blank? || post.category.id == 12 %>
+                <p class="p-0 m-0">-</p>
+              <% else %>
+                <%= post.pet.name %>
+              <% end %></td>
+            <td><%= post.created_at.strftime('%v') %></td>
+            <td>
+              <%= link_to '', edit_post_path(post), class: 'fa-solid fa-pen-to-square text-dark text-decoration-none me-2' %>
+              <%= link_to '', post_path(post), method: :delete, data: { confirm: 'Are you sure?' }, class: 'me-2 fa-solid fa-trash text-dark text-decoration-none' %>
+            </td>
+            </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <div class="d-flex justify-content-center">
+      <%= paginate @posts %>
+    </div>
+  </div>
+<% else %>
+  <p>At the moment you have no posts. You can create them on your profile page.</p>
+<% end %>

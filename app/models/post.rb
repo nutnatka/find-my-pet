@@ -5,12 +5,14 @@
 #  id          :bigint           not null, primary key
 #  title       :string
 #  content     :text
-#  status      :string
+#  status      :string           default(NULL)
 #  user_id     :bigint           not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  category_id :bigint           not null
 #  pet_id      :bigint           not null
+#  place_id    :bigint
+#  date        :date
 #
 class Post < ApplicationRecord
   belongs_to :user
@@ -30,4 +32,6 @@ class Post < ApplicationRecord
   scope :with_pet_to_adopt, -> { joins(:category).merge(Category.pet_to_adopt) }
   scope :with_success_stories, -> { joins(:category).merge(Category.success_story) }
   scope :with_recommendations, -> { joins(:category).merge(Category.recommendation) }
+
+  enum status: { published: 0, archived: 1 }
 end

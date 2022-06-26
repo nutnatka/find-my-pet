@@ -24,30 +24,25 @@
 
 <div class="col-12 col-lg-4">
   <%= render 'pets/pets' %>
-  <% if current_user.id == @user.id %>
-    <%= link_to t('.addPet'), user_path, class: 'fa-solid fa-circle-plus text-dark text-decoration-none pet-form-display mb-2 mt-2' %>
-    <div class="mt-4 mb-4" , id="pet-container">
-      <%= render 'pets/form' %>
-    </div>
-    </div>
-  <% end %>
+</div>
 
-  <% if current_user.id == @user.id %>
-    <div class="col-12 col-lg-4 ps-lg-5 ps-0 ">
-      <%= link_to t('.lostPost'), new_post_path(category_id: 8), class: 'btn btn-outline-dark w-100 mb-2' %>
-      <%= link_to t('.foundPost'), new_post_path(category_id: 9), class: 'btn btn-outline-dark w-100 mb-2' %>
-      <%= link_to t('.adoptPost'), new_post_path(category_id: 10), class: 'btn btn-outline-dark w-100 mb-2' %>
-      <%= link_to t('.successPost'), new_post_path(category_id: 11), class: 'btn btn-outline-dark w-100 mb-2' %>
-      <%= link_to t('.recommendationPost'), new_post_path(category_id: 12), class: 'btn btn-outline-dark w-100 mb-2' %>
-  <% end %>
-  </div>
-  </div>
-  </div>
+<% if current_user.id == @user.id %>
+  <div class="col-12 col-lg-4 ps-lg-5 ps-0 ">
+    <%= link_to t('.lostPost'), new_post_path(category_id: 8), class: 'btn btn-outline-dark w-100 mb-2' %>
+    <%= link_to t('.foundPost'), new_post_path(category_id: 9), class: 'btn btn-outline-dark w-100 mb-2' %>
+    <%= link_to t('.adoptPost'), new_post_path(category_id: 10), class: 'btn btn-outline-dark w-100 mb-2' %>
+    <%= link_to t('.successPost'), new_post_path(category_id: 11), class: 'btn btn-outline-dark w-100 mb-2' %>
+    <%= link_to t('.recommendationPost'), new_post_path(category_id: 12), class: 'btn btn-outline-dark w-100 mb-2' %>
+    <%= link_to 'My Posts', user_posts_path(@user), class: 'btn btn-outline-dark w-100 mb-2' %>
+<% end %>
+</div>
+</div>
+</div>
 
-  <script>document.querySelectorAll('.pet-form-display').forEach((el) => {
-      el.addEventListener('click', (ev) => {
-          ev.preventDefault();
-          el.nextElementSibling.style = 'display: block'
-      })
-  })
-  </script>
+<script>document.querySelectorAll('.pet-form-display').forEach((el) => {
+    el.addEventListener('click', (ev) => {
+        ev.preventDefault();
+        el.nextElementSibling.style = 'display: block'
+    })
+})
+</script>

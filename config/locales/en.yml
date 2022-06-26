@@ -48,7 +48,7 @@ en:
     pets:
       descr_html: >
         At the moment you`ve got no pets added. <br>
-        To add your pet, click on the button below.
+        To add your pet, click on the button above.
       yourpets_html: >
         Your pets:
       petFound: My Pet was Found
@@ -124,7 +124,7 @@ en:
       addInfo: Additional Info
     edit:
       petIs: My pet is a
-      back: back
+      back: Back
       edit: EDIT
       profile: THE PROFILE OF
       pet:

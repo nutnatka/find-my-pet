@@ -1,13 +1,18 @@
 <h2><%= @user.name %></h2>
 <% if current_user.id == @user.id %>
+  <%= link_to t('.addPet'), user_path, class: 'fa-solid fa-circle-plus text-dark text-decoration-none pet-form-display mb-2 mt-2' %>
+  <div class="mt-4 mb-4" , id="pet-container">
+    <%= render 'pets/form' %>
+  </div>
   <h5 class="mt-4"><%= t('.yourpets_html') %></h5>
 <% end %>
-<p id='your-pets'></p>
-<% if current_user.pets.count == 0 %>
-  <p><%= t('.descr_html') %></p>
-<% else %>
-  <% @pets.each do |pet| %>
-    <div id="pet-<%= pet.id %>">
+<div class="pets-wrapper">
+  <p id='your-pets'></p>
+  <% if current_user.pets.empty? %>
+    <p><%= t('.descr_html') %></p>
+  <% else %>
+    <% @pets.each do |pet| %>
+      <div id="pet-<%= pet.id %>">
       <span>
   <%= link_to user_pet_path(pet.user, pet) do %>
     <% if pet.avatar.attached? %>
@@ -38,9 +43,10 @@
           <% end %>
   <% end %>
   </span>
-    </div>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
-<div class="pagination d-flex justify-content-center">
-  <%= paginate @pets %>
+  <div class="pag">
+    <%= paginate @pets %>
+  </div>
 </div>

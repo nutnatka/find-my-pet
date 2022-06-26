@@ -39,7 +39,7 @@
         </div>
         <p><%= t('.noPet') %>
           <%= link_to t('.profile'), current_user, class: 'text-dark text-decoration-underline' %>.</p>
-      <% else %>
+      <% elsif @post.pet.blank? %>
         <p><%= t('.addPet') %>
           <%= link_to t('.profile'), current_user, class: 'text-dark text-decoration-underline' %> first.</p>
       <% end %>

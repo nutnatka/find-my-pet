@@ -98,3 +98,13 @@ a:active {
 .posted-by {
     font-size: 12px;
 }
+
+.pets-wrapper {
+    position: relative;
+    min-height: 400px;
+}
+
+.pag {
+    position: absolute;
+    bottom: 0;
+}
