@@ -39,6 +39,7 @@ en:
       addPet: Add a Pet
       editProfile: Edit Profile
       destroyProfile: Destroy Profile
+      AddContactInfo: Add Contact Info
       recommendationPost: Share Recommendation
       successPost: Share Success Story
       adoptPost: Find Family for a Pet
@@ -72,6 +73,8 @@ en:
         Pet is Sterilized
       birthday_html:
         Select Pet`s Birthday
+      pleaseShareThePet`sSocialNetworkLinkIfAny:
+        "Please share the pet`s social network link if any:"
       save:
         Save Pet
       cancel:
@@ -323,6 +326,7 @@ en:
       places:
         name: name
         address: address
+        social_network_link: Social Network Link
       user:
         email: email
 

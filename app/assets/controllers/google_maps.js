@@ -29,6 +29,8 @@ function initMap() {
         map.setCenter(latLng);
     });
 
+    const infowindow = new google.maps.InfoWindow();
+
     const icons = {
         catRed: "/assets/catRed.png",
         catGreen: "/assets/catGreen.png",
@@ -36,6 +38,8 @@ function initMap() {
         dogGreen: "/assets/dogGreen.png",
     };
     const pets = document.querySelectorAll("div.pet-card");
+
+    const mapMarkers = new Map;
 
     pets.forEach(pet => {
         const category = Number(pet.getAttribute("data-category"));
@@ -48,29 +52,29 @@ function initMap() {
                 lng: Number(pet.getAttribute("data-longitude"))
             },
             icon: icons[iconId],
-            map: map
+            map: map,
+            title: pet.getAttribute("data-name"),
+            optimized: true,
+            zIndex: 3
         });
 
         const contentString =
             '<div id="content">' +
             '<a href="/posts/' + pet.getAttribute("data-id") + '">' + pet.getAttribute("data-name") + '</a>' +
-                '<div>' +
-                    pet.getAttribute("data-content") +
-                '</div>' +
+            '<div>' +
+            pet.getAttribute("data-content") +
+            '</div>' +
             '</div>';
-        const infowindow = new google.maps.InfoWindow({
-            content: contentString,
-        });
+        mapMarkers.set(marker, contentString);
 
-        marker.addListener("click", () => {
-            infowindow.open({
-                anchor: marker,
-                map: map,
-                shouldFocus: false,
-            });
+        marker.addListener('click', () => {
+            infowindow.setContent(mapMarkers.get(marker));
+            infowindow.open(marker.getMap(), marker);
         });
-
 
     });
+
+    const el = document.getElementById("dataPosts");
+    el.remove();
 
 }

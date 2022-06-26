@@ -7,7 +7,7 @@
 </div>
 
 <div id="map-index">
-  <div hidden>
+  <div id="dataPosts" hidden>
     <% Post.all.each do |post|
       next if post.place.nil? %>
       <div
@@ -27,6 +27,7 @@
     <%= google_maps_initialize %>
   </div>
 </div>
+<p><%= image_tag("catGreen.png")%> found cat ; <%= image_tag("dogGreen.png")%>  found cat; <%= image_tag("catRed.png")%> lost cat; <%= image_tag("dogRed.png")%> lost dog </p>
 
 <% unless signed_in? %>
   <div class="get-started-section text-center" style="background-color: #ffe5d9;">

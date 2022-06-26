@@ -16,7 +16,7 @@
   <% if current_user.id == @user.id %>
     <div class="actions mt-4">
       <%= link_to t('.editProfile'), edit_user_registration_path, class: 'btn btn-outline-dark w-100 mb-2' %>
-      <%= link_to 'Add Contact Info', edit_user_registration_path, class: 'btn btn-outline-dark w-100 mb-2' %>
+      <%= link_to t('.AddContactInfo'), edit_user_registration_path, class: 'btn btn-outline-dark w-100 mb-2' %>
       <%= link_to t('.destroyProfile'), registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-dark w-100 mb-2' %>
     </div>
   <% end %>
