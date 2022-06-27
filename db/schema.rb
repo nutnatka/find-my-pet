@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 2022_06_18_040841) do
   end
 
   create_table "pets", force: :cascade do |t|
-    t.string "name", default: "Unknown"
+    t.string "name"
     t.integer "species"
     t.string "breed"
     t.integer "sex"
