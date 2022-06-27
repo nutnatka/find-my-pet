@@ -6,10 +6,10 @@
     <%= render "devise/shared/error_messages", resource: resource %>
   </div>
 
-  <%= link_to 'Back', user_path(current_user), class: 'btn btn-outline-dark' %>
+  <%= link_to t('.back'), user_path(current_user), class: 'btn btn-outline-dark' %>
 
   <div class="text-center mt-2">
-    <h2 class="m-0">EDIT YOUR PROFILE</h2>
+    <h2 class="m-0"><%=t('.editYourProfile') %></h2>
   </div>
 
   <div class="d-flex flex-lg-row mt-4 justify-content-lg-between flex-column justify-content-center align-items-center align-items-lg-start">
@@ -19,12 +19,12 @@
       <% else %>
         <%= image_tag("avatar.png", style: 'width: 100%; object-fit: cover;', class: 'border border-muted') %>
       <% end %>
-      <p class="p-0 m-0 fw-bold mt-2">Upload your new profile picture below!</p>
+      <p class="p-0 m-0 fw-bold mt-2"><%= t('.uploadYour') %></p>
       <%= f.file_field :avatar, class: 'form-control' %>
     </div>
 
     <div class="col-12 col-sm-10 col-md-8 col-lg-4 ps-0 ps-lg-5 mt-3 mt-lg-0">
-      <h6>Please change personal info if needed:</h6>
+      <h6><%=t('.pleaseChangePersonalInfoIfNeeded') %></h6>
       <div class="field">
         <%= f.text_field :name, autofocus: true, class: 'form-control mb-3', placeholder: 'Name' %>
       </div>
@@ -34,21 +34,19 @@
       </div>
 
       <div class="field">
-        <%= f.password_field :password, autocomplete: "new-password", class: 'form-control', placeholder: 'New Password' %>
-        <p class="p-0 m-0">Please enter the password containing at least 6 characters. It should contain at
-          least one lowercase letter, one uppercase letter, and one digit.<br>Leave the field blank if you don't
-          want to change your password.</p>
+        <%= f.password_field :password, autocomplete: "new-password", class: 'form-control', placeholder: t('devise.registrations.new.newPassword') %>
+        <p class="p-0 m-0"><%= t('.text_html') %></p>
       </div>
 
       <div class="field">
-        <%= f.password_field :current_password, autocomplete: "current-password", class: 'form-control mt-2', placeholder: 'Current Password' %>
+        <%= f.password_field :current_password, autocomplete: "current-password", class: 'form-control mt-2', placeholder: t('devise.registrations.new.currentPassword') %>
         <p class="m-0 p-0">* <%= t('pets.form.required') %></p>
-        <p class="fw-bold">Please enter your current password<br>to confirm your changes.</p>
+        <p class="fw-bold"><%= t('.text2_html') %></p>
       </div>
     </div>
 
     <div class="col-12 col-sm-10 col-md-8 col-lg-4 ps-0 ps-lg-5">
-      <h6>Please provide contact contact info:</h6>
+      <h6><%= t('.pleaseProvideContactInfo') %></h6>
       <div class="field">
         <%= f.text_field :phone, autofocus: true, class: 'form-control mb-3', placeholder: t('devise.registrations.new.phone'), 'data-mask': '+38000-000-00-00' %>
       </div>

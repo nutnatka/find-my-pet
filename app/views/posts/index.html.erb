@@ -4,7 +4,7 @@
 <div class="posts-nav mt-5 d-flex flex-column text-center flex-md-row text-md-start justify-content-md-between">
   <h5 class="m-1 text-center"><%= link_to t('.general'), posts_path, class: "text-dark #{'fw-bold' unless params.has_key?(:category) }" %></h5>
   <% Category.all.each do |cat| %>
-    <h5 class="m-1 text-center"><%= link_to (cat.name).humanize.titleize, posts_path(category: cat.name), class: "text-dark #{'fw-bold' if params[:category] == cat.name}" %></h5>
+    <h5 class="m-1 text-center"><%= link_to t("categories.".concat(cat.name)), posts_path(category: cat.name), class: "text-dark #{'fw-bold' if params[:category] == cat.name}" %></h5>
   <% end %>
 </div>
 <hr class="mt-2" style="border: 1px solid black;">
