@@ -1,5 +1,7 @@
 <% provide(:page_title, 'New Post') %>
-<% provide(:blog_active, 'active') %>
+<% unless @post.category_id == 8 %>
+  <% provide(:blog_active, 'active') %>
+<% end %>
 
 <div class="page-header mt-4 mb-4">
   <%= link_to t('.back'), :back, class: 'btn btn-outline-dark' %>

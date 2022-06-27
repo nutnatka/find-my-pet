@@ -1,9 +1,13 @@
+<% if @post.category.name == 'lost_pets' %>
+  <% provide(:lost_active, 'active') %>
+<% end %>
+
 <h4 class="text-center mt-2"><%= t('.info') %>
-  <% if @post.category_id == 8 %>
+  <% if @post.category.name == 'lost_pets' %>
     <%= t('.petSearch') %>:</h4>
-  <% elsif @post.category_id == 9 || @post.category_id == 10 %>
+  <% elsif @post.category.name == 'found_pets' || @post.category.name == 'pets_to_adopt' %>
     <%= t('.masterSearch') %>:</h4>
-  <% elsif @post.category_id == 11 %>
+  <% elsif @post.category.name == 'success_stories' %>
     <%= t('.success') %>:</h4>
   <% end %>
 
@@ -16,75 +20,75 @@
       <% end %>
     </div>
 
-    <% if @post.category_id == 8 || @post.category_id == 9 %>
+    <% if @post.category.name == 'lost_pets' || @post.category.name == 'found_pets' %>
       <div class="d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between mt-4">
         <div class="col-12 col-md-8 col-lg-5">
-    <% elsif @post.category_id == 10 || @post.category_id == 11 %>
+    <% elsif @post.category.name == 'pets_to_adopt' || @post.category.name == 'success_stories' %>
       <div class="d-flex flex-column flex-lg-row justify-content-center mt-4">
         <div class="col-12 col-md-7">
     <% end %>
-      <div class="field mb-2">
-        <% if @post.category_id == 10 %>
-          <%= f.label :title, t('.adoptPetInfo') %>:
-        <% else %>
-          <%= f.label :title, t('.situationInfo') %>:
-        <% end %>
-        <%= f.text_field :title, class: "form-control", required: true, placeholder: t('.postTitle') %>
-      </div>
-
-      <% if @pets.present? %>
-        <div class="field mb-2">
-          <%= f.label :title, t('.petSelect') %>:
-          <%= f.collection_select(:pet_id, @pets, :id, :name, { prompt: t('.prompt') }, { class: 'form-select', required: true }) %>
-        </div>
-        <p><%= t('.noPet') %>
-          <%= link_to t('.profile'), current_user, class: 'text-dark text-decoration-underline' %>.</p>
-      <% elsif @post.pet.blank? %>
-        <p><%= t('.addPet') %>
-          <%= link_to t('.profile'), current_user, class: 'text-dark text-decoration-underline' %> first.</p>
+    <div class="field mb-2">
+      <% if @post.category.name == 'pets_to_adopt' %>
+        <%= f.label :title, t('.adoptPetInfo') %>:
+      <% else %>
+        <%= f.label :title, t('.situationInfo') %>:
       <% end %>
-
-      <% if @post.category_id == 10 || @post.category_id == 11 %>
-        <div class="field mb-2">
-          <%= f.label :content, t('.details') %>:
-          <%= f.rich_text_area :content, class: "form-control", placeholder: t('.shareStory') %>
-        </div>
-      <% end %>
-
-      <% if @post.category_id == 8 || @post.category_id == 9 %>
-        <div class="field mb-2">
-          <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-          <%= f.label :name, t('.address') %>:
-          <%= f.text_field :place_name, class: "form-control", required: true %>
-          <%= f.hidden_field :place_latitude %>
-          <%= f.hidden_field :place_longitude %>
-        </div>
-
-        <div class="field mb-2">
-          <%= f.label :date, t('.date') %>:
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <div class="input-group-text fa-solid fa-calendar-days" , style="background-color: white;"></div>
-            </div>
-            <%= f.text_field :date, class: 'form-control', style: 'background-color: white;', placeholder: t('.dateSelect'),
-                             data: {
-                               controller: "flatpickr",
-                               flatpickr_date_format: "%B %d %Y",
-                               flatpickr_min_date: Time.zone.now - 30.days,
-                               flatpickr_max_date: Time.zone.now } %>
-          </div>
-        </div>
-
-        <p><%= t('.contactInfo') %><br><%= t('.done') %>
-          <%= link_to t('.profile'), current_user, class: 'text-dark text-decoration-underline' %>.</p>
-      <% end %>
-
-      <div class="field d-none">
-        <%= f.collection_select(:category_id, Category.all, :id, :name) %>
-      </div>
+      <%= f.text_field :title, class: "form-control", required: true, placeholder: t('.postTitle') %>
     </div>
 
-    <% if @post.category_id == 8 || @post.category_id == 9 %>
+    <% if @pets.present? %>
+      <div class="field mb-2">
+        <%= f.label :title, t('.petSelect') %>:
+        <%= f.collection_select(:pet_id, @pets, :id, :name, { prompt: t('.prompt') }, { class: 'form-select', required: true }) %>
+      </div>
+      <p><%= t('.noPet') %>
+        <%= link_to t('.profile'), current_user, class: 'text-dark text-decoration-underline' %>.</p>
+    <% elsif @post.pet.blank? %>
+      <p><%= t('.addPet') %>
+        <%= link_to t('.profile'), current_user, class: 'text-dark text-decoration-underline' %> first.</p>
+    <% end %>
+
+    <% if @post.category.name == 'pets_to_adopt' || @post.category.name == 'success_stories' %>
+      <div class="field mb-2">
+        <%= f.label :content, t('.details') %>:
+        <%= f.rich_text_area :content, class: "form-control", placeholder: t('.shareStory') %>
+      </div>
+    <% end %>
+
+    <% if @post.category.name == 'lost_pets' || @post.category.name == 'found_pets' %>
+      <div class="field mb-2">
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+        <%= f.label :name, t('.address') %>:
+        <%= f.text_field :place_name, class: "form-control", required: true %>
+        <%= f.hidden_field :place_latitude %>
+        <%= f.hidden_field :place_longitude %>
+      </div>
+
+      <div class="field mb-2">
+        <%= f.label :date, t('.date') %>:
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text fa-solid fa-calendar-days" , style="background-color: white;"></div>
+          </div>
+          <%= f.text_field :date, class: 'form-control', style: 'background-color: white;', placeholder: t('.dateSelect'),
+                           data: {
+                             controller: "flatpickr",
+                             flatpickr_date_format: "%B %d %Y",
+                             flatpickr_min_date: Time.zone.now - 30.days,
+                             flatpickr_max_date: Time.zone.now } %>
+        </div>
+      </div>
+
+      <p><%= t('.contactInfo') %><br><%= t('.done') %>
+        <%= link_to t('.profile'), current_user, class: 'text-dark text-decoration-underline' %>.</p>
+    <% end %>
+
+    <div class="field d-none">
+      <%= f.collection_select(:category_id, Category.all, :id, :name) %>
+    </div>
+    </div>
+
+    <% if @post.category.name == 'lost_pets' || @post.category.name == 'found_pets' %>
       <div class="col-12 col-md-8 col-lg-6 border border-muted">
         <div id="map-posts">
           <div id="map">

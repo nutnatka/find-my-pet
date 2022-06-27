@@ -32,7 +32,7 @@ class Pet < ApplicationRecord
 
   enum species: { cat: 1, dog: 2 }
   enum sex: { male: 1, female: 2, undefined: 3 }
-  enum status: { home: 0, lost: 1, found: 2, to_adopt: 3, home_again: 4, adopted: 5 }
+  enum status: { home: 0, lost: 1, found: 2, to_adopt: 3, home_again: 4, adopted: 5, master_found: 6 }
 
   private
 

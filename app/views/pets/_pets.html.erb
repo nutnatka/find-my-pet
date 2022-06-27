@@ -38,7 +38,7 @@
     <% elsif pet.to_adopt? %>
       <span class="badge alert-primary"><%= (pet.status).titleize %></span>
             <%= link_to t('.petAdopted'), adopt_pet_pet_path(pet), method: :post, data: { confirm: 'Is the pet really adopted?' }, class: 'ms-2 text-success text-decoration-underline' %>
-     <% elsif pet.adopted? %>
+     <% elsif pet.adopted? || pet.master_found? %>
         <span class="badge alert-dark"><%= (pet.status).titleize %></span>
           <% end %>
   <% end %>

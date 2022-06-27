@@ -41,7 +41,7 @@ class PetsController < ApplicationController
   def find_master
     @posts = @pet.posts.with_found_pet
     @posts.update_all(status: 'archived')
-    @pet.home_again!
+    @pet.master_found!
     redirect_to @pet.user, notice: "The pet master has been found! You can share the success story by click on the 'Share Success Story' button."
   end
 

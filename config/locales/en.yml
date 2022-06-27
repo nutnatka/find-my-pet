@@ -110,8 +110,7 @@ en:
     show:
       profiles: Pet Profiles
       master: Pet Master
-      profile: PROFILE OF
-      pet: .
+      profile: PET PROFILE
       info: PERSONAL INFO
       species: Species
       breed: Breed
