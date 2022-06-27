@@ -1,12 +1,12 @@
 <div class="d-flex flex-row justify-content-between align-items-center"><h5 class="p-0 m-0 mb"><%= t('.filterBy') %>:</h5>
-  <%= link_to t('.clear'), request.path, class: "btn btn-outline-dark p-o" %>
+  <%= link_to t('.clear'), pets_path, class: "btn btn-outline-dark p-o" %>
 </div>
 <hr>
 
 <div class="filters-content">
   <%= search_form_for @q,
                       class: 'form',
-                      url: user_pets_path,
+                      url: pets_path,
                       html: { autocomplete: 'off', autocapitalize: 'none' } do |f| %>
 
     <div class="form-group">

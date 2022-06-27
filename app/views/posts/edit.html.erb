@@ -1,11 +1,9 @@
-<% provide(:page_title, 'New Post') %>
-<% unless @post.category_id == 8 %>
-  <% provide(:blog_active, 'active') %>
-<% end %>
+<% provide(:page_title, 'Edit Post') %>
+<% provide(:blog_active, 'active') %>
 
 <div class="page-header mt-4 mb-4">
   <%= link_to t('.back'), :back, class: 'btn btn-outline-dark' %>
-  <% if @post.category.name == 'recommendations' %>
+  <% if @post.category_id == 12 %>
     <%= render 'form' %>
   <% else %>
     <%= render 'pet_form' %>
