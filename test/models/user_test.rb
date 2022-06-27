@@ -19,6 +19,10 @@
 #  viber                  :string
 #  facebook               :string
 #  instagram              :string
+#  confirmation_token     :string
+#  confirmed_at           :datetime
+#  confirmation_sent_at   :datetime
+#  unconfirmed_email      :string
 #
 require 'test_helper'
 

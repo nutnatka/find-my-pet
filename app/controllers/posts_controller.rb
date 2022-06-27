@@ -1,19 +1,18 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create]
-  after_action :change_pet_status, only: [:create]
+  after_action :change_pet_status, only: :create
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
     if params.has_key?(:category)
       @category = Category.find_by_name(params[:category])
-      @posts = Post.where(category: @category).page params[:page]
+      @posts = Post.where(category: @category, status: 'published').page params[:page]
     else
-      @posts = Post.all.page params[:page]
+      @posts = Post.where(status: 'published').page params[:page]
     end
   end
 
-  def show
-    @post = Post.find(params[:id])
-  end
+  def show; end
 
   def new
     @post = Post.new(category_id: params[:category_id])
@@ -38,6 +37,27 @@ class PostsController < ApplicationController
     end
   end
 
+  def edit; end
+
+  def update
+    if @post.update(post_params)
+      redirect_to @post, notice: 'Post has been updated'
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @post.destroy
+
+    redirect_to current_user, notice: 'The post has been successfully deleted.'
+  end
+
+  def user_posts
+    @q = current_user.posts.ransack(params[:q])
+    @posts = @q.result.order(:created_at).page(params[:page]).per(10)
+  end
+
   private
 
   def places_params
@@ -59,5 +79,9 @@ class PostsController < ApplicationController
         @pet.to_adopt!
       end
     end
+  end
+
+  def set_post
+    @post = Post.find(params[:id])
   end
 end

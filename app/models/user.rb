@@ -19,6 +19,10 @@
 #  viber                  :string
 #  facebook               :string
 #  instagram              :string
+#  confirmation_token     :string
+#  confirmed_at           :datetime
+#  confirmation_sent_at   :datetime
+#  unconfirmed_email      :string
 #
 class User < ApplicationRecord
   include Friendable
@@ -37,13 +41,14 @@ class User < ApplicationRecord
   has_one_attached :avatar
 
   validates :avatar, file_size: { less_than_or_equal_to: 10.megabytes, message: 'should be less than %{count}' },
-                     file_content_type: { allow: %w[image/jpeg image/png image/gif], message: 'only allows jpeg, png and gif' }
+            file_content_type: { allow: %w[image/jpeg image/png image/gif], message: 'only allows jpeg, png and gif' }
   validates :name, :email, presence: true
   validates :password, presence: true, allow_nil: true
   validates :name, length: { in: 2..30 }
-  validates_format_of  :email, with: /(^[\+A-Z0-9\._%-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$)/i
-
+  validates_format_of :email, with: /(^[\+A-Z0-9\._%-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$)/i
   validate :password_complexity
+
+  private
 
   def password_complexity
     return if password.blank? || password =~ /(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])/

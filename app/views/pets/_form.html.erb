@@ -1,4 +1,4 @@
-<%= form_with model: [@user, @user.pets.build] do |form| %>
+<%= form_with model: [@user.pets.build] do |form| %>
 
   <div class="field">
     <%= form.label :name, 'Please provide the pet name if any:', class: 'fw-bold' %>
