@@ -1,5 +1,6 @@
 <div class="pets-container d-flex justify-content-around row mb-3">
   <% @pets_to_adopt.each do |pet| %>
+
     <div class="pet-container col-8 col-sm-5 col-md-4 col-lg-3 col-xl-2">
       <%= link_to pet_path(pet) do %>
         <% if pet.avatar.attached? %>
@@ -11,12 +12,13 @@
             <%= image_tag("dog1.jpg", width: '150px', height: '150px', style: 'object-fit: cover', class: 'border border-dark rounded-circle') %>
           <% end %>
         <% end %>
-        <p class="text-dark mb-2"><b><%= pet.name %>, the <%= pet.species %></b><br>
-          <%= truncate(pet.additional_info, length: 25, omission: '...') %></p>
+        <p class="text-dark p-0 m-0"><b><%= pet.name.truncate(15, omission: '...') %>, <%= pet.species %></b></p>
+        <p class="text-dark mb-2 p-0 m-0"><%= truncate(pet.additional_info, length: 15, omission: '...') %></p>
       <% end %>
     </div>
   <% end %>
 </div>
+
 <div class="pet-actions d-flex flex-column flex-sm-row justify-content-evenly">
   <%= link_to t('.moreFriends'), pets_path, class: 'btn btn-dark m-2' %>
   <%= link_to t('.adoptPet'), posts_path(category: :pets_to_adopt), class: 'btn btn-outline-dark m-2' %>

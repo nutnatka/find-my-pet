@@ -1,7 +1,7 @@
 class PetsController < ApplicationController
   before_action :authenticate_user!, except: :index
   before_action :set_pet, only: %i[edit update show find find_master adopt_pet]
-  before_action :check_if_authorized, only: %i[edit destroy update find find_master adopt_pet]
+  before_action :check_if_authorized, only: %i[edit update find find_master adopt_pet]
 
   def index
     @q = Pet.ransack(params[:q])
@@ -19,16 +19,14 @@ class PetsController < ApplicationController
   def edit; end
 
   def update
-    redirect_to current_user, notice: 'The pet has been updated.' if @pet.update(pet_params)
+    redirect_to @pet, notice: 'The pet has been updated.' if @pet.update(pet_params)
   end
 
   def destroy
     @pet = current_user.pets.find(params[:id])
     @pet.destroy
 
-    respond_to do |format|
-      format.js { render layout: false }
-    end
+    redirect_to current_user, notice: 'The pet has been deleted.' if @pet.destroy
   end
 
   def find
