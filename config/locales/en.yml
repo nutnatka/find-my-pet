@@ -178,7 +178,8 @@ en:
       pet_age: aged approximately
       sterile: This pet is sterilized.
       breed: The pet`s breed is
-      pet_place: The place where it was lost
+      pet_place: >
+        The place where it was lost:
       contact_info: If you`ve seen this pet, please contact its
       master: master
       more_info: Get more Info
