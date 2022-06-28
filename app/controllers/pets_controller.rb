@@ -61,8 +61,6 @@ class PetsController < ApplicationController
   end
 
   def check_if_authorized
-    if current_user != @pet.user
-      redirect_to @pet.user, notice: 'Sorry, you are not authorized to perform this action.'
-    end
+    redirect_to @pet.user, notice: 'Sorry, you are not authorized to perform this action.' if current_user != @pet.user
   end
 end
