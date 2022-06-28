@@ -20,33 +20,11 @@
           <% else %>
             <li>
               <button type="button" class="btn btn-dark ms-lg-1 me-lg-1 mt-1 mb-1 mt-lg-0 mb-lg-0" data-bs-toggle="modal" data-bs-target="#loginModal">
-                <%= t('.login_html') %>
+                <%= t('.login') %>
               </button>
             </li>
             <li><%= link_to t('.start'), new_user_registration_path, class: "btn btn-outline-dark ms-lg-1 me-lg-1 mt-1 mb-1 mt-lg-0 mb-lg-0 nav-Link #{yield(:get_started_active)}" %></li>
           <% end %>
-          <ul class="nav">
-            <li class="dropdown">
-              <%= link_to '#', class: 'nav-link px-2 dropdown-toggle text-black p-0 ms-lg-1 me-lg-1 mt-2 mb-1 mb-lg-0',
-                          data: { "bs-toggle": 'dropdown' } do %>
-                <%= tag.div '', class: "flag #{I18n.locale}-flag mt-2" %>
-                <%= t I18n.locale %>
-              <% end %>
-
-              <ul class="dropdown-menu">
-                <% I18n.available_locales.each do |locale| %>
-                  <li>
-                    <% if I18n.locale == locale %>
-                      <%= tag.span t(locale), class: 'dropdown-item' %>
-                    <% else %>
-                      <%= link_to t(locale), url_for(locale: locale),
-                                  class: 'dropdown-item' %>
-                    <% end %>
-                  </li>
-                <% end %>
-              </ul>
-            </li>
-          </ul>
         </ul>
       </div>
     </div>
