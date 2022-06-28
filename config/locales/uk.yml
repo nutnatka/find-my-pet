@@ -136,6 +136,8 @@ uk:
     success_stories:
       success: ІТОРІЇ ПРО ПОРЯТУНОК УЛЮБЛЕНЦІВ
       go_to_blog: До блогу
+      posted_by_html: >
+        Опубліковано:
     lost_pets:
       recently_lost: НЕЩОДАВНО ЗАГУБЛЕНІ УЛЮБЛЕНЦІ
       lost: у бігах!

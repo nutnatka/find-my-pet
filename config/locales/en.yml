@@ -167,6 +167,8 @@ en:
       start: Get Started
     success_stories:
       success: FOUND PETS SUCCESS STORIES
+      posted_by_html: > 
+        Posted by:
       go_to_blog: Go to Blog
     lost_pets:
       recently_lost: RECENTLY LOST PETS
