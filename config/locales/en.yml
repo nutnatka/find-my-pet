@@ -190,8 +190,7 @@ en:
       blog: Blog
       profile: Profile
       logout: Logout
-      login_html: >
-        Log In
+      login: Log In
       start: Get Started
     footer:
       success: Success Stories

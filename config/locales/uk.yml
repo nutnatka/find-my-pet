@@ -158,8 +158,7 @@ uk:
       blog: Блог
       profile: Профіль
       logout: Вихід
-      login_html: >
-        Вхід
+      login: Вхід
       start: Розпочати
     footer:
       success: Історії порятунку
