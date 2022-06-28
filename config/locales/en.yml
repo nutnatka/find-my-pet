@@ -171,7 +171,7 @@ en:
     lost_pets:
       recently_lost: RECENTLY LOST PETS
       lost: got lost!
-      date: was lost
+      date: This pet was lost
       pet_info: It is a
       pet_age: aged approximately
       sterile: This pet is sterilized.
@@ -180,7 +180,6 @@ en:
       contact_info: If you`ve seen this pet, please contact its
       master: master
       more_info: Get more Info
-      help_pet: Help to Find a Pet
       get_more_info: Find out More
       find_pet: Find my Pet
       map: View Lost Pets Map
