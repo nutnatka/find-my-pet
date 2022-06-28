@@ -33,6 +33,7 @@ en:
   language: "en"
   en: "English"
   uk: "Українська"
+
   users:
     show:
       createPost: Create a Post
@@ -45,8 +46,10 @@ en:
       adoptPost: Find Family for a Pet
       foundPost: I`ve Found a Pet
       lostPost: I`ve Lost my Pet
+      myPosts: My Posts
   pets:
     pets:
+      addPet: Add Pet
       descr_html: >
         At the moment you`ve got no pets added. <br>
         To add your pet, click on the button above.
@@ -282,9 +285,23 @@ en:
         phone: Phone number
         telegram: Telegram
         viber: Viber
+        newPassword: New Password
+        currentPassword: Current Password
         facebook: Facebook Profile Link
         instagram: Instagram Profile Link
         createProfile: Create a Profile
+      edit:
+        editYourProfile: EDIT YOUR PROFILE
+        uploadYour: Upload your new profile picture below!
+        pleaseChangePersonalInfoIfNeeded: 'Please change personal info if needed:'
+        text_html: >
+          Please enter the password containing at least 6 characters. It should contain at
+          least one lowercase letter, one uppercase letter, and one digit.<br>Leave the field blank if you don't
+          want to change your password.</p>
+        back: Back
+        pleaseProvideContactInfo: 'Please provide contact info:'
+        text2_html: >
+          Please enter your current password<br>to confirm your changes.
     sessions:
       new:
         login: Log in
@@ -328,5 +345,11 @@ en:
         social_network_link: Social Network Link
       user:
         email: email
+  categories:
+    lost_pets: Lost Pets
+    found_pets: Found Pets
+    pets_to_adopt: Pets To Adopt
+    success_stories: Success Stories
+    recommendations: Recommendations
 
 
