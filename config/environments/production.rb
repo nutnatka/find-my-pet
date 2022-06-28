@@ -121,7 +121,7 @@ Rails.application.configure do
   # Store files on Amazon S3.
   config.active_storage.service = :amazon
 
-  config.action_mailer.default_url_options = { host: 'https://find-my-pet11.herokuapp.com/' }
+  config.action_mailer.default_url_options = { host: 'https://find-my-pet27.herokuapp.com/' }
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
