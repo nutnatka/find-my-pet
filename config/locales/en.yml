@@ -225,8 +225,10 @@ en:
       post_hint: You can create your own post on your profile page.
     posts:
       ago: ago
-      lostPlace: The place where the pet was lost
-      lostDate: The date when the pet was lost
+      lostPlace: >
+        The place where the pet was lost:
+      lostDate: >
+        The date when the pet was lost:
     short_pet_info:
       petInfo: Short Pet Info
       name: Name

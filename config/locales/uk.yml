@@ -194,8 +194,10 @@ uk:
       post_hint: На сторінці профіля можна створити свій власний пост.
     posts:
       ago: тому
-      lostPlace: Місце, де улюбленець загубився
-      lostDate: Дата, коли улюбленець загубився
+      lostPlace: >
+        Місце, де улюбленець загубився:
+      lostDate: >
+        Дата, коли улюбленець загубився:
     short_pet_info:
       petInfo: Коротко про улюбленця
       name: Ім'я
@@ -334,9 +336,9 @@ uk:
       user:
         email: імейл
   categories:
-    lost_pets: Загублені Домашні Тварини
-    found_pets: Знайдені Домашні Тварини
-    pets_to_adopt: Домашні Тварини Для Усиновлення
+    lost_pets: Загублені
+    found_pets: Знайдені
+    pets_to_adopt: Для Усиновлення
     success_stories: Успішні Історії
     recommendations: Рекомендації
   device:
