@@ -7,7 +7,8 @@
 
   <div class="field">
     <p class="p-0 m-0"><b><%= t('.mypet_html') %></b></p>
-    <%= form.select(:species, Pet.species.map { |key, value| [key.humanize, key] }, { prompt: 'Select pet species'}, { class: 'form-select mb-2', required: true }) %>
+    <%= form.select(:species, Pet.species.map { |key, value| [key.humanize, key] }, { prompt: 'Select pet species' }, { class: 'form-select', required: true }) %>
+    <p class="mb-2">* <%= t('devise.registrations.new.required') %></p>
   </div>
 
   <div class="field">
@@ -19,7 +20,8 @@
     <p class="mb-0"><b><%= t('.select_html') %></b></p>
     <p class="mb-0"><%= form.radio_button :sex, 'male', required: true, class: 'form-check-input me-2' %> <%= t('.male') %></p>
     <p class="mb-0"><%= form.radio_button :sex, 'female', class: 'form-check-input me-2' %> <%= t('.female') %></p>
-    <p class="mb-2"><%= form.radio_button :sex, 'undefined', class: 'form-check-input me-2' %> <%= t('.preferNotSay') %></p>
+    <p class="mb-0"><%= form.radio_button :sex, 'undefined', class: 'form-check-input me-2' %> <%= t('.preferNotSay') %></p>
+    <p class="mb-2">* <%= t('devise.registrations.new.required') %></p>
   </div>
 
   <div class="field">
@@ -54,8 +56,13 @@
   </div>
 
   <div class="field">
-    <%= form.label :social_network_link, t('.pleaseShareThePet`sSocialNetworkLinkIfAny' ), class: 'fw-bold' %>
+    <%= form.label :social_network_link, t('.pleaseShareThePet`sSocialNetworkLinkIfAny'), class: 'fw-bold' %>
     <%== form.text_field :social_network_link, autofocus: true, class: 'form-control mb-2', placeholder: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :avatar, t('.click_html'), class: 'fw-bold' %>
+    <%= form.file_field :avatar, class: 'form-control mb-2' %>
   </div>
 
   <div class="container d-flex justify-content-center">

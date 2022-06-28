@@ -117,22 +117,38 @@ en:
       profiles: Pet Profiles
       master: Pet Master
       profile: PET PROFILE
-      info: PERSONAL INFO
-      species: Species
-      breed: Breed
-      sex: Gender
-      sterile: Is sterilized
+      info: >
+        PERSONAL INFO:
+      name: >
+        Name:
+      species: >
+        Species:
+      breed: >
+        Breed:
+      sex: >
+        Gender:
+      sterile: >
+        Is sterilized:
       yes: yes
       no: no
-      dateOfBirth: Date of Birth
-      color: Color
-      addInfo: Additional Info
+      dateOfBirth: >
+        Date of Birth:
+      color: >
+        Color:
+      addInfo: >
+        Additional Info:
+      socialNetwork: >
+        Pet`s Social Network:
+      edit: Edit Pet
+      delete: Delete Pet
     edit:
+      breedAny: >
+        Provide the breed if any:
       petIs: My pet is a
       back: Back
       edit: EDIT
-      profile: THE PROFILE OF
-      pet:
+      change_html: >
+        Please change the pet name if necessary:
       editProfile: EDIT PET`S PROFILE
       prohibit: prohibited this pet from being updated
       upload: Upload new profile picture for
@@ -146,8 +162,10 @@ en:
       female: Female
       preferNotSay: Prefer not to Say
       sterile: My Pet is Sterilized
-      birthday: Select Pet`s Birthday
-      color: Color
+      birthday: >
+        Select Pet`s Birthday:
+      color: >
+        Color:
       addInfo: Additional Info
       updatePet: Update Pet Info
   welcome:

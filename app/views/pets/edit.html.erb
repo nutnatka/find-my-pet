@@ -1,16 +1,12 @@
 <% provide(:page_title, 'Edit Pet Profile') %>
 <% provide(:profile_active, 'active') %>
 
-<div class="d-flex flex-lg-row flex-column mt-4 align-items-center align-items-lg-start">
+<div class="d-flex flex-lg-row flex-column mt-4 align-items-center align-items-lg-start mt-5">
   <div class="col-12 col-sm-10 col-md-8 col-lg-2 text-center text-lg-start">
-    <%= link_to t('.back'), user_path(current_user), class: 'btn btn-outline-dark w-100' %>
+    <%= link_to t('.back'), user_path(current_user), class: 'btn btn-outline-dark w-100 mt-3' %>
   </div>
   <div class="col-12 col-sm-10 text-center mt-2 mt-lg-0">
-    <% if @pet.name? %>
-      <h2 class="m-0"><%= t('.edit') %> <%= t('.profile') %> <%= (@pet.name).upcase %></h2>
-    <% else %>
-      <h2 class="m-0"><%= t('.editProfile') %></h2>
-    <% end %>
+    <h2 class="m-0 mt-3"><%= t('.editProfile') %></h2>
   </div>
 </div>
 
@@ -31,35 +27,32 @@
   <div class="d-flex flex-column flex-lg-row mt-4 align-items-center align-items-lg-start justify-content-evenly">
     <div class="col-12 col-sm-10 col-md-8 col-lg-4">
       <% if @pet.avatar.attached? %>
-        <%= image_tag @pet.avatar, style: 'object-fit: cover; width: 100%', class: 'border border-dark rounded-3' %>
+        <%= image_tag @pet.avatar, style: 'object-fit: cover; width: 100%; max-height: 300px;', class: 'border border-dark rounded-3' %>
       <% else %>
         <% if @pet.cat? %>
-          <%= image_tag("cat1.jpg", style: 'object-fit: cover; width: 100%', class: 'border border-dark rounded-3') %>
+          <%= image_tag("cat1.jpg", style: 'object-fit: cover; width: 100%; max-height: 300px;', class: 'border border-dark rounded-3') %>
         <% elsif @pet.dog? %>
-          <%= image_tag("dog1.jpg", style: 'object-fit: cover; width: 100%', class: 'border border-dark rounded-3') %>
+          <%= image_tag("dog1.jpg", style: 'object-fit: cover; width: 100%; max-height: 300px;', class: 'border border-dark rounded-3') %>
         <% end %>
       <% end %>
-      <% if @pet.name? %>
-        <p class="p-0 m-0 fw-bold"><%= t('.upload') %> <%= @pet.name %> <%= t('.below') %>!</p>
-      <% else %>
-        <p class="p-0 m-0 fw-bold"><%= t('.uploadAvatar') %>!</p>
-      <% end %>
+      <p class="p-0 m-0 fw-bold"><%= t('.uploadAvatar') %>!</p>
       <%= form.file_field :avatar, class: 'form-control' %>
     </div>
 
     <div class="col-12 col-sm-10 col-md-8 col-lg-5">
       <div class="field">
-        <%= form.label :name, 'Please change the pet name if necessary:', class: 'fw-bold' %>
-        <%== form.text_field :name, class: 'form-control', placeholder: t('.name') %>
+        <%= form.label :name, t('.change_html'), class: 'fw-bold' %>
+        <%== form.text_field :name, class: 'form-control mb-2', placeholder: t('.name') %>
       </div>
 
       <div class="field">
         <p class="p-0 m-0"><b><%= t('.petIs') %>:</b></p>
-        <%= form.select(:species, Pet.species.map { |key, v| [key.humanize, key] }, { prompt: t('.speciesPrompt') }, { class: 'form-select mb-2', required: true }) %>
+        <%= form.select(:species, Pet.species.map { |key, v| [key.humanize, key] }, { prompt: t('.speciesPrompt') }, { class: 'form-select', required: true }) %>
+        <p class="mb-2">* <%= t('devise.registrations.new.required') %></p>
       </div>
 
       <div class="field">
-        <p class="r-0 m-0"><b>Provide the breed if any:</b></p>
+        <p class="r-0 m-0"><b><%= t('.breedAny') %></b></p>
         <%== form.text_field :breed, class: 'form-control mb-2', placeholder: t('.breed') %>
       </div>
 
@@ -67,7 +60,8 @@
         <p class="mb-0"><b><%= t('.genderSelect') %>:</b></p>
         <p class="mb-0"><%= form.radio_button :sex, 'male', required: true, class: 'form-check-input me-2' %> <%= t('.male') %></p>
         <p class="mb-0"><%= form.radio_button :sex, 'female', class: 'form-check-input me-2' %> <%= t('.female') %></p>
-        <p class="mb-2"><%= form.radio_button :sex, 'undefined', class: 'form-check-input me-2' %> Unknown</p>
+        <p class="mb-0"><%= form.radio_button :sex, 'undefined', class: 'form-check-input me-2' %> Unknown</p>
+        <p class="mb-2">* <%= t('devise.registrations.new.required') %></p>
       </div>
 
       <div class="field">
@@ -78,7 +72,7 @@
       </div>
 
       <div class="field mb-2">
-        <b><%= form.label :date_of_birth, 'Select Pet`s Birthday:' %></b>
+        <b><%= form.label :date_of_birth, t('.birthday') %></b>
         <div class="input-group">
           <div class="input-group-prepend">
             <div class="input-group-text fa-solid fa-calendar-days" , style="background-color: white;"></div>
@@ -93,15 +87,18 @@
       </div>
 
       <div class="field">
-        <%== form.text_field :color, class: 'form-control mb-2', required: true, placeholder: t('.color') %>
+        <%= form.label :color, t('.color'), class: 'fw-bold' %>
+        <%== form.text_field :color, class: 'form-control', required: true, placeholder: t('.color') %>
+        <p class="mb-2">* <%= t('devise.registrations.new.required') %></p>
       </div>
 
       <div class="field">
-        <%== form.text_area :additional_info, class: 'form-control mb-4', placeholder: t('.addInfo') %>
+        <%= form.label :additional_info, t('.addInfo'), class: 'fw-bold' %>
+        <%== form.text_area :additional_info, class: 'form-control mb-2', placeholder: t('.addInfo') %>
       </div>
 
       <div class="field">
-        <%= form.label :social_network_link, 'Please share the pet`s social network link if any:', class: 'fw-bold' %>
+        <%= form.label :social_network_link, t('pets.show.socialNetwork'), class: 'fw-bold' %>
         <%== form.text_field :social_network_link, autofocus: true, class: 'form-control mb-2', placeholder: 'Social Network Link' %>
       </div>
     </div>
