@@ -1,13 +1,19 @@
 <% provide(:page_title, 'New Post') %>
-<% unless @post.category_id == 8 %>
+<% unless @post.category.name == 'lost_pets' %>
   <% provide(:blog_active, 'active') %>
 <% end %>
 
 <div class="page-header mt-4 mb-4">
-  <%= link_to t('.back'), :back, class: 'btn btn-outline-dark' %>
-  <% if @post.category.name == 'recommendations' %>
-    <%= render 'form' %>
+  <% if current_user.pets.blank? %>
+    <p class="d-flex flex-column text-center mt-5 mb-5"><%= t('.begin') %><br><%= t('.done') %> <%= link_to t('.profile'), current_user, class: 'text-dark text-decoration-underline' %>
+    </p>
   <% else %>
-    <%= render 'pet_form' %>
+    <%= link_to t('.back'), :back, class: 'btn btn-outline-dark' %>
+    <% if @post.category.name == 'recommendations' %>
+      <%= render 'form' %>
+    <% else %>
+      <%= render 'pet_form' %>
+    <% end %>
   <% end %>
 </div>
+
