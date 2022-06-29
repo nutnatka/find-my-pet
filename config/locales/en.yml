@@ -260,12 +260,13 @@ en:
       petProfile: Pet Profile
     new:
       back: Back
+      begin: Please add a pet in your profile to begin.
+      done: This can be done on your
+      profile: profile page.
     form:
       recommendation: Provide Recommendation
       recommendationName: Please name the recommendation
       petSelect: Please select the pet
-      recommendationInfo: You have to add at least one pet to share recommendations. This can be done on your
-      profile: profile page
       shareRecommendation: Please share recommendation
       publish: Publish
       name: Recommendation Name

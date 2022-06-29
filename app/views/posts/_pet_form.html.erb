@@ -41,11 +41,6 @@
         <%= f.label :title, t('.petSelect') %>:
         <%= f.collection_select(:pet_id, @pets, :id, :name, { prompt: t('.prompt') }, { class: 'form-select', required: true }) %>
       </div>
-      <p><%= t('.noPet') %>
-        <%= link_to t('.profile'), current_user, class: 'text-dark text-decoration-underline' %>.</p>
-    <% elsif @post.pet.blank? %>
-      <p><%= t('.addPet') %>
-        <%= link_to t('.profile'), current_user, class: 'text-dark text-decoration-underline' %> first.</p>
     <% end %>
 
     <% if @post.category.name == 'pets_to_adopt' || @post.category.name == 'success_stories' %>

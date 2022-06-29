@@ -50,7 +50,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
 
-    redirect_to current_user, notice: 'The post has been successfully deleted.'
+    redirect_to user_posts_path(current_user), notice: 'The post has been successfully deleted.'
   end
 
   def user_posts
