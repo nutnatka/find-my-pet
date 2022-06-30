@@ -2,6 +2,7 @@ uk:
   language: "uk"
   en: "English"
   uk: "Українська"
+
   users:
     show:
       createPost: Створити пост
@@ -16,6 +17,10 @@ uk:
       lostPost: Почати пошук улюбленця
       myPosts: Мої пости
   pets:
+    zero: тварин
+    one: тварина
+    few: тварини
+    other: тварин
     pets:
       addPet: Додати домашню тварину
       descr_html: >
@@ -28,6 +33,9 @@ uk:
       petAdopted: Улюбленець у надійних руках
     form:
       required: Це поле - обов'язкове.
+      pleaseProvideThePetNameIfAny: 'Будь ласка, вкажіть ім’я тварини, якщо є:'
+      provideTheBreedIfAny: 'Укажіть породу, якщо є:'
+      selectPetSpecies: Виберіть вид домашньої тварини
       mypet_html: >
         Цей домашній улюбленець:
       cat_html: >
@@ -188,6 +196,9 @@ uk:
       found: Знайдені
       adopt: Шукають сім'ю
   posts:
+    user:
+     myPosts: Mої Пости
+     atTheMomentYouHaveNoPosts: На даний момент у вас немає публікацій. Ви можете створити їх на сторінці свого профілю.
     index:
       general: Всі пости
       no_posts: Наразі пости відсутні.
@@ -343,9 +354,12 @@ uk:
     pets_to_adopt: Для Усиновлення
     success_stories: Успішні Історії
     recommendations: Рекомендації
-  device:
-    registrations:
 
+  enum:
+    species:
+      cat: Кішка
+      dog: Песик
+ 
   notification_mailer:
     user_created:
       hello: Привіт,

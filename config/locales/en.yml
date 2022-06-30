@@ -48,6 +48,9 @@ en:
       lostPost: I`ve Lost my Pet
       myPosts: My Posts
   pets:
+    zero: pet
+    one: pet
+    other: pets
     pets:
       addPet: Add Pet
       descr_html: >
@@ -60,6 +63,9 @@ en:
       petAdopted: Pet was Adopted
     form:
       required: This field is required.
+      pleaseProvideThePetNameIfAny: 'Please provide the pet name if any:'
+      provideTheBreedIfAny: 'Provide the breed if any:'
+      selectPetSpecies: Select pet species
       mypet_html: >
         The pet is a:
       cat_html: >
@@ -219,6 +225,9 @@ en:
       found: Found Pets
       adopt: Pets to Adopt
   posts:
+    user:
+      myPosts: My Posts
+      atTheMomentYouHaveNoPosts: At the moment you have no posts. You can create them on your profile page.
     index:
       general: General
       no_posts: At the moment, there are no posts available.
@@ -368,6 +377,7 @@ en:
         social_network_link: Social Network Link
       user:
         email: email
+
   categories:
     lost_pets: Lost Pets
     found_pets: Found Pets
@@ -375,6 +385,10 @@ en:
     success_stories: Success Stories
     recommendations: Recommendations
 
+  enum:
+    species:
+      cat: Cat
+      dog: Dog
 
   notification_mailer:
     user_created:
