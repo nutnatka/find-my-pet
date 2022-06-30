@@ -1,7 +1,7 @@
 <% provide(:page_title, 'My Posts') %>
 <% provide(:blog_active, 'active') %>
 
-<h4 class="text-center text-dark mt-5">My Posts</h4>
+<h4 class="text-center text-dark mt-5"><%= t('posts.user.myPosts') %></h4>
 
 <% if current_user.posts.any? %>
   <div class="table-responsive">
@@ -45,5 +45,5 @@
     </div>
   </div>
 <% else %>
-  <p>At the moment you have no posts. You can create them on your profile page.</p>
+  <p><%= t('posts.user.atTheMomentYouHaveNoPosts') %></p>
 <% end %>
