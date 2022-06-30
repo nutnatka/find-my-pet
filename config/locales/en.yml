@@ -185,7 +185,7 @@ en:
       start: Get Started
     success_stories:
       success: FOUND PETS SUCCESS STORIES
-      posted_by_html: > 
+      posted_by_html: >
         Posted by:
       go_to_blog: Go to Blog
     lost_pets:
@@ -225,10 +225,6 @@ en:
       post_hint: You can create your own post on your profile page.
     posts:
       ago: ago
-      lostPlace: >
-        The place where the pet was lost:
-      lostDate: >
-        The date when the pet was lost:
     short_pet_info:
       petInfo: Short Pet Info
       name: Name
@@ -258,6 +254,10 @@ en:
       posted: Posted by
       back: Back
       petProfile: Pet Profile
+      lostPlace: >
+        The place where the pet was lost:
+      lostDate: >
+        The date when the pet was lost:
     new:
       back: Back
       begin: Please add a pet in your profile to begin.
@@ -284,7 +284,8 @@ en:
       noPet: If you haven`t added the pet yet, please do so on your
       profile: profile page
       addPet: Please add pet on your
-      address: Please fill the address or set the point on the map
+      address: >
+        Please fill the address or set the point on the map (this can be done with mouse double click):
       date: Please select date
       dateSelect: select date
       contactInfo: Please make sure you`ve provided your contact info.
@@ -375,3 +376,27 @@ en:
     recommendations: Recommendations
 
 
+  notification_mailer:
+    user_created:
+      hello: Hello,
+      welcome: Welcome to
+    pet_lost:
+      subject: "Another pet lost!"
+      pet: Another pet
+      lost: was lost!
+    pet_found:
+      subject: "Another pet found!"
+      found: was found!
+    pet_to_adopt:
+      subject: "Another pet for adoption!"
+      to_adopt: is for adoption!
+    pet_home:
+      subject: "Pet is at home again!"
+      home: is home again!
+    pet_adopted:
+      subject: "Pet is adopted!"
+      adopted: is adopted!
+  layouts:
+    mailer:
+      regards: Best regards, the team of
+      day: Have a nice day!

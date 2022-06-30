@@ -30,8 +30,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable,
-         :confirmable
+         :recoverable, :rememberable, :validatable
 
   with_options dependent: :destroy do |assoc|
     assoc.has_many :pets
@@ -47,6 +46,11 @@ class User < ApplicationRecord
   validates :name, length: { in: 2..30 }
   validates_format_of :email, with: /(^[+A-Z0-9._%-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$)/i
   validate :password_complexity
+
+  after_create :user_created
+  def user_created
+    NotificationMailer.user_created(self).deliver
+  end
 
   private
 

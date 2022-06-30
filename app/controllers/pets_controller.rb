@@ -33,6 +33,7 @@ class PetsController < ApplicationController
     @posts = @pet.posts.with_lost_pet
     @posts.update_all(status: 'archived')
     @pet.home_again!
+    NotificationMailer.with(pet: @pet).pet_home.deliver_now
     redirect_to @pet.user, notice: "The pet has been found! You can share the success story by click on the 'Share Success Story' button."
   end
 
@@ -40,6 +41,7 @@ class PetsController < ApplicationController
     @posts = @pet.posts.with_found_pet
     @posts.update_all(status: 'archived')
     @pet.master_found!
+    NotificationMailer.with(pet: @pet).pet_home.deliver_now
     redirect_to @pet.user, notice: "The pet master has been found! You can share the success story by click on the 'Share Success Story' button."
   end
 
@@ -47,6 +49,7 @@ class PetsController < ApplicationController
     @posts = @pet.posts.with_pet_to_adopt
     @posts.update_all(status: 'archived')
     @pet.adopted!
+    NotificationMailer.with(pet: @pet).pet_adopted.deliver_now
     redirect_to @pet.user, notice: "The pet has found its family! You can share the success story by click on the 'Share Success Story' button."
   end
 
