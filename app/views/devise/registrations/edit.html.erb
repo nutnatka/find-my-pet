@@ -15,9 +15,9 @@
   <div class="d-flex flex-lg-row mt-4 justify-content-lg-between flex-column justify-content-center align-items-center align-items-lg-start">
     <div class="col-12 col-sm-10 col-md-8 col-lg-3">
       <% if @user.avatar.attached? %>
-        <%= image_tag @user.avatar, style: 'width: 100%; object-fit: cover;', class: 'border border-muted' %>
+        <%= image_tag @user.avatar, style: 'width: 100%; max-height: 300px; object-fit: cover;', class: 'border border-muted rounded-1' %>
       <% else %>
-        <%= image_tag("avatar.png", style: 'width: 100%; object-fit: cover;', class: 'border border-muted') %>
+        <%= image_tag("avatar.png", style: 'width: 100%; max-height: 300px; object-fit: cover;', class: 'border border-muted rounded-1') %>
       <% end %>
       <p class="p-0 m-0 fw-bold mt-2"><%= t('.uploadYour') %></p>
       <%= f.file_field :avatar, class: 'form-control' %>

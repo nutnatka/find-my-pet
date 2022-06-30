@@ -1,0 +1,54 @@
+<nav class="navbar navbar-light navbar-expand-lg sticky-top" style="background-color: #b2d8d8;">
+  <div class="container">
+    <div class="d-flex align-items-center">
+      <%= link_to root_path do %>
+        <%= image_tag("paw-print.png", height: '30', width: '30', class: "d-inline-block align-top") %>
+      <% end %>
+      <%= link_to "FindMyPet", root_path, class: "logo text-dark text-decoration-none ms-2" %>
+    </div>
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse" id="navbar">
+      <div class="p-0 container d-flex flex-column flex-lg-row justify-content-end">
+        <ul class="navbar-nav">
+          <li><%= link_to t('shared.navbar.lostPet'), new_post_from_welcome_path(category_id: Category.find_by_name('lost_pets').id), class: "btn btn-outline-dark nav-Link me-lg-1 mt-1 mb-1 mt-lg-0 mb-lg-0 #{yield(:lost_active)}" %></li>
+          <li><%= link_to t('shared.navbar.blog'), posts_path, class: "btn btn-outline-dark me-2 mb-2 mb-sm-0 nav-Link ms-lg-1 me-lg-1 mt-1 mb-1 mt-lg-0 mb-lg-0 #{yield(:blog_active)}" %></li>
+          <% if current_user %>
+            <li><%= link_to t('shared.navbar.profile'), user_path(current_user), class: "btn btn-outline-dark nav-Link ms-lg-1 me-lg-1 mt-1 mb-1 mt-lg-0 mb-lg-0 #{yield(:profile_active)}" %></li>
+            <li><%= link_to t('shared.navbar.logout'), destroy_user_session_path, method: :delete, class: 'btn btn-outline-dark ms-lg-1 me-lg-1 mt-1 mb-1 mt-lg-0 mb-lg-0' %></li>
+          <% else %>
+            <li>
+              <button type="button" class="btn btn-dark ms-lg-1 me-lg-1 mt-1 mb-1 mt-lg-0 mb-lg-0" data-bs-toggle="modal" data-bs-target="#loginModal">
+                <%= t('shared.navbar.login') %>
+              </button>
+            </li>
+            <li><%= link_to t('shared.navbar.start'), new_user_registration_path, class: "btn btn-outline-dark ms-lg-1 me-lg-1 mt-1 mb-1 mt-lg-0 mb-lg-0 nav-Link #{yield(:get_started_active)}" %></li>
+          <% end %>
+          <ul class="nav">
+            <li class="dropdown">
+              <%= link_to '#', class: 'nav-link px-2 dropdown-toggle text-black p-0 ms-lg-1 me-lg-1 mt-2 mb-1 mb-lg-0',
+                          data: { "bs-toggle": 'dropdown' } do %>
+                <%= tag.div '', class: "flag #{I18n.locale}-flag mt-2" %>
+                <%= t I18n.locale %>
+              <% end %>
+
+              <ul class="dropdown-menu">
+                <% I18n.available_locales.each do |locale| %>
+                  <li>
+                    <% if I18n.locale == locale %>
+                      <%= tag.span t(locale), class: 'dropdown-item' %>
+                    <% else %>
+                      <%= link_to t(locale), url_for(locale: locale),
+                                  class: 'dropdown-item' %>
+                    <% end %>
+                  </li>
+                <% end %>
+              </ul>
+            </li>
+          </ul>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

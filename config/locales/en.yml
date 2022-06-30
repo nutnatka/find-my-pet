@@ -123,22 +123,38 @@ en:
       profiles: Pet Profiles
       master: Pet Master
       profile: PET PROFILE
-      info: PERSONAL INFO
-      species: Species
-      breed: Breed
-      sex: Gender
-      sterile: Is sterilized
+      info: >
+        PERSONAL INFO:
+      name: >
+        Name:
+      species: >
+        Species:
+      breed: >
+        Breed:
+      sex: >
+        Gender:
+      sterile: >
+        Is sterilized:
       yes: yes
       no: no
-      dateOfBirth: Date of Birth
-      color: Color
-      addInfo: Additional Info
+      dateOfBirth: >
+        Date of Birth:
+      color: >
+        Color:
+      addInfo: >
+        Additional Info:
+      socialNetwork: >
+        Pet`s Social Network:
+      edit: Edit Pet
+      delete: Delete Pet
     edit:
+      breedAny: >
+        Provide the breed if any:
       petIs: My pet is a
       back: Back
       edit: EDIT
-      profile: THE PROFILE OF
-      pet:
+      change_html: >
+        Please change the pet name if necessary:
       editProfile: EDIT PET`S PROFILE
       prohibit: prohibited this pet from being updated
       upload: Upload new profile picture for
@@ -152,8 +168,10 @@ en:
       female: Female
       preferNotSay: Prefer not to Say
       sterile: My Pet is Sterilized
-      birthday: Select Pet`s Birthday
-      color: Color
+      birthday: >
+        Select Pet`s Birthday:
+      color: >
+        Color:
       addInfo: Additional Info
       updatePet: Update Pet Info
   welcome:
@@ -173,20 +191,22 @@ en:
       start: Get Started
     success_stories:
       success: FOUND PETS SUCCESS STORIES
+      posted_by_html: >
+        Posted by:
       go_to_blog: Go to Blog
     lost_pets:
       recently_lost: RECENTLY LOST PETS
       lost: got lost!
-      date: was lost
+      date: This pet was lost
       pet_info: It is a
       pet_age: aged approximately
       sterile: This pet is sterilized.
       breed: The pet`s breed is
-      pet_place: The place where it was lost
+      pet_place: >
+        The place where it was lost:
       contact_info: If you`ve seen this pet, please contact its
       master: master
       more_info: Get more Info
-      help_pet: Help to Find a Pet
       get_more_info: Find out More
       find_pet: Find my Pet
       map: View Lost Pets Map
@@ -196,8 +216,7 @@ en:
       blog: Blog
       profile: Profile
       logout: Logout
-      login_html: >
-        Log In
+      login: Log In
       start: Get Started
     footer:
       success: Success Stories
@@ -215,8 +234,6 @@ en:
       post_hint: You can create your own post on your profile page.
     posts:
       ago: ago
-      lostPlace: The place where the pet was lost
-      lostDate: The date when the pet was lost
     short_pet_info:
       petInfo: Short Pet Info
       name: Name
@@ -246,14 +263,19 @@ en:
       posted: Posted by
       back: Back
       petProfile: Pet Profile
+      lostPlace: >
+        The place where the pet was lost:
+      lostDate: >
+        The date when the pet was lost:
     new:
       back: Back
+      begin: Please add a pet in your profile to begin.
+      done: This can be done on your
+      profile: profile page.
     form:
       recommendation: Provide Recommendation
       recommendationName: Please name the recommendation
       petSelect: Please select the pet
-      recommendationInfo: You have to add at least one pet to share recommendations. This can be done on your
-      profile: profile page
       shareRecommendation: Please share recommendation
       publish: Publish
       name: Recommendation Name
@@ -271,7 +293,8 @@ en:
       noPet: If you haven`t added the pet yet, please do so on your
       profile: profile page
       addPet: Please add pet on your
-      address: Please fill the address or set the point on the map
+      address: >
+        Please fill the address or set the point on the map (this can be done with mouse double click):
       date: Please select date
       dateSelect: select date
       contactInfo: Please make sure you`ve provided your contact info.
@@ -366,3 +389,28 @@ en:
     species:
       cat: Cat
       dog: Dog
+
+  notification_mailer:
+    user_created:
+      hello: Hello,
+      welcome: Welcome to
+    pet_lost:
+      subject: "Another pet lost!"
+      pet: Another pet
+      lost: was lost!
+    pet_found:
+      subject: "Another pet found!"
+      found: was found!
+    pet_to_adopt:
+      subject: "Another pet for adoption!"
+      to_adopt: is for adoption!
+    pet_home:
+      subject: "Pet is at home again!"
+      home: is home again!
+    pet_adopted:
+      subject: "Pet is adopted!"
+      adopted: is adopted!
+  layouts:
+    mailer:
+      regards: Best regards, the team of
+      day: Have a nice day!

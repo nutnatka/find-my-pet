@@ -6,4 +6,3 @@ module PetsHelper
     age
   end
 end
-

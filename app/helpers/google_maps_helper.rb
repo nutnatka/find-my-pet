@@ -10,16 +10,16 @@ module GoogleMapsHelper
   end
 
   def google_content(text)
-    "<![CDATA[" + raw(text)
+    '<![CDATA[' + raw(text)
     # raw(text).gsub('<', '&lt;').gsub('>', '&gt;')
   end
 
   private
-  
+
   def google_maps_source(idMap)
-    "https://maps.googleapis.com/maps/api/js?key=#{google_maps_key}&region=UK&language=#{t('language')}&callback=initMap#{"&libraries=places" if idMap == "_posts"}"
+    "https://maps.googleapis.com/maps/api/js?key=#{google_maps_key}&region=UK&language=#{t('language')}&callback=initMap#{'&libraries=places' if idMap == '_posts'}"
   end
-  
+
   def google_maps_key
     ENV.fetch('GOOGLE_API_KEY', nil)
   end

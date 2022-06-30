@@ -1,7 +1,8 @@
 <% provide(:page_title, 'My Posts') %>
 <% provide(:blog_active, 'active') %>
 
-<h4 class="text-center text-dark mt-5"><%= t('posts.user.myPosts') %></h4>
+<%= link_to t('.back'), :back, class: 'btn btn-outline-dark mt-5' %>
+<h4 class="text-center text-dark mt-3"><%= t('posts.user.myPosts') %></h4>
 
 <% if current_user.posts.any? %>
   <div class="table-responsive">
