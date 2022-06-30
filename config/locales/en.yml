@@ -284,7 +284,8 @@ en:
       noPet: If you haven`t added the pet yet, please do so on your
       profile: profile page
       addPet: Please add pet on your
-      address: Please fill the address or set the point on the map
+      address: >
+        Please fill the address or set the point on the map (this can be done with mouse double click):
       date: Please select date
       dateSelect: select date
       contactInfo: Please make sure you`ve provided your contact info.

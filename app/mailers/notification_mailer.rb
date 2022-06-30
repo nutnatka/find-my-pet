@@ -1,5 +1,5 @@
 class NotificationMailer < ApplicationMailer
-  layout "mailer"
+  layout 'mailer'
 
   def user_created(user)
     @user = user
