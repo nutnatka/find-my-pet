@@ -73,10 +73,13 @@ class PostsController < ApplicationController
     unless @pet.nil?
       if @post.category.name == 'lost_pets'
         @pet.lost!
+        NotificationMailer.with(post: @post, pet: @post.pet).pet_lost.deliver_now
       elsif @post.category.name == 'found_pets'
         @pet.found!
+        NotificationMailer.with(post: @post, pet: @post.pet).pet_found.deliver_now
       elsif @post.category.name == 'pets_to_adopt'
         @pet.to_adopt!
+        NotificationMailer.with(post: @post, pet: @post.pet).pet_to_adopt.deliver_now
       end
     end
   end
