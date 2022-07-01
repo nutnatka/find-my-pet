@@ -10,6 +10,8 @@ class PostsController < ApplicationController
     else
       @posts = Post.where(status: 'published').order(created_at: :desc).page params[:page]
     end
+    @q = Post.ransack(params[:q])
+    @filtered_posts = @q.result.order(:name).page params[:page]
   end
 
   def show; end
@@ -71,7 +73,7 @@ class PostsController < ApplicationController
   def change_pet_status
     @users = User.where(allow_notification: true)
     @pet = @post.pet
-    unless @post.category.name == 'success_stories' || @post.category.name == 'recommendations'
+    unless @post.category.name == 'recommendations'
       @pet.posts.joins(:category).where(category: { name: %i[lost_pets found_pets pets_to_adopt] }).where.not(id: @post.id).update_all(status: :archived, place_id: nil)
     end
     if @post.category.name == 'lost_pets'
