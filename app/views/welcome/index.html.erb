@@ -27,7 +27,7 @@
     <%= google_maps_initialize %>
   </div>
 </div>
-<p class="text-center mt-2 mb-2"><%= image_tag("catGreen.png")%> found cat   <%= image_tag("dogGreen.png")%>  found dog   <%= image_tag("catRed.png")%> lost cat   <%= image_tag("dogRed.png")%> lost dog </p>
+<p class="text-center mt-2 mb-2"><%= image_tag("catGreen.png")%> <%=t('.foundСat') %> <%= image_tag("dogGreen.png")%> <%=t('.foundDog') %> <%= image_tag("catRed.png")%> <%=t('.lostCat') %><%= image_tag("dogRed.png")%> <%=t('.lostDog') %></p>
 
 <% unless signed_in? %>
   <div class="get-started-section text-center" style="background-color: #ffe5d9;">

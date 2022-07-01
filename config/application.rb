@@ -13,7 +13,7 @@ module FindMyPet
     config.assets.precompile += %w[*.ttf *.woff *.svg *.eot]
 
     config.i18n.available_locales = %i[en uk]
-    config.i18n.default_locale = :uk
+    #config.i18n.default_locale = :uk
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

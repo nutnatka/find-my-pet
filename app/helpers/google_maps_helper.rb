@@ -11,7 +11,6 @@ module GoogleMapsHelper
 
   def google_content(text)
     "<![CDATA[" + raw(text)
-    # raw(text).gsub('<', '&lt;').gsub('>', '&gt;')
   end
 
   private

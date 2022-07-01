@@ -138,6 +138,10 @@ uk:
       moreFriends: Знайти більше друзів
       adoptPet: Взяти улюбленця
     index:
+      foundСat: знайдена кішка
+      foundDog: знайдений пес
+      lostCat: загублена кішка
+      lostDog: загублений пес
       looking_html: ШУКАЄШ ДРУЗІВ?
       would_html: ХОЧЕТЕ ВЗЯТИ УЧАСТЬ У ПОШУКУ ДОМАШНІХ ТВАРИН?
       start: Розпочати
