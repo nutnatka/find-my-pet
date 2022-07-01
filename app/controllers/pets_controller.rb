@@ -6,7 +6,7 @@ class PetsController < ApplicationController
 
   def index
     @q = Pet.ransack(params[:q])
-    @pets = @q.result.order(:name).page params[:page]
+    @pets = @q.result.order(:name).order(:name).page params[:page]
   end
 
   def show; end
