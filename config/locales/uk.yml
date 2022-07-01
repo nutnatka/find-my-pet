@@ -17,10 +17,10 @@ uk:
       lostPost: Почати пошук улюбленця
       myPosts: Мої пости
   pets:
-    zero: тварин
-    one: тварина
-    few: тварини
-    many: тварин
+    zero: петів
+    one: пета
+    few: петів
+    many: петів
 
     pets:
       addPet: Додати домашню тварину
@@ -53,8 +53,8 @@ uk:
         Улюбленець стерилізований
       birthday_html:
         Виберіть День народження вихованця
-      pleaseShareThePet`sSocialNetworkLinkIfAny:
-        "Будь ласка, поділіться посиланням на соціальну мережу вихованця:"
+      pleaseShareThePet`sSocialNetworkLinkIfAny: >
+        Будь ласка, поділіться посиланням на соціальну мережу вихованця:
       save:
         Зберегти
       cancel:
@@ -151,9 +151,9 @@ uk:
       heading: Всього ...
       add: додано
       lost: загублено
-      home: вже знову вдома
+      home: знайдено
       adopt: у пошуках сім'ї
-      success: у надійних руках
+      success: із хепі ендом
     friends:
       moreFriends: Знайти більше друзів
       adoptPet: Взяти улюбленця

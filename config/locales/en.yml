@@ -83,8 +83,8 @@ en:
         Pet is Sterilized
       birthday_html:
         Select Pet`s Birthday
-      pleaseShareThePet`sSocialNetworkLinkIfAny:
-        "Please share the pet`s social network link if any:"
+      pleaseShareThePet`sSocialNetworkLinkIfAny: >
+        Please share the pet`s social network link if any:
       save:
         Save Pet
       cancel:
@@ -180,9 +180,9 @@ en:
       heading: All in All ...
       add: added
       lost: lost
-      home: home again
+      home: found
       adopt: to adopt
-      success: adopted
+      success: with success stories
     friends:
       moreFriends: Find More Friends
       adoptPet: Adopt a Pet

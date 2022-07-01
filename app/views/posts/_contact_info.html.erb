@@ -11,7 +11,7 @@
     <b><%= link_to t('.facebook'), @post.user.facebook, target: '_blank', class: 'text-dark text-decoration-underline' %></b>
   </h6>
 <% end %>
-<% if @post.user.instagram %>
+<% if @post.user.instagram? %>
   <h6>
     <b><%= link_to t('.instagram'), @post.user.instagram, target: '_blank', class: 'text-dark text-decoration-underline' %></b>
   </h6>
