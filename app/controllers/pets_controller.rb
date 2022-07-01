@@ -2,6 +2,7 @@ class PetsController < ApplicationController
   before_action :authenticate_user!, except: :index
   before_action :set_pet, only: %i[edit update show find find_master adopt_pet]
   before_action :check_if_authorized, only: %i[edit update find find_master adopt_pet]
+  before_action :set_users, only: %i[find find_master adopt_pet]
 
   def index
     @q = Pet.ransack(params[:q])
@@ -33,7 +34,7 @@ class PetsController < ApplicationController
     @posts = @pet.posts.with_lost_pet
     @posts.update_all(status: 'archived')
     @pet.home_again!
-    NotificationMailer.with(pet: @pet).pet_home.deliver_now
+    NotificationMailer.with(users: @users, pet: @pet).pet_home.deliver_now
     redirect_to @pet.user, notice: "The pet has been found! You can share the success story by click on the 'Share Success Story' button."
   end
 
@@ -41,7 +42,7 @@ class PetsController < ApplicationController
     @posts = @pet.posts.with_found_pet
     @posts.update_all(status: 'archived')
     @pet.master_found!
-    NotificationMailer.with(pet: @pet).pet_home.deliver_now
+    NotificationMailer.with(users: @users, pet: @pet).pet_home.deliver_now
     redirect_to @pet.user, notice: "The pet master has been found! You can share the success story by click on the 'Share Success Story' button."
   end
 
@@ -49,7 +50,7 @@ class PetsController < ApplicationController
     @posts = @pet.posts.with_pet_to_adopt
     @posts.update_all(status: 'archived')
     @pet.adopted!
-    NotificationMailer.with(pet: @pet).pet_adopted.deliver_now
+    NotificationMailer.with(users: @users, pet: @pet).pet_adopted.deliver_now
     redirect_to @pet.user, notice: "The pet has found its family! You can share the success story by click on the 'Share Success Story' button."
   end
 
@@ -65,5 +66,9 @@ class PetsController < ApplicationController
 
   def check_if_authorized
     redirect_to @pet.user, notice: 'Sorry, you are not authorized to perform this action.' if current_user != @pet.user
+  end
+
+  def set_users
+    @users = User.where(allow_notification: true)
   end
 end

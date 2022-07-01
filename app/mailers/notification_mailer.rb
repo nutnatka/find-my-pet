@@ -1,4 +1,7 @@
 class NotificationMailer < ApplicationMailer
+  before_action :set_users, except: :user_created
+  before_action :set_pet, except: :user_created
+  before_action :set_post, only: %i[pet_lost pet_found pet_to_adopt]
   layout 'mailer'
 
   def user_created(user)
@@ -7,30 +10,47 @@ class NotificationMailer < ApplicationMailer
   end
 
   def pet_lost
-    @pet = params[:pet]
-    @post = params[:post]
-    mail to: User.all.pluck(:email), subject: default_i18n_subject
+    unless @users.blank?
+      mail to: @users.all.pluck(:email), subject: default_i18n_subject
+    end
   end
 
   def pet_found
-    @pet = params[:pet]
-    @post = params[:post]
-    mail to: User.all.pluck(:email), subject: 'Another pet found!'
+    unless @users.blank?
+      mail to: @users.all.pluck(:email), subject: 'Another pet found!'
+    end
   end
 
   def pet_to_adopt
-    @pet = params[:pet]
-    @post = params[:post]
-    mail to: User.all.pluck(:email), subject: 'Another pet for adoption!'
+    unless @users.blank?
+      mail to: @users.all.pluck(:email), subject: 'Another pet for adoption!'
+    end
   end
 
   def pet_home
-    @pet = params[:pet]
-    mail to: User.all.pluck(:email), subject: default_i18n_subject
+    unless @users.blank?
+      mail to: @users.all.pluck(:email), subject: default_i18n_subject
+    end
   end
 
   def pet_adopted
+    unless @users.blank?
+      mail to: @users.all.pluck(:email), subject: 'Pet is adopted!'
+    end
+  end
+
+  private
+
+  def set_users
+    @users = params[:users]
+  end
+
+  def set_pet
     @pet = params[:pet]
-    mail to: User.all.pluck(:email), subject: 'Pet is adopted!'
+  end
+
+  def set_post
+    @post = params[:post]
   end
 end
+

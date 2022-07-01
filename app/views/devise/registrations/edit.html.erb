@@ -9,7 +9,7 @@
   <%= link_to t('.back'), user_path(current_user), class: 'btn btn-outline-dark' %>
 
   <div class="text-center mt-2">
-    <h2 class="m-0"><%=t('.editYourProfile') %></h2>
+    <h2 class="m-0"><%= t('.editYourProfile') %></h2>
   </div>
 
   <div class="d-flex flex-lg-row mt-4 justify-content-lg-between flex-column justify-content-center align-items-center align-items-lg-start">
@@ -24,7 +24,7 @@
     </div>
 
     <div class="col-12 col-sm-10 col-md-8 col-lg-4 ps-0 ps-lg-5 mt-3 mt-lg-0">
-      <h6><%=t('.pleaseChangePersonalInfoIfNeeded') %></h6>
+      <h6><%= t('.pleaseChangePersonalInfoIfNeeded') %></h6>
       <div class="field">
         <%= f.text_field :name, autofocus: true, class: 'form-control mb-3', placeholder: 'Name' %>
       </div>
@@ -65,6 +65,16 @@
 
       <div class="field">
         <%= f.text_field :instagram, autofocus: true, class: 'form-control mb-3', placeholder: t('devise.registrations.new.instagram') %>
+      </div>
+
+      <div class="form-check mb-3">
+        <%= f.check_box :allow_email, class: 'form-check-input' %>
+        <%= f.label :allow_email, t('.allow'), class: 'form-check-label' %>
+      </div>
+
+      <div class="form-check mb-3">
+        <%= f.check_box :allow_notification, class: 'form-check-input' %>
+        <%= f.label :allow_notification, t('devise.registrations.new.notifications'), class: 'form-check-label' %>
       </div>
     </div>
   </div>
