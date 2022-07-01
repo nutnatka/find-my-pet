@@ -17,12 +17,10 @@
         <%= f.text_field :title, class: "form-control", required: true, placeholder: t('.name') %>
       </div>
 
-      <% if @pets.present? %>
-        <div class="field mb-2 d-none">
-          <%= f.label :title, t('.petSelect') %>:
-          <%= f.collection_select(:pet_id, @pets, :id, :name, {}, { class: 'form-select' }) %>
-        </div>
-      <% end %>
+      <div class="field mb-2 d-none">
+        <%= f.label :title, t('.petSelect') %>:
+        <%= f.collection_select(:pet_id, @pets, :id, :name, {}, { class: 'form-select' }) %>
+      </div>
 
       <div class="field mb-2">
         <%= f.label :content, t('.shareRecommendation') %>:

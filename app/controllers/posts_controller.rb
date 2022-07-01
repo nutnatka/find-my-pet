@@ -71,7 +71,9 @@ class PostsController < ApplicationController
   def change_pet_status
     @users = User.where(allow_notification: true)
     @pet = @post.pet
-    @pet.posts.joins(:category).where(category: { name: %i[lost_pets found_pets pets_to_adopt] }).where.not(id: @post.id).update_all(status: :archived)
+    unless @post.category.name == 'success_stories' || @post.category.name == 'recommendations'
+      @pet.posts.joins(:category).where(category: { name: %i[lost_pets found_pets pets_to_adopt] }).where.not(id: @post.id).update_all(status: :archived, place_id: nil)
+    end
     if @post.category.name == 'lost_pets'
       @pet.lost!
       NotificationMailer.with(users: @users, post: @post, pet: @post.pet).pet_lost.deliver_now
