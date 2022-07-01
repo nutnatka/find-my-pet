@@ -20,8 +20,7 @@
     <p class="mb-0"><b><%= t('.select_html') %></b></p>
     <p class="mb-0"><%= form.radio_button :sex, 'male', required: true, class: 'form-check-input me-2' %> <%= t('.male') %></p>
     <p class="mb-0"><%= form.radio_button :sex, 'female', class: 'form-check-input me-2' %> <%= t('.female') %></p>
-    <p class="mb-0"><%= form.radio_button :sex, 'undefined', class: 'form-check-input me-2' %> <%= t('.preferNotSay') %></p>
-    <p class="mb-2">* <%= t('devise.registrations.new.required') %></p>
+    <p class="mb-2"><%= form.radio_button :sex, 'undefined', class: 'form-check-input me-2' %> <%= t('.preferNotSay') %></p>
   </div>
 
   <div class="field">
@@ -35,9 +34,9 @@
     <b><%= form.label :date_of_birth, t('.birthday_html') %>:</b>
     <div class="input-group">
       <div class="input-group-prepend">
-        <div class="input-group-text fa-solid fa-calendar-days form-control" , style="background-color: white;"></div>
+        <div class="input-group-text fa-solid fa-calendar-days" , style="background-color: white;"></div>
       </div>
-      <%= form.text_field :date_of_birth, class: 'form-control', style: 'background-color: white;',
+      <%= form.text_field :date_of_birth, class: 'form-control ', style: 'background-color: white;',
                           data: {
                             controller: "flatpickr",
                             flatpickr_date_format: "%B %d %Y",
@@ -56,13 +55,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :social_network_link, t('.pleaseShareThePet`sSocialNetworkLinkIfAny'), class: 'fw-bold' %>
+    <%= form.label :social_network_link, t('.pleaseShareThePet`sSocialNetworkLinkIfAny' ), class: 'fw-bold' %>
     <%== form.text_field :social_network_link, autofocus: true, class: 'form-control mb-2', placeholder: true %>
-  </div>
-
-  <div class="field">
-    <%= form.label :avatar, t('.click_html'), class: 'fw-bold' %>
-    <%= form.file_field :avatar, class: 'form-control mb-2' %>
   </div>
 
   <div class="container d-flex justify-content-center">

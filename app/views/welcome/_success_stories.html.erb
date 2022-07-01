@@ -7,30 +7,27 @@
         <div class="swiper-wrapper">
           <% @success_posts.each_with_index do |success_story| %>
             <div class="swiper-slide card border border-dark">
-
               <div class="card-body p-0 pe-lg-5">
                 <%= link_to post_path(success_story) do %>
                   <div class="d-flex flex-column flex-lg-row">
                     <div class="avatar-container col-12 col-lg-4">
                       <% if success_story.pet.avatar.attached? %>
-                        <%= image_tag success_story.pet.avatar, class: 'w-100', style: 'height: 250px; object-fit: cover' %>
+                        <%= image_tag success_story.pet.avatar, class: 'w-100', style: 'height: 280px; object-fit: cover' %>
                       <% else %>
                         <% if success_story.pet.cat? %>
-                          <%= image_tag("cat1.jpg", class: 'w-100', style: 'height: 250px; object-fit: cover') %>
+                          <%= image_tag("cat1.jpg", class: 'w-100', style: 'height: 280px; object-fit: cover') %>
                         <% elsif success_story.pet.dog? %>
-                          <%= image_tag("dog1.jpg", class: 'w-100', style: 'height: 250px; object-fit: cover') %>
+                          <%= image_tag("dog1.jpg", class: 'w-100', style: 'height: 280px; object-fit: cover') %>
                         <% end %>
                       <% end %>
                 <% end %>
                 </div>
-
                 <div class="content col-12 col-lg-8 p-2 p-lg-0 ps-lg-5">
-                  <h5 class="card-title text-center text-dark mt-4"><%= success_story.title.upcase.truncate(30, omission: '...') %></h5>
-                  <p class="m-0 p-0 text-end text-dark"><%= t('.posted_by_html') %> <%= success_story.user.name.truncate(30, omission: '...') %>
+                  <h5 class="card-title text-center text-dark mt-4"><%= success_story.title.upcase %></h5>
+                  <p class="m-0 p-0 text-end text-dark">Posted by: <%= success_story.user.name %>
                     <br><%= success_story.created_at.strftime("%B %d, %y at %H %p") %></p>
-                  <p class="text-center text-lg-start mb-4 mt-4"><%= truncate(strip_tags(success_story.content.to_s), length: 200, omission: '...') %>
+                  <p class="text-center text-lg-start mb-4"><%= truncate(strip_tags(success_story.content.to_s), length: 400, omission: '...') %>
                 </div>
-
                 <div class="swiper-pagination"></div>
                 </div>
               </div>
@@ -38,7 +35,7 @@
           <% end %>
         </div>
       </div>
-      <div class="text-center mt-4 mb-5">
+      <div class="text-center mt-4 mb-3">
         <%= link_to t('.go_to_blog'), posts_path(category: :success_stories), class: 'btn btn-dark' %>
       </div>
     </div>

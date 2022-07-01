@@ -1,0 +1,6 @@
+<% if current_user.pets.empty? %>
+document.querySelector('#pet-<%= @pet.id %>').innerHTML = '';
+document.querySelector('#your-pets').append('At the moment you`ve got no pets added. To add your pet, click on the button below.');
+<% else %>
+document.querySelector('#pet-<%= @pet.id %>').innerHTML = 'The pet has been deleted.';
+<% end %>

@@ -211,6 +211,7 @@ en:
       contact_info: If you`ve seen this pet, please contact its
       master: master
       more_info: Get more Info
+      help_pet: Help to Find a Pet
       get_more_info: Find out More
       find_pet: Find my Pet
       map: View Lost Pets Map
@@ -238,6 +239,8 @@ en:
       post_hint: You can create your own post on your profile page.
     posts:
       ago: ago
+      lostPlace: The place where the pet was lost
+      lostDate: The date when the pet was lost
     short_pet_info:
       petInfo: Short Pet Info
       name: Name
@@ -280,6 +283,8 @@ en:
       recommendation: Provide Recommendation
       recommendationName: Please name the recommendation
       petSelect: Please select the pet
+      recommendationInfo: You have to add at least one pet to share recommendations. This can be done on your
+      profile: profile page
       shareRecommendation: Please share recommendation
       publish: Publish
       name: Recommendation Name
