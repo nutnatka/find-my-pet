@@ -14,14 +14,14 @@
 
   <div class="col-12 col-sm-10 col-md-8 col-lg-2 text-start text-lg-end">
     <% if current_user == @pet.user %>
-      <%= link_to t('.edit'), edit_pet_path(@user, @pet), class: 'btn btn-outline-dark mb-2 w-100' %>
-      <%= link_to t('.delete'), pet_path(@user, @pet), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-dark mb-2 w-100' %>
+      <%= link_to t('.edit'), edit_pet_path(@pet), class: 'btn btn-outline-dark mb-2 w-100' %>
+      <%= link_to t('.delete'), pet_path(@pet), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-dark mb-2 w-100' %>
       <% if @pet.lost? %>
-        <%= link_to t('.petFound'), find_pet_path(@user, @pet), method: :post, data: { confirm: 'Have you really found your pet?' }, class: 'btn btn-outline-dark mb-2 w-100' %>
+        <%= link_to t('.petFound'), find_pet_path(@pet), method: :post, data: { confirm: 'Have you really found your pet?' }, class: 'btn btn-outline-dark mb-2 w-100' %>
       <% elsif @pet.found? %>
-        <%= link_to t('.masterFound'), find_master_pet_path(@user, @pet), method: :post, data: { confirm: 'Have you really found pet master?' }, class: 'btn btn-outline-dark mb-2 w-100' %>
+        <%= link_to t('.masterFound'), find_master_pet_path(@pet), method: :post, data: { confirm: 'Have you really found pet master?' }, class: 'btn btn-outline-dark mb-2 w-100' %>
       <% elsif @pet.to_adopt? %>
-        <%= link_to t('.petAdopted'), adopt_pet_pet_path(@user, @pet), method: :post, data: { confirm: 'Is the pet really adopted?' }, class: 'btn btn-outline-dark mb-2 w-100' %>
+        <%= link_to t('.petAdopted'), adopt_pet_pet_path(@pet), method: :post, data: { confirm: 'Is the pet really adopted?' }, class: 'btn btn-outline-dark mb-2 w-100' %>
       <% end %>
     <% end %>
   </div>

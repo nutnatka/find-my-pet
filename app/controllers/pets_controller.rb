@@ -32,7 +32,7 @@ class PetsController < ApplicationController
 
   def find
     @posts = @pet.posts.with_lost_pet
-    @posts.update_all(status: 'archived')
+    @posts.update_all(status: 'archived', place_id: nil)
     @pet.home_again!
     NotificationMailer.with(users: @users, pet: @pet).pet_home.deliver_now
     redirect_to @pet.user, notice: "The pet has been found! You can share the success story by click on the 'Share Success Story' button."
@@ -40,7 +40,7 @@ class PetsController < ApplicationController
 
   def find_master
     @posts = @pet.posts.with_found_pet
-    @posts.update_all(status: 'archived')
+    @posts.update_all(status: 'archived', place_id: nil)
     @pet.master_found!
     NotificationMailer.with(users: @users, pet: @pet).pet_home.deliver_now
     redirect_to @pet.user, notice: "The pet master has been found! You can share the success story by click on the 'Share Success Story' button."
