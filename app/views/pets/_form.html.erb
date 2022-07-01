@@ -60,11 +60,6 @@
     <%== form.text_field :social_network_link, autofocus: true, class: 'form-control mb-2', placeholder: true %>
   </div>
 
-  <div class="field">
-    <%= form.label :avatar, t('.click_html'), class: 'fw-bold' %>
-    <%= form.file_field :avatar, class: 'form-control mb-2' %>
-  </div>
-
   <div class="container d-flex justify-content-center">
     <%= form.submit t('.save'), class: 'btn btn-dark' %>
     <%= link_to t('.cancel'), user_path, class: 'btn btn-outlined-dark' %>

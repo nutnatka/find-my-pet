@@ -4,11 +4,11 @@ module Users
     before_action :configure_account_update_params, only: :update
 
     def configure_sign_up_params
-      devise_parameter_sanitizer.permit(:sign_up, keys: %i[name allow_email phone telegram viber facebook instagram])
+      devise_parameter_sanitizer.permit(:sign_up, keys: %i[name allow_email phone telegram viber facebook instagram allow_notification])
     end
 
     def configure_account_update_params
-      devise_parameter_sanitizer.permit(:account_update, keys: %i[name avatar allow_email phone telegram viber facebook instagram])
+      devise_parameter_sanitizer.permit(:account_update, keys: %i[name avatar allow_email phone telegram viber facebook instagram allow_notification])
     end
 
     private

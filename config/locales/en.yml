@@ -51,6 +51,7 @@ en:
     zero: pet
     one: pet
     other: pets
+
     pets:
       addPet: Add Pet
       descr_html: >
@@ -322,6 +323,8 @@ en:
         facebook: Facebook Profile Link
         instagram: Instagram Profile Link
         createProfile: Create a Profile
+        notifications: >
+          I would like to receive email notifications about: lost pets, found pets, pets for adoption and adopted pets.
       edit:
         editYourProfile: EDIT YOUR PROFILE
         uploadYour: Upload your new profile picture below!
@@ -334,6 +337,7 @@ en:
         pleaseProvideContactInfo: 'Please provide contact info:'
         text2_html: >
           Please enter your current password<br>to confirm your changes.
+        allow: Allow using current email as contact.
     sessions:
       new:
         login: Log in
@@ -392,8 +396,8 @@ en:
 
   notification_mailer:
     user_created:
-      hello: Hello,
-      welcome: Welcome to
+      hello: Welcome,
+      welcome: You have successfully registered FindMyPet account! Now you can create a pet and get acquainted with the site.
     pet_lost:
       subject: "Another pet lost!"
       pet: Another pet

@@ -53,6 +53,11 @@
       <div class="field">
         <%= f.text_field :instagram, autofocus: true, class: 'form-control mb-3', placeholder: t('.instagram') %>
       </div>
+
+      <div class="form-check mb-3">
+        <%= f.check_box :allow_notification, class: 'form-check-input' %>
+        <%= f.label :allow_notification, t('.notifications'), class: 'form-check-label' %>
+      </div>
     </div>
   </div>
 
