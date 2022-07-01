@@ -19,11 +19,13 @@
       <div class="field">
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder: t('.email') %>
         <p class="m-0">* <%= t('.required') %></p>
-        <div class="form-check mb-3">
-          <%= f.check_box :allow_email, class: 'form-check-input' %>
-          <%= f.label :allow_email, t('.allow'), class: 'form-check-label' %>
-        </div>
       </div>
+
+      <div class="form-check mb-3">
+        <%= f.check_box :allow_email, class: 'form-check-input' %>
+        <%= f.label :allow_email, t('.allow'), class: 'form-check-label' %>
+      </div>
+
 
       <div class="field">
         <%= f.password_field :password, autocomplete: "new-password", class: 'form-control', placeholder: t('.password') %>
