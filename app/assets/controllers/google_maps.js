@@ -58,13 +58,16 @@ function initMap() {
             zIndex: 3
         });
 
-        const contentString =
-            '<div id="content">' +
-            '<a href="/posts/' + pet.getAttribute("data-id") + '">' + pet.getAttribute("data-name") + '</a>' +
-            '<div>' +
-            pet.getAttribute("data-content") +
-            '</div>' +
-            '</div>';
+        let id = pet.getAttribute("data-id");
+        let name = pet.getAttribute("data-name");
+        let content = pet.getAttribute("data-content");
+        const contentString = `
+            <div id="content">
+                <a href="/posts/${id}">${name}</a>
+                <div>
+                    ${content}
+                 </div>
+            </div>`;
         mapMarkers.set(marker, contentString);
 
         marker.addListener('click', () => {

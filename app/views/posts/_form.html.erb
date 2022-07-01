@@ -22,9 +22,6 @@
           <%= f.label :title, t('.petSelect') %>:
           <%= f.collection_select(:pet_id, @pets, :id, :name, {}, { class: 'form-select' }) %>
         </div>
-      <% else %>
-        <p class="mt-4"><%= t('.recommendationInfo') %>
-          <%= link_to t('.profile'), current_user, class: 'text-dark text-decoration-underline' %>.</p>
       <% end %>
 
       <div class="field mb-2">

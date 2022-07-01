@@ -1,7 +1,7 @@
 class PetsController < ApplicationController
   before_action :authenticate_user!, except: :index
   before_action :set_pet, only: %i[edit update show find find_master adopt_pet]
-  before_action :check_if_authorized, only: %i[edit destroy update find find_master adopt_pet]
+  before_action :check_if_authorized, only: %i[edit update find find_master adopt_pet]
 
   def index
     @q = Pet.ransack(params[:q])
@@ -19,22 +19,21 @@ class PetsController < ApplicationController
   def edit; end
 
   def update
-    redirect_to current_user, notice: 'The pet has been updated.' if @pet.update(pet_params)
+    redirect_to @pet, notice: 'The pet has been updated.' if @pet.update(pet_params)
   end
 
   def destroy
     @pet = current_user.pets.find(params[:id])
     @pet.destroy
 
-    respond_to do |format|
-      format.js { render layout: false }
-    end
+    redirect_to current_user, notice: 'The pet has been deleted.' if @pet.destroy
   end
 
   def find
     @posts = @pet.posts.with_lost_pet
     @posts.update_all(status: 'archived')
     @pet.home_again!
+    NotificationMailer.with(pet: @pet).pet_home.deliver_now
     redirect_to @pet.user, notice: "The pet has been found! You can share the success story by click on the 'Share Success Story' button."
   end
 
@@ -42,6 +41,7 @@ class PetsController < ApplicationController
     @posts = @pet.posts.with_found_pet
     @posts.update_all(status: 'archived')
     @pet.master_found!
+    NotificationMailer.with(pet: @pet).pet_home.deliver_now
     redirect_to @pet.user, notice: "The pet master has been found! You can share the success story by click on the 'Share Success Story' button."
   end
 
@@ -49,6 +49,7 @@ class PetsController < ApplicationController
     @posts = @pet.posts.with_pet_to_adopt
     @posts.update_all(status: 'archived')
     @pet.adopted!
+    NotificationMailer.with(pet: @pet).pet_adopted.deliver_now
     redirect_to @pet.user, notice: "The pet has found its family! You can share the success story by click on the 'Share Success Story' button."
   end
 
@@ -63,8 +64,6 @@ class PetsController < ApplicationController
   end
 
   def check_if_authorized
-    if current_user != @pet.user
-      redirect_to @pet.user, notice: 'Sorry, you are not authorized to perform this action.'
-    end
+    redirect_to @pet.user, notice: 'Sorry, you are not authorized to perform this action.' if current_user != @pet.user
   end
 end
