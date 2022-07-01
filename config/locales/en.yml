@@ -396,8 +396,8 @@ en:
 
   notification_mailer:
     user_created:
-      hello: Hello,
-      welcome: Welcome to
+      hello: Welcome,
+      welcome: You have successfully registered FindMyPet account! Now you can create a pet and get acquainted with the site.
     pet_lost:
       subject: "Another pet lost!"
       pet: Another pet

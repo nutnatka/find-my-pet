@@ -1,6 +1,6 @@
 <% if @pet.name %>
-  <p><%= @pet.name %>
+  <%= @pet.name %>
 <% else %>
-  <p><%= t('.pet') %>
+  <% t('.pet') %>
 <% end %>
-<%= t('.lost') %></p>
+<% t('.lost') %>
