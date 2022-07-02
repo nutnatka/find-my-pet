@@ -4,32 +4,35 @@
 
   <div class="card border border-dark pt-3 pb-3 mb-2 col-12 col-sm-5 ms-0 ms-sm-2 me-0 me-sm-2 col-lg-2">
     <%= link_to pets_path, class: 'text-dark' do %>
-      <h5 class="p-0 m-0"><%= @pets.count %><br><%= t('pets', :count => @pets.count) %> <%= t('.add') %></h5>
+      <h5 class="p-0 m-0"><%= @pets.count %><br><%= t('pets', count: @pets.count) %> <%= t('.add') %></h5>
     <% end %>
   </div>
 
 
   <div class="card border border-dark pt-3 pb-3 mb-2 col-12 col-sm-5 ms-0 ms-sm-2 me-0 me-sm-2 col-lg-2">
     <%= link_to posts_path(category: :lost_pets), class: 'text-dark' do %>
-      <h5 class="p-0 m-0"><%= @pets.lost.count %><br><%= t('pets', :count => @pets.lost.count) %> <%= t('.lost') %></h5>
+      <h5 class="p-0 m-0"><%= @pets.lost.count %><br><%= t('pets', count: @pets.lost.count) %> <%= t('.lost') %></h5>
     <% end %>
   </div>
 
   <div class="card border border-dark pt-3 pb-3 mb-2 col-12 col-sm-5 ms-0 ms-sm-2 me-0 me-sm-2 col-lg-2">
     <%= link_to posts_path(category: :success_stories), class: 'text-dark' do %>
-      <h5 class="p-0 m-0"><%= @pets.found.count %><br><%= t('pets', :count => @pets.home_again.count) %> <%= t('.home') %></h5>
+      <h5 class="p-0 m-0"><%= @pets.found.count %><br><%= t('pets', count: @pets.home_again.count) %> <%= t('.home') %>
+      </h5>
     <% end %>
   </div>
 
   <div class="card border border-dark pt-3 pb-3 mb-2 col-12 col-sm-5 ms-0 ms-sm-2 me-0 me-sm-2 col-lg-2">
     <%= link_to posts_path(category: :pets_to_adopt), class: 'text-dark' do %>
-      <h5 class="p-0 m-0"><%= @pets.to_adopt.count %><br><%= t('pets', :count => @pets.to_adopt.count) %> <%= t('.adopt') %></h5>
+      <h5 class="p-0 m-0"><%= @pets.to_adopt.count %>
+        <br><%= t('pets', count: @pets.to_adopt.count) %> <%= t('.adopt') %></h5>
     <% end %>
   </div>
 
   <div class="card border border-dark pt-3 pb-3 mb-2 col-12 col-sm-5 ms-0 ms-sm-2 me-0 me-sm-2 col-lg-2">
     <%= link_to posts_path(category: :success_stories), class: 'text-dark' do %>
-      <h5 class="p-0 m-0"><%= success_pets_count(@pets) %><br><%= t('pets', :count => @pets.adopted.count) %> <%= t('.success') %></h5>
+      <h5 class="p-0 m-0"><%= success_pets_count(@pets) %>
+        <br><%= t('pets', count: @pets.adopted.count) %> <%= t('.success') %></h5>
     <% end %>
   </div>
 </div>

@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create]
-  after_action :change_pet_status, only: :create
   before_action :set_post, only: %i[show edit update destroy change_pet_status]
+  after_action :change_pet_status, only: :create
 
   def index
     if params.has_key?(:category)
@@ -51,7 +51,6 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-
     redirect_to user_posts_path(current_user), notice: 'The post has been successfully deleted.'
   end
 
@@ -73,9 +72,7 @@ class PostsController < ApplicationController
   def change_pet_status
     @users = User.where(allow_notification: true)
     @pet = @post.pet
-    unless @post.category.name == 'recommendations'
-      @pet.posts.joins(:category).where(category: { name: %i[lost_pets found_pets pets_to_adopt] }).where.not(id: @post.id).update_all(status: :archived, place_id: nil)
-    end
+    @pet.posts.joins(:category).where(category: { name: %i[lost_pets found_pets pets_to_adopt] }).where.not(id: @post.id).update_all(status: :archived, place_id: nil) unless @post.category.name == 'recommendations'
     if @post.category.name == 'lost_pets'
       @pet.lost!
       NotificationMailer.with(users: @users, post: @post, pet: @post.pet).pet_lost.deliver_now

@@ -10,33 +10,23 @@ class NotificationMailer < ApplicationMailer
   end
 
   def pet_lost
-    unless @users.blank?
-      mail to: @users.all.pluck(:email), subject: default_i18n_subject
-    end
+    mail to: @users.all.pluck(:email), subject: default_i18n_subject unless @users.blank?
   end
 
   def pet_found
-    unless @users.blank?
-      mail to: @users.all.pluck(:email), subject: default_i18n_subject
-    end
+    mail to: @users.all.pluck(:email), subject: default_i18n_subject unless @users.blank?
   end
 
   def pet_to_adopt
-    unless @users.blank?
-      mail to: @users.all.pluck(:email), subject: default_i18n_subject
-    end
+    mail to: @users.all.pluck(:email), subject: default_i18n_subject unless @users.blank?
   end
 
   def pet_home
-    unless @users.blank?
-      mail to: @users.all.pluck(:email), subject: default_i18n_subject
-    end
+    mail to: @users.all.pluck(:email), subject: default_i18n_subject unless @users.blank?
   end
 
   def pet_adopted
-    unless @users.blank?
-      mail to: @users.all.pluck(:email), subject: default_i18n_subject
-    end
+    mail to: @users.all.pluck(:email), subject: default_i18n_subject unless @users.blank?
   end
 
   private
@@ -53,4 +43,3 @@ class NotificationMailer < ApplicationMailer
     @post = params[:post]
   end
 end
-

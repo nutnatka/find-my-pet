@@ -27,7 +27,7 @@
                 <div class="content col-12 col-lg-8 p-2 p-lg-0 ps-lg-5">
                   <h5 class="card-title text-center text-dark mt-4"><%= success_story.title.upcase.truncate(30, omission: '...') %></h5>
                   <p class="m-0 p-0 text-end text-dark"><%= t('.posted_by_html') %> <%= success_story.user.name.truncate(30, omission: '...') %>
-                    <br><%= success_story.created_at.strftime("%B %d, %y at %H %p") %></p>
+                    <br><%= l(success_story.created_at, format: :short) %></p>
                   <p class="text-center text-lg-start mb-4 mt-4"><%= truncate(strip_tags(success_story.content.to_s), length: 200, omission: '...') %>
                 </div>
 
