@@ -2,6 +2,8 @@ uk:
   language: "uk"
   en: "English"
   uk: "Українська"
+  true: Так
+  false: Ні
 
   users:
     show:
@@ -59,9 +61,6 @@ uk:
         Зберегти
       cancel:
         Відмінити
-      male: самець
-      female: самиця
-      preferNotSay: невідомо
       color: Колір
       addInfo: Додаткова інформація
     destroy:
@@ -106,8 +105,6 @@ uk:
         Стать:
       sterile: >
         Стерилізований(а):
-      yes: так
-      no: ні
       dateOfBirth: >
         Дата Народження:
       color: >
@@ -135,8 +132,6 @@ uk:
       speciesPrompt: будь-ласка, оберіть вид
       breed: Порода
       genderSelect: Оберіть стать улюбленця
-      male: Самець
-      female: Самиця
       preferNotSay: Я не хочу вказувати цю інформацію
       sterile: Мій улюбленець стерилізований(а)
       birthday: >
@@ -371,6 +366,10 @@ uk:
     species:
       cat: Кішка
       dog: Песик
+    sex:
+      male: Самець
+      female: Самка
+      undefined: Невідомо
  
   notification_mailer:
     user_created:

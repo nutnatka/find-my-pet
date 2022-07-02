@@ -12,7 +12,7 @@ function initMap() {
     };
 
     // Create a map in the #map HTML element, using the declared options
-    const map = new google.maps.Map(document.getElementById("map"), mapOptions);
+    const mapG = new google.maps.Map(document.getElementById("map"), mapOptions);
 
     navigator.geolocation.getCurrentPosition((position) => {
         if (position.coords === undefined) {
@@ -24,9 +24,9 @@ function initMap() {
         };
         new google.maps.Marker({
             position: latLng,
-            map: map,
+            map: mapG,
         });
-        map.setCenter(latLng);
+        mapG.setCenter(latLng);
     });
 
     const infowindow = new google.maps.InfoWindow();
@@ -52,7 +52,7 @@ function initMap() {
                 lng: Number(pet.getAttribute("data-longitude"))
             },
             icon: icons[iconId],
-            map: map,
+            map: mapG,
             title: pet.getAttribute("data-name"),
             optimized: true,
             zIndex: 3

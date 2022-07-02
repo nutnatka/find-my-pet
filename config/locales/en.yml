@@ -34,6 +34,9 @@ en:
   en: "English"
   uk: "Українська"
 
+  true: Yes
+  false: No
+
   users:
     show:
       createPost: Create a Post
@@ -89,9 +92,6 @@ en:
         Save Pet
       cancel:
         Cancel
-      male: male
-      female: female
-      preferNotSay: unknown
       color: Color
       addInfo: Additional Info
     destroy:
@@ -136,8 +136,6 @@ en:
         Gender:
       sterile: >
         Is sterilized:
-      yes: yes
-      no: no
       dateOfBirth: >
         Date of Birth:
       color: >
@@ -165,8 +163,6 @@ en:
       speciesPrompt: please choose species
       breed: Breed
       genderSelect: Select Pet`s Gender
-      male: Male
-      female: Female
       preferNotSay: Prefer not to Say
       sterile: My Pet is Sterilized
       birthday: >
@@ -402,6 +398,10 @@ en:
     species:
       cat: Cat
       dog: Dog
+    sex:
+      male: Male
+      female: Female
+      undefined: Undefined
 
   notification_mailer:
     user_created:
