@@ -4,11 +4,11 @@
 
 <h4 class="text-center mt-2"><%= t('.info') %>
   <% if @post.category.name == 'lost_pets' %>
-    <%= t('.petSearch') %>:</h4>
+    <%= t('.petSearch') %></h4>
   <% elsif @post.category.name == 'found_pets' || @post.category.name == 'pets_to_adopt' %>
-    <%= t('.masterSearch') %>:</h4>
+    <%= t('.masterSearch') %></h4>
   <% elsif @post.category.name == 'success_stories' %>
-    <%= t('.success') %>:</h4>
+    <%= t('.success') %></h4>
   <% end %>
 
   <%= form_with model: @post, local: true do |f| %>
@@ -29,23 +29,23 @@
     <% end %>
     <div class="field mb-2">
       <% if @post.category.name == 'pets_to_adopt' %>
-        <%= f.label :title, t('.adoptPetInfo') %>:
+        <%= f.label :title, t('.adoptPetInfo') %>
       <% else %>
-        <%= f.label :title, t('.situationInfo') %>:
+        <%= f.label :title, t('.situationInfo') %>
       <% end %>
       <%= f.text_field :title, class: "form-control", required: true, placeholder: t('.postTitle') %>
     </div>
 
     <% if @pets.present? %>
       <div class="field mb-2">
-        <%= f.label :title, t('.petSelect') %>:
+        <%= f.label :title, t('.petSelect') %>
         <%= f.collection_select(:pet_id, @pets, :id, :name, { prompt: t('.prompt') }, { class: 'form-select', required: true }) %>
       </div>
     <% end %>
 
     <% if @post.category.name == 'pets_to_adopt' || @post.category.name == 'success_stories' %>
       <div class="field mb-2">
-        <%= f.label :content, t('.details') %>:
+        <%= f.label :content, t('.details') %>
         <%= f.rich_text_area :content, class: "form-control", placeholder: t('.shareStory') %>
       </div>
     <% end %>
@@ -60,7 +60,7 @@
       </div>
 
       <div class="field mb-2">
-        <%= f.label :date, t('.date') %>:
+        <%= f.label :date, t('.date') %>
         <div class="input-group">
           <div class="input-group-prepend">
             <div class="input-group-text fa-solid fa-calendar-days" , style="background-color: white;"></div>
@@ -95,7 +95,7 @@
       </div>
 
       <div class="field mb-2">
-        <%= f.label :content, t('.details') %>:
+        <%= f.label :content, t('.details') %>
         <%= f.rich_text_area :content, class: "form-control", placeholder: t('.shareStory') %>
     <% end %>
     </div>

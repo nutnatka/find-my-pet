@@ -23,7 +23,7 @@
           <p class="card-text m-0 p-0">
             <% if lost_post.date %>
               <%= t('.date') %>
-              <b><%= lost_post.date.to_time.strftime('%B %e, %Y') %>.</b>
+              <b><%= l(lost_post.date, format: :short) %>.</b>
             <% end %>
 
             <%= t('.pet_info') %> <%= lost_post.pet.color %> <%= lost_post.pet.species %>

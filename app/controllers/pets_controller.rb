@@ -13,7 +13,6 @@ class PetsController < ApplicationController
 
   def create
     @pet = current_user.pets.build(pet_params)
-
     redirect_to current_user, notice: 'The pet has been added.' if @pet.save
   end
 
@@ -26,7 +25,6 @@ class PetsController < ApplicationController
   def destroy
     @pet = current_user.pets.find(params[:id])
     @pet.destroy
-
     redirect_to current_user, notice: 'The pet has been deleted.' if @pet.destroy
   end
 

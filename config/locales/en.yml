@@ -40,7 +40,8 @@ en:
       addPet: Add a Pet
       editProfile: Edit Profile
       destroyProfile: Destroy Profile
-      AddContactInfo: Add Contact Info
+      AddContactInfo: >
+        Add Contact Info:
       recommendationPost: Share Recommendation
       successPost: Share Success Story
       adoptPost: Find Family for a Pet
@@ -81,8 +82,8 @@ en:
         Please use jpeg, png or gif files less than 150kb.
       pet:
         Pet is Sterilized
-      birthday_html:
-        Select Pet`s Birthday
+      birthday_html: >
+        Select Pet`s Birthday:
       pleaseShareThePet`sSocialNetworkLinkIfAny: >
         Please share the pet`s social network link if any:
       save:
@@ -100,16 +101,22 @@ en:
       moment.html: >
         At the moment you`ve got no pets added. To add your pet, click on the button below.
     filter:
-      filterBy: Filter by
+      filterBy: >
+        Filter by:
       clear: Clear
-      name: Name
-      species: Species
+      name: >
+        Name:
+      species: >
+        Species:
       prompt: please choose species
-      breed: Breed
+      breed: >
+        Breed:
       sterile: Sterilized
-      sex: Gender
+      sex: >
+        Gender:
       promptGender: please choose gender
-      color: Color
+      color: >
+        Color:
       filter: Filter
     sorting:
       sort: Sort by
@@ -151,20 +158,23 @@ en:
     edit:
       breedAny: >
         Provide the breed if any:
-      petIs: My pet is a
+      petIs: >
+        My pet is a:
       back: Back
       edit: EDIT
       change_html: >
         Please change the pet name if necessary:
       editProfile: EDIT PET`S PROFILE
-      prohibit: prohibited this pet from being updated
+      prohibit: >
+        prohibited this pet from being updated:
       upload: Upload new profile picture for
       below: below
       uploadAvatar: Upload pet`s new profile picture below
       name: Name
       speciesPrompt: please choose species
       breed: Breed
-      genderSelect: Select Pet`s Gender
+      genderSelect: >
+        Select Pet`s Gender:
       male: Male
       female: Female
       preferNotSay: Prefer not to Say
@@ -236,32 +246,47 @@ en:
     posts:
       ago: ago
     short_pet_info:
-      petInfo: Short Pet Info
-      name: Name
-      breed: Breed
-      sex: Gender
-      age: Age
-      color: Color
-      addInfo: Additional Info
+      petInfo: >
+        Short Pet Info:
+      name: >
+        Name:
+      breed: >
+        Breed:
+      sex: >
+        Gender:
+      age: >
+        Age:
+      color: >
+        Color:
+      addInfo: >
+        Additional Info:
       dateLost: The pet has been lost on the
       foundDate: The pet has been found on the
     contact_info:
-      contactInfo: Contact Info
-      founder: Founder Name
+      contactInfo: >
+        Contact Info:
+      founder: >
+        Founder Name:
       founderProfile: Founder Profile
-      master: Master Name
+      master: >
+        Master Name:
       masterProfile: Master Profile
       facebook: Facebook Profile
       instagram: Instagram Profile
-      email: Email
-      phone: Phone
-      telegram: Telegram
-      viber: Viber
+      email: >
+        Email:
+      phone: >
+        Phone:
+      telegram: >
+        Telegram:
+      viber: >
+        Viber:
     show:
       help: Help to Find a Pet
       masterHelp: Help to Find Pet Master
       adopt: I`d Like to Adopt this Pet
-      posted: Posted by
+      posted: >
+        Posted by:
       back: Back
       petProfile: Pet Profile
       lostPlace: >
@@ -274,33 +299,45 @@ en:
       done: This can be done on your
       profile: profile page.
     form:
-      recommendation: Provide Recommendation
-      recommendationName: Please name the recommendation
-      petSelect: Please select the pet
-      shareRecommendation: Please share recommendation
+      recommendation: >
+        Provide Recommendation:
+      recommendationName: >
+        Please name the recommendation:
+      petSelect: >
+        Please select the pet:
+      shareRecommendation: >
+        Please share recommendation:
       publish: Publish
       name: Recommendation Name
       share: Here you can share recommendation
     pet_form:
       info: Provide Info
-      petSearch: Necessary for Your Pet Search
-      masterSearch: Necessary to Find the Pet`s Master
-      success: about your Pet Finding History
-      adoptPetInfo: Please give the short description of the pet to be adopted
-      situationInfo: Please give the short description of what has happened
+      petSearch: >
+        Necessary for Your Pet Search:
+      masterSearch: >
+        Necessary to Find the Pet`s Master:
+      success: >
+        about your Pet Finding History:
+      adoptPetInfo: >
+        Please give the short description of the pet to be adopted:
+      situationInfo: >
+        Please give the short description of what has happened:
       postTitle: post title
-      petSelect: Please select the pet
+      petSelect: >
+        Please select the pet:
       prompt: select pet
       noPet: If you haven`t added the pet yet, please do so on your
       profile: profile page
       addPet: Please add pet on your
       address: >
         Please fill the address or set the point on the map (this can be done with mouse double click):
-      date: Please select date
+      date: >
+        Please select date:
       dateSelect: select date
       contactInfo: Please make sure you`ve provided your contact info.
       done: This can be done on your
-      details: Please give details
+      details: >
+        Please give details:
       shareStory: Share your story here
       publish: Publish
   devise:

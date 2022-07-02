@@ -1,4 +1,5 @@
-<div class="d-flex flex-row justify-content-between align-items-center"><h5 class="p-0 m-0 mb"><%= t('.filterBy') %>:</h5>
+<div class="d-flex flex-row justify-content-between align-items-center">
+  <h5 class="p-0 m-0 mb"><%= t('.filterBy') %></h5>
   <%= link_to t('.clear'), pets_path, class: "btn btn-outline-dark p-o" %>
 </div>
 <hr>
@@ -10,22 +11,22 @@
                       html: { autocomplete: 'off', autocapitalize: 'none' } do |f| %>
 
     <div class="form-group">
-      <%= f.label :name, t('.name') %>:
+      <%= f.label :name, t('.name') %>
       <%= f.text_field :name_cont, class: 'form-control' %>
     </div>
 
-    <div class="form-group mt:"><%= f.label :species, t('.species'), class: 'mt-3' %>:
+    <div class="form-group mt:"><%= f.label :species, t('.species'), class: 'mt-3' %>
       <%= f.select(:species_eq, options_for_select(Pet.species.map { |k, v| [k.humanize.capitalize, v] }, f.object.species_eq), { prompt: t('.prompt') }, { class: "form-select" }) %></div>
 
     <div class="form-group">
-      <%= f.label :breed, t('.breed'), class: 'mt-3' %>:
+      <%= f.label :breed, t('.breed'), class: 'mt-3' %>
       <%= f.text_field :breed_cont, class: 'form-control' %>
     </div>
 
     <div class="form-group mt-3"><%= f.check_box :sterilized_true, include_hidden: false, class: 'form-check-input' %>
       <%= f.label :sterilized, t('.sterile') %></div>
 
-    <div class="form-group mt:"><%= f.label :sex, t('.sex'), class: 'mt-3' %>:
+    <div class="form-group mt:"><%= f.label :sex, t('.sex'), class: 'mt-3' %>
       <%= f.select(:sex_eq, options_for_select(Pet.sexes.map { |k, v| [k.humanize.capitalize, v] }, f.object.sex_eq), { prompt: t(".promptGender") }, { class: "form-select" }) %></div>
 
     <div class="form-group">
