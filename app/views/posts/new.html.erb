@@ -5,7 +5,8 @@
 
 <div class="page-header mt-4 mb-4">
   <% if current_user.pets.blank? %>
-    <p class="d-flex flex-column text-center mt-5 mb-5"><%= t('.begin') %><br><%= t('.done') %> <%= link_to t('.profile'), current_user, class: 'text-dark text-decoration-underline' %>
+    <p class="d-flex flex-column text-center mt-5 mb-5"><%= t('.begin') %>
+      <br><%= t('.done') %> <%= link_to t('.profile'), current_user, class: 'text-dark text-decoration-underline' %>
     </p>
   <% else %>
     <%= link_to t('.back'), :back, class: 'btn btn-outline-dark' %>

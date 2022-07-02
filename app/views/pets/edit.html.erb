@@ -15,7 +15,7 @@
     <div class="text-center text-danger mt-2" id="error_explanation">
       <h4>
         <%= pluralize(@pet.errors.count, "error") %>
-        <%= t('.prohibit') %>:
+        <%= t('.prohibit') %>
       </h4>
 
       <% @pet.errors.full_messages.each do |msg| %>
@@ -46,7 +46,7 @@
       </div>
 
       <div class="field">
-        <p class="p-0 m-0"><b><%= t('.petIs') %>:</b></p>
+        <p class="p-0 m-0"><b><%= t('.petIs') %></b></p>
         <%= form.select(:species, Pet.species.map { |key, v| [key.humanize, key] }, { prompt: t('.speciesPrompt') }, { class: 'form-select', required: true }) %>
         <p class="mb-2">* <%= t('devise.registrations.new.required') %></p>
       </div>
@@ -57,10 +57,10 @@
       </div>
 
       <div class="field">
-        <p class="mb-0"><b><%= t('.genderSelect') %>:</b></p>
-        <p class="mb-0"><%= form.radio_button :sex, 'male', required: true, class: 'form-check-input me-2' %> <%= t('enum.sex.male') %></p>
-        <p class="mb-0"><%= form.radio_button :sex, 'female', class: 'form-check-input me-2' %> <%= t('enum.sex.female') %></p>
-        <p class="mb-0"><%= form.radio_button :sex, 'undefined', class: 'form-check-input me-2' %> <%= t('enum.sex.undefined') %> </p>
+        <p class="mb-0"><b><%= t('.genderSelect') %></b></p>
+        <p class="mb-0"><%= form.radio_button :sex, 'male', required: true, class: 'form-check-input me-2' %> <%= t('.male') %></p>
+        <p class="mb-0"><%= form.radio_button :sex, 'female', class: 'form-check-input me-2' %> <%= t('.female') %></p>
+        <p class="mb-0"><%= form.radio_button :sex, 'undefined', class: 'form-check-input me-2' %> Unknown</p>
         <p class="mb-2">* <%= t('devise.registrations.new.required') %></p>
       </div>
 

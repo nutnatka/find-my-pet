@@ -79,7 +79,7 @@
     <% if @pet.date_of_birth? %>
       <p class="mb-2 ms-4">
         <b><%= t('.dateOfBirth') %></b>
-        <%= @pet.date_of_birth.to_time.strftime('%B %e, %Y') %>
+        <%= l(@pet.date_of_birth, format: :long) %>
       </p>
     <% end %>
 

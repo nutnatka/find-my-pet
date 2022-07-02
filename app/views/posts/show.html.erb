@@ -16,7 +16,7 @@
         <% if @post.pet.avatar.attached? %>
           <div class="avatar-container col-12 col-sm-4 text-center">
             <%= image_tag @post.pet.avatar, style: 'object-fit: cover;', class: 'border border-dark w-100' %>
-            <%= link_to t('.petProfile'), pet_path(@post.pet), target: :_blank, class: 'text-dark text-decoration-underline' %>
+            <%= link_to t('.petProfile'), pet_path(@post.pet), class: 'text-dark text-decoration-underline' %>
           </div>
           <div class="pet-info mt-3 mb-3 text-center col-12 mt-sm-0 text-sm-start mb-sm-2 col-sm-4">
             <%= render 'posts/short_pet_info' %>
@@ -41,24 +41,14 @@
         <b><%= t('.lostPlace') %></b><%= @post.place.name %>
       <% end %><br>
       <% if @post.date %>
-        <b><%= t('.lostDate') %></b><%= @post.date.to_time.strftime('%B %e, %Y') %>
+        <b><%= t('.lostDate') %></b><%= l(@post.date, format: :long) %>.
       <% end %>
     <% end %>
-
-    <!--    <div class="actions mt-3 mb-3 text-center">-->
-    <%# if @post.category.name == 'lost_pets' %>
-    <%#= link_to t('.help'), @post, class: 'btn btn-dark' %>
-    <%# elsif @post.category.name == 'found_pets' %>
-    <%#= link_to t('.masterHelp'), @post, class: 'btn btn-dark' %>
-    <%# elsif @post.category.name == 'pets_to_adopt' %>
-    <%#= link_to t('.adopt'), @post, class: 'btn btn-dark' %>
-    <%# end %>
-    <!--    </div>-->
   </div>
 
   <div class="col-12 text-center col-md-2 text-md-end">
-    <p class="p-0 m-0"><%= t('.posted') %>: <%= @post.user.name %></p>
-    <p class="p-0 m-0"><%= @post.created_at.strftime("%B %d, %y at %H %p") %></p>
+    <p class="p-0 m-0"><%= t('.posted') %> <%= @post.user.name %></p>
+    <p class="p-0 m-0"><%= l(@post.created_at, format: :short) %></p>
 
     <div class="twitter-button">
       <a class="resp-sharing-button__link" href="https://twitter.com/intent/tweet/?text=Please visit 'FindMyPet'&amp;url=<%= request.url %>" target="_blank" rel="noopener" aria-label="Share on Twitter">

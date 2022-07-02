@@ -10,7 +10,6 @@
 #  remember_created_at    :datetime
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  admin                  :boolean          default(FALSE)
 #  name                   :string
 #  slug                   :string
 #  allow_email            :boolean
@@ -23,6 +22,7 @@
 #  confirmed_at           :datetime
 #  confirmation_sent_at   :datetime
 #  unconfirmed_email      :string
+#  allow_notification     :boolean          default(FALSE)
 #
 
 # This model initially had no columns defined. If you add columns to the

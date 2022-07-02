@@ -1,30 +1,34 @@
-<h5><b><%= t('.contactInfo') %>:</b></h5>
+<h5><b><%= t('.contactInfo') %></b></h5>
 <% if @post.category.name == 'found_pets' %>
-  <h6><b><%= t('.founder') %>:</b> <%= @post.pet.user.name %></h6>
-  <h6><%= link_to t('.founderProfile'), user_path(@post.user), target: '_blank', class: 'text-dark text-decoration-underline' %></h6>
+  <h6><b><%= t('.founder') %></b> <%= @post.pet.user.name %></h6>
+  <h6><%= link_to t('.founderProfile'), user_path(@post.user), class: 'text-dark text-decoration-underline' %></h6>
 <% else %>
-  <h6><b><%= t('.master') %>:</b> <%= @post.pet.user.name %></h6>
-  <h6><%= link_to t('.masterProfile'), user_path(@post.user), target: '_blank', class: 'text-dark text-decoration-underline' %></h6>
+  <h6><b><%= t('.master') %></b> <%= @post.pet.user.name %></h6>
+  <h6><%= link_to t('.masterProfile'), user_path(@post.user), class: 'text-dark text-decoration-underline' %></h6>
 <% end %>
 <% if @post.user.facebook? %>
   <h6>
     <b><%= link_to t('.facebook'), @post.user.facebook, target: '_blank', class: 'text-dark text-decoration-underline' %></b>
   </h6>
 <% end %>
-<% if @post.user.instagram %>
+<% if @post.user.instagram? %>
   <h6>
     <b><%= link_to t('.instagram'), @post.user.instagram, target: '_blank', class: 'text-dark text-decoration-underline' %></b>
   </h6>
 <% end %>
 <% if @post.user.allow_email == true %>
-  <h6><b><%= t('.email') %>:</b> <%= mail_to(@post.user.email, nil, html_options = { class: 'text-dark text-decoration-underline' }) %></h6>
+  <h6>
+    <b><%= t('.email') %></b> <%= mail_to(@post.user.email, nil, html_options = { class: 'text-dark text-decoration-underline' }) %>
+  </h6>
 <% end %>
 <% if @post.user.phone? %>
-  <h6><b><%= t('.phone') %>:</b> <%= phone_to(@post.user.phone, nil, html_options = { class: 'text-dark text-decoration-underline' }) %></h6>
+  <h6>
+    <b><%= t('.phone') %></b> <%= phone_to(@post.user.phone, nil, html_options = { class: 'text-dark text-decoration-underline' }) %>
+  </h6>
 <% end %>
 <% if @post.user.telegram? %>
-  <h6><b><%= t('.telegram') %>:</b> <%= @post.user.telegram %></h6>
+  <h6><b><%= t('.telegram') %></b> <%= @post.user.telegram %></h6>
 <% end %>
 <% if @post.user.viber? %>
-  <h6><b><%= t('.viber') %>:</b> <%= @post.user.viber %></h6>
+  <h6><b><%= t('.viber') %></b> <%= @post.user.viber %></h6>
 <% end %>
